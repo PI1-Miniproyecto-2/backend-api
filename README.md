@@ -111,4 +111,77 @@ Las pruebas automatizadas usan inyección de dependencias: no leen ADC ni accede
 a Firestore o a internet. Verifican éxito, documento ausente, estado inválido,
 fallos de lectura y reutilización de Firebase con ADC simuladas.
 
-Autenticación de usuarios, Socket.IO, Swagger y Docker corresponden a otras tareas.
+Autenticación de usuarios, Socket.IO y Swagger corresponden a otras tareas.
+
+## Docker y Docker Compose (TS-00-T09)
+
+Requisitos: Docker Engine y Docker Compose con acceso al daemon Docker.
+El Dockerfile utiliza Node.js 20 y etapas separadas de compilación, dependencias
+de producción y ejecución. La imagen final contiene `dist/`, los manifiestos npm
+y las dependencias de producción; ejecuta `npm start` como usuario `node`.
+No incluye pruebas, fuentes TypeScript del proyecto ni herramientas de desarrollo.
+`.dockerignore` limita el contexto de construcción y excluye credenciales.
+
+Para construir y ejecutar localmente con Compose:
+
+```bash
+docker compose config
+docker compose build
+docker compose up -d
+docker compose ps
+curl -i http://localhost:3000/health
+docker compose logs backend-api
+```
+
+La respuesta esperada es HTTP 200 y `{"status":"ok"}`. El `HEALTHCHECK` usa
+el módulo HTTP integrado de Node.js para consultar `/health` en el puerto de
+ejecución, sin instalar herramientas adicionales.
+
+Compose publica el servicio solo en `127.0.0.1:3000` por defecto. `PORT` configura el puerto
+interno (3000 por defecto); `HOST_PORT` configura el puerto publicado en el equipo
+(3000 por defecto). Si 3000 está ocupado, utiliza `HOST_PORT=3001 docker compose up -d`
+y verifica `http://localhost:3001/health`. Usa el mismo `HOST_PORT` en los comandos
+posteriores de Compose para conservar la configuración.
+Compose toma `PORT`, `FIREBASE_PROJECT_ID` y `CORS_ORIGIN` de la terminal o de
+`.env`, pasando únicamente esas variables al contenedor. Por ejemplo:
+
+```bash
+PORT=8080 FIREBASE_PROJECT_ID=miniproyecto-2-c0d28 docker compose up -d --build
+curl -i http://localhost:3000/health
+```
+
+El ID de proyecto no es una credencial. No se copian ni se montan las ADC
+personales de Ubuntu. No se valida Firestore dentro del contenedor; la
+autenticación segura de producción se resolverá durante el despliegue.
+
+Para reconstruir después de modificar código y para detener el servicio:
+
+```bash
+docker compose up -d --build
+docker compose down
+```
+
+Esta ejecución local usa la imagen de producción para verificar el resultado
+compilado. Para desarrollo con recarga automática, utiliza `npm run dev` fuera
+del contenedor.
+
+También puedes utilizar Docker sin Compose:
+
+```bash
+docker build -t backend-api:local .
+docker run -d --name backend-api-local -p 127.0.0.1:3000:3000 -e PORT=3000 backend-api:local
+curl -i http://localhost:3000/health
+docker stop backend-api-local
+docker rm backend-api-local
+```
+
+Detén Compose antes de este ejemplo para liberar el puerto local 3000.
+
+Para el despliegue posterior en Render, selecciona el runtime Docker y este
+Dockerfile. El servidor ya escucha en `0.0.0.0` y utiliza `PORT` recibido durante
+la ejecución. `EXPOSE 3000` es informativo y no fija el puerto de Render; no se
+sobrescribe `PORT` en la imagen. Configura `/health` como ruta de comprobación
+del servicio. Render construye desde el Dockerfile y no necesita Compose.
+Consulta [Docker en Render](https://render.com/docs/docker) y
+los [requisitos de puerto de servicios web](https://render.com/docs/web-services).
+Esta tarea prepara la imagen; no despliega el servicio ni configura credenciales.
