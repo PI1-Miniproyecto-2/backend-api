@@ -50,6 +50,27 @@ curl http://localhost:3000/health
 Las rutas desconocidas devuelven 404, el JSON mal formado devuelve 400 y
 los errores internos devuelven 500 sin exponer detalles al cliente.
 
+## Diagnóstico de la API (TS-00-T06)
+
+`GET /api/v1/system/status` verifica la respuesta HTTP de la API versionada.
+Devuelve HTTP 200 con `Content-Type: application/json` y el siguiente cuerpo:
+
+```json
+{"status":"ok","service":"backend-api"}
+```
+
+Con el servidor en ejecución:
+
+```bash
+curl -i http://localhost:3000/api/v1/system/status
+```
+
+El endpoint no consulta Firestore ni otros servicios externos y no expone
+configuración privada. `/health` conserva su respuesta original como comprobación
+de salud. Métodos sin ruta registrada, como `POST /api/v1/system/status`, y rutas
+inexistentes devuelven HTTP 404 con `{"error":"Ruta no encontrada"}`, siguiendo
+el manejo actual del servidor.
+
 ## Estructura
 
 ```text
