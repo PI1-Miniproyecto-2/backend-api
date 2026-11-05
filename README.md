@@ -111,4 +111,41 @@ Las pruebas automatizadas usan inyección de dependencias: no leen ADC ni accede
 a Firestore o a internet. Verifican éxito, documento ausente, estado inválido,
 fallos de lectura y reutilización de Firebase con ADC simuladas.
 
-Autenticación de usuarios, Socket.IO, Swagger y Docker corresponden a otras tareas.
+Autenticación de usuarios, Socket.IO y Docker corresponden a otras tareas.
+
+## Swagger / OpenAPI (TS-00-T08)
+
+Instala las dependencias con `npm ci` y ejecuta `npm run dev` (o
+`npm run build` seguido de `npm start`). Abre:
+
+- Swagger UI: <http://localhost:3000/api-docs> (redirige a `/api-docs/`).
+- Especificación JSON: <http://localhost:3000/openapi.json>.
+
+Si cambias `PORT`, utiliza ese puerto en las URL. La especificación utiliza
+`servers: [{ url: '/' }]`, por lo que Swagger apunta al mismo servidor que publica
+la documentación, tanto en local como en el dominio real asignado por Render.
+Esto sigue el [uso de URL relativas en OpenAPI](https://swagger.io/docs/specification/v3_0/api-host-and-base-path/).
+No requiere configurar una URL de producción ni exponer variables de entorno.
+
+En Swagger UI, despliega `GET /health`, pulsa **Try it out** y **Execute**:
+debe devolver HTTP 200 con `{"status":"ok"}`. También puedes consultar el JSON:
+
+```bash
+curl http://localhost:3000/openapi.json
+```
+
+`GET /api/v1/system/status` documenta el contrato previsto
+`{"status":"ok","service":"backend-api"}`. **Se integrará desde TS-00-T06**:
+esta rama no implementa el endpoint, por lo que ejecutarlo devuelve 404.
+La documentación conserva `/health` independiente de Firestore.
+
+La fuente de la especificación OpenAPI 3.0.3 es `src/config/openapi.ts`; contiene
+metadatos, etiquetas, contratos y esquemas reutilizables. Las rutas de publicación
+están en `src/routes/docs.routes.ts`. Al añadir endpoints, actualiza la especificación
+y sus pruebas. No se usa generación por anotaciones ni se necesita un paso extra de build.
+
+Los errores documentados corresponden al middleware existente: JSON mal formado
+(400), rutas no registradas (404) y errores internos (500), según corresponda.
+No se documentan errores de autenticación ni de Firestore para estas rutas.
+`npm test` verifica Swagger UI, sus recursos, los ejemplos y la validez estructural
+de OpenAPI con un validador solo de desarrollo y sin referencias externas.
