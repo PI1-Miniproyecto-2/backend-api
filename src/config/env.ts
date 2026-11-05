@@ -9,6 +9,7 @@ export function parsePort(value: string | undefined): number {
 }
 
 export const env = {
+  firebaseProjectId: process.env.FIREBASE_PROJECT_ID?.trim(),
   port: parsePort(process.env.PORT),
   corsOrigins: (process.env.CORS_ORIGIN ?? '')
     .split(',')

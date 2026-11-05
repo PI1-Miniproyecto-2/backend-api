@@ -152,6 +152,9 @@ vite.config.ts.timestamp-*
 .aws/
 .secrets/
 credentials.json
+application_default_credentials.json
+.config/gcloud/
+*firebase-adminsdk*.json
 service-account*.json
 serviceAccount*.json
 *.pem

@@ -7,6 +7,7 @@
     "node": ">=20"
   },
   "scripts": {
+    "check:firestore": "tsx src/scripts/check-firestore.ts",
     "dev": "tsx watch src/server.ts",
     "build": "tsc -p tsconfig.json",
     "start": "node dist/server.js",
@@ -16,7 +17,8 @@
   "dependencies": {
     "cors": "^2.8.6",
     "dotenv": "^18.0.9",
-    "express": "^5.3.0"
+    "express": "^5.3.0",
+    "firebase-admin": "^13.10.0"
   },
   "devDependencies": {
     "@types/cors": "^2.8.19",
