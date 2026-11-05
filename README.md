@@ -51,6 +51,27 @@ curl http://localhost:3000/health
 Las rutas desconocidas devuelven 404, el JSON mal formado devuelve 400 y
 los errores internos devuelven 500 sin exponer detalles al cliente.
 
+## Diagnóstico de la API (TS-00-T06)
+
+`GET /api/v1/system/status` verifica la respuesta HTTP de la API versionada.
+Devuelve HTTP 200 con `Content-Type: application/json` y el siguiente cuerpo:
+
+```json
+{"status":"ok","service":"backend-api"}
+```
+
+Con el servidor en ejecución:
+
+```bash
+curl -i http://localhost:3000/api/v1/system/status
+```
+
+El endpoint no consulta Firestore ni otros servicios externos y no expone
+configuración privada. `/health` conserva su respuesta original como comprobación
+de salud. Métodos sin ruta registrada, como `POST /api/v1/system/status`, y rutas
+inexistentes devuelven HTTP 404 con `{"error":"Ruta no encontrada"}`, siguiendo
+el manejo actual del servidor.
+
 ## Estructura
 
 ```text
@@ -110,6 +131,7 @@ También puede ejecutarse compilado con `npm run build` y
 Las pruebas automatizadas usan inyección de dependencias: no leen ADC ni acceden
 a Firestore o a internet. Verifican éxito, documento ausente, estado inválido,
 fallos de lectura y reutilización de Firebase con ADC simuladas.
+
 
 Autenticación de usuarios, Socket.IO y Swagger corresponden a otras tareas.
 
@@ -185,3 +207,104 @@ del servicio. Render construye desde el Dockerfile y no necesita Compose.
 Consulta [Docker en Render](https://render.com/docs/docker) y
 los [requisitos de puerto de servicios web](https://render.com/docs/web-services).
 Esta tarea prepara la imagen; no despliega el servicio ni configura credenciales.
+
+Autenticación de usuarios, Socket.IO y Docker corresponden a otras tareas.
+
+## Swagger / OpenAPI (TS-00-T08)
+
+Instala las dependencias con `npm ci` y ejecuta `npm run dev` (o
+`npm run build` seguido de `npm start`). Abre:
+
+- Swagger UI: <http://localhost:3000/api-docs> (redirige a `/api-docs/`).
+- Especificación JSON: <http://localhost:3000/openapi.json>.
+
+Si cambias `PORT`, utiliza ese puerto en las URL. La especificación utiliza
+`servers: [{ url: '/' }]`, por lo que Swagger apunta al mismo servidor que publica
+la documentación, tanto en local como en el dominio real asignado por Render.
+Esto sigue el [uso de URL relativas en OpenAPI](https://swagger.io/docs/specification/v3_0/api-host-and-base-path/).
+No requiere configurar una URL de producción ni exponer variables de entorno.
+
+En Swagger UI, despliega `GET /health`, pulsa **Try it out** y **Execute**:
+debe devolver HTTP 200 con `{"status":"ok"}`. También puedes consultar el JSON:
+
+```bash
+curl http://localhost:3000/openapi.json
+```
+
+`GET /api/v1/system/status` documenta el contrato previsto
+`{"status":"ok","service":"backend-api"}`. **Se integrará desde TS-00-T06**:
+esta rama no implementa el endpoint, por lo que ejecutarlo devuelve 404.
+La documentación conserva `/health` independiente de Firestore.
+
+La fuente de la especificación OpenAPI 3.0.3 es `src/config/openapi.ts`; contiene
+metadatos, etiquetas, contratos y esquemas reutilizables. Las rutas de publicación
+están en `src/routes/docs.routes.ts`. Al añadir endpoints, actualiza la especificación
+Charlar
+
+Nuevo chat
+Please explain in Spanish: "There are several ways to clone repositories available on GitHub.
+
+When you view a repository while signed in to your account, the URLs you can use to clone the project onto your computer are available below the repository details.
+
+For information on setting or changing your remote URL, see Managing remote repositories.
+
+Cloning with HTTPS URLs
+The https:// clone URLs are available on all repositories, regardless of visibility. https:// clone URLs work even if you are behind a firewall or proxy.
+
+When you git clone, git fetch, git pull, or git push to a private remote repository using HTTPS URLs on the command line, Git will ask for your GitHub username and password. When Git prompts you for your password, enter your personal access token. Alternatively, you can use a credential helper like Git Credential Manager. Password-based authentication for Git has been removed in favor of more secure authentication methods. For more information, see Managing your personal access tokens.
+
+If you are accessing an organization that uses SAML SSO and you are using a personal access token (classic), you must also authorize your personal access token to access the organization before you authenticate. For more information, see About authentication with SAML single sign-on and Authorizing a personal access token for use with SAML single sign-on.
+
+Tip
+
+You can use a credential helper so Git will remember your GitHub credentials every time it talks to GitHub. For more information, see Caching your GitHub credentials in Git.
+To clone a repository without authenticating to GitHub on the command line, you can use GitHub Desktop to clone instead. For more information, see Cloning a repository from GitHub to GitHub Desktop.
+If you'd rather use SSH but cannot connect over port 22, you might be able to use SSH over the HTTPS port. For more information, see Using SSH over the HTTPS port.
+
+Cloning with SSH URLs
+SSH URLs provide access to a Git repository via SSH, a secure protocol. To use these URLs, you must generate an SSH keypair on your computer and add the public key to your account on GitHub. For more information, see Connecting to GitHub with SSH.
+
+When you git clone, git fetch, git pull, or git push to a remote repository using SSH URLs, you'll be prompted for a password and must provide your SSH key passphrase. For more information, see Working with SSH key passphrases.
+
+If you are accessing an organization that uses SAML single sign-on (SSO), you must authorize your SSH key to access the organization before you authenticate. For more information, see About authentication with SAML single sign-on and Authorizing an SSH key for use with SAML single sign-on" in the GitHub Enterprise Cloud documentation."
+
+
+
+GPT-4o Mini
+(Se perdió la conexión a Internet. Por favor, inténtalo de nuevo)
+Comparar con AITOPIA
+
+
+
+
+
+AITOPIA
+
+
+
+
+
+
+#
+Pegar selección
+Chat grupal
+Acceso a la Web
+
+10
+Actualizar
+
+
+
+Impulsado por AITOPIA 
+x
+
+
+
+y sus pruebas. No se usa generación por anotaciones ni se necesita un paso extra de build.
+
+Los errores documentados corresponden al middleware existente: JSON mal formado
+(400), rutas no registradas (404) y errores internos (500), según corresponda.
+No se documentan errores de autenticación ni de Firestore para estas rutas.
+`npm test` verifica Swagger UI, sus recursos, los ejemplos y la validez estructural
+de OpenAPI con un validador solo de desarrollo y sin referencias externas.
+
