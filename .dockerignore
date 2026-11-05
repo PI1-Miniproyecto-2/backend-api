@@ -1,0 +1,37 @@
+# Solo enviar los archivos necesarios para construir la API.
+**
+!Dockerfile
+!.dockerignore
+!package.json
+!package-lock.json
+!tsconfig.json
+!src/
+!src/**
+
+# Exclusiones explícitas, también si aparecen dentro de src/.
+**/node_modules
+**/dist
+**/.git
+**/.env
+**/.env.*
+**/.npmrc
+**/.aws
+**/.config
+**/.secrets
+**/credentials.json
+**/application_default_credentials.json
+**/*firebase-adminsdk*.json
+**/service-account*.json
+**/serviceAccount*.json
+**/*.pem
+**/*.key
+**/*.p12
+**/*.pfx
+**/tests
+**/coverage
+**/.nyc_output
+**/*.log
+**/*.tmp
+**/*.swp
+**/*~
+**/.DS_Store
