@@ -15,12 +15,12 @@ export const openapi: OpenAPIV3.Document = {
   info: {
     title: 'Salón de Estudio Colaborativo — Backend API',
     version: '0.1.0',
-    description: 'API REST del Miniproyecto 2. Sprint 0. El contrato de sistema se integrará desde TS-00-T06; aún no está disponible en esta rama.',
+    description: 'API REST del Miniproyecto 2. Sprint 0. El endpoint del sistema está implmentado en TS-00-T06.',
   },
   servers: [{ url: '/', description: 'Servidor que publica esta especificación (local o Render)' }],
   tags: [
     { name: 'Salud', description: 'Comprobación básica del servidor HTTP.' },
-    { name: 'Sistema', description: 'Diagnóstico versionado previsto en TS-00-T06.' },
+    { name: 'Sistema', description: 'Diagnóstico versionado del servicio.' },
   ],
   paths: {
     '/health': {
@@ -48,11 +48,11 @@ export const openapi: OpenAPIV3.Document = {
       get: {
         operationId: 'getSystemStatus',
         tags: ['Sistema'],
-        summary: 'Consultar el estado del servicio (pendiente de TS-00-T06)',
-        description: 'Contrato previsto: se integrará desde TS-00-T06. Esta rama no implementa la ruta y devuelve 404 al invocarla. La respuesta 200 describe el contrato tras su integración. No consulta Firestore.',
+        summary: 'Consultar el estado del servicio.',
+        description: 'Contrato previsto: se integrará desde TS-00-T06. La ruta devuelve HTTP 200 con el estado del servicio al invocarla. La respuesta 200 describe el contrato tras su integración.',
         responses: {
           '200': {
-            description: 'Respuesta prevista tras integrar TS-00-T06.',
+            description: 'Estado actual del servicio.',
             content: {
               'application/json': {
                 schema: { $ref: '#/components/schemas/SystemStatus' },
@@ -92,7 +92,7 @@ export const openapi: OpenAPIV3.Document = {
     responses: {
       InvalidJson: errorResponse('El middleware rechaza un cuerpo JSON mal formado, si se envía.', 'JSON inválido'),
       InternalError: errorResponse('Error inesperado procesado por el middleware global.', 'Error interno del servidor'),
-      NotFound: errorResponse('Ruta no registrada en esta rama.', 'Ruta no encontrada'),
+      NotFound: errorResponse('Ruta no encontrada.', 'Ruta no encontrada'),
     },
   },
 };
