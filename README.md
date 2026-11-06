@@ -232,8 +232,7 @@ curl http://localhost:3000/openapi.json
 ```
 
 `GET /api/v1/system/status` documenta el contrato previsto
-`{"status":"ok","service":"backend-api"}`. **Se integrará desde TS-00-T06**:
-esta rama no implementa el endpoint, por lo que ejecutarlo devuelve 404.
+`{"status":"ok","service":"backend-api"}`. El endpoint GET /api/v1/system/status está implementado y documentado en OpenAPI. Devuelve HTTP 200 con {"status":"ok","service":"backend-api"} y permite comprobar el funcionamiento de la API sin consultar Firestore.
 La documentación conserva `/health` independiente de Firestore.
 
 La fuente de la especificación OpenAPI 3.0.3 es `src/config/openapi.ts`; contiene

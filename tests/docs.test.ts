@@ -30,7 +30,22 @@ test('GET /openapi.json devuelve una especificación OpenAPI 3.0 válida', async
   await SwaggerParser.validate(spec, { resolve: { external: false } });
 });
 
-test('documentar el contrato previsto no implementa la ruta de TS-00-T06', async () => {
-  const response = await request(app).get('/api/v1/system/status').expect(404);
-  assert.deepEqual(response.body, { error: 'Ruta no encontrada' });
+test('GET /api/v1/system/status coincide con la documentación OpenAPI', async () => {
+  const response = await request(app)
+    .get('/api/v1/system/status')
+    .expect(200);
+
+  assert.deepEqual(response.body, {
+    status: 'ok',
+    service: 'backend-api',
+  });
+
+  const spec = await request(app)
+    .get('/openapi.json')
+    .expect(200);
+
+  assert.ok(spec.body.paths['/api/v1/system/status']);
+  assert.ok(
+    spec.body.paths['/api/v1/system/status'].get.responses['200']
+  );
 });
