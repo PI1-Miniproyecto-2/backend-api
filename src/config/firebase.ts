@@ -8,6 +8,6 @@ export function getFirebaseApp(sdk: typeof admin = admin) {
   const existing = sdk.getApps().find((app) => app.name === '[DEFAULT]');
   if (existing) return existing;
   const projectId = env.firebaseProjectId;
-  if (!projectId) throw new Error('FIREBASE_PROJECT_ID es obligatorio para usar Firestore');
+  if (!projectId) throw new Error('FIREBASE_PROJECT_ID es obligatorio para utilizar Firebase');
   return sdk.initializeApp({ projectId, credential: sdk.applicationDefault() });
 }
