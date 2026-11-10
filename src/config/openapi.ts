@@ -1,3 +1,4 @@
+import { usersPath, usersSchemas } from './users.openapi';
 import type { OpenAPIV3 } from 'openapi-types';
 
 const errorResponse = (description: string, error: string): OpenAPIV3.ResponseObject => ({
@@ -19,10 +20,12 @@ export const openapi: OpenAPIV3.Document = {
   },
   servers: [{ url: '/', description: 'Servidor que publica esta especificación (local o Render)' }],
   tags: [
+    { name: 'Perfiles', description: 'Perfiles propios autenticados con Firebase.' },
     { name: 'Salud', description: 'Comprobación básica del servidor HTTP.' },
     { name: 'Sistema', description: 'Diagnóstico versionado del servicio.' },
   ],
   paths: {
+    '/api/v1/users/me': usersPath,
     '/health': {
       get: {
         operationId: 'getHealth',
@@ -66,7 +69,9 @@ export const openapi: OpenAPIV3.Document = {
     },
   },
   components: {
+    securitySchemes: { bearerAuth: { type: 'http', scheme: 'bearer', bearerFormat: 'Firebase ID token' } },
     schemas: {
+      ...usersSchemas,
       Health: {
         type: 'object',
         required: ['status'],

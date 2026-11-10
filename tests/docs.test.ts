@@ -49,3 +49,20 @@ test('GET /api/v1/system/status coincide con la documentación OpenAPI', async (
     spec.body.paths['/api/v1/system/status'].get.responses['200']
   );
 });
+
+test('OpenAPI documenta CRUD propio, seguridad, campos y errores de TS-01', async () => {
+  const { body: spec } = await request(app).get('/openapi.json').expect(200);
+  const path = spec.paths['/api/v1/users/me'];
+  assert.equal(spec.components.securitySchemes.bearerAuth.scheme, 'bearer');
+  for (const [method, status] of [['post', '201'], ['get', '200'], ['patch', '200'], ['delete', '204']]) {
+    assert.deepEqual(path[method].security, [{ bearerAuth: [] }]);
+    for (const code of [status, '400', '401', '403', '404', '409', '500', '503']) assert.ok(path[method].responses[code]);
+  }
+  for (const method of ['post', 'patch']) assert.ok(path[method].requestBody.required);
+  assert.equal(path.delete.responses['204'].content, undefined);
+  assert.deepEqual(Object.keys(spec.components.schemas.ProfileInput.properties).sort(), ['avatarId', 'firstName', 'lastName', 'username']);
+  assert.equal(spec.components.schemas.ProfileInput.additionalProperties, false);
+  assert.equal(spec.paths['/health'].get.security, undefined);
+  await request(app).get('/api/v1/users/me').expect(401);
+  await request(app).get('/api/v1/system/firestore-status').expect(403);
+});

@@ -189,3 +189,11 @@ Perfil de Google pendiente de completar: documento `users/uid_ejemplo_google`. N
 ```
 
 Al elegir un nombre disponible y proporcionar los nombres personales válidos, la API creará su reserva y completará este perfil en una sola transacción, preservando `createdAt` y actualizando `updatedAt`.
+
+## Decisiones de implementación de TS-01
+
+El CRUD descrito está implementado en esta rama; las secciones anteriores conservan el contrato de diseño. Se concretó el catálogo en `src/config/avatars.ts`. Los nombres personales se recortan antes de validar su longitud; el username se valida completo, sin recortar, y también se rechaza un salto de línea final (el ancla `$` de JavaScript por sí sola puede admitirlo). POST y PATCH requieren un objeto JSON, aunque puede estar vacío para alta por pasos o sincronización de identidad. PATCH vacío conserva los campos editables y sincroniza correo, proveedor y `updatedAt`.
+
+Cada operación comprueba las reservas del UID dentro de la transacción; los datos persistidos corruptos o reservas adicionales producen 409 y no se reparan automáticamente. GET valida la coherencia sin sincronizar la identidad. Después de una escritura se relee el perfil para resolver los Timestamp de servidor; si esa lectura falla, la escritura podría haberse confirmado y el cliente debe consultar antes de repetirla.
+
+`requireCompleteProfile()` es un middleware reutilizable para las futuras rutas del salón y tiene pruebas con una ruta de prueba; no se añadió una ruta del salón a producción. La reconciliación administrativa y la eliminación integral de cuenta siguen siendo procesos posteriores: no se expone un endpoint que elimine Authentication. DELETE del perfil no llama a Auth. Véanse las instrucciones y pendientes operativos en `README.md` y `TS-01-evidencias-tecnicas.md`.
