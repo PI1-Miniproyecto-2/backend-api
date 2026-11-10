@@ -1,7 +1,7 @@
 # backend-api
 
 API REST del Mini-proyecto 2 — Salón de Estudio Colaborativo en Tiempo Real.
-Tareas **TS-00-T04 y TS-00-T05 del Sprint 0**, con Node.js, TypeScript, Express y Firebase Admin SDK.
+Sprint 0 y **TS-01 · Autenticación y perfiles**, con Node.js, TypeScript, Express y Firebase Admin SDK.
 
 ## Instalación
 
@@ -21,7 +21,7 @@ La configuración permite inyectar variables posteriormente desde Render.
 
 | Variable | Predeterminado | Descripción |
 | --- | --- | --- |
-| `FIREBASE_PROJECT_ID` | Sin valor | Proyecto Firebase; en desarrollo: `miniproyecto-2-c0d28`. Obligatorio solo al usar Firestore. |
+| `FIREBASE_PROJECT_ID` | Sin valor | Proyecto Firebase; en desarrollo: `miniproyecto-2-c0d28`. Obligatorio al usar Firestore o Firebase Authentication. |
 | `PORT` | `3000` | Puerto entero entre 1 y 65535. Un valor inválido impide el arranque. |
 | `CORS_ORIGIN` | Vacío | Lista de orígenes exactos separados por comas, por ejemplo `http://localhost:5173,https://frontend.example.com`. |
 
@@ -92,7 +92,7 @@ tests/                # Pruebas con node:test y Supertest
 
 La integración utiliza `applicationDefault()` de Firebase Admin SDK y la base
 Firestore `(default)`. Consulta la [documentación oficial de ADC con Firebase Admin](https://firebase.google.com/docs/admin/setup).
-La aplicación se inicializa cuando se solicita Firestore y se reutiliza en llamadas
+La aplicación se inicializa cuando se solicita Firestore o Authentication y se reutiliza en llamadas
 posteriores. `/health` no inicializa Firebase ni comprueba Firestore.
 
 En Ubuntu, utiliza las ADC locales de Google Cloud CLI ya configuradas. No hace
@@ -124,7 +124,7 @@ El script lee exclusivamente `system_checks/connection-test` sin modificar datos
 Comprueba que existe y que `status` es exactamente `"ok"`. En caso de éxito muestra
 un mensaje y termina con código 0; en caso de fallo muestra un mensaje sin
 credenciales y termina con código 1. Revisa el proyecto, ADC, permisos IAM,
-conectividad y el campo `status` si falla. No hay un endpoint de diagnóstico.
+conectividad y el campo `status` si falla. El diagnóstico HTTP `/api/v1/system/firestore-status` está protegido por `DIAGNOSTIC_API_KEY` y `x-diagnostic-key`; si no se configura, devuelve 403. `/api/v1/system/status` sigue siendo público.
 También puede ejecutarse compilado con `npm run build` y
 `node dist/scripts/check-firestore.js`.
 
@@ -133,7 +133,7 @@ a Firestore o a internet. Verifican éxito, documento ausente, estado inválido,
 fallos de lectura y reutilización de Firebase con ADC simuladas.
 
 
-Autenticación de usuarios, Socket.IO y Swagger corresponden a otras tareas.
+TS-01 incorpora autenticación y perfiles; Socket.IO corresponde a otra tarea.
 
 ## Docker y Docker Compose (TS-00-T09)
 
@@ -208,7 +208,7 @@ Consulta [Docker en Render](https://render.com/docs/docker) y
 los [requisitos de puerto de servicios web](https://render.com/docs/web-services).
 Esta tarea prepara la imagen; no despliega el servicio ni configura credenciales.
 
-Autenticación de usuarios, Socket.IO y Docker corresponden a otras tareas.
+El CRUD de perfiles no requiere cambios en la imagen ni servicios adicionales de Compose.
 
 ## Swagger / OpenAPI (TS-00-T08)
 
@@ -238,67 +238,6 @@ La documentación conserva `/health` independiente de Firestore.
 La fuente de la especificación OpenAPI 3.0.3 es `src/config/openapi.ts`; contiene
 metadatos, etiquetas, contratos y esquemas reutilizables. Las rutas de publicación
 están en `src/routes/docs.routes.ts`. Al añadir endpoints, actualiza la especificación
-Charlar
-
-Nuevo chat
-Please explain in Spanish: "There are several ways to clone repositories available on GitHub.
-
-When you view a repository while signed in to your account, the URLs you can use to clone the project onto your computer are available below the repository details.
-
-For information on setting or changing your remote URL, see Managing remote repositories.
-
-Cloning with HTTPS URLs
-The https:// clone URLs are available on all repositories, regardless of visibility. https:// clone URLs work even if you are behind a firewall or proxy.
-
-When you git clone, git fetch, git pull, or git push to a private remote repository using HTTPS URLs on the command line, Git will ask for your GitHub username and password. When Git prompts you for your password, enter your personal access token. Alternatively, you can use a credential helper like Git Credential Manager. Password-based authentication for Git has been removed in favor of more secure authentication methods. For more information, see Managing your personal access tokens.
-
-If you are accessing an organization that uses SAML SSO and you are using a personal access token (classic), you must also authorize your personal access token to access the organization before you authenticate. For more information, see About authentication with SAML single sign-on and Authorizing a personal access token for use with SAML single sign-on.
-
-Tip
-
-You can use a credential helper so Git will remember your GitHub credentials every time it talks to GitHub. For more information, see Caching your GitHub credentials in Git.
-To clone a repository without authenticating to GitHub on the command line, you can use GitHub Desktop to clone instead. For more information, see Cloning a repository from GitHub to GitHub Desktop.
-If you'd rather use SSH but cannot connect over port 22, you might be able to use SSH over the HTTPS port. For more information, see Using SSH over the HTTPS port.
-
-Cloning with SSH URLs
-SSH URLs provide access to a Git repository via SSH, a secure protocol. To use these URLs, you must generate an SSH keypair on your computer and add the public key to your account on GitHub. For more information, see Connecting to GitHub with SSH.
-
-When you git clone, git fetch, git pull, or git push to a remote repository using SSH URLs, you'll be prompted for a password and must provide your SSH key passphrase. For more information, see Working with SSH key passphrases.
-
-If you are accessing an organization that uses SAML single sign-on (SSO), you must authorize your SSH key to access the organization before you authenticate. For more information, see About authentication with SAML single sign-on and Authorizing an SSH key for use with SAML single sign-on" in the GitHub Enterprise Cloud documentation."
-
-
-
-GPT-4o Mini
-(Se perdió la conexión a Internet. Por favor, inténtalo de nuevo)
-Comparar con AITOPIA
-
-
-
-
-
-AITOPIA
-
-
-
-
-
-
-#
-Pegar selección
-Chat grupal
-Acceso a la Web
-
-10
-Actualizar
-
-
-
-Impulsado por AITOPIA 
-x
-
-
-
 y sus pruebas. No se usa generación por anotaciones ni se necesita un paso extra de build.
 
 Los errores documentados corresponden al middleware existente: JSON mal formado
@@ -307,3 +246,75 @@ No se documentan errores de autenticación ni de Firestore para estas rutas.
 `npm test` verifica Swagger UI, sus recursos, los ejemplos y la validez estructural
 de OpenAPI con un validador solo de desarrollo y sin referencias externas.
 
+
+## TS-01 · Autenticación y perfiles
+
+Contrato: [modelo de Firestore](docs/modelo-perfiles-firestore.md). Evidencias y pendientes: [TS-01](docs/TS-01-evidencias-tecnicas.md).
+
+El frontend inicia sesión con Firebase Authentication (password o Google) y envía su ID token en `Authorization: Bearer <ID_TOKEN>`. No accede directamente a Firestore ni envía contraseñas a esta API. El backend usa `verifyIdToken(token, true)` para comprobar firma, expiración y revocación. UID, correo y proveedor se obtienen de esa identidad verificada; un error de credenciales del servidor no se presenta como un token inválido del usuario.
+
+| Endpoint | Éxito | Uso |
+| --- | --- | --- |
+| `POST /api/v1/users/me` | 201 | Crear perfil, opcionalmente incompleto con `{}`. |
+| `GET /api/v1/users/me` | 200 | Leer perfil propio. |
+| `PATCH /api/v1/users/me` | 200 | Cambiar campos editables o completar el perfil. |
+| `DELETE /api/v1/users/me` | 204 | Eliminar perfil y liberar nombre; no elimina Authentication. |
+
+POST y PATCH reciben un objeto JSON con solo `firstName`, `lastName`, `username` y `avatarId`. Ejemplo: `{"firstName":"Ana","lastName":"Perez","username":"Ana_01","avatarId":"avatar_book"}`. Los campos son opcionales para permitir alta por pasos; los nulos siguen las restricciones del modelo. Catálogo: `avatar_book`, `avatar_owl`, `avatar_lamp`. Un nombre tiene 3–20 caracteres ASCII alfanuméricos o `_`, con unicidad insensible a mayúsculas. Se rechazan campos desconocidos y administrados por el servidor. Las fechas se almacenan como Timestamp y se devuelven como cadenas ISO.
+
+Las rutas solo operan sobre el UID del token. Los errores devuelven `{"error":"mensaje en español"}` con 400, 401, 403, 404, 409, 500 o 503 según el contrato. POST repetido devuelve 409; DELETE repetido devuelve 204 si no quedan reservas. Ante un timeout, consultar GET antes de repetir una escritura. Los perfiles incompletos pueden gestionar su alta, pero `requireCompleteProfile()` debe proteger las futuras funcionalidades del salón. No se añaden rutas del salón en esta tarea.
+
+`auth.service` verifica y reduce la identidad; `auth.middleware` protege las rutas; `users.controller` traduce HTTP; `profile.service` aplica reglas y transacciones; `profile.store` adapta Firestore. El servicio detecta reservas huérfanas o ajenas y bloquea con 409 sin sobrescribirlas. La reconciliación administrativa queda pendiente; no hay borrado automático de cuentas Auth por errores de Firestore.
+
+### Ejecución local y ADC para Authentication
+
+No se requieren dependencias npm nuevas ni variables de aplicación adicionales. Se conserva `applicationDefault()` y `FIREBASE_PROJECT_ID`. Mantener ADC fuera del repositorio. Tener ADC que permiten leer Firestore no demuestra que permitan consultar Authentication para comprobar revocación.
+
+La [documentación oficial de Firebase Admin](https://firebase.google.com/docs/admin/setup#test_with_gcloud_end_user_credentials) indica que las credenciales de usuario generadas con el cliente OAuth predeterminado de gcloud no son aceptadas por Firebase Authentication. Para este flujo local, un administrador debe disponer de un cliente OAuth de tipo Desktop y ejecutar, fuera del repositorio:
+
+```bash
+gcloud auth application-default login --client-id-file=/ruta/externa/oauth-desktop.json
+```
+
+El archivo OAuth y las ADC son configuración externa; no deben copiarse aquí. El proyecto se proporciona explícitamente mediante `FIREBASE_PROJECT_ID`. La identidad debe tener permisos IAM de lectura/escritura de documentos y consulta de usuarios Auth para la comprobación de revocación, con mínimo privilegio. Activar password y Google en Authentication y configurar los dominios autorizados del frontend. Estas acciones no se han ejecutado en esta intervención.
+
+### Reglas de Firestore
+
+No existían reglas versionadas en este repositorio. `firestore.rules` deniega toda lectura y escritura de SDK cliente en todas las colecciones, incluyendo `users`, `usernames` y diagnósticos. Admin SDK utiliza IAM y omite estas reglas; la API aplica autorización por UID. Esto es compatible con el acceso exclusivamente desde backend previsto aquí, pero antes de publicar hay que comparar con las reglas remotas y confirmar que ningún otro cliente del proyecto depende de acceso directo.
+
+Con Firebase CLI disponible, usar primero un proyecto demo sin datos reales:
+
+```bash
+firebase emulators:start --only firestore --project demo-backend-api
+```
+
+Verificar con SDK cliente contra el emulador que GET, LIST, CREATE, UPDATE y DELETE fallan con `permission-denied`, tanto sin autenticar como autenticado, para `users`, `usernames` y otra colección. Verificar también que Admin accede al emulador y que dos clientes concurrentes no pueden reservar el mismo nombre. Las pruebas unitarias incluidas simulan transacciones; no sustituyen estas comprobaciones del motor y de las reglas. No usar Admin para demostrar que las reglas deniegan acceso, porque las omite.
+
+Tras validar y revisar las reglas remotas, publicar y volver a verificarlas en Firebase Console:
+
+```bash
+firebase deploy --only firestore:rules --project "$FIREBASE_PROJECT_ID"
+```
+
+`firebase.json` solo apunta al archivo de reglas; no configura Hosting ni crea servicios adicionales. La CLI requiere sesión y permisos de despliegue independientes de las ADC de la aplicación. Referencia: [publicar reglas](https://firebase.google.com/docs/rules/manage-deploy). Las reglas no se han publicado ni probado en emulador en esta intervención; no está instalada Firebase CLI.
+
+### Docker y Render con TS-01
+
+Se conserva el Dockerfile multi-stage y `compose.yaml`: no hay dependencias ni servicios adicionales. `docker compose config --quiet` valida la configuración. Compose no monta las ADC locales, de modo que arrancar `/health` no demuestra que Auth o Firestore estén operativos dentro del contenedor.
+
+En Render, crear o actualizar el Web Service con runtime Docker, puerto proporcionado por Render y health check `/health`. Configurar `FIREBASE_PROJECT_ID` y `CORS_ORIGIN` del frontend; no usar `*` como sustituto de los orígenes previstos. `/health` y `/api/v1/system/status` son comprobaciones HTTP, no de disponibilidad de Firebase. El diagnóstico existente de Firestore conserva su clave opcional `DIAGNOSTIC_API_KEY`; no exponerla en el frontend.
+
+Render necesita una identidad de ejecución compatible con ADC: no hereda las ADC de Ubuntu. La provisión de esa identidad por el administrador es un requisito pendiente del despliegue. Si se utiliza un archivo de credenciales autorizado, se suministra exclusivamente como secreto de ejecución fuera de Git y de la imagen y ADC puede localizarlo mediante `GOOGLE_APPLICATION_CREDENTIALS` apuntando al archivo externo. Nunca hardcodear su contenido ni añadir claves al `.env.example`. Render documenta los archivos secretos en `/etc/secrets/<filename>` y su uso con Docker en [variables y secretos](https://render.com/docs/configure-environment-variables#secret-files). No se han creado ni cargado credenciales. La opción concreta de identidad debe validarse con Auth y Firestore antes de producción.
+
+Tras el despliegue autorizado, verificar Swagger, token ausente (401), perfil propio con token válido, unicidad, cambios y liberación del nombre, y denegación de acceso directo a Firestore. Capturar evidencias sin tokens ni correos personales. El borrado de cuenta Auth requerirá un flujo separado con consentimiento explícito, autenticación reciente, limpieza idempotente y recuperación de fallos parciales; no está expuesto por este CRUD.
+
+### Validación local
+
+```bash
+npm run build
+npm test
+npm run typecheck
+git diff --check
+```
+
+Las pruebas usan identidades y almacenamiento simulados, sin ADC ni acceso a Firebase real. Cubren HTTP, validaciones, perfiles incompletos, permisos, nombres concurrentes, fallos y OpenAPI con el validador instalado. No requieren ejecutar `check:firestore`, que consulta un proyecto real.
