@@ -66,3 +66,14 @@ test('OpenAPI documenta CRUD propio, seguridad, campos y errores de TS-01', asyn
   await request(app).get('/api/v1/users/me').expect(401);
   await request(app).get('/api/v1/system/firestore-status').expect(403);
 });
+
+
+test('US-01: Swagger distingue creación de cuenta Firebase y creación de perfil', async () => {
+  const { body: spec } = await request(app).get('/openapi.json').expect(200);
+  const post = spec.paths['/api/v1/users/me'].post;
+  assert.match(post.description, /frontend.*Firebase Authentication/);
+  assert.match(post.description, /correo y proveedor proceden del token/);
+  assert.match(post.description, /No enviar contraseñas/);
+  assert.deepEqual(post.security, [{ bearerAuth: [] }]);
+  assert.equal(spec.components.schemas.ProfileInput.properties.password, undefined);
+});

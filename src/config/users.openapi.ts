@@ -28,7 +28,7 @@ const errors: Record<string, OpenAPIV3.ResponseObject> = Object.fromEntries(Obje
 function operation(method: string, summary: string, status: string, input = false): OpenAPIV3.OperationObject {
   return {
     operationId: `${method}OwnProfile`, tags: ['Perfiles'], summary,
-    description: method === 'delete' ? 'Elimina solo el perfil y libera su nombre atómicamente. No elimina la cuenta Firebase Authentication. Idempotente si no quedan reservas.' : 'Opera exclusivamente sobre el UID del token verificado con comprobación de revocación. Las fechas se devuelven como ISO; se almacenan como Timestamp.',
+    description: method === 'create' ? 'Registro manual: el frontend crea la cuenta con correo y contraseña en Firebase Authentication y obtiene un ID token. Esta operación crea únicamente el perfil del UID verificado; correo y proveedor proceden del token. No enviar contraseñas ni correo en el cuerpo. Admite perfil incompleto para alta por pasos. Si la respuesta falla después del commit, consultar GET antes de repetir POST.' : method === 'delete' ? 'Elimina solo el perfil y libera su nombre atómicamente. No elimina la cuenta Firebase Authentication. Idempotente si no quedan reservas.' : 'Opera exclusivamente sobre el UID del token verificado con comprobación de revocación. Las fechas se devuelven como ISO; se almacenan como Timestamp.',
     security: [{ bearerAuth: [] }],
     ...(input ? { requestBody: { required: true, content: { 'application/json': { schema: { $ref: '#/components/schemas/ProfileInput' }, example: { firstName: 'Ana', lastName: 'Perez', username: 'Ana_01', avatarId: 'avatar_book' } } } } } : {}),
     responses: { ...errors, [status]: status === '204' ? { description: 'Perfil eliminado; sin cuerpo' } : {
