@@ -1,0 +1,113 @@
+{
+  "method": "Luminancia relativa sRGB, razón (Lclaro+.05)/(Loscuro+.05). Solo textos con fondo opaco identificado por ancestros; no incluye auditoría integral de iconos o estados.",
+  "rows": [
+    {
+      "text": "Cuando explicas una\nidea a tu equipo,\ntambién la entiendes\nmejor.",
+      "color": "rgb(255, 255, 255)",
+      "background": "rgb(6, 78, 73)",
+      "fontSize": "37.44px",
+      "ratio": 9.573,
+      "minimum": 3,
+      "result": "PASA"
+    },
+    {
+      "text": "Emilio, estudiante de Diseño Visual",
+      "color": "rgb(193, 217, 211)",
+      "background": "rgb(6, 78, 73)",
+      "fontSize": "12px",
+      "ratio": 6.443,
+      "minimum": 4.5,
+      "result": "PASA"
+    },
+    {
+      "text": "Bienvenido de nuevo",
+      "color": "rgb(20, 61, 57)",
+      "background": "rgb(247, 249, 248)",
+      "fontSize": "27px",
+      "ratio": 11.308,
+      "minimum": 3,
+      "result": "PASA"
+    },
+    {
+      "text": "Tu próxima sesión de estudio está a un clic.",
+      "color": "rgb(120, 137, 133)",
+      "background": "rgb(247, 249, 248)",
+      "fontSize": "12px",
+      "ratio": 3.475,
+      "minimum": 4.5,
+      "result": "FALLA"
+    },
+    {
+      "text": "¿Aún no tienes cuenta? Crear una cuenta",
+      "color": "rgb(135, 147, 143)",
+      "background": "rgb(247, 249, 248)",
+      "fontSize": "10px",
+      "ratio": 3.009,
+      "minimum": 4.5,
+      "result": "FALLA"
+    },
+    {
+      "text": "Correo electrónico",
+      "color": "rgb(41, 75, 70)",
+      "background": "rgb(247, 249, 248)",
+      "fontSize": "10px",
+      "ratio": 9.072,
+      "minimum": 4.5,
+      "result": "PASA"
+    },
+    {
+      "text": "Contraseña",
+      "color": "rgb(41, 75, 70)",
+      "background": "rgb(247, 249, 248)",
+      "fontSize": "10px",
+      "ratio": 9.072,
+      "minimum": 4.5,
+      "result": "PASA"
+    },
+    {
+      "text": "Recordar datos",
+      "color": "rgb(114, 129, 124)",
+      "background": "rgb(247, 249, 248)",
+      "fontSize": "10px",
+      "ratio": 3.859,
+      "minimum": 4.5,
+      "result": "FALLA"
+    },
+    {
+      "text": "G\nContinuar con Google",
+      "color": "rgb(52, 75, 71)",
+      "background": "rgb(255, 255, 255)",
+      "fontSize": "12px",
+      "ratio": 9.361,
+      "minimum": 4.5,
+      "result": "PASA"
+    },
+    {
+      "text": "¿Olvidaste tu contraseña?",
+      "color": "rgb(8, 125, 105)",
+      "background": "rgb(247, 249, 248)",
+      "fontSize": "10px",
+      "ratio": 4.788,
+      "minimum": 4.5,
+      "result": "PASA"
+    },
+    {
+      "text": "Iniciar sesión",
+      "color": "rgb(6, 74, 61)",
+      "background": "rgb(50, 201, 149)",
+      "fontSize": "12px",
+      "ratio": 4.83,
+      "minimum": 4.5,
+      "result": "PASA"
+    },
+    {
+      "text": "Crear una cuenta",
+      "color": "rgb(8, 125, 105)",
+      "background": "rgb(247, 249, 248)",
+      "fontSize": "10px",
+      "ratio": 4.788,
+      "minimum": 4.5,
+      "result": "PASA"
+    }
+  ]
+}

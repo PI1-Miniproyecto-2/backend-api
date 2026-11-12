@@ -1,0 +1,90 @@
+{
+  "date": "2026-11-11T23:58:30.709800-05:00",
+  "checks": [
+    {
+      "url": "https://backend-api-yzvv.onrender.com/health",
+      "auth": "ausente",
+      "status": 200,
+      "body": {
+        "status": "ok"
+      }
+    },
+    {
+      "url": "https://backend-api-yzvv.onrender.com/api/v1/users/me",
+      "auth": "ausente",
+      "status": 401,
+      "body": {
+        "error": "Se requiere Authorization: Bearer <token>"
+      }
+    },
+    {
+      "url": "https://backend-api-yzvv.onrender.com/api/v1/users/me",
+      "auth": "ficticia",
+      "status": 401,
+      "body": {
+        "error": "Token inválido, expirado o revocado"
+      }
+    },
+    {
+      "url": "https://backend-api-yzvv.onrender.com/api/v1/system/firestore-status",
+      "auth": "ausente",
+      "status": 403,
+      "body": {
+        "error": "Acceso denegado"
+      }
+    },
+    {
+      "url": "https://frontend123-opal.vercel.app/login",
+      "auth": "ausente",
+      "status": 404,
+      "note": "Respuesta no JSON; no se almacena cuerpo de infraestructura."
+    }
+  ],
+  "frontend": {
+    "asset": "/assets/index-P9Dk7As_.js",
+    "sha256": "b4694e9ba16fdbb1f58df8424b486b29a08e13447563c4a6e83c2d6facd7ca4c",
+    "handler": "onSubmit:async t=>{t.preventDefault(),v(``),te()&&(b(!0),e?(await new Promise(e=>setTimeout(e,700)),b(!1),v(`Correo o contraseña incorrectos`)):(b(!1),v(`¡Formulario validado correctamente! El registro está listo para conectarse con el servidor.`)))},",
+    "declaredRoutes": [
+      "/",
+      "/register",
+      "/login",
+      "/inicio",
+      "/dashboard",
+      "/profile",
+      "/rooms",
+      "/rooms/create",
+      "/rooms/edit/:id",
+      "/room/:id",
+      "/help",
+      "/404",
+      "*"
+    ],
+    "inspection": {
+      "Cerrar sesión": {
+        "count": 1,
+        "excerpts": [
+          "onClick:()=>{e(`/login`)},title:`Cerrar sesión`"
+        ]
+      },
+      "Cerrar Sesión": {
+        "count": 0,
+        "excerpts": []
+      },
+      "signOut": {
+        "count": 0,
+        "excerpts": []
+      },
+      "signInWithEmailAndPassword": {
+        "count": 0,
+        "excerpts": []
+      },
+      "Recordar datos": {
+        "count": 1,
+        "excerpts": [
+          "div`,{className:`login-options`,children:[(0,j.jsxs)(`label`,{className:`remember-option`,children:[(0,j.jsx)(`input`,{type:`checkbox`,checked:c,onChange:e=>l(e.target.checked)}),`Recordar datos`]}),(0,j.jsx)(`button`,{type:`button`,className:`forgot-password`,onClick:()=>{v(`La recuperación de contraseña estará disponible al conectar Firebase Authentication"
+        ]
+      }
+    }
+  },
+  "authorizationFollowup": "Autorización específica US-03 recibida; no se leyó el archivo de credenciales ni se intentó sesión real porque el handler público sigue siendo una demostración."
+}

@@ -1,0 +1,457 @@
+US-03; rama feature/US-03-inicio-sesion; 2026-11-11 America/Bogota.
+Solo mocks en pruebas locales; sin credenciales.
+
+$ npm run build
+
+> backend-api@0.1.0 build
+> tsc -p tsconfig.json
+
+Código de salida: 0
+
+$ npm run typecheck
+
+> backend-api@0.1.0 typecheck
+> tsc --noEmit -p tsconfig.test.json
+
+Código de salida: 0
+
+$ npm test (sockets locales autorizados)
+
+> backend-api@0.1.0 test
+> tsx --test tests/*.test.ts
+
+TAP version 13
+# Subtest: Swagger UI está disponible con sus recursos locales
+ok 1 - Swagger UI está disponible con sus recursos locales
+  ---
+  duration_ms: 69.843392
+  ...
+# Subtest: GET /openapi.json devuelve una especificación OpenAPI 3.0 válida
+ok 2 - GET /openapi.json devuelve una especificación OpenAPI 3.0 válida
+  ---
+  duration_ms: 220.807686
+  ...
+# Subtest: GET /api/v1/system/status coincide con la documentación OpenAPI
+ok 3 - GET /api/v1/system/status coincide con la documentación OpenAPI
+  ---
+  duration_ms: 10.047899
+  ...
+# Subtest: OpenAPI documenta CRUD propio, seguridad, campos y errores de TS-01
+ok 4 - OpenAPI documenta CRUD propio, seguridad, campos y errores de TS-01
+  ---
+  duration_ms: 13.3342
+  ...
+# Subtest: US-01: Swagger distingue creación de cuenta Firebase y creación de perfil
+ok 5 - US-01: Swagger distingue creación de cuenta Firebase y creación de perfil
+  ---
+  duration_ms: 4.410194
+  ...
+# Subtest: Firebase usa ADC y reutiliza la aplicación predeterminada
+ok 6 - Firebase usa ADC y reutiliza la aplicación predeterminada
+  ---
+  duration_ms: 9.38051
+  ...
+# Subtest: Firestore: acepta el documento existente con status ok
+ok 7 - Firestore: acepta el documento existente con status ok
+  ---
+  duration_ms: 2.577655
+  ...
+# Subtest: Firestore: rechaza un documento inexistente
+ok 8 - Firestore: rechaza un documento inexistente
+  ---
+  duration_ms: 1.423635
+  ...
+# Subtest: Firestore: rechaza status incorrecto o ausente
+ok 9 - Firestore: rechaza status incorrecto o ausente
+  ---
+  duration_ms: 0.947753
+  ...
+# Subtest: Firestore: propaga fallos de lectura
+ok 10 - Firestore: propaga fallos de lectura
+  ---
+  duration_ms: 0.852446
+  ...
+# Subtest: GET /health responde 200 y status ok en JSON
+ok 11 - GET /health responde 200 y status ok en JSON
+  ---
+  duration_ms: 40.039258
+  ...
+# Subtest: una ruta desconocida responde 404 en JSON
+ok 12 - una ruta desconocida responde 404 en JSON
+  ---
+  duration_ms: 10.850162
+  ...
+# Subtest: un JSON inválido responde 400
+ok 13 - un JSON inválido responde 400
+  ---
+  duration_ms: 24.724762
+  ...
+# Subtest: PORT usa 3000 por defecto y valida el rango
+ok 14 - PORT usa 3000 por defecto y valida el rango
+  ---
+  duration_ms: 0.888582
+  ...
+# Subtest: Adaptador Firestore: cliente diferido, transacción, consulta por UID y Timestamp de servidor
+ok 15 - Adaptador Firestore: cliente diferido, transacción, consulta por UID y Timestamp de servidor
+  ---
+  duration_ms: 3.487154
+  ...
+# Subtest: GET /api/v1/system/status responde 200 con el estado y servicio en JSON
+ok 16 - GET /api/v1/system/status responde 200 con el estado y servicio en JSON
+  ---
+  duration_ms: 40.580113
+  ...
+# Subtest: POST /api/v1/system/status responde 404 según el comportamiento actual
+ok 17 - POST /api/v1/system/status responde 404 según el comportamiento actual
+  ---
+  duration_ms: 11.032439
+  ...
+# Subtest: una ruta de sistema inexistente responde 404 en JSON
+ok 18 - una ruta de sistema inexistente responde 404 en JSON
+  ---
+  duration_ms: 7.890729
+  ...
+# Subtest: Auth: token invalid devuelve 401 sin filtrar detalles
+ok 19 - Auth: token invalid devuelve 401 sin filtrar detalles
+  ---
+  duration_ms: 56.010927
+  ...
+# Subtest: Auth: token expired devuelve 401 sin filtrar detalles
+ok 20 - Auth: token expired devuelve 401 sin filtrar detalles
+  ---
+  duration_ms: 8.329514
+  ...
+# Subtest: Auth: token revoked devuelve 401 sin filtrar detalles
+ok 21 - Auth: token revoked devuelve 401 sin filtrar detalles
+  ---
+  duration_ms: 6.719126
+  ...
+# Subtest: Auth: token disabled devuelve 401 sin filtrar detalles
+ok 22 - Auth: token disabled devuelve 401 sin filtrar detalles
+  ---
+  duration_ms: 7.792951
+  ...
+# Subtest: Auth: token deleted devuelve 401 sin filtrar detalles
+ok 23 - Auth: token deleted devuelve 401 sin filtrar detalles
+  ---
+  duration_ms: 7.500665
+  ...
+# Subtest: Auth: token ausente y cabecera mal formada
+ok 24 - Auth: token ausente y cabecera mal formada
+  ---
+  duration_ms: 25.653965
+  ...
+# Subtest: Auth: proveedor no permitido, correo ausente y fallo de infraestructura
+ok 25 - Auth: proveedor no permitido, correo ausente y fallo de infraestructura
+  ---
+  duration_ms: 29.58137
+  ...
+# Subtest: CRUD propio: token válido, creación, consulta, actualización y eliminación idempotente
+ok 26 - CRUD propio: token válido, creación, consulta, actualización y eliminación idempotente
+  ---
+  duration_ms: 32.977727
+  ...
+# Subtest: Unicidad: nombre ocupado insensible a mayúsculas
+ok 27 - Unicidad: nombre ocupado insensible a mayúsculas
+  ---
+  duration_ms: 9.815062
+  ...
+# Subtest: Unicidad: solicitudes concurrentes tienen un solo ganador
+ok 28 - Unicidad: solicitudes concurrentes tienen un solo ganador
+  ---
+  duration_ms: 6.224463
+  ...
+# Subtest: Cambio de nombre: reserva y liberación, presentación y conflicto sin cambios parciales
+ok 29 - Cambio de nombre: reserva y liberación, presentación y conflicto sin cambios parciales
+  ---
+  duration_ms: 29.704713
+  ...
+# Subtest: Validación: array se rechaza antes de escribir
+ok 30 - Validación: array se rechaza antes de escribir
+  ---
+  duration_ms: 2.837867
+  ...
+# Subtest: Validación: null se rechaza antes de escribir
+ok 31 - Validación: null se rechaza antes de escribir
+  ---
+  duration_ms: 5.20925
+  ...
+# Subtest: Validación: firstNameType se rechaza antes de escribir
+ok 32 - Validación: firstNameType se rechaza antes de escribir
+  ---
+  duration_ms: 6.755463
+  ...
+# Subtest: Validación: emptyName se rechaza antes de escribir
+ok 33 - Validación: emptyName se rechaza antes de escribir
+  ---
+  duration_ms: 3.168966
+  ...
+# Subtest: Validación: longName se rechaza antes de escribir
+ok 34 - Validación: longName se rechaza antes de escribir
+  ---
+  duration_ms: 4.279999
+  ...
+# Subtest: Validación: usernameShort se rechaza antes de escribir
+ok 35 - Validación: usernameShort se rechaza antes de escribir
+  ---
+  duration_ms: 5.279847
+  ...
+# Subtest: Validación: usernameLong se rechaza antes de escribir
+ok 36 - Validación: usernameLong se rechaza antes de escribir
+  ---
+  duration_ms: 3.630082
+  ...
+# Subtest: Validación: usernameSpaces se rechaza antes de escribir
+ok 37 - Validación: usernameSpaces se rechaza antes de escribir
+  ---
+  duration_ms: 2.792833
+  ...
+# Subtest: Validación: usernameUnicode se rechaza antes de escribir
+ok 38 - Validación: usernameUnicode se rechaza antes de escribir
+  ---
+  duration_ms: 4.141136
+  ...
+# Subtest: Validación: usernameHyphen se rechaza antes de escribir
+ok 39 - Validación: usernameHyphen se rechaza antes de escribir
+  ---
+  duration_ms: 4.425882
+  ...
+# Subtest: Validación: usernameNumber se rechaza antes de escribir
+ok 40 - Validación: usernameNumber se rechaza antes de escribir
+  ---
+  duration_ms: 4.114353
+  ...
+# Subtest: Validación: avatarNull se rechaza antes de escribir
+ok 41 - Validación: avatarNull se rechaza antes de escribir
+  ---
+  duration_ms: 3.492626
+  ...
+# Subtest: Validación: avatarUrl se rechaza antes de escribir
+ok 42 - Validación: avatarUrl se rechaza antes de escribir
+  ---
+  duration_ms: 3.462461
+  ...
+# Subtest: Validación: unknown se rechaza antes de escribir
+ok 43 - Validación: unknown se rechaza antes de escribir
+  ---
+  duration_ms: 5.039288
+  ...
+# Subtest: Validación: uid se rechaza antes de escribir
+ok 44 - Validación: uid se rechaza antes de escribir
+  ---
+  duration_ms: 6.571303
+  ...
+# Subtest: Validación: email se rechaza antes de escribir
+ok 45 - Validación: email se rechaza antes de escribir
+  ---
+  duration_ms: 6.767581
+  ...
+# Subtest: Validación: authProvider se rechaza antes de escribir
+ok 46 - Validación: authProvider se rechaza antes de escribir
+  ---
+  duration_ms: 6.169117
+  ...
+# Subtest: Validación: normalized se rechaza antes de escribir
+ok 47 - Validación: normalized se rechaza antes de escribir
+  ---
+  duration_ms: 4.462056
+  ...
+# Subtest: Validación: completed se rechaza antes de escribir
+ok 48 - Validación: completed se rechaza antes de escribir
+  ---
+  duration_ms: 3.747417
+  ...
+# Subtest: Validación: createdAt se rechaza antes de escribir
+ok 49 - Validación: createdAt se rechaza antes de escribir
+  ---
+  duration_ms: 3.815091
+  ...
+# Subtest: Validación: updatedAt se rechaza antes de escribir
+ok 50 - Validación: updatedAt se rechaza antes de escribir
+  ---
+  duration_ms: 4.788705
+  ...
+# Subtest: Perfil incompleto de Google, acceso privado bloqueado y completado posterior
+ok 51 - Perfil incompleto de Google, acceso privado bloqueado y completado posterior
+  ---
+  duration_ms: 23.516344
+  ...
+# Subtest: UID: no hay lectura ni modificación de perfiles ajenos
+ok 52 - UID: no hay lectura ni modificación de perfiles ajenos
+  ---
+  duration_ms: 12.886868
+  ...
+# Subtest: Firestore: indisponibilidad y errores internos no filtran secretos
+ok 53 - Firestore: indisponibilidad y errores internos no filtran secretos
+  ---
+  duration_ms: 48.434839
+  ...
+# Subtest: Inconsistencias: reserva ausente o ajena no se borra ni habilita acceso
+ok 54 - Inconsistencias: reserva ausente o ajena no se borra ni habilita acceso
+  ---
+  duration_ms: 26.141442
+  ...
+# Subtest: Reservas huérfanas y adicionales requieren reconciliación
+ok 55 - Reservas huérfanas y adicionales requieren reconciliación
+  ---
+  duration_ms: 6.700567
+  ...
+# Subtest: Nombre de usuario: salto de línea final rechazado; límites válidos aceptados
+ok 56 - Nombre de usuario: salto de línea final rechazado; límites válidos aceptados
+  ---
+  duration_ms: 9.779494
+  ...
+# Subtest: Password: identidad verificada y sincronización de correo, nunca campos del cliente
+ok 57 - Password: identidad verificada y sincronización de correo, nunca campos del cliente
+  ---
+  duration_ms: 1.743564
+  ...
+# Subtest: Inconsistencias: datos corruptos y reservas adicionales no se exponen
+ok 58 - Inconsistencias: datos corruptos y reservas adicionales no se exponen
+  ---
+  duration_ms: 25.772857
+  ...
+# Subtest: Transacción abortada no deja reserva o cambio de nombre parcial
+ok 59 - Transacción abortada no deja reserva o cambio de nombre parcial
+  ---
+  duration_ms: 13.707406
+  ...
+# Subtest: US-01: registro manual HTTP con identidad password y perfil propio persistido
+ok 60 - US-01: registro manual HTTP con identidad password y perfil propio persistido
+  ---
+  duration_ms: 12.336464
+  ...
+# Subtest: US-01: POST manual exige token antes de escribir o validar datos del perfil
+ok 61 - US-01: POST manual exige token antes de escribir o validar datos del perfil
+  ---
+  duration_ms: 11.804104
+  ...
+# Subtest: US-01: correo inválido o ausente de Firebase impide crear el perfil manual
+ok 62 - US-01: correo inválido o ausente de Firebase impide crear el perfil manual
+  ---
+  duration_ms: 6.558581
+  ...
+# Subtest: US-01: contraseña y campos de identidad del cliente se rechazan en POST y PATCH
+ok 63 - US-01: contraseña y campos de identidad del cliente se rechazan en POST y PATCH
+  ---
+  duration_ms: 17.824888
+  ...
+# Subtest: US-01: perfil manual incompleto se completa sin repetir la creación
+ok 64 - US-01: perfil manual incompleto se completa sin repetir la creación
+  ---
+  duration_ms: 7.147812
+  ...
+# Subtest: US-01: conflicto manual y selección de UID por URL o query no dan acceso ajeno
+ok 65 - US-01: conflicto manual y selección de UID por URL o query no dan acceso ajeno
+  ---
+  duration_ms: 15.517897
+  ...
+# Subtest: US-01: fallo de lectura posterior al commit permite recuperar el perfil con GET
+ok 66 - US-01: fallo de lectura posterior al commit permite recuperar el perfil con GET
+  ---
+  duration_ms: 8.531846
+  ...
+# Subtest: US-02: nombres de Google sin username nunca completan el perfil
+ok 67 - US-02: nombres de Google sin username nunca completan el perfil
+  ---
+  duration_ms: 17.020882
+  ...
+# Subtest: US-02: la reserva de username es global entre password y Google
+ok 68 - US-02: la reserva de username es global entre password y Google
+  ---
+  duration_ms: 2.82292
+  ...
+# Subtest: US-02: identidades vinculadas conservan UID; el mismo correo no fusiona perfiles
+ok 69 - US-02: identidades vinculadas conservan UID; el mismo correo no fusiona perfiles
+  ---
+  duration_ms: 1.429725
+  ...
+# Subtest: US-02: identidad Google mínima y UID inválido rechazado tras verificar token
+ok 70 - US-02: identidad Google mínima y UID inválido rechazado tras verificar token
+  ---
+  duration_ms: 0.258243
+  ...
+# Subtest: US-02: username vacío, solo espacios o con punto no crea ni completa perfil Google
+ok 71 - US-02: username vacío, solo espacios o con punto no crea ni completa perfil Google
+  ---
+  duration_ms: 16.594919
+  ...
+# Subtest: US-03: PATCH y DELETE rechazan token ausente, inválido, expirado y revocado sin cambios
+ok 72 - US-03: PATCH y DELETE rechazan token ausente, inválido, expirado y revocado sin cambios
+  ---
+  duration_ms: 17.695909
+  ...
+# Subtest: US-03: la identidad no se conserva entre solicitudes ni entre usuarios
+ok 73 - US-03: la identidad no se conserva entre solicitudes ni entre usuarios
+  ---
+  duration_ms: 25.631469
+  ...
+# Subtest: US-03: errores Firebase Admin de entrada e infraestructura conservan su clasificación
+ok 74 - US-03: errores Firebase Admin de entrada e infraestructura conservan su clasificación
+  ---
+  duration_ms: 0.833955
+  ...
+# Subtest: US-03: perfil completo ajeno no habilita acceso privado al usuario incompleto
+ok 75 - US-03: perfil completo ajeno no habilita acceso privado al usuario incompleto
+  ---
+  duration_ms: 19.903387
+  ...
+1..75
+# tests 75
+# suites 0
+# pass 75
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2358.110894
+
+Código de salida npm test: 0
+Enlaces locales válidos. Documentos/evidencias nuevas de texto sin correos ni JWT; no se almacenaron valores de entrada.
+Archivos nuevos revisados con --no-index --check sin diagnósticos; salida1 por diferencias nuevas admisible.
+
+$ git diff --check
+Código de salida: 0
+
+$ git status --short
+ M tests/users.test.ts
+?? docs/US-03-casos-prueba.md
+?? docs/US-03-informe-QA.md
+?? docs/evidencias/US-03/
+Código de salida: 0
+
+Reverificación tras autorización específica US-03 (sin usar credenciales):
+
+$ npm run build
+
+> backend-api@0.1.0 build
+> tsc -p tsconfig.json
+
+Código de salida: 0
+
+$ npm test
+# tests 75
+# pass 75
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1913.848145
+Código de salida: 0
+
+$ npm run typecheck
+
+> backend-api@0.1.0 typecheck
+> tsc --noEmit -p tsconfig.test.json
+
+Código de salida: 0
+
+$ git diff --check
+Código de salida: 0
+
+$ git status --short
+ M tests/users.test.ts
+?? docs/US-03-casos-prueba.md
+?? docs/US-03-informe-QA.md
+?? docs/evidencias/US-03/
+Código de salida: 0
