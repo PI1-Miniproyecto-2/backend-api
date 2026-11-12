@@ -1,0 +1,398 @@
+{
+  "url": "https://frontend123-opal.vercel.app/register",
+  "title": "404: NOT_FOUND",
+  "lang": "en",
+  "viewport": {
+    "width": 1440,
+    "height": 900,
+    "scrollWidth": 1440
+  },
+  "controls": [
+    {
+      "tag": "BUTTON",
+      "id": "go-back-button",
+      "text": "Go back",
+      "aria": null,
+      "role": null,
+      "pressed": null,
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0
+      },
+      "css": {
+        "color": "rgb(10, 10, 10)",
+        "background": "rgb(237, 237, 237)",
+        "fontSize": "14px",
+        "fontWeight": "500",
+        "fontFamily": "geist, -apple-system, BlinkMacSystemFont, \"segoe ui\", \"helvetica neue\", Arial, sans-serif",
+        "border": "0px none rgb(10, 10, 10)",
+        "outline": "rgb(10, 10, 10) none 0px",
+        "boxShadow": "none"
+      },
+      "backgrounds": [
+        {
+          "color": "rgb(237, 237, 237)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "geist, -apple-system, BlinkMacSystemFont, \"segoe ui\", \"helvetica neue\", Arial, sans-serif",
+          "border": "0px none rgb(237, 237, 237)",
+          "outline": "rgb(237, 237, 237) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(237, 237, 237)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "geist, -apple-system, BlinkMacSystemFont, \"segoe ui\", \"helvetica neue\", Arial, sans-serif",
+          "border": "0px none rgb(237, 237, 237)",
+          "outline": "rgb(237, 237, 237) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(237, 237, 237)",
+          "background": "rgb(10, 10, 10)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "geist, -apple-system, BlinkMacSystemFont, \"segoe ui\", \"helvetica neue\", Arial, sans-serif",
+          "border": "0px none rgb(237, 237, 237)",
+          "outline": "rgb(237, 237, 237) none 0px",
+          "boxShadow": "none"
+        }
+      ]
+    },
+    {
+      "tag": "A",
+      "id": "",
+      "text": "VIEW DOCUMENTATION",
+      "aria": "View NOT_FOUND documentation",
+      "role": null,
+      "pressed": null,
+      "rect": {
+        "x": 578.5,
+        "y": 850,
+        "width": 129.609375,
+        "height": 16
+      },
+      "css": {
+        "color": "rgb(160, 160, 160)",
+        "background": "rgba(0, 0, 0, 0)",
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "fontFamily": "\"geist mono\", sfmono-regular, Consolas, \"liberation mono\", Menlo, monospace",
+        "border": "0px none rgb(160, 160, 160)",
+        "outline": "rgb(160, 160, 160) none 0px",
+        "boxShadow": "none"
+      },
+      "backgrounds": [
+        {
+          "color": "rgb(237, 237, 237)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "geist, -apple-system, BlinkMacSystemFont, \"segoe ui\", \"helvetica neue\", Arial, sans-serif",
+          "border": "0px none rgb(237, 237, 237)",
+          "outline": "rgb(237, 237, 237) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(237, 237, 237)",
+          "background": "rgb(10, 10, 10)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "geist, -apple-system, BlinkMacSystemFont, \"segoe ui\", \"helvetica neue\", Arial, sans-serif",
+          "border": "0px none rgb(237, 237, 237)",
+          "outline": "rgb(237, 237, 237) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(255, 255, 255)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "\"Times New Roman\"",
+          "border": "0px none rgb(255, 255, 255)",
+          "outline": "rgb(255, 255, 255) none 0px",
+          "boxShadow": "none"
+        }
+      ]
+    },
+    {
+      "tag": "BUTTON",
+      "id": "",
+      "text": "COPY DEBUG PROMPT",
+      "aria": "Copy NOT_FOUND debugging instructions to clipboard",
+      "role": null,
+      "pressed": null,
+      "rect": {
+        "x": 738.109375,
+        "y": 850,
+        "width": 122.40625,
+        "height": 16
+      },
+      "css": {
+        "color": "rgb(160, 160, 160)",
+        "background": "rgba(0, 0, 0, 0)",
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "fontFamily": "\"geist mono\", sfmono-regular, Consolas, \"liberation mono\", Menlo, monospace",
+        "border": "0px none rgb(160, 160, 160)",
+        "outline": "rgb(160, 160, 160) none 0px",
+        "boxShadow": "none"
+      },
+      "backgrounds": [
+        {
+          "color": "rgb(237, 237, 237)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "geist, -apple-system, BlinkMacSystemFont, \"segoe ui\", \"helvetica neue\", Arial, sans-serif",
+          "border": "0px none rgb(237, 237, 237)",
+          "outline": "rgb(237, 237, 237) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(237, 237, 237)",
+          "background": "rgb(10, 10, 10)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "geist, -apple-system, BlinkMacSystemFont, \"segoe ui\", \"helvetica neue\", Arial, sans-serif",
+          "border": "0px none rgb(237, 237, 237)",
+          "outline": "rgb(237, 237, 237) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(255, 255, 255)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "\"Times New Roman\"",
+          "border": "0px none rgb(255, 255, 255)",
+          "outline": "rgb(255, 255, 255) none 0px",
+          "boxShadow": "none"
+        }
+      ]
+    }
+  ],
+  "text": [
+    {
+      "text": "This page doesn’t exist",
+      "css": {
+        "color": "rgb(237, 237, 237)",
+        "background": "rgba(0, 0, 0, 0)",
+        "fontSize": "24px",
+        "fontWeight": "600",
+        "fontFamily": "geist, -apple-system, BlinkMacSystemFont, \"segoe ui\", \"helvetica neue\", Arial, sans-serif",
+        "border": "0px none rgb(237, 237, 237)",
+        "outline": "rgb(237, 237, 237) none 0px",
+        "boxShadow": "none"
+      },
+      "rect": {
+        "x": 578.5,
+        "y": 376,
+        "width": 283,
+        "height": 32
+      },
+      "backgrounds": [
+        {
+          "color": "rgb(237, 237, 237)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "geist, -apple-system, BlinkMacSystemFont, \"segoe ui\", \"helvetica neue\", Arial, sans-serif",
+          "border": "0px none rgb(237, 237, 237)",
+          "outline": "rgb(237, 237, 237) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(237, 237, 237)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "geist, -apple-system, BlinkMacSystemFont, \"segoe ui\", \"helvetica neue\", Arial, sans-serif",
+          "border": "0px none rgb(237, 237, 237)",
+          "outline": "rgb(237, 237, 237) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(237, 237, 237)",
+          "background": "rgb(10, 10, 10)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "geist, -apple-system, BlinkMacSystemFont, \"segoe ui\", \"helvetica neue\", Arial, sans-serif",
+          "border": "0px none rgb(237, 237, 237)",
+          "outline": "rgb(237, 237, 237) none 0px",
+          "boxShadow": "none"
+        }
+      ]
+    },
+    {
+      "text": "It may have been moved, removed, or never existed.",
+      "css": {
+        "color": "rgb(255, 255, 255)",
+        "background": "rgba(0, 0, 0, 0)",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "fontFamily": "geist, -apple-system, BlinkMacSystemFont, \"segoe ui\", \"helvetica neue\", Arial, sans-serif",
+        "border": "0px none rgb(255, 255, 255)",
+        "outline": "rgb(255, 255, 255) none 0px",
+        "boxShadow": "none"
+      },
+      "rect": {
+        "x": 578.5,
+        "y": 416,
+        "width": 283,
+        "height": 48
+      },
+      "backgrounds": [
+        {
+          "color": "rgb(237, 237, 237)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "geist, -apple-system, BlinkMacSystemFont, \"segoe ui\", \"helvetica neue\", Arial, sans-serif",
+          "border": "0px none rgb(237, 237, 237)",
+          "outline": "rgb(237, 237, 237) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(237, 237, 237)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "geist, -apple-system, BlinkMacSystemFont, \"segoe ui\", \"helvetica neue\", Arial, sans-serif",
+          "border": "0px none rgb(237, 237, 237)",
+          "outline": "rgb(237, 237, 237) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(237, 237, 237)",
+          "background": "rgb(10, 10, 10)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "geist, -apple-system, BlinkMacSystemFont, \"segoe ui\", \"helvetica neue\", Arial, sans-serif",
+          "border": "0px none rgb(237, 237, 237)",
+          "outline": "rgb(237, 237, 237) none 0px",
+          "boxShadow": "none"
+        }
+      ]
+    },
+    {
+      "text": "404 NOT_FOUND",
+      "css": {
+        "color": "rgb(160, 160, 160)",
+        "background": "rgba(0, 0, 0, 0)",
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "fontFamily": "\"geist mono\", sfmono-regular, Consolas, \"liberation mono\", Menlo, monospace",
+        "border": "0px none rgb(160, 160, 160)",
+        "outline": "rgb(160, 160, 160) none 0px",
+        "boxShadow": "none"
+      },
+      "rect": {
+        "x": 578.5,
+        "y": 480,
+        "width": 283,
+        "height": 16
+      },
+      "backgrounds": [
+        {
+          "color": "rgb(160, 160, 160)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "fontFamily": "\"geist mono\", sfmono-regular, Consolas, \"liberation mono\", Menlo, monospace",
+          "border": "0px none rgb(160, 160, 160)",
+          "outline": "rgb(160, 160, 160) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(237, 237, 237)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "geist, -apple-system, BlinkMacSystemFont, \"segoe ui\", \"helvetica neue\", Arial, sans-serif",
+          "border": "0px none rgb(237, 237, 237)",
+          "outline": "rgb(237, 237, 237) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(237, 237, 237)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "geist, -apple-system, BlinkMacSystemFont, \"segoe ui\", \"helvetica neue\", Arial, sans-serif",
+          "border": "0px none rgb(237, 237, 237)",
+          "outline": "rgb(237, 237, 237) none 0px",
+          "boxShadow": "none"
+        }
+      ]
+    },
+    {
+      "text": "iad1::j8mcn-1794453190648-0baa1f9a29c1",
+      "css": {
+        "color": "rgb(160, 160, 160)",
+        "background": "rgba(0, 0, 0, 0)",
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "fontFamily": "\"geist mono\", sfmono-regular, Consolas, \"liberation mono\", Menlo, monospace",
+        "border": "0px none rgb(160, 160, 160)",
+        "outline": "rgb(160, 160, 160) none 0px",
+        "boxShadow": "none"
+      },
+      "rect": {
+        "x": 578.5,
+        "y": 500,
+        "width": 283,
+        "height": 16
+      },
+      "backgrounds": [
+        {
+          "color": "rgb(160, 160, 160)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "fontFamily": "\"geist mono\", sfmono-regular, Consolas, \"liberation mono\", Menlo, monospace",
+          "border": "0px none rgb(160, 160, 160)",
+          "outline": "rgb(160, 160, 160) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(237, 237, 237)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "geist, -apple-system, BlinkMacSystemFont, \"segoe ui\", \"helvetica neue\", Arial, sans-serif",
+          "border": "0px none rgb(237, 237, 237)",
+          "outline": "rgb(237, 237, 237) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(237, 237, 237)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "geist, -apple-system, BlinkMacSystemFont, \"segoe ui\", \"helvetica neue\", Arial, sans-serif",
+          "border": "0px none rgb(237, 237, 237)",
+          "outline": "rgb(237, 237, 237) none 0px",
+          "boxShadow": "none"
+        }
+      ]
+    }
+  ],
+  "alerts": [
+    {
+      "role": "status",
+      "live": "polite",
+      "text": ""
+    }
+  ],
+  "focus": {
+    "id": "",
+    "tag": "BODY",
+    "text": "This page doesn’t exist\n\nIt may have been moved, removed, or never existed.\n\n404"
+  }
+}

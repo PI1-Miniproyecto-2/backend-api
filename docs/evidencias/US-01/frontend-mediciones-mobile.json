@@ -1,0 +1,2196 @@
+{
+  "url": "https://frontend123-opal.vercel.app/register",
+  "title": "Registro | AulaPro",
+  "lang": "es",
+  "viewport": {
+    "width": 390,
+    "height": 844,
+    "scrollWidth": 375
+  },
+  "form": "<form novalidate=\"\"><div class=\"form-row\"><div class=\"form-field\"><label for=\"nombres\">Nombres</label><input id=\"nombres\" placeholder=\"Emilio\" autocomplete=\"given-name\" aria-invalid=\"false\" type=\"text\" value=\"\"></div><div class=\"form-field\"><label for=\"apellidos\">Apellidos</label><input id=\"apellidos\" placeholder=\"Castro\" autocomplete=\"family-name\" aria-invalid=\"false\" type=\"text\" value=\"\"></div></div><div class=\"form-field\"><label for=\"username\">Nombre de usuario</label><input id=\"username\" placeholder=\"emilio.c\" autocomplete=\"username\" aria-invalid=\"false\" type=\"text\" value=\"qa.nombre\"><span class=\"field-hint\">Así te encontrarán tus compañeros en AulaPro.</span></div><div class=\"form-field\"><label for=\"email\">Correo electrónico</label><input id=\"email\" placeholder=\"nombre@universidad.edu\" autocomplete=\"email\" aria-invalid=\"false\" type=\"email\" value=\"\"></div><div class=\"form-field\"><label for=\"password\">Contraseña</label><div class=\"password-wrapper\"><input id=\"password\" placeholder=\"Mínimo 8 caracteres\" autocomplete=\"new-password\" aria-invalid=\"false\" type=\"password\" value=\"\"><button type=\"button\" class=\"eye-button\" aria-label=\"Mostrar contraseña\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"17\" height=\"17\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-eye\" aria-hidden=\"true\"><path d=\"M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0\"></path><circle cx=\"12\" cy=\"12\" r=\"3\"></circle></svg></button></div></div><div class=\"form-field\"><label for=\"confirmPassword\">Confirmar contraseña</label><div class=\"password-wrapper\"><input id=\"confirmPassword\" placeholder=\"Repite tu contraseña\" autocomplete=\"new-password\" aria-invalid=\"false\" type=\"password\" value=\"\"><button type=\"button\" class=\"eye-button\" aria-label=\"Mostrar contraseña\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"17\" height=\"17\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-eye\" aria-hidden=\"true\"><path d=\"M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0\"></path><circle cx=\"12\" cy=\"12\" r=\"3\"></circle></svg></button></div></div><div class=\"avatar-section\"><label>Elige tu avatar de perfil</label><div class=\"avatar-list\"><button type=\"button\" class=\"avatar-option selected\" aria-label=\"Elegir avatar avatar1\" aria-pressed=\"true\" style=\"background-color: rgb(213, 243, 233);\"><span>👩🏻</span><span class=\"avatar-check\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"11\" height=\"11\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-check\" aria-hidden=\"true\"><path d=\"M20 6 9 17l-5-5\"></path></svg></span></button><button type=\"button\" class=\"avatar-option \" aria-label=\"Elegir avatar avatar2\" aria-pressed=\"false\" style=\"background-color: rgb(233, 225, 250);\"><span>👨🏽</span></button><button type=\"button\" class=\"avatar-option \" aria-label=\"Elegir avatar avatar3\" aria-pressed=\"false\" style=\"background-color: rgb(252, 235, 216);\"><span>👩🏽</span></button><button type=\"button\" class=\"avatar-option \" aria-label=\"Elegir avatar avatar4\" aria-pressed=\"false\" style=\"background-color: rgb(221, 238, 240);\"><span>👨🏻</span></button></div></div><div class=\"terms-container\"><input id=\"terms\" aria-invalid=\"false\" type=\"checkbox\"><label for=\"terms\">Acepto los <a href=\"/terminos\" data-discover=\"true\">términos y condiciones</a> de AulaPro.</label></div><button type=\"submit\" class=\"register-submit\">Crear cuenta<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"17\" height=\"17\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-arrow-right\" aria-hidden=\"true\"><path d=\"M5 12h14\"></path><path d=\"m12 5 7 7-7 7\"></path></svg></button></form>",
+  "controls": [
+    {
+      "tag": "A",
+      "id": "",
+      "text": "AulaPro",
+      "aria": null,
+      "role": null,
+      "pressed": null,
+      "rect": {
+        "x": 25,
+        "y": 22,
+        "width": 105.859375,
+        "height": 28.5
+      },
+      "css": {
+        "color": "rgb(141, 228, 202)",
+        "background": "rgba(0, 0, 0, 0)",
+        "fontSize": "19px",
+        "fontWeight": "750",
+        "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+        "border": "0px solid rgb(141, 228, 202)",
+        "outline": "rgb(141, 228, 202) none 0px",
+        "boxShadow": "none"
+      },
+      "backgrounds": [
+        {
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(6, 78, 73)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(255, 255, 255)",
+          "outline": "rgb(255, 255, 255) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgb(247, 249, 248)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        }
+      ]
+    },
+    {
+      "tag": "A",
+      "id": "",
+      "text": "Volver al inicio",
+      "aria": null,
+      "role": null,
+      "pressed": null,
+      "rect": {
+        "x": 17,
+        "y": 370.25,
+        "width": 93.328125,
+        "height": 16.5
+      },
+      "css": {
+        "color": "rgb(83, 108, 104)",
+        "background": "rgba(0, 0, 0, 0)",
+        "fontSize": "11px",
+        "fontWeight": "400",
+        "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+        "border": "0px solid rgb(83, 108, 104)",
+        "outline": "rgb(83, 108, 104) none 0px",
+        "boxShadow": "none"
+      },
+      "backgrounds": [
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgb(247, 249, 248)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        }
+      ]
+    },
+    {
+      "tag": "BUTTON",
+      "id": "",
+      "text": "G\nRegistrarse con Google",
+      "aria": null,
+      "role": null,
+      "pressed": null,
+      "rect": {
+        "x": 17,
+        "y": 489.25,
+        "width": 341,
+        "height": 43
+      },
+      "css": {
+        "color": "rgb(52, 75, 71)",
+        "background": "rgb(255, 255, 255)",
+        "fontSize": "12px",
+        "fontWeight": "650",
+        "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+        "border": "1px solid rgb(212, 221, 218)",
+        "outline": "rgb(52, 75, 71) none 0px",
+        "boxShadow": "none"
+      },
+      "backgrounds": [
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgb(247, 249, 248)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        }
+      ]
+    },
+    {
+      "tag": "LABEL",
+      "id": "",
+      "text": "Nombres",
+      "aria": null,
+      "role": null,
+      "pressed": null,
+      "rect": {
+        "x": 17,
+        "y": 581.25,
+        "width": 341,
+        "height": 15
+      },
+      "css": {
+        "color": "rgb(41, 75, 70)",
+        "background": "rgba(0, 0, 0, 0)",
+        "fontSize": "10px",
+        "fontWeight": "700",
+        "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+        "border": "0px solid rgb(41, 75, 70)",
+        "outline": "rgb(41, 75, 70) none 0px",
+        "boxShadow": "none"
+      },
+      "backgrounds": [
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        }
+      ]
+    },
+    {
+      "tag": "INPUT",
+      "id": "nombres",
+      "text": "",
+      "aria": null,
+      "role": null,
+      "pressed": null,
+      "rect": {
+        "x": 17,
+        "y": 601.25,
+        "width": 341,
+        "height": 39
+      },
+      "css": {
+        "color": "rgb(38, 63, 59)",
+        "background": "rgb(255, 255, 255)",
+        "fontSize": "11px",
+        "fontWeight": "400",
+        "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+        "border": "1px solid rgb(210, 220, 216)",
+        "outline": "rgb(38, 63, 59) none 0px",
+        "boxShadow": "none"
+      },
+      "backgrounds": [
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        }
+      ]
+    },
+    {
+      "tag": "LABEL",
+      "id": "",
+      "text": "Apellidos",
+      "aria": null,
+      "role": null,
+      "pressed": null,
+      "rect": {
+        "x": 17,
+        "y": 652.25,
+        "width": 341,
+        "height": 15
+      },
+      "css": {
+        "color": "rgb(41, 75, 70)",
+        "background": "rgba(0, 0, 0, 0)",
+        "fontSize": "10px",
+        "fontWeight": "700",
+        "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+        "border": "0px solid rgb(41, 75, 70)",
+        "outline": "rgb(41, 75, 70) none 0px",
+        "boxShadow": "none"
+      },
+      "backgrounds": [
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        }
+      ]
+    },
+    {
+      "tag": "INPUT",
+      "id": "apellidos",
+      "text": "",
+      "aria": null,
+      "role": null,
+      "pressed": null,
+      "rect": {
+        "x": 17,
+        "y": 672.25,
+        "width": 341,
+        "height": 39
+      },
+      "css": {
+        "color": "rgb(38, 63, 59)",
+        "background": "rgb(255, 255, 255)",
+        "fontSize": "11px",
+        "fontWeight": "400",
+        "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+        "border": "1px solid rgb(210, 220, 216)",
+        "outline": "rgb(38, 63, 59) none 0px",
+        "boxShadow": "none"
+      },
+      "backgrounds": [
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        }
+      ]
+    },
+    {
+      "tag": "LABEL",
+      "id": "",
+      "text": "Nombre de usuario",
+      "aria": null,
+      "role": null,
+      "pressed": null,
+      "rect": {
+        "x": 17,
+        "y": 723.25,
+        "width": 341,
+        "height": 15
+      },
+      "css": {
+        "color": "rgb(41, 75, 70)",
+        "background": "rgba(0, 0, 0, 0)",
+        "fontSize": "10px",
+        "fontWeight": "700",
+        "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+        "border": "0px solid rgb(41, 75, 70)",
+        "outline": "rgb(41, 75, 70) none 0px",
+        "boxShadow": "none"
+      },
+      "backgrounds": [
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        }
+      ]
+    },
+    {
+      "tag": "INPUT",
+      "id": "username",
+      "text": "",
+      "aria": null,
+      "role": null,
+      "pressed": null,
+      "rect": {
+        "x": 17,
+        "y": 743.25,
+        "width": 341,
+        "height": 39
+      },
+      "css": {
+        "color": "rgb(38, 63, 59)",
+        "background": "rgb(255, 255, 255)",
+        "fontSize": "11px",
+        "fontWeight": "400",
+        "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+        "border": "1px solid rgb(210, 220, 216)",
+        "outline": "rgb(38, 63, 59) none 0px",
+        "boxShadow": "none"
+      },
+      "backgrounds": [
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        }
+      ]
+    },
+    {
+      "tag": "LABEL",
+      "id": "",
+      "text": "Correo electrónico",
+      "aria": null,
+      "role": null,
+      "pressed": null,
+      "rect": {
+        "x": 17,
+        "y": 812.75,
+        "width": 341,
+        "height": 15
+      },
+      "css": {
+        "color": "rgb(41, 75, 70)",
+        "background": "rgba(0, 0, 0, 0)",
+        "fontSize": "10px",
+        "fontWeight": "700",
+        "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+        "border": "0px solid rgb(41, 75, 70)",
+        "outline": "rgb(41, 75, 70) none 0px",
+        "boxShadow": "none"
+      },
+      "backgrounds": [
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        }
+      ]
+    },
+    {
+      "tag": "INPUT",
+      "id": "email",
+      "text": "",
+      "aria": null,
+      "role": null,
+      "pressed": null,
+      "rect": {
+        "x": 17,
+        "y": 832.75,
+        "width": 341,
+        "height": 39
+      },
+      "css": {
+        "color": "rgb(38, 63, 59)",
+        "background": "rgb(255, 255, 255)",
+        "fontSize": "11px",
+        "fontWeight": "400",
+        "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+        "border": "1px solid rgb(210, 220, 216)",
+        "outline": "rgb(38, 63, 59) none 0px",
+        "boxShadow": "none"
+      },
+      "backgrounds": [
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        }
+      ]
+    },
+    {
+      "tag": "LABEL",
+      "id": "",
+      "text": "Contraseña",
+      "aria": null,
+      "role": null,
+      "pressed": null,
+      "rect": {
+        "x": 17,
+        "y": 883.75,
+        "width": 341,
+        "height": 15
+      },
+      "css": {
+        "color": "rgb(41, 75, 70)",
+        "background": "rgba(0, 0, 0, 0)",
+        "fontSize": "10px",
+        "fontWeight": "700",
+        "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+        "border": "0px solid rgb(41, 75, 70)",
+        "outline": "rgb(41, 75, 70) none 0px",
+        "boxShadow": "none"
+      },
+      "backgrounds": [
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        }
+      ]
+    },
+    {
+      "tag": "INPUT",
+      "id": "password",
+      "text": "",
+      "aria": null,
+      "role": null,
+      "pressed": null,
+      "rect": {
+        "x": 17,
+        "y": 903.75,
+        "width": 341,
+        "height": 39
+      },
+      "css": {
+        "color": "rgb(38, 63, 59)",
+        "background": "rgb(255, 255, 255)",
+        "fontSize": "11px",
+        "fontWeight": "400",
+        "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+        "border": "1px solid rgb(210, 220, 216)",
+        "outline": "rgb(38, 63, 59) none 0px",
+        "boxShadow": "none"
+      },
+      "backgrounds": [
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        }
+      ]
+    },
+    {
+      "tag": "BUTTON",
+      "id": "",
+      "text": "",
+      "aria": "Mostrar contraseña",
+      "role": null,
+      "pressed": null,
+      "rect": {
+        "x": 325,
+        "y": 911.75,
+        "width": 23,
+        "height": 23
+      },
+      "css": {
+        "color": "rgb(126, 145, 139)",
+        "background": "rgba(0, 0, 0, 0)",
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+        "border": "0px none rgb(126, 145, 139)",
+        "outline": "rgb(126, 145, 139) none 0px",
+        "boxShadow": "none"
+      },
+      "backgrounds": [
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        }
+      ]
+    },
+    {
+      "tag": "LABEL",
+      "id": "",
+      "text": "Confirmar contraseña",
+      "aria": null,
+      "role": null,
+      "pressed": null,
+      "rect": {
+        "x": 17,
+        "y": 954.75,
+        "width": 341,
+        "height": 15
+      },
+      "css": {
+        "color": "rgb(41, 75, 70)",
+        "background": "rgba(0, 0, 0, 0)",
+        "fontSize": "10px",
+        "fontWeight": "700",
+        "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+        "border": "0px solid rgb(41, 75, 70)",
+        "outline": "rgb(41, 75, 70) none 0px",
+        "boxShadow": "none"
+      },
+      "backgrounds": [
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        }
+      ]
+    },
+    {
+      "tag": "INPUT",
+      "id": "confirmPassword",
+      "text": "",
+      "aria": null,
+      "role": null,
+      "pressed": null,
+      "rect": {
+        "x": 17,
+        "y": 974.75,
+        "width": 341,
+        "height": 39
+      },
+      "css": {
+        "color": "rgb(38, 63, 59)",
+        "background": "rgb(255, 255, 255)",
+        "fontSize": "11px",
+        "fontWeight": "400",
+        "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+        "border": "1px solid rgb(210, 220, 216)",
+        "outline": "rgb(38, 63, 59) none 0px",
+        "boxShadow": "none"
+      },
+      "backgrounds": [
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        }
+      ]
+    },
+    {
+      "tag": "BUTTON",
+      "id": "",
+      "text": "",
+      "aria": "Mostrar contraseña",
+      "role": null,
+      "pressed": null,
+      "rect": {
+        "x": 325,
+        "y": 982.75,
+        "width": 23,
+        "height": 23
+      },
+      "css": {
+        "color": "rgb(126, 145, 139)",
+        "background": "rgba(0, 0, 0, 0)",
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+        "border": "0px none rgb(126, 145, 139)",
+        "outline": "rgb(126, 145, 139) none 0px",
+        "boxShadow": "none"
+      },
+      "backgrounds": [
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        }
+      ]
+    },
+    {
+      "tag": "LABEL",
+      "id": "",
+      "text": "Elige tu avatar de perfil",
+      "aria": null,
+      "role": null,
+      "pressed": null,
+      "rect": {
+        "x": 17,
+        "y": 1025.75,
+        "width": 341,
+        "height": 15
+      },
+      "css": {
+        "color": "rgb(41, 75, 70)",
+        "background": "rgba(0, 0, 0, 0)",
+        "fontSize": "10px",
+        "fontWeight": "700",
+        "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+        "border": "0px solid rgb(41, 75, 70)",
+        "outline": "rgb(41, 75, 70) none 0px",
+        "boxShadow": "none"
+      },
+      "backgrounds": [
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        }
+      ]
+    },
+    {
+      "tag": "BUTTON",
+      "id": "",
+      "text": "👩🏻",
+      "aria": "Elegir avatar avatar1",
+      "role": null,
+      "pressed": "true",
+      "rect": {
+        "x": 17,
+        "y": 1049.75,
+        "width": 36,
+        "height": 36
+      },
+      "css": {
+        "color": "rgb(24, 61, 58)",
+        "background": "rgb(213, 243, 233)",
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+        "border": "2px solid rgb(42, 185, 135)",
+        "outline": "rgb(24, 61, 58) none 0px",
+        "boxShadow": "none"
+      },
+      "backgrounds": [
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        }
+      ]
+    },
+    {
+      "tag": "BUTTON",
+      "id": "",
+      "text": "👨🏽",
+      "aria": "Elegir avatar avatar2",
+      "role": null,
+      "pressed": "false",
+      "rect": {
+        "x": 63,
+        "y": 1049.75,
+        "width": 36,
+        "height": 36
+      },
+      "css": {
+        "color": "rgb(24, 61, 58)",
+        "background": "rgb(233, 225, 250)",
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+        "border": "2px solid rgba(0, 0, 0, 0)",
+        "outline": "rgb(24, 61, 58) none 0px",
+        "boxShadow": "none"
+      },
+      "backgrounds": [
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        }
+      ]
+    },
+    {
+      "tag": "BUTTON",
+      "id": "",
+      "text": "👩🏽",
+      "aria": "Elegir avatar avatar3",
+      "role": null,
+      "pressed": "false",
+      "rect": {
+        "x": 109,
+        "y": 1049.75,
+        "width": 36,
+        "height": 36
+      },
+      "css": {
+        "color": "rgb(24, 61, 58)",
+        "background": "rgb(252, 235, 216)",
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+        "border": "2px solid rgba(0, 0, 0, 0)",
+        "outline": "rgb(24, 61, 58) none 0px",
+        "boxShadow": "none"
+      },
+      "backgrounds": [
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        }
+      ]
+    },
+    {
+      "tag": "BUTTON",
+      "id": "",
+      "text": "👨🏻",
+      "aria": "Elegir avatar avatar4",
+      "role": null,
+      "pressed": "false",
+      "rect": {
+        "x": 155,
+        "y": 1049.75,
+        "width": 36,
+        "height": 36
+      },
+      "css": {
+        "color": "rgb(24, 61, 58)",
+        "background": "rgb(221, 238, 240)",
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+        "border": "2px solid rgba(0, 0, 0, 0)",
+        "outline": "rgb(24, 61, 58) none 0px",
+        "boxShadow": "none"
+      },
+      "backgrounds": [
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        }
+      ]
+    },
+    {
+      "tag": "INPUT",
+      "id": "terms",
+      "text": "",
+      "aria": null,
+      "role": null,
+      "pressed": null,
+      "rect": {
+        "x": 17,
+        "y": 1099.75,
+        "width": 13,
+        "height": 13
+      },
+      "css": {
+        "color": "rgb(24, 61, 58)",
+        "background": "rgba(0, 0, 0, 0)",
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+        "border": "0px none rgb(24, 61, 58)",
+        "outline": "rgb(24, 61, 58) none 0px",
+        "boxShadow": "none"
+      },
+      "backgrounds": [
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        }
+      ]
+    },
+    {
+      "tag": "LABEL",
+      "id": "",
+      "text": "Acepto los términos y condiciones de AulaPro.",
+      "aria": null,
+      "role": null,
+      "pressed": null,
+      "rect": {
+        "x": 37,
+        "y": 1098.75,
+        "width": 215.6875,
+        "height": 15
+      },
+      "css": {
+        "color": "rgb(114, 129, 124)",
+        "background": "rgba(0, 0, 0, 0)",
+        "fontSize": "10px",
+        "fontWeight": "400",
+        "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+        "border": "0px solid rgb(114, 129, 124)",
+        "outline": "rgb(114, 129, 124) none 0px",
+        "boxShadow": "none"
+      },
+      "backgrounds": [
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        }
+      ]
+    },
+    {
+      "tag": "A",
+      "id": "",
+      "text": "términos y condiciones",
+      "aria": null,
+      "role": null,
+      "pressed": null,
+      "rect": {
+        "x": 86.484375,
+        "y": 1100.75,
+        "width": 111.703125,
+        "height": 11
+      },
+      "css": {
+        "color": "rgb(8, 125, 105)",
+        "background": "rgba(0, 0, 0, 0)",
+        "fontSize": "10px",
+        "fontWeight": "650",
+        "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+        "border": "0px solid rgb(8, 125, 105)",
+        "outline": "rgb(8, 125, 105) none 0px",
+        "boxShadow": "none"
+      },
+      "backgrounds": [
+        {
+          "color": "rgb(114, 129, 124)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "10px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(114, 129, 124)",
+          "outline": "rgb(114, 129, 124) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        }
+      ]
+    },
+    {
+      "tag": "BUTTON",
+      "id": "",
+      "text": "Crear cuenta",
+      "aria": null,
+      "role": null,
+      "pressed": null,
+      "rect": {
+        "x": 17,
+        "y": 1126.75,
+        "width": 341,
+        "height": 43
+      },
+      "css": {
+        "color": "rgb(6, 74, 61)",
+        "background": "rgb(50, 201, 149)",
+        "fontSize": "12px",
+        "fontWeight": "750",
+        "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+        "border": "1px solid rgb(39, 185, 141)",
+        "outline": "rgb(8, 125, 105) solid 3px",
+        "boxShadow": "rgba(39, 185, 141, 0.17) 0px 4px 12px 0px"
+      },
+      "backgrounds": [
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        }
+      ]
+    },
+    {
+      "tag": "BUTTON",
+      "id": "",
+      "text": "Inicia sesión",
+      "aria": null,
+      "role": null,
+      "pressed": null,
+      "rect": {
+        "x": 211.3125,
+        "y": 1184.75,
+        "width": 60.03125,
+        "height": 15
+      },
+      "css": {
+        "color": "rgb(8, 125, 105)",
+        "background": "rgba(0, 0, 0, 0)",
+        "fontSize": "10px",
+        "fontWeight": "700",
+        "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+        "border": "0px none rgb(8, 125, 105)",
+        "outline": "rgb(8, 125, 105) none 0px",
+        "boxShadow": "none"
+      },
+      "backgrounds": [
+        {
+          "color": "rgb(135, 147, 143)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "10px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(135, 147, 143)",
+          "outline": "rgb(135, 147, 143) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        }
+      ]
+    }
+  ],
+  "text": [
+    {
+      "text": "Cuando explicas unaidea a tu equipo,también la entiendesmejor.",
+      "css": {
+        "color": "rgb(255, 255, 255)",
+        "background": "rgba(0, 0, 0, 0)",
+        "fontSize": "25px",
+        "fontWeight": "750",
+        "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+        "border": "0px solid rgb(255, 255, 255)",
+        "outline": "rgb(255, 255, 255) none 0px",
+        "boxShadow": "none"
+      },
+      "rect": {
+        "x": 25,
+        "y": 159.5,
+        "width": 325,
+        "height": 87.75
+      },
+      "backgrounds": [
+        {
+          "color": "rgb(255, 255, 255)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(255, 255, 255)",
+          "outline": "rgb(255, 255, 255) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(6, 78, 73)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(255, 255, 255)",
+          "outline": "rgb(255, 255, 255) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgb(247, 249, 248)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        }
+      ]
+    },
+    {
+      "text": "Emilio, estudiante de Diseño Visual",
+      "css": {
+        "color": "rgb(193, 217, 211)",
+        "background": "rgba(0, 0, 0, 0)",
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+        "border": "0px solid rgb(193, 217, 211)",
+        "outline": "rgb(193, 217, 211) none 0px",
+        "boxShadow": "none"
+      },
+      "rect": {
+        "x": 25,
+        "y": 290.25,
+        "width": 325,
+        "height": 18
+      },
+      "backgrounds": [
+        {
+          "color": "rgb(255, 255, 255)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(255, 255, 255)",
+          "outline": "rgb(255, 255, 255) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(6, 78, 73)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(255, 255, 255)",
+          "outline": "rgb(255, 255, 255) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgb(247, 249, 248)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        }
+      ]
+    },
+    {
+      "text": "Crea tu cuenta",
+      "css": {
+        "color": "rgb(20, 61, 57)",
+        "background": "rgba(0, 0, 0, 0)",
+        "fontSize": "25px",
+        "fontWeight": "750",
+        "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+        "border": "0px solid rgb(20, 61, 57)",
+        "outline": "rgb(20, 61, 57) none 0px",
+        "boxShadow": "none"
+      },
+      "rect": {
+        "x": 17,
+        "y": 406.75,
+        "width": 341,
+        "height": 37.5
+      },
+      "backgrounds": [
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgb(247, 249, 248)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        }
+      ]
+    },
+    {
+      "text": "Organiza tu próximo encuentro de estudio.",
+      "css": {
+        "color": "rgb(120, 137, 133)",
+        "background": "rgba(0, 0, 0, 0)",
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+        "border": "0px solid rgb(120, 137, 133)",
+        "outline": "rgb(120, 137, 133) none 0px",
+        "boxShadow": "none"
+      },
+      "rect": {
+        "x": 17,
+        "y": 449.25,
+        "width": 341,
+        "height": 18
+      },
+      "backgrounds": [
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgb(247, 249, 248)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        }
+      ]
+    },
+    {
+      "text": "Nombres",
+      "css": {
+        "color": "rgb(41, 75, 70)",
+        "background": "rgba(0, 0, 0, 0)",
+        "fontSize": "10px",
+        "fontWeight": "700",
+        "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+        "border": "0px solid rgb(41, 75, 70)",
+        "outline": "rgb(41, 75, 70) none 0px",
+        "boxShadow": "none"
+      },
+      "rect": {
+        "x": 17,
+        "y": 581.25,
+        "width": 341,
+        "height": 15
+      },
+      "backgrounds": [
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        }
+      ]
+    },
+    {
+      "text": "Apellidos",
+      "css": {
+        "color": "rgb(41, 75, 70)",
+        "background": "rgba(0, 0, 0, 0)",
+        "fontSize": "10px",
+        "fontWeight": "700",
+        "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+        "border": "0px solid rgb(41, 75, 70)",
+        "outline": "rgb(41, 75, 70) none 0px",
+        "boxShadow": "none"
+      },
+      "rect": {
+        "x": 17,
+        "y": 652.25,
+        "width": 341,
+        "height": 15
+      },
+      "backgrounds": [
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        }
+      ]
+    },
+    {
+      "text": "Nombre de usuario",
+      "css": {
+        "color": "rgb(41, 75, 70)",
+        "background": "rgba(0, 0, 0, 0)",
+        "fontSize": "10px",
+        "fontWeight": "700",
+        "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+        "border": "0px solid rgb(41, 75, 70)",
+        "outline": "rgb(41, 75, 70) none 0px",
+        "boxShadow": "none"
+      },
+      "rect": {
+        "x": 17,
+        "y": 723.25,
+        "width": 341,
+        "height": 15
+      },
+      "backgrounds": [
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        }
+      ]
+    },
+    {
+      "text": "Correo electrónico",
+      "css": {
+        "color": "rgb(41, 75, 70)",
+        "background": "rgba(0, 0, 0, 0)",
+        "fontSize": "10px",
+        "fontWeight": "700",
+        "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+        "border": "0px solid rgb(41, 75, 70)",
+        "outline": "rgb(41, 75, 70) none 0px",
+        "boxShadow": "none"
+      },
+      "rect": {
+        "x": 17,
+        "y": 812.75,
+        "width": 341,
+        "height": 15
+      },
+      "backgrounds": [
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        }
+      ]
+    },
+    {
+      "text": "Contraseña",
+      "css": {
+        "color": "rgb(41, 75, 70)",
+        "background": "rgba(0, 0, 0, 0)",
+        "fontSize": "10px",
+        "fontWeight": "700",
+        "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+        "border": "0px solid rgb(41, 75, 70)",
+        "outline": "rgb(41, 75, 70) none 0px",
+        "boxShadow": "none"
+      },
+      "rect": {
+        "x": 17,
+        "y": 883.75,
+        "width": 341,
+        "height": 15
+      },
+      "backgrounds": [
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        }
+      ]
+    },
+    {
+      "text": "Confirmar contraseña",
+      "css": {
+        "color": "rgb(41, 75, 70)",
+        "background": "rgba(0, 0, 0, 0)",
+        "fontSize": "10px",
+        "fontWeight": "700",
+        "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+        "border": "0px solid rgb(41, 75, 70)",
+        "outline": "rgb(41, 75, 70) none 0px",
+        "boxShadow": "none"
+      },
+      "rect": {
+        "x": 17,
+        "y": 954.75,
+        "width": 341,
+        "height": 15
+      },
+      "backgrounds": [
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        }
+      ]
+    },
+    {
+      "text": "Elige tu avatar de perfil",
+      "css": {
+        "color": "rgb(41, 75, 70)",
+        "background": "rgba(0, 0, 0, 0)",
+        "fontSize": "10px",
+        "fontWeight": "700",
+        "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+        "border": "0px solid rgb(41, 75, 70)",
+        "outline": "rgb(41, 75, 70) none 0px",
+        "boxShadow": "none"
+      },
+      "rect": {
+        "x": 17,
+        "y": 1025.75,
+        "width": 341,
+        "height": 15
+      },
+      "backgrounds": [
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        }
+      ]
+    },
+    {
+      "text": "Acepto los términos y condiciones de AulaPro.",
+      "css": {
+        "color": "rgb(114, 129, 124)",
+        "background": "rgba(0, 0, 0, 0)",
+        "fontSize": "10px",
+        "fontWeight": "400",
+        "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+        "border": "0px solid rgb(114, 129, 124)",
+        "outline": "rgb(114, 129, 124) none 0px",
+        "boxShadow": "none"
+      },
+      "rect": {
+        "x": 37,
+        "y": 1098.75,
+        "width": 215.6875,
+        "height": 15
+      },
+      "backgrounds": [
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        }
+      ]
+    },
+    {
+      "text": "¿Ya tienes una cuenta? Inicia sesión",
+      "css": {
+        "color": "rgb(135, 147, 143)",
+        "background": "rgba(0, 0, 0, 0)",
+        "fontSize": "10px",
+        "fontWeight": "400",
+        "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+        "border": "0px solid rgb(135, 147, 143)",
+        "outline": "rgb(135, 147, 143) none 0px",
+        "boxShadow": "none"
+      },
+      "rect": {
+        "x": 17,
+        "y": 1184.75,
+        "width": 341,
+        "height": 15
+      },
+      "backgrounds": [
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(24, 61, 58)",
+          "background": "rgb(247, 249, 248)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Inter, \"Segoe UI\", Arial, sans-serif",
+          "border": "0px solid rgb(24, 61, 58)",
+          "outline": "rgb(24, 61, 58) none 0px",
+          "boxShadow": "none"
+        }
+      ]
+    }
+  ],
+  "alerts": [],
+  "focus": {
+    "id": "",
+    "tag": "BUTTON",
+    "text": "Crear cuenta"
+  }
+}

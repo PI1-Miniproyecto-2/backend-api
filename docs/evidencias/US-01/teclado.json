@@ -1,0 +1,211 @@
+[
+  {
+    "tag": "A",
+    "id": "",
+    "text": "AulaPro",
+    "type": "",
+    "outline": "rgb(16, 16, 16) auto 1px",
+    "boxShadow": "none",
+    "visible": true,
+    "focusVisible": true
+  },
+  {
+    "tag": "A",
+    "id": "",
+    "text": "Volver al inicio",
+    "type": "",
+    "outline": "rgb(16, 16, 16) auto 1px",
+    "boxShadow": "none",
+    "visible": true,
+    "focusVisible": true
+  },
+  {
+    "tag": "BUTTON",
+    "id": "",
+    "text": "G\nRegistrarse con Google",
+    "type": "button",
+    "outline": "rgb(8, 125, 105) solid 3px",
+    "boxShadow": "none",
+    "visible": true,
+    "focusVisible": true
+  },
+  {
+    "tag": "INPUT",
+    "id": "nombres",
+    "text": "",
+    "type": "text",
+    "outline": "rgb(38, 63, 59) none 0px",
+    "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "visible": true,
+    "focusVisible": true
+  },
+  {
+    "tag": "INPUT",
+    "id": "apellidos",
+    "text": "",
+    "type": "text",
+    "outline": "rgb(38, 63, 59) none 0px",
+    "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "visible": true,
+    "focusVisible": true
+  },
+  {
+    "tag": "INPUT",
+    "id": "username",
+    "text": "",
+    "type": "text",
+    "outline": "rgb(38, 63, 59) none 0px",
+    "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "visible": true,
+    "focusVisible": true
+  },
+  {
+    "tag": "INPUT",
+    "id": "email",
+    "text": "",
+    "type": "email",
+    "outline": "rgb(38, 63, 59) none 0px",
+    "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "visible": true,
+    "focusVisible": true
+  },
+  {
+    "tag": "INPUT",
+    "id": "password",
+    "text": "",
+    "type": "password",
+    "outline": "rgb(38, 63, 59) none 0px",
+    "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "visible": true,
+    "focusVisible": true
+  },
+  {
+    "tag": "BUTTON",
+    "id": "",
+    "text": "Mostrar contraseña",
+    "type": "button",
+    "outline": "rgb(8, 125, 105) solid 3px",
+    "boxShadow": "none",
+    "visible": true,
+    "focusVisible": true
+  },
+  {
+    "tag": "INPUT",
+    "id": "confirmPassword",
+    "text": "",
+    "type": "password",
+    "outline": "rgb(38, 63, 59) none 0px",
+    "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "visible": true,
+    "focusVisible": true
+  },
+  {
+    "tag": "BUTTON",
+    "id": "",
+    "text": "Mostrar contraseña",
+    "type": "button",
+    "outline": "rgb(8, 125, 105) solid 3px",
+    "boxShadow": "none",
+    "visible": true,
+    "focusVisible": true
+  },
+  {
+    "tag": "BUTTON",
+    "id": "",
+    "text": "👩🏻",
+    "type": "button",
+    "outline": "rgb(8, 125, 105) solid 3px",
+    "boxShadow": "none",
+    "visible": true,
+    "focusVisible": true
+  },
+  {
+    "tag": "BUTTON",
+    "id": "",
+    "text": "👨🏽",
+    "type": "button",
+    "outline": "rgb(8, 125, 105) solid 3px",
+    "boxShadow": "none",
+    "visible": true,
+    "focusVisible": true
+  },
+  {
+    "tag": "BUTTON",
+    "id": "",
+    "text": "👩🏽",
+    "type": "button",
+    "outline": "rgb(8, 125, 105) solid 3px",
+    "boxShadow": "none",
+    "visible": true,
+    "focusVisible": true
+  },
+  {
+    "tag": "BUTTON",
+    "id": "",
+    "text": "👨🏻",
+    "type": "button",
+    "outline": "rgb(8, 125, 105) solid 3px",
+    "boxShadow": "none",
+    "visible": true,
+    "focusVisible": true
+  },
+  {
+    "tag": "INPUT",
+    "id": "terms",
+    "text": "",
+    "type": "checkbox",
+    "outline": "rgb(16, 16, 16) auto 1px",
+    "boxShadow": "none",
+    "visible": true,
+    "focusVisible": true
+  },
+  {
+    "tag": "A",
+    "id": "",
+    "text": "términos y condiciones",
+    "type": "",
+    "outline": "rgb(16, 16, 16) auto 1px",
+    "boxShadow": "none",
+    "visible": true,
+    "focusVisible": true
+  },
+  {
+    "tag": "BUTTON",
+    "id": "",
+    "text": "Crear cuenta",
+    "type": "submit",
+    "outline": "rgb(8, 125, 105) solid 3px",
+    "boxShadow": "rgba(39, 185, 141, 0.17) 0px 4px 12px 0px",
+    "visible": true,
+    "focusVisible": true
+  },
+  {
+    "tag": "BUTTON",
+    "id": "",
+    "text": "Inicia sesión",
+    "type": "button",
+    "outline": "rgb(16, 16, 16) auto 1px",
+    "boxShadow": "none",
+    "visible": true,
+    "focusVisible": true
+  },
+  {
+    "tag": "BODY",
+    "id": "",
+    "text": "AulaPro\nAPRENDER TAMBIÉN ES CONVERSAR\n“\nCuando explicas una\nidea a tu equipo,\nta",
+    "outline": "rgb(24, 61, 58) none 0px",
+    "boxShadow": "none",
+    "visible": true,
+    "focusVisible": false
+  },
+  {
+    "tag": "A",
+    "id": "",
+    "text": "AulaPro",
+    "type": "",
+    "outline": "rgb(16, 16, 16) auto 1px",
+    "boxShadow": "none",
+    "visible": true,
+    "focusVisible": true
+  }
+]

@@ -1,0 +1,49 @@
+{
+  "date": "2026-11-12T03:17:24.481Z",
+  "browser": "Chrome 143.0.7499.40 headless; perfil temporal aislado",
+  "credentials": "Archivo externo autorizado, permisos 600; valores omitidos",
+  "username": "qa_us01_mwcz8z9e",
+  "checks": [
+    {
+      "stage": "contraseña corta (solo validación UI)",
+      "state": {
+        "url": "https://frontend123-opal.vercel.app/register",
+        "errors": [],
+        "invalid": [
+          "password"
+        ]
+      }
+    },
+    {
+      "stage": "confirmación distinta (solo validación UI)",
+      "state": {
+        "url": "https://frontend123-opal.vercel.app/register",
+        "errors": [],
+        "invalid": [
+          "confirmPassword"
+        ]
+      }
+    },
+    {
+      "stage": "registro autorizado",
+      "state": {
+        "url": "https://frontend123-opal.vercel.app/register",
+        "errors": [],
+        "invalid": []
+      }
+    },
+    {
+      "stage": "operaciones autenticadas",
+      "status": "BLOQUEADO",
+      "reason": "No se confirmó cuenta nueva creada por esta ejecución; no se inicia sesión ni modifica cuenta preexistente."
+    }
+  ],
+  "createdThisRun": false,
+  "network": [],
+  "limitations": [
+    "El selector de errores de esta ejecución no incluyó los small ni .register-feedback; los arrays errors vacíos NO demuestran ausencia de mensajes.",
+    "Se observaron aria-invalid y peticiones a Firebase/API. La ausencia de cuenta se concluye por falta de integración del handler público, no por acceso administrativo a Firebase.",
+    "No se capturaron pantallas ni DOM con las credenciales introducidas. No se volvió a iniciar sesión en cuentas existentes."
+  ],
+  "sourceEvidence": "integracion-frontend.txt"
+}

@@ -1,0 +1,152 @@
+{
+  "url": "https://jelly-speed-93201488.figma.site/register",
+  "title": "Diagrama BPMN proceso compra",
+  "lang": "en",
+  "text": "Creado con Figma Make\n\nRemix\nAulaPro\nVolver al inicio\nCrea tu cuenta\n\nOrganiza tu próximo encuentro de estudio.\n\nNombre completo\nNombre de usuario\nCorreo electrónico\nContraseña\nConfirmar contraseña\nAcepto los términos y condiciones de AulaPro.\nCrear cuenta\no\nG\nRegistrarse con Google\n\n¿Ya tienes una cuenta? Iniciar sesión",
+  "headings": [
+    {
+      "tag": "H1",
+      "text": "Crea tu cuenta"
+    }
+  ],
+  "inputs": [
+    {
+      "type": "text",
+      "id": "",
+      "name": "",
+      "placeholder": "Emilio Castro",
+      "required": false,
+      "autocomplete": "",
+      "ariaLabel": null,
+      "ariaInvalid": "false",
+      "describedBy": null,
+      "labels": [
+        "Nombre completo"
+      ]
+    },
+    {
+      "type": "text",
+      "id": "",
+      "name": "",
+      "placeholder": "emilio.c",
+      "required": false,
+      "autocomplete": "",
+      "ariaLabel": null,
+      "ariaInvalid": "false",
+      "describedBy": null,
+      "labels": [
+        "Nombre de usuario"
+      ]
+    },
+    {
+      "type": "email",
+      "id": "",
+      "name": "",
+      "placeholder": "nombre@universidad.edu",
+      "required": false,
+      "autocomplete": "",
+      "ariaLabel": null,
+      "ariaInvalid": "false",
+      "describedBy": null,
+      "labels": [
+        "Correo electrónico"
+      ]
+    },
+    {
+      "type": "password",
+      "id": "",
+      "name": "",
+      "placeholder": "8+ caracteres",
+      "required": false,
+      "autocomplete": "",
+      "ariaLabel": null,
+      "ariaInvalid": "false",
+      "describedBy": null,
+      "labels": [
+        "Contraseña"
+      ]
+    },
+    {
+      "type": "password",
+      "id": "",
+      "name": "",
+      "placeholder": "Repite tu contraseña",
+      "required": false,
+      "autocomplete": "",
+      "ariaLabel": null,
+      "ariaInvalid": "false",
+      "describedBy": null,
+      "labels": [
+        "Confirmar contraseña"
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "",
+      "name": "",
+      "placeholder": "",
+      "required": false,
+      "autocomplete": "",
+      "ariaLabel": null,
+      "ariaInvalid": null,
+      "describedBy": null,
+      "labels": [
+        " Acepto los términos y condiciones de AulaPro."
+      ]
+    }
+  ],
+  "buttons": [
+    {
+      "text": "",
+      "type": "submit",
+      "ariaLabel": "Más opciones"
+    },
+    {
+      "text": "",
+      "type": "submit",
+      "ariaLabel": "Cerrar"
+    },
+    {
+      "text": "",
+      "type": "button",
+      "ariaLabel": "Mostrar contraseña"
+    },
+    {
+      "text": "",
+      "type": "button",
+      "ariaLabel": "Mostrar contraseña"
+    },
+    {
+      "text": "Crear cuenta",
+      "type": "submit",
+      "ariaLabel": null
+    },
+    {
+      "text": "G\nRegistrarse con Google",
+      "type": "button",
+      "ariaLabel": null
+    }
+  ],
+  "links": [
+    {
+      "text": "Remix",
+      "href": "https://www.figma.com/community/file/1699949368868677519?openSignupModal=true"
+    },
+    {
+      "text": "AulaPro",
+      "href": "/"
+    },
+    {
+      "text": "AulaPro",
+      "href": "/"
+    },
+    {
+      "text": "Volver al inicio",
+      "href": "/"
+    },
+    {
+      "text": "Iniciar sesión",
+      "href": "/login"
+    }
+  ]
+}

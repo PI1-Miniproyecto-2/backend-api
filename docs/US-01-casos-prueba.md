@@ -78,3 +78,34 @@ Guardar como evidencia únicamente estados HTTP, cuerpos redactados, fecha, ento
 Los casos locales L01–L18 tienen cobertura aprobada en la suite según las referencias anteriores; las celdas individuales se conservan para adjuntar resultados y evidencia de futuras ejecuciones. La salida TAP de esta sesión identifica las pruebas ejecutadas. El primer `npm test` no arrancó por `EPERM` al crear el socket IPC local de tsx; se reejecutó con permiso para sockets locales y aprobó. No se usaron credenciales reales.
 
 No se ejecutaron pruebas de producción, despliegues ni modificaciones del frontend. Los casos P01–P07 siguen pendientes. No se hicieron commit, push ni Pull Request.
+
+
+## Seguimiento QA posterior · US-01-09 a US-01-12
+
+El [informe QA](US-01-informe-QA.md) consolida la nueva ejecución local, las URL suministradas durante la revisión, comprobaciones públicas GET reales y los bloqueos de producción con cuentas, accesibilidad y fidelidad visual. Incluye matriz F01–F10, checklist WCAG, heurísticas, evidencias y Go/No-Go. Los resultados anteriores se conservan como histórico de US-01-07/08; los GET públicos posteriores no equivalen a ejecutar íntegramente P01–P07 ni a aprobar el registro completo.
+
+## Continuación externa autorizada · 11 de noviembre de 2026
+
+El responsable QA autorizó una sola cuenta ficticia y un archivo externo de credenciales con permisos 600. Se ejecutó un intento de registro sin guardar credenciales en evidencias. El frontend desplegado únicamente valida un formulario de demostración: no se observaron llamadas de alta Firebase ni de perfiles, corroborado mediante el handler público. No se confirmó una cuenta nueva ni se modificaron cuentas existentes. Véanse [informe actualizado](US-01-informe-QA.md), [intento sanitizado](evidencias/US-01/registro-autorizado.json) y [fuente pública inspeccionada](evidencias/US-01/integracion-frontend.txt).
+
+Esta tabla añade resultados de continuación; no reemplaza el histórico local ni convierte los P01–P07 completos en aprobados.
+
+| Caso relacionado | Verificación externa real | Estado / límite |
+| --- | --- | --- |
+| P01 / F01 | Intento de registro con datos válidos autorizados | FALLA: formulario sin integración Auth/API |
+| P02 / F02 y F14 | Clave corta y confirmación distinta | PASA validación UI por aria-invalid, sin solicitudes; política Firebase real BLOQUEADA |
+| P02 / F03 | Correo registrado | BLOQUEADO: no integración, no se actuó sobre cuenta existente |
+| P01 / F04 y F08 | Creación y persistencia de perfil | BLOQUEADO: no cuenta nueva autenticada ni token |
+| P04 / F05 y F09 | Username duplicado y propiedad entre dos cuentas | BLOQUEADO: no integración y autorización limitada a una cuenta |
+| P05 / F06 | GET sin token/ficticio y POST vacío sin token | PASA: HTTP 401 en los tres; sin probar revocación real |
+| F11 | Envío de formulario vacío | PASA errores visuales; relación y anuncio accesibles FALLA, ver D05 |
+| F12 | Username qa.nombre | FALLA consistencia: UI admite punto, API no |
+| F13 | Acceso directo a /register | FALLA: HTTP 404; desde raíz sí renderiza el formulario |
+| P03/P06/P07 | Recuperación real, reglas y motor/concurrencia | BLOQUEADO; sin fallos inducidos en producción |
+
+Accesibilidad y diseño: se ejecutaron Chrome headless/CDP, recorrido Tab, DOM/árbol AX, contraste de una muestra y capturas comparables con Figma publicado. Falló contraste de texto normal (3.475 y 3.009 frente a 4.5) y se observaron errores sin asociación programática. Comparación visual realizada, aprobación de diferencias pendiente. No se ejecutaron NVDA, Orca, Lighthouse o axe ni se certifica WCAG AA integral. Evidencias, procedimientos y resultados A/H/V están en el informe.
+
+
+### Revalidación con cuenta de prueba actualizada
+
+El responsable confirmó y actualizó la cuenta autorizada en el archivo externo; se utilizó sin mostrar credenciales. La [evidencia sanitizada de revalidación](evidencias/US-01/registro-revalidacion.json) confirma F02 y F14 PASA en UI con sus mensajes reales. F01 continúa FALLA: el formulario muestra «¡Formulario validado correctamente! El registro está listo para conectarse con el servidor.» y no invoca Auth/API. F04/F08 continúan BLOQUEADOS por falta de integración, no por falta de credenciales. [Despliegue revalidado](evidencias/US-01/revalidacion-publica.json): frontend, health y OpenAPI 200; mismo bundle público de demostración. No se confirmó creación de cuenta ni se actuó sobre cuentas existentes. Los resultados anteriores se conservan; véase E20–E22 del informe para evidencia nueva y verificaciones locales.

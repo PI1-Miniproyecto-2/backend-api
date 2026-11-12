@@ -1,0 +1,8 @@
+Fuente pública: https://frontend123-opal.vercel.app/assets/index-P9Dk7As_.js
+SHA256: b4694e9ba16fdbb1f58df8424b486b29a08e13447563c4a6e83c2d6facd7ca4c
+Inspección sin credenciales: handler onSubmit del registro
+onSubmit:async t=>{t.preventDefault(),v(``),te()&&(b(!0),e?(await new Promise(e=>setTimeout(e,700)),b(!1),v(`Correo o contraseña incorrectos`)):(b(!1),v(`¡Formulario validado correctamente! El registro está listo para conectarse con el servidor.`)))},
+
+Validación de username en frontend: /^[a-zA-Z0-9_.]{3,20}$/
+Validación de username en backend local y Swagger remoto: /^[A-Za-z0-9_]{3,20}$/
+Conclusión de inspección: el handler solo valida y muestra una respuesta de demostración; no crea cuenta ni invoca perfiles. Se corrobora con cero solicitudes observadas a Auth/API durante el intento autorizado. El mensaje del handler se inspeccionó en código público, no se capturó en pantalla con las credenciales.

@@ -1,0 +1,1978 @@
+{
+  "url": "https://jelly-speed-93201488.figma.site/register",
+  "title": "Diagrama BPMN proceso compra",
+  "lang": "en",
+  "viewport": {
+    "width": 1440,
+    "height": 900,
+    "scrollWidth": 1440
+  },
+  "form": "<form class=\"rounded-3xl border border-[#DCE7E6] bg-white p-6 shadow-[0_24px_70px_rgba(7,59,67,.08)] sm:p-8\" data-fg-dnxq249=\":0:/src/app/routes.tsx:193:77:17875:2464:e:form:eeexe\"><a class=\"mb-6 inline-flex items-center gap-2 text-sm font-semibold text-[#647779]\" data-fg-dnxq250=\":0:node_modules/react-router:193:208:18006:144:e:Link:et:::::B0gV\" href=\"/\" data-discover=\"true\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-arrow-left\" data-fg-dnxq251=\":0:node_modules/lucide-react:193:306:18104:22:e:ArrowLeft::::::EIC8\"><path d=\"m12 19-7-7 7-7\"></path><path d=\"M19 12H5\"></path></svg> Volver al inicio</a><h1 class=\"text-3xl font-extrabold tracking-[-.04em] text-[#073B43]\" data-fg-dnxq253=\":0:/src/app/routes.tsx:193:352:18150:141:e:h1:x\">Crea tu cuenta</h1><p class=\"mt-2 text-sm text-[#647779]\" data-fg-dnxq255=\":0:/src/app/routes.tsx:193:493:18291:156:e:p:x\">Organiza tu próximo encuentro de estudio.</p><div class=\"mt-6 grid gap-4 sm:grid-cols-2\" data-fg-dnxq259=\":0:/src/app/routes.tsx:193:666:18464:452:e:div:eeeee\"><label class=\"block text-sm font-semibold text-[#29484B]\" data-fg-dnxq11=\":0:/src/app/routes.tsx:86:5:3502:1253:e:label:etetx:1\"><span data-fg-dnxq12=\":0:/src/app/routes.tsx:87:7:3571:20:e:span:x\">Nombre completo</span><span class=\"relative mt-2 block\" data-fg-dnxq14=\":0:/src/app/routes.tsx:88:7:3598:1013:e:span:xtetx\"><input type=\"text\" placeholder=\"Emilio Castro\" aria-invalid=\"false\" class=\"min-h-12 w-full rounded-xl border bg-[#F8FBFB] px-4 text-sm font-normal text-[#172B2D] placeholder:text-[#92A5A5] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#18B6A4]/25   border-[#DCE7E6] focus:border-[#18B6A4]\" data-fg-dnxq18=\":0:/src/app/routes.tsx:90:9:3753:552:e:input\" value=\"\"></span></label><label class=\"block text-sm font-semibold text-[#29484B]\" data-fg-dnxq11=\":0:/src/app/routes.tsx:86:5:3502:1253:e:label:etetx:1\"><span data-fg-dnxq12=\":0:/src/app/routes.tsx:87:7:3571:20:e:span:x\">Nombre de usuario</span><span class=\"relative mt-2 block\" data-fg-dnxq14=\":0:/src/app/routes.tsx:88:7:3598:1013:e:span:xtetx\"><input type=\"text\" placeholder=\"emilio.c\" aria-invalid=\"false\" class=\"min-h-12 w-full rounded-xl border bg-[#F8FBFB] px-4 text-sm font-normal text-[#172B2D] placeholder:text-[#92A5A5] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#18B6A4]/25   border-[#DCE7E6] focus:border-[#18B6A4]\" data-fg-dnxq18=\":0:/src/app/routes.tsx:90:9:3753:552:e:input\" value=\"\"></span></label><div class=\"sm:col-span-2\" data-fg-dnxq262=\":0:/src/app/routes.tsx:193:831:18629:122:e:div:e\"><label class=\"block text-sm font-semibold text-[#29484B]\" data-fg-dnxq11=\":0:/src/app/routes.tsx:86:5:3502:1253:e:label:etetx:1\"><span data-fg-dnxq12=\":0:/src/app/routes.tsx:87:7:3571:20:e:span:x\">Correo electrónico</span><span class=\"relative mt-2 block\" data-fg-dnxq14=\":0:/src/app/routes.tsx:88:7:3598:1013:e:span:xtetx\"><input type=\"email\" placeholder=\"nombre@universidad.edu\" aria-invalid=\"false\" class=\"min-h-12 w-full rounded-xl border bg-[#F8FBFB] px-4 text-sm font-normal text-[#172B2D] placeholder:text-[#92A5A5] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#18B6A4]/25   border-[#DCE7E6] focus:border-[#18B6A4]\" data-fg-dnxq18=\":0:/src/app/routes.tsx:90:9:3753:552:e:input\" value=\"\"></span></label></div><label class=\"block text-sm font-semibold text-[#29484B]\" data-fg-dnxq11=\":0:/src/app/routes.tsx:86:5:3502:1253:e:label:etetx:1\"><span data-fg-dnxq12=\":0:/src/app/routes.tsx:87:7:3571:20:e:span:x\">Contraseña</span><span class=\"relative mt-2 block\" data-fg-dnxq14=\":0:/src/app/routes.tsx:88:7:3598:1013:e:span:xtetx\"><input type=\"password\" placeholder=\"8+ caracteres\" aria-invalid=\"false\" class=\"min-h-12 w-full rounded-xl border bg-[#F8FBFB] px-4 text-sm font-normal text-[#172B2D] placeholder:text-[#92A5A5] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#18B6A4]/25  pr-12 border-[#DCE7E6] focus:border-[#18B6A4]\" data-fg-dnxq18=\":0:/src/app/routes.tsx:90:9:3753:552:e:input\" value=\"\"><button type=\"button\" aria-label=\"Mostrar contraseña\" class=\"absolute right-3.5 top-1/2 -translate-y-1/2 text-[#647779] hover:text-[#073B43]\" data-fg-dnxq20=\":0:/src/app/routes.tsx:98:24:4329:267:e:button:x\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-eye\" data-fg-dnxq23=\":0:node_modules/lucide-react:98:264:4569:17:e:Eye::::::EJvT\"><path d=\"M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0\"></path><circle cx=\"12\" cy=\"12\" r=\"3\"></circle></svg></button></span></label><label class=\"block text-sm font-semibold text-[#29484B]\" data-fg-dnxq11=\":0:/src/app/routes.tsx:86:5:3502:1253:e:label:etetx:1\"><span data-fg-dnxq12=\":0:/src/app/routes.tsx:87:7:3571:20:e:span:x\">Confirmar contraseña</span><span class=\"relative mt-2 block\" data-fg-dnxq14=\":0:/src/app/routes.tsx:88:7:3598:1013:e:span:xtetx\"><input type=\"password\" placeholder=\"Repite tu contraseña\" aria-invalid=\"false\" class=\"min-h-12 w-full rounded-xl border bg-[#F8FBFB] px-4 text-sm font-normal text-[#172B2D] placeholder:text-[#92A5A5] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#18B6A4]/25  pr-12 border-[#DCE7E6] focus:border-[#18B6A4]\" data-fg-dnxq18=\":0:/src/app/routes.tsx:90:9:3753:552:e:input\" value=\"\"><button type=\"button\" aria-label=\"Mostrar contraseña\" class=\"absolute right-3.5 top-1/2 -translate-y-1/2 text-[#647779] hover:text-[#073B43]\" data-fg-dnxq20=\":0:/src/app/routes.tsx:98:24:4329:267:e:button:x\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-eye\" data-fg-dnxq23=\":0:node_modules/lucide-react:98:264:4569:17:e:Eye::::::EJvT\"><path d=\"M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0\"></path><circle cx=\"12\" cy=\"12\" r=\"3\"></circle></svg></button></span></label></div><label class=\"my-5 flex items-start gap-3 text-sm font-normal text-[#647779]\" data-fg-dnxq266=\":0:/src/app/routes.tsx:193:1118:18916:260:e:label:et\"><input type=\"checkbox\" class=\"mt-0.5 size-4 accent-[#18B6A4]\" data-fg-dnxq267=\":0:/src/app/routes.tsx:193:1200:18998:124:e:input\"> Acepto los términos y condiciones de AulaPro.</label><button type=\"submit\" class=\"inline-flex min-h-11 items-center justify-center gap-2 rounded-xl px-4 text-sm font-bold transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#18B6A4] disabled:cursor-not-allowed disabled:opacity-50 bg-[#18B6A4] text-[#042F34] hover:bg-[#70DCCB] shadow-[0_8px_20px_rgba(24,182,164,.18)] w-full\" data-fg-dnxq9=\":0:/src/app/routes.tsx:79:10:2790:383:e:button:c:1\">Crear cuenta <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-arrow-right\" data-fg-dnxq274=\":0:node_modules/lucide-react:193:1558:19356:23:e:ArrowRight::::::s5N\"><path d=\"M5 12h14\"></path><path d=\"m12 5 7 7-7 7\"></path></svg></button><div class=\"my-4 flex items-center gap-3 text-xs text-[#92A5A5]\" data-fg-dnxq275=\":0:/src/app/routes.tsx:193:1590:19388:171:e:div:eee\"><span class=\"h-px flex-1 bg-border\" data-fg-dnxq276=\":0:/src/app/routes.tsx:193:1659:19457:41:e:span\"></span><span data-fg-dnxq277=\":0:/src/app/routes.tsx:193:1700:19498:14:e:span:t\">o</span><span class=\"h-px flex-1 bg-border\" data-fg-dnxq279=\":0:/src/app/routes.tsx:193:1714:19512:41:e:span\"></span></div><button type=\"button\" class=\"inline-flex min-h-11 items-center justify-center gap-2 rounded-xl px-4 text-sm font-bold transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#18B6A4] disabled:cursor-not-allowed disabled:opacity-50 border border-[#BBD0CE] bg-white text-[#073B43] hover:border-[#18B6A4] hover:bg-[#F2FBF9] w-full\" data-fg-dnxq9=\":0:/src/app/routes.tsx:79:10:2790:383:e:button:c:1\"><span class=\"grid size-5 place-items-center rounded-full bg-white font-bold text-[#4285F4]\" data-fg-dnxq210=\":0:/src/app/routes.tsx:182:156:14997:104:e:span:t\">G</span>Registrarse con Google</button><p class=\"mt-5 text-center text-sm text-[#647779]\" data-fg-dnxq292=\":0:/src/app/routes.tsx:193:2376:20174:158:e:p:te\">¿Ya tienes una cuenta? <a class=\"font-bold text-[#0B756C]\" data-fg-dnxq294=\":0:node_modules/react-router:193:2454:20252:76:e:Link:t:::::B0gV\" href=\"/login\" data-discover=\"true\">Iniciar sesión</a></p></form>",
+  "controls": [
+    {
+      "tag": "A",
+      "id": "",
+      "text": "Remix",
+      "aria": null,
+      "role": null,
+      "pressed": null,
+      "rect": {
+        "x": 1260.546875,
+        "y": 848,
+        "width": 49.453125,
+        "height": 24
+      },
+      "css": {
+        "color": "rgb(255, 255, 255)",
+        "background": "rgb(77, 73, 252)",
+        "fontSize": "11px",
+        "fontWeight": "450",
+        "fontFamily": "Inter, sans-serif",
+        "border": "1px solid rgba(0, 0, 0, 0.1)",
+        "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+        "boxShadow": "none"
+      },
+      "backgrounds": [
+        {
+          "color": "rgb(23, 43, 45)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "0px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(23, 43, 45)",
+          "background": "rgb(255, 255, 255)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "0px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "rgba(0, 0, 0, 0.3) 0px 0px 0.5px 0px, rgba(0, 0, 0, 0.15) 0px 1px 3px 0px"
+        },
+        {
+          "color": "rgb(23, 43, 45)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "0px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "none"
+        }
+      ]
+    },
+    {
+      "tag": "BUTTON",
+      "id": "",
+      "text": "",
+      "aria": "Más opciones",
+      "role": null,
+      "pressed": null,
+      "rect": {
+        "x": 1319,
+        "y": 840,
+        "width": 40,
+        "height": 40
+      },
+      "css": {
+        "color": "rgba(0, 0, 0, 0.5)",
+        "background": "rgba(0, 0, 0, 0)",
+        "fontSize": "16px",
+        "fontWeight": "600",
+        "fontFamily": "Manrope, sans-serif",
+        "border": "0px none rgba(0, 0, 0, 0.5)",
+        "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+        "boxShadow": "none"
+      },
+      "backgrounds": [
+        {
+          "color": "rgb(23, 43, 45)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(23, 43, 45)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "0px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(23, 43, 45)",
+          "background": "rgb(255, 255, 255)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "0px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "rgba(0, 0, 0, 0.3) 0px 0px 0.5px 0px, rgba(0, 0, 0, 0.15) 0px 1px 3px 0px"
+        }
+      ]
+    },
+    {
+      "tag": "BUTTON",
+      "id": "",
+      "text": "",
+      "aria": "Cerrar",
+      "role": null,
+      "pressed": null,
+      "rect": {
+        "x": 1360,
+        "y": 840,
+        "width": 40,
+        "height": 40
+      },
+      "css": {
+        "color": "rgba(0, 0, 0, 0.5)",
+        "background": "rgba(0, 0, 0, 0)",
+        "fontSize": "16px",
+        "fontWeight": "600",
+        "fontFamily": "Manrope, sans-serif",
+        "border": "0px none rgba(0, 0, 0, 0.5)",
+        "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+        "boxShadow": "none"
+      },
+      "backgrounds": [
+        {
+          "color": "rgb(23, 43, 45)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(23, 43, 45)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "0px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(23, 43, 45)",
+          "background": "rgb(255, 255, 255)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "0px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "rgba(0, 0, 0, 0.3) 0px 0px 0.5px 0px, rgba(0, 0, 0, 0.15) 0px 1px 3px 0px"
+        }
+      ]
+    },
+    {
+      "tag": "A",
+      "id": "",
+      "text": "AulaPro",
+      "aria": null,
+      "role": null,
+      "pressed": null,
+      "rect": {
+        "x": 48,
+        "y": 48,
+        "width": 480,
+        "height": 40
+      },
+      "css": {
+        "color": "rgb(255, 255, 255)",
+        "background": "rgba(0, 0, 0, 0)",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "fontFamily": "Manrope, sans-serif",
+        "border": "0px solid rgb(220, 231, 230)",
+        "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+        "boxShadow": "none"
+      },
+      "backgrounds": [
+        {
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(7, 59, 67)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "0px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(23, 43, 45)",
+          "background": "rgb(255, 255, 255)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "0px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(23, 43, 45)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "0px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "none"
+        }
+      ]
+    },
+    {
+      "tag": "A",
+      "id": "",
+      "text": "AulaPro",
+      "aria": null,
+      "role": null,
+      "pressed": null,
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0
+      },
+      "css": {
+        "color": "rgb(23, 43, 45)",
+        "background": "rgba(0, 0, 0, 0)",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "fontFamily": "Manrope, sans-serif",
+        "border": "0px solid rgb(220, 231, 230)",
+        "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+        "boxShadow": "none"
+      },
+      "backgrounds": [
+        {
+          "color": "rgb(23, 43, 45)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "0px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(23, 43, 45)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "0px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(23, 43, 45)",
+          "background": "rgb(245, 248, 248)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "0px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "none"
+        }
+      ]
+    },
+    {
+      "tag": "A",
+      "id": "",
+      "text": "Volver al inicio",
+      "aria": null,
+      "role": null,
+      "pressed": null,
+      "rect": {
+        "x": 817,
+        "y": 136,
+        "width": 118.5,
+        "height": 20
+      },
+      "css": {
+        "color": "rgb(100, 119, 121)",
+        "background": "rgba(0, 0, 0, 0)",
+        "fontSize": "14px",
+        "fontWeight": "600",
+        "fontFamily": "Manrope, sans-serif",
+        "border": "0px solid rgb(220, 231, 230)",
+        "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+        "boxShadow": "none"
+      },
+      "backgrounds": [
+        {
+          "color": "rgb(23, 43, 45)",
+          "background": "rgb(255, 255, 255)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "1px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(7, 59, 67, 0.08) 0px 24px 70px 0px"
+        },
+        {
+          "color": "rgb(23, 43, 45)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "0px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(23, 43, 45)",
+          "background": "rgb(245, 248, 248)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "0px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "none"
+        }
+      ]
+    },
+    {
+      "tag": "LABEL",
+      "id": "",
+      "text": "Nombre completo",
+      "aria": null,
+      "role": null,
+      "pressed": null,
+      "rect": {
+        "x": 817,
+        "y": 268,
+        "width": 183,
+        "height": 76
+      },
+      "css": {
+        "color": "rgb(41, 72, 75)",
+        "background": "rgba(0, 0, 0, 0)",
+        "fontSize": "14px",
+        "fontWeight": "600",
+        "fontFamily": "Manrope, sans-serif",
+        "border": "0px solid rgb(220, 231, 230)",
+        "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+        "boxShadow": "none"
+      },
+      "backgrounds": [
+        {
+          "color": "rgb(23, 43, 45)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "0px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(23, 43, 45)",
+          "background": "rgb(255, 255, 255)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "1px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(7, 59, 67, 0.08) 0px 24px 70px 0px"
+        },
+        {
+          "color": "rgb(23, 43, 45)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "0px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "none"
+        }
+      ]
+    },
+    {
+      "tag": "INPUT",
+      "id": "",
+      "text": "",
+      "aria": null,
+      "role": null,
+      "pressed": null,
+      "rect": {
+        "x": 817,
+        "y": 296,
+        "width": 183,
+        "height": 48
+      },
+      "css": {
+        "color": "rgb(23, 43, 45)",
+        "background": "rgb(248, 251, 251)",
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "fontFamily": "Manrope, sans-serif",
+        "border": "1px solid rgb(220, 231, 230)",
+        "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+        "boxShadow": "none"
+      },
+      "backgrounds": [
+        {
+          "color": "rgb(41, 72, 75)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "600",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "0px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(41, 72, 75)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "600",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "0px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(23, 43, 45)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "0px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "none"
+        }
+      ]
+    },
+    {
+      "tag": "LABEL",
+      "id": "",
+      "text": "Nombre de usuario",
+      "aria": null,
+      "role": null,
+      "pressed": null,
+      "rect": {
+        "x": 1016,
+        "y": 268,
+        "width": 183,
+        "height": 76
+      },
+      "css": {
+        "color": "rgb(41, 72, 75)",
+        "background": "rgba(0, 0, 0, 0)",
+        "fontSize": "14px",
+        "fontWeight": "600",
+        "fontFamily": "Manrope, sans-serif",
+        "border": "0px solid rgb(220, 231, 230)",
+        "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+        "boxShadow": "none"
+      },
+      "backgrounds": [
+        {
+          "color": "rgb(23, 43, 45)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "0px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(23, 43, 45)",
+          "background": "rgb(255, 255, 255)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "1px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(7, 59, 67, 0.08) 0px 24px 70px 0px"
+        },
+        {
+          "color": "rgb(23, 43, 45)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "0px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "none"
+        }
+      ]
+    },
+    {
+      "tag": "INPUT",
+      "id": "",
+      "text": "",
+      "aria": null,
+      "role": null,
+      "pressed": null,
+      "rect": {
+        "x": 1016,
+        "y": 296,
+        "width": 183,
+        "height": 48
+      },
+      "css": {
+        "color": "rgb(23, 43, 45)",
+        "background": "rgb(248, 251, 251)",
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "fontFamily": "Manrope, sans-serif",
+        "border": "1px solid rgb(220, 231, 230)",
+        "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+        "boxShadow": "none"
+      },
+      "backgrounds": [
+        {
+          "color": "rgb(41, 72, 75)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "600",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "0px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(41, 72, 75)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "600",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "0px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(23, 43, 45)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "0px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "none"
+        }
+      ]
+    },
+    {
+      "tag": "LABEL",
+      "id": "",
+      "text": "Correo electrónico",
+      "aria": null,
+      "role": null,
+      "pressed": null,
+      "rect": {
+        "x": 817,
+        "y": 360,
+        "width": 382,
+        "height": 76
+      },
+      "css": {
+        "color": "rgb(41, 72, 75)",
+        "background": "rgba(0, 0, 0, 0)",
+        "fontSize": "14px",
+        "fontWeight": "600",
+        "fontFamily": "Manrope, sans-serif",
+        "border": "0px solid rgb(220, 231, 230)",
+        "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+        "boxShadow": "none"
+      },
+      "backgrounds": [
+        {
+          "color": "rgb(23, 43, 45)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "0px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(23, 43, 45)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "0px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(23, 43, 45)",
+          "background": "rgb(255, 255, 255)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "1px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(7, 59, 67, 0.08) 0px 24px 70px 0px"
+        }
+      ]
+    },
+    {
+      "tag": "INPUT",
+      "id": "",
+      "text": "",
+      "aria": null,
+      "role": null,
+      "pressed": null,
+      "rect": {
+        "x": 817,
+        "y": 388,
+        "width": 382,
+        "height": 48
+      },
+      "css": {
+        "color": "rgb(23, 43, 45)",
+        "background": "rgb(248, 251, 251)",
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "fontFamily": "Manrope, sans-serif",
+        "border": "1px solid rgb(220, 231, 230)",
+        "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+        "boxShadow": "none"
+      },
+      "backgrounds": [
+        {
+          "color": "rgb(41, 72, 75)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "600",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "0px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(41, 72, 75)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "600",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "0px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(23, 43, 45)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "0px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "none"
+        }
+      ]
+    },
+    {
+      "tag": "LABEL",
+      "id": "",
+      "text": "Contraseña",
+      "aria": null,
+      "role": null,
+      "pressed": null,
+      "rect": {
+        "x": 817,
+        "y": 452,
+        "width": 183,
+        "height": 76
+      },
+      "css": {
+        "color": "rgb(41, 72, 75)",
+        "background": "rgba(0, 0, 0, 0)",
+        "fontSize": "14px",
+        "fontWeight": "600",
+        "fontFamily": "Manrope, sans-serif",
+        "border": "0px solid rgb(220, 231, 230)",
+        "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+        "boxShadow": "none"
+      },
+      "backgrounds": [
+        {
+          "color": "rgb(23, 43, 45)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "0px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(23, 43, 45)",
+          "background": "rgb(255, 255, 255)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "1px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(7, 59, 67, 0.08) 0px 24px 70px 0px"
+        },
+        {
+          "color": "rgb(23, 43, 45)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "0px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "none"
+        }
+      ]
+    },
+    {
+      "tag": "INPUT",
+      "id": "",
+      "text": "",
+      "aria": null,
+      "role": null,
+      "pressed": null,
+      "rect": {
+        "x": 817,
+        "y": 480,
+        "width": 183,
+        "height": 48
+      },
+      "css": {
+        "color": "rgb(23, 43, 45)",
+        "background": "rgb(248, 251, 251)",
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "fontFamily": "Manrope, sans-serif",
+        "border": "1px solid rgb(220, 231, 230)",
+        "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+        "boxShadow": "none"
+      },
+      "backgrounds": [
+        {
+          "color": "rgb(41, 72, 75)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "600",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "0px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(41, 72, 75)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "600",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "0px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(23, 43, 45)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "0px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "none"
+        }
+      ]
+    },
+    {
+      "tag": "BUTTON",
+      "id": "",
+      "text": "",
+      "aria": "Mostrar contraseña",
+      "role": null,
+      "pressed": null,
+      "rect": {
+        "x": 968,
+        "y": 495,
+        "width": 18,
+        "height": 18
+      },
+      "css": {
+        "color": "rgb(100, 119, 121)",
+        "background": "rgba(0, 0, 0, 0)",
+        "fontSize": "16px",
+        "fontWeight": "600",
+        "fontFamily": "Manrope, sans-serif",
+        "border": "0px solid rgb(220, 231, 230)",
+        "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+        "boxShadow": "none"
+      },
+      "backgrounds": [
+        {
+          "color": "rgb(41, 72, 75)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "600",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "0px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(41, 72, 75)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "600",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "0px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(23, 43, 45)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "0px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "none"
+        }
+      ]
+    },
+    {
+      "tag": "LABEL",
+      "id": "",
+      "text": "Confirmar contraseña",
+      "aria": null,
+      "role": null,
+      "pressed": null,
+      "rect": {
+        "x": 1016,
+        "y": 452,
+        "width": 183,
+        "height": 76
+      },
+      "css": {
+        "color": "rgb(41, 72, 75)",
+        "background": "rgba(0, 0, 0, 0)",
+        "fontSize": "14px",
+        "fontWeight": "600",
+        "fontFamily": "Manrope, sans-serif",
+        "border": "0px solid rgb(220, 231, 230)",
+        "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+        "boxShadow": "none"
+      },
+      "backgrounds": [
+        {
+          "color": "rgb(23, 43, 45)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "0px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(23, 43, 45)",
+          "background": "rgb(255, 255, 255)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "1px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(7, 59, 67, 0.08) 0px 24px 70px 0px"
+        },
+        {
+          "color": "rgb(23, 43, 45)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "0px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "none"
+        }
+      ]
+    },
+    {
+      "tag": "INPUT",
+      "id": "",
+      "text": "",
+      "aria": null,
+      "role": null,
+      "pressed": null,
+      "rect": {
+        "x": 1016,
+        "y": 480,
+        "width": 183,
+        "height": 48
+      },
+      "css": {
+        "color": "rgb(23, 43, 45)",
+        "background": "rgb(248, 251, 251)",
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "fontFamily": "Manrope, sans-serif",
+        "border": "1px solid rgb(220, 231, 230)",
+        "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+        "boxShadow": "none"
+      },
+      "backgrounds": [
+        {
+          "color": "rgb(41, 72, 75)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "600",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "0px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(41, 72, 75)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "600",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "0px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(23, 43, 45)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "0px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "none"
+        }
+      ]
+    },
+    {
+      "tag": "BUTTON",
+      "id": "",
+      "text": "",
+      "aria": "Mostrar contraseña",
+      "role": null,
+      "pressed": null,
+      "rect": {
+        "x": 1167,
+        "y": 495,
+        "width": 18,
+        "height": 18
+      },
+      "css": {
+        "color": "rgb(100, 119, 121)",
+        "background": "rgba(0, 0, 0, 0)",
+        "fontSize": "16px",
+        "fontWeight": "600",
+        "fontFamily": "Manrope, sans-serif",
+        "border": "0px solid rgb(220, 231, 230)",
+        "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+        "boxShadow": "none"
+      },
+      "backgrounds": [
+        {
+          "color": "rgb(41, 72, 75)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "600",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "0px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(41, 72, 75)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "600",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "0px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(23, 43, 45)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "0px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "none"
+        }
+      ]
+    },
+    {
+      "tag": "LABEL",
+      "id": "",
+      "text": "Acepto los términos y condiciones de AulaPro.",
+      "aria": null,
+      "role": null,
+      "pressed": null,
+      "rect": {
+        "x": 817,
+        "y": 548,
+        "width": 382,
+        "height": 20
+      },
+      "css": {
+        "color": "rgb(100, 119, 121)",
+        "background": "rgba(0, 0, 0, 0)",
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "fontFamily": "Manrope, sans-serif",
+        "border": "0px solid rgb(220, 231, 230)",
+        "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+        "boxShadow": "none"
+      },
+      "backgrounds": [
+        {
+          "color": "rgb(23, 43, 45)",
+          "background": "rgb(255, 255, 255)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "1px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(7, 59, 67, 0.08) 0px 24px 70px 0px"
+        },
+        {
+          "color": "rgb(23, 43, 45)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "0px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(23, 43, 45)",
+          "background": "rgb(245, 248, 248)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "0px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "none"
+        }
+      ]
+    },
+    {
+      "tag": "INPUT",
+      "id": "",
+      "text": "",
+      "aria": null,
+      "role": null,
+      "pressed": null,
+      "rect": {
+        "x": 817,
+        "y": 550,
+        "width": 16,
+        "height": 16
+      },
+      "css": {
+        "color": "rgb(100, 119, 121)",
+        "background": "rgba(0, 0, 0, 0)",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "fontFamily": "Manrope, sans-serif",
+        "border": "0px none rgb(100, 119, 121)",
+        "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+        "boxShadow": "none"
+      },
+      "backgrounds": [
+        {
+          "color": "rgb(100, 119, 121)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "0px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(23, 43, 45)",
+          "background": "rgb(255, 255, 255)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "1px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(7, 59, 67, 0.08) 0px 24px 70px 0px"
+        },
+        {
+          "color": "rgb(23, 43, 45)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "0px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "none"
+        }
+      ]
+    },
+    {
+      "tag": "BUTTON",
+      "id": "",
+      "text": "Crear cuenta",
+      "aria": null,
+      "role": null,
+      "pressed": null,
+      "rect": {
+        "x": 817,
+        "y": 588,
+        "width": 382,
+        "height": 44
+      },
+      "css": {
+        "color": "rgb(4, 47, 52)",
+        "background": "rgb(24, 182, 164)",
+        "fontSize": "14px",
+        "fontWeight": "700",
+        "fontFamily": "Manrope, sans-serif",
+        "border": "0px solid rgb(220, 231, 230)",
+        "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+        "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(24, 182, 164, 0.18) 0px 8px 20px 0px"
+      },
+      "backgrounds": [
+        {
+          "color": "rgb(23, 43, 45)",
+          "background": "rgb(255, 255, 255)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "1px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(7, 59, 67, 0.08) 0px 24px 70px 0px"
+        },
+        {
+          "color": "rgb(23, 43, 45)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "0px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(23, 43, 45)",
+          "background": "rgb(245, 248, 248)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "0px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "none"
+        }
+      ]
+    },
+    {
+      "tag": "BUTTON",
+      "id": "",
+      "text": "G\nRegistrarse con Google",
+      "aria": null,
+      "role": null,
+      "pressed": null,
+      "rect": {
+        "x": 817,
+        "y": 680,
+        "width": 382,
+        "height": 44
+      },
+      "css": {
+        "color": "rgb(7, 59, 67)",
+        "background": "rgb(255, 255, 255)",
+        "fontSize": "14px",
+        "fontWeight": "700",
+        "fontFamily": "Manrope, sans-serif",
+        "border": "1px solid rgb(187, 208, 206)",
+        "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+        "boxShadow": "none"
+      },
+      "backgrounds": [
+        {
+          "color": "rgb(23, 43, 45)",
+          "background": "rgb(255, 255, 255)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "1px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(7, 59, 67, 0.08) 0px 24px 70px 0px"
+        },
+        {
+          "color": "rgb(23, 43, 45)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "0px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(23, 43, 45)",
+          "background": "rgb(245, 248, 248)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "0px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "none"
+        }
+      ]
+    },
+    {
+      "tag": "A",
+      "id": "",
+      "text": "Iniciar sesión",
+      "aria": null,
+      "role": null,
+      "pressed": null,
+      "rect": {
+        "x": 1038.671875,
+        "y": 744,
+        "width": 89.765625,
+        "height": 19
+      },
+      "css": {
+        "color": "rgb(11, 117, 108)",
+        "background": "rgba(0, 0, 0, 0)",
+        "fontSize": "14px",
+        "fontWeight": "700",
+        "fontFamily": "Manrope, sans-serif",
+        "border": "0px solid rgb(220, 231, 230)",
+        "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+        "boxShadow": "none"
+      },
+      "backgrounds": [
+        {
+          "color": "rgb(100, 119, 121)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "0px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(23, 43, 45)",
+          "background": "rgb(255, 255, 255)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "1px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(7, 59, 67, 0.08) 0px 24px 70px 0px"
+        },
+        {
+          "color": "rgb(23, 43, 45)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "0px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "none"
+        }
+      ]
+    }
+  ],
+  "text": [
+    {
+      "text": "Creado con Figma Make",
+      "css": {
+        "color": "rgba(0, 0, 0, 0.9)",
+        "background": "rgba(0, 0, 0, 0)",
+        "fontSize": "11px",
+        "fontWeight": "550",
+        "fontFamily": "Inter, sans-serif",
+        "border": "0px solid rgb(220, 231, 230)",
+        "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+        "boxShadow": "none"
+      },
+      "rect": {
+        "x": 1120.859375,
+        "y": 852,
+        "width": 127.6875,
+        "height": 16
+      },
+      "backgrounds": [
+        {
+          "color": "rgba(0, 0, 0, 0.9)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "11px",
+          "fontWeight": "550",
+          "fontFamily": "Inter, sans-serif",
+          "border": "0px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(23, 43, 45)",
+          "background": "rgb(255, 255, 255)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "0px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "rgba(0, 0, 0, 0.3) 0px 0px 0.5px 0px, rgba(0, 0, 0, 0.15) 0px 1px 3px 0px"
+        },
+        {
+          "color": "rgb(23, 43, 45)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "0px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "none"
+        }
+      ]
+    },
+    {
+      "text": "APRENDER TAMBIÉN ES CONVERSAR",
+      "css": {
+        "color": "rgb(112, 220, 203)",
+        "background": "rgba(0, 0, 0, 0)",
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "fontFamily": "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, \"Liberation Mono\", \"Courier New\", monospace",
+        "border": "0px solid rgb(220, 231, 230)",
+        "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+        "boxShadow": "none"
+      },
+      "rect": {
+        "x": 48,
+        "y": 356.5,
+        "width": 448,
+        "height": 16
+      },
+      "backgrounds": [
+        {
+          "color": "rgb(255, 255, 255)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "0px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(7, 59, 67)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "0px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(23, 43, 45)",
+          "background": "rgb(255, 255, 255)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "0px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "none"
+        }
+      ]
+    },
+    {
+      "text": "Equipos de distintas carreras, un solo lugar",
+      "css": {
+        "color": "oklab(0.999994 0.0000455678 0.0000200868 / 0.55)",
+        "background": "rgba(0, 0, 0, 0)",
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "fontFamily": "Manrope, sans-serif",
+        "border": "0px solid rgb(220, 231, 230)",
+        "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+        "boxShadow": "none"
+      },
+      "rect": {
+        "x": 48,
+        "y": 547.5,
+        "width": 448,
+        "height": 20
+      },
+      "backgrounds": [
+        {
+          "color": "rgb(255, 255, 255)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "0px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(7, 59, 67)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "0px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(23, 43, 45)",
+          "background": "rgb(255, 255, 255)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "0px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "none"
+        }
+      ]
+    },
+    {
+      "text": "AulaPro · Entorno de demostración",
+      "css": {
+        "color": "oklab(0.999994 0.0000455678 0.0000200868 / 0.4)",
+        "background": "rgba(0, 0, 0, 0)",
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "fontFamily": "Manrope, sans-serif",
+        "border": "0px solid rgb(220, 231, 230)",
+        "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+        "boxShadow": "none"
+      },
+      "rect": {
+        "x": 48,
+        "y": 836,
+        "width": 480,
+        "height": 16
+      },
+      "backgrounds": [
+        {
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(7, 59, 67)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "0px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(23, 43, 45)",
+          "background": "rgb(255, 255, 255)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "0px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(23, 43, 45)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "0px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "none"
+        }
+      ]
+    },
+    {
+      "text": "Crea tu cuenta",
+      "css": {
+        "color": "rgb(7, 59, 67)",
+        "background": "rgba(0, 0, 0, 0)",
+        "fontSize": "30px",
+        "fontWeight": "800",
+        "fontFamily": "Manrope, sans-serif",
+        "border": "0px solid rgb(220, 231, 230)",
+        "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+        "boxShadow": "none"
+      },
+      "rect": {
+        "x": 817,
+        "y": 180,
+        "width": 382,
+        "height": 36
+      },
+      "backgrounds": [
+        {
+          "color": "rgb(23, 43, 45)",
+          "background": "rgb(255, 255, 255)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "1px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(7, 59, 67, 0.08) 0px 24px 70px 0px"
+        },
+        {
+          "color": "rgb(23, 43, 45)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "0px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(23, 43, 45)",
+          "background": "rgb(245, 248, 248)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "0px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "none"
+        }
+      ]
+    },
+    {
+      "text": "Organiza tu próximo encuentro de estudio.",
+      "css": {
+        "color": "rgb(100, 119, 121)",
+        "background": "rgba(0, 0, 0, 0)",
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "fontFamily": "Manrope, sans-serif",
+        "border": "0px solid rgb(220, 231, 230)",
+        "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+        "boxShadow": "none"
+      },
+      "rect": {
+        "x": 817,
+        "y": 224,
+        "width": 382,
+        "height": 20
+      },
+      "backgrounds": [
+        {
+          "color": "rgb(23, 43, 45)",
+          "background": "rgb(255, 255, 255)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "1px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(7, 59, 67, 0.08) 0px 24px 70px 0px"
+        },
+        {
+          "color": "rgb(23, 43, 45)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "0px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(23, 43, 45)",
+          "background": "rgb(245, 248, 248)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "0px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "none"
+        }
+      ]
+    },
+    {
+      "text": "Nombre completo",
+      "css": {
+        "color": "rgb(41, 72, 75)",
+        "background": "rgba(0, 0, 0, 0)",
+        "fontSize": "14px",
+        "fontWeight": "600",
+        "fontFamily": "Manrope, sans-serif",
+        "border": "0px solid rgb(220, 231, 230)",
+        "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+        "boxShadow": "none"
+      },
+      "rect": {
+        "x": 817,
+        "y": 268,
+        "width": 183,
+        "height": 76
+      },
+      "backgrounds": [
+        {
+          "color": "rgb(23, 43, 45)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "0px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(23, 43, 45)",
+          "background": "rgb(255, 255, 255)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "1px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(7, 59, 67, 0.08) 0px 24px 70px 0px"
+        },
+        {
+          "color": "rgb(23, 43, 45)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "0px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "none"
+        }
+      ]
+    },
+    {
+      "text": "Nombre de usuario",
+      "css": {
+        "color": "rgb(41, 72, 75)",
+        "background": "rgba(0, 0, 0, 0)",
+        "fontSize": "14px",
+        "fontWeight": "600",
+        "fontFamily": "Manrope, sans-serif",
+        "border": "0px solid rgb(220, 231, 230)",
+        "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+        "boxShadow": "none"
+      },
+      "rect": {
+        "x": 1016,
+        "y": 268,
+        "width": 183,
+        "height": 76
+      },
+      "backgrounds": [
+        {
+          "color": "rgb(23, 43, 45)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "0px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(23, 43, 45)",
+          "background": "rgb(255, 255, 255)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "1px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(7, 59, 67, 0.08) 0px 24px 70px 0px"
+        },
+        {
+          "color": "rgb(23, 43, 45)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "0px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "none"
+        }
+      ]
+    },
+    {
+      "text": "Correo electrónico",
+      "css": {
+        "color": "rgb(41, 72, 75)",
+        "background": "rgba(0, 0, 0, 0)",
+        "fontSize": "14px",
+        "fontWeight": "600",
+        "fontFamily": "Manrope, sans-serif",
+        "border": "0px solid rgb(220, 231, 230)",
+        "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+        "boxShadow": "none"
+      },
+      "rect": {
+        "x": 817,
+        "y": 360,
+        "width": 382,
+        "height": 76
+      },
+      "backgrounds": [
+        {
+          "color": "rgb(23, 43, 45)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "0px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(23, 43, 45)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "0px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(23, 43, 45)",
+          "background": "rgb(255, 255, 255)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "1px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(7, 59, 67, 0.08) 0px 24px 70px 0px"
+        }
+      ]
+    },
+    {
+      "text": "Contraseña",
+      "css": {
+        "color": "rgb(41, 72, 75)",
+        "background": "rgba(0, 0, 0, 0)",
+        "fontSize": "14px",
+        "fontWeight": "600",
+        "fontFamily": "Manrope, sans-serif",
+        "border": "0px solid rgb(220, 231, 230)",
+        "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+        "boxShadow": "none"
+      },
+      "rect": {
+        "x": 817,
+        "y": 452,
+        "width": 183,
+        "height": 76
+      },
+      "backgrounds": [
+        {
+          "color": "rgb(23, 43, 45)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "0px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(23, 43, 45)",
+          "background": "rgb(255, 255, 255)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "1px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(7, 59, 67, 0.08) 0px 24px 70px 0px"
+        },
+        {
+          "color": "rgb(23, 43, 45)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "0px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "none"
+        }
+      ]
+    },
+    {
+      "text": "Confirmar contraseña",
+      "css": {
+        "color": "rgb(41, 72, 75)",
+        "background": "rgba(0, 0, 0, 0)",
+        "fontSize": "14px",
+        "fontWeight": "600",
+        "fontFamily": "Manrope, sans-serif",
+        "border": "0px solid rgb(220, 231, 230)",
+        "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+        "boxShadow": "none"
+      },
+      "rect": {
+        "x": 1016,
+        "y": 452,
+        "width": 183,
+        "height": 76
+      },
+      "backgrounds": [
+        {
+          "color": "rgb(23, 43, 45)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "0px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(23, 43, 45)",
+          "background": "rgb(255, 255, 255)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "1px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(7, 59, 67, 0.08) 0px 24px 70px 0px"
+        },
+        {
+          "color": "rgb(23, 43, 45)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "0px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "none"
+        }
+      ]
+    },
+    {
+      "text": "Acepto los términos y condiciones de AulaPro.",
+      "css": {
+        "color": "rgb(100, 119, 121)",
+        "background": "rgba(0, 0, 0, 0)",
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "fontFamily": "Manrope, sans-serif",
+        "border": "0px solid rgb(220, 231, 230)",
+        "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+        "boxShadow": "none"
+      },
+      "rect": {
+        "x": 817,
+        "y": 548,
+        "width": 382,
+        "height": 20
+      },
+      "backgrounds": [
+        {
+          "color": "rgb(23, 43, 45)",
+          "background": "rgb(255, 255, 255)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "1px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(7, 59, 67, 0.08) 0px 24px 70px 0px"
+        },
+        {
+          "color": "rgb(23, 43, 45)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "0px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(23, 43, 45)",
+          "background": "rgb(245, 248, 248)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "0px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "none"
+        }
+      ]
+    },
+    {
+      "text": "¿Ya tienes una cuenta? Iniciar sesión",
+      "css": {
+        "color": "rgb(100, 119, 121)",
+        "background": "rgba(0, 0, 0, 0)",
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "fontFamily": "Manrope, sans-serif",
+        "border": "0px solid rgb(220, 231, 230)",
+        "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+        "boxShadow": "none"
+      },
+      "rect": {
+        "x": 817,
+        "y": 744,
+        "width": 382,
+        "height": 20
+      },
+      "backgrounds": [
+        {
+          "color": "rgb(23, 43, 45)",
+          "background": "rgb(255, 255, 255)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "1px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(7, 59, 67, 0.08) 0px 24px 70px 0px"
+        },
+        {
+          "color": "rgb(23, 43, 45)",
+          "background": "rgba(0, 0, 0, 0)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "0px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "none"
+        },
+        {
+          "color": "rgb(23, 43, 45)",
+          "background": "rgb(245, 248, 248)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "fontFamily": "Manrope, sans-serif",
+          "border": "0px solid rgb(220, 231, 230)",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "boxShadow": "none"
+        }
+      ]
+    }
+  ],
+  "alerts": [
+    {
+      "role": null,
+      "live": "polite",
+      "text": ""
+    }
+  ],
+  "focus": {
+    "id": "",
+    "tag": "BODY",
+    "text": "Creado con Figma Make\n\nRemix\nAulaPro\n\nAPRENDER TAMBIÉN ES CONVERSAR\n\n“Cuando exp"
+  }
+}

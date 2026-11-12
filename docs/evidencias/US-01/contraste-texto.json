@@ -1,0 +1,96 @@
+{
+  "method": "Luminancia relativa sRGB y (Lclaro+0.05)/(Loscuro+0.05); colores CSS opacos del elemento o primer ancestro opaco entre los tres capturados. Solo pares identificados, no auditoría integral.",
+  "viewport": "1440x900",
+  "measurements": [
+    {
+      "text": "Cuando explicas una\nidea a tu equipo,\ntambién la entiendes\nmejor.",
+      "color": [
+        255.0,
+        255.0,
+        255.0
+      ],
+      "background": [
+        6.0,
+        78.0,
+        73.0
+      ],
+      "ratio": 9.573,
+      "minimum": 3,
+      "result": "PASA",
+      "fontSize": "37.44px",
+      "fontWeight": "750"
+    },
+    {
+      "text": "Emilio, estudiante de Diseño Visual",
+      "color": [
+        193.0,
+        217.0,
+        211.0
+      ],
+      "background": [
+        6.0,
+        78.0,
+        73.0
+      ],
+      "ratio": 6.443,
+      "minimum": 4.5,
+      "result": "PASA",
+      "fontSize": "12px",
+      "fontWeight": "400"
+    },
+    {
+      "text": "Crea tu cuenta",
+      "color": [
+        20.0,
+        61.0,
+        57.0
+      ],
+      "background": [
+        247.0,
+        249.0,
+        248.0
+      ],
+      "ratio": 11.308,
+      "minimum": 3,
+      "result": "PASA",
+      "fontSize": "27px",
+      "fontWeight": "750"
+    },
+    {
+      "text": "Organiza tu próximo encuentro de estudio.",
+      "color": [
+        120.0,
+        137.0,
+        133.0
+      ],
+      "background": [
+        247.0,
+        249.0,
+        248.0
+      ],
+      "ratio": 3.475,
+      "minimum": 4.5,
+      "result": "FALLA",
+      "fontSize": "12px",
+      "fontWeight": "400"
+    },
+    {
+      "text": "¿Ya tienes una cuenta? Inicia sesión",
+      "color": [
+        135.0,
+        147.0,
+        143.0
+      ],
+      "background": [
+        247.0,
+        249.0,
+        248.0
+      ],
+      "ratio": 3.009,
+      "minimum": 4.5,
+      "result": "FALLA",
+      "fontSize": "10px",
+      "fontWeight": "400"
+    }
+  ]
+}
