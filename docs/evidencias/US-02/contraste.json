@@ -1,0 +1,20 @@
+{
+  "method": "Luminancia relativa sRGB sobre colores computados; muestra botón Google, no auditoría completa.",
+  "buttonText": {
+    "color": "rgb(52, 75, 71)",
+    "background": "rgb(255, 255, 255)",
+    "ratio": 9.361,
+    "minimum": 4.5
+  },
+  "hoverText": {
+    "color": "rgb(52, 75, 71)",
+    "background": "rgb(240, 248, 245)",
+    "ratio": 8.67,
+    "minimum": 4.5
+  },
+  "focusOutline": {
+    "style": "rgb(8, 125, 105) solid 3px",
+    "againstWhite": 5.063,
+    "note": "Comparación con blanco; no certifica todos los fondos de la interfaz."
+  }
+}

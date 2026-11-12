@@ -318,3 +318,85 @@ test('US-01: fallo de lectura posterior al commit permite recuperar el perfil co
   await request(f.app).post(f.me).auth('manual', { type: 'bearer' }).send(complete).expect(409);
   assert.equal(f.store.data.size, 2);
 });
+
+test('US-02: nombres de Google sin username nunca completan el perfil', async () => {
+  for (const username of [undefined, null]) {
+    const f = fixture('google.com');
+    const body = { firstName: 'Ana', lastName: 'Perez', ...(username === null ? { username } : {}) };
+    const created = await request(f.app).post(f.me).auth('google-user', { type: 'bearer' }).send(body).expect(201);
+    assert.equal(created.body.authProvider, 'google.com');
+    assert.equal(created.body.email, 'google-user@example.com');
+    assert.equal(created.body.profileCompleted, false);
+    assert.equal(created.body.username, null);
+    assert.equal(created.body.usernameNormalized, null);
+    assert.equal(f.store.data.size, 1);
+    await request(f.app).get('/private').auth('google-user', { type: 'bearer' }).expect(403);
+    const completed = await request(f.app).patch(f.me).auth('google-user', { type: 'bearer' }).send({ username: 'Google_01' }).expect(200);
+    assert.equal(completed.body.profileCompleted, true);
+    assert.equal(completed.body.createdAt, created.body.createdAt);
+    assert.deepEqual(f.store.data.get('usernames/google_01'), { uid: 'google-user' });
+    await request(f.app).get('/private').auth('google-user', { type: 'bearer' }).expect(200);
+  }
+});
+
+test('US-02: la reserva de username es global entre password y Google', async () => {
+  const f = fixture('google.com');
+  await f.service.create({ uid: 'password-owner', email: 'owner@example.com', provider: 'password' }, complete);
+  const writes = f.store.writes;
+  const response = await request(f.app).post(f.me).auth('google-user', { type: 'bearer' }).send({ ...complete, username: 'ANA_01' }).expect(409);
+  assert.deepEqual(response.body, { error: 'Nombre de usuario ocupado' });
+  assert.equal(f.store.writes, writes);
+  assert.equal(f.store.data.has('users/google-user'), false);
+  assert.deepEqual(f.store.data.get('usernames/ana_01'), { uid: 'password-owner' });
+});
+
+test('US-02: identidades vinculadas conservan UID; el mismo correo no fusiona perfiles', async () => {
+  const f = fixture('google.com');
+  const original = { uid: 'linked-user', email: 'ficticio@example.com', provider: 'password' };
+  const created = await f.service.create(original, complete);
+  const google = { ...original, provider: 'google.com' };
+  const updated = await f.service.update(google, {});
+  assert.equal(updated.authProvider, 'google.com');
+  assert.equal(updated.createdAt, created.createdAt);
+  assert.equal(updated.username, created.username);
+  assert.deepEqual(f.store.data.get('usernames/ana_01'), { uid: original.uid });
+  const other = { ...google, uid: 'different-google-user' };
+  await assert.rejects(f.service.read(other), { status: 404 });
+  await assert.rejects(f.service.create(other, complete), { status: 409 });
+  assert.equal(f.store.data.has('users/different-google-user'), false);
+  assert.equal(f.store.data.size, 2);
+});
+
+test('US-02: identidad Google mínima y UID inválido rechazado tras verificar token', async () => {
+  for (const uid of ['', 'users/other']) {
+    const verify = createAuthService(async (_token, revoked) => {
+      assert.equal(revoked, true);
+      return { uid, email: 'ficticio@example.com', firebase: { sign_in_provider: 'google.com' } } as DecodedIdToken;
+    });
+    await assert.rejects(verify('simulated'), { status: 401, message: 'Identidad inválida' });
+  }
+  const verify = createAuthService(async () => ({
+    uid: 'google-user', sub: 'google-user', email: 'ficticio@example.com', name: 'Nombre sugerido',
+    aud: 'demo-us02', iss: 'https://securetoken.google.com/demo-us02', auth_time: 0, iat: 0, exp: 1,
+    firebase: { sign_in_provider: 'google.com', identities: {} },
+  }) as DecodedIdToken);
+  const identity = await verify('simulated');
+  assert.deepEqual(identity, { uid: 'google-user', email: 'ficticio@example.com', provider: 'google.com' });
+  assert.ok(Object.isFrozen(identity));
+});
+
+test('US-02: username vacío, solo espacios o con punto no crea ni completa perfil Google', async () => {
+  const f = fixture('google.com');
+  for (const username of ['', '   ', 'ana.p']) {
+    await request(f.app).post(f.me).auth('google-user', { type: 'bearer' }).send({ username }).expect(400);
+  }
+  assert.equal(f.store.writes, 0);
+  await request(f.app).post(f.me).auth('google-user', { type: 'bearer' }).send({ firstName: 'Ana', lastName: 'Perez' }).expect(201);
+  const writes = f.store.writes;
+  for (const username of ['', '   ', 'ana.p']) {
+    await request(f.app).patch(f.me).auth('google-user', { type: 'bearer' }).send({ username }).expect(400);
+  }
+  assert.equal(f.store.writes, writes);
+  assert.equal(f.store.data.get('users/google-user')?.profileCompleted, false);
+  await request(f.app).get('/private').auth('google-user', { type: 'bearer' }).expect(403);
+});

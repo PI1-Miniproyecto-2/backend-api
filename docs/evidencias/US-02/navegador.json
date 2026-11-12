@@ -1,0 +1,451 @@
+{
+  "date": "2026-11-12T04:18:58.919Z",
+  "timezone": "America/Bogota",
+  "browser": "Chrome 143 headless/CDP",
+  "scope": "Perfil temporal sin cuentas ni credenciales; no se utiliza archivo US-01",
+  "network": [],
+  "popups": [
+    {
+      "type": "page",
+      "urlOrigin": "null"
+    },
+    {
+      "type": "page",
+      "urlOrigin": "https://frontend123-opal.vercel.app"
+    },
+    {
+      "type": "page",
+      "urlOrigin": "null"
+    }
+  ],
+  "browserVersion": {
+    "protocolVersion": "1.3",
+    "product": "Chrome/143.0.7499.40",
+    "revision": "@c23ff452476d1b6322d73b9b629420ef119d0388",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/143.0.0.0 Safari/537.36",
+    "jsVersion": "14.3.127.16"
+  },
+  "initial": {
+    "url": "https://frontend123-opal.vercel.app/register",
+    "title": "Registro | AulaPro",
+    "lang": "es",
+    "viewport": {
+      "width": 1440,
+      "height": 900,
+      "scrollWidth": 1440
+    },
+    "google": {
+      "text": "G\nRegistrarse con Google",
+      "ariaLabel": null,
+      "tag": "BUTTON",
+      "rect": {
+        "x": 757.390625,
+        "y": 191.25,
+        "width": 530,
+        "height": 43
+      },
+      "color": "rgb(52, 75, 71)",
+      "background": "rgb(255, 255, 255)",
+      "fontSize": "12px",
+      "fontWeight": "650",
+      "outline": "rgb(52, 75, 71) none 0px",
+      "boxShadow": "none"
+    },
+    "username": {
+      "labels": [
+        "Nombre de usuario"
+      ],
+      "placeholder": "emilio.c",
+      "autocomplete": "username",
+      "required": false,
+      "ariaRequired": null,
+      "describedBy": null
+    },
+    "feedback": null,
+    "focus": {
+      "tag": "BODY",
+      "id": "",
+      "text": "AulaPro\nAPRENDER TAMBIÉN ES CONVERSAR\n“\nCuando explicas una\nidea a tu "
+    },
+    "text": "AulaPro\nAPRENDER TAMBIÉN ES CONVERSAR\n“\nCuando explicas una\nidea a tu equipo,\ntambién la entiendes\nmejor.\n\nEmilio, estudiante de Diseño Visual\n\nAulaPro · Entorno de demostración\nVolver al inicio\nCrea tu cuenta\n\nOrganiza tu próximo encuentro de estudio.\n\nG\nRegistrarse con Google\no regístrate con correo\nNombres\nApellidos\nNombre de usuario\nAsí te encontrarán tus compañeros en AulaPro.\nCorreo electrónico\nContraseña\nConfirmar contraseña\nElige tu avatar de perfil\n👩🏻\n👨🏽\n👩🏽\n👨🏻\nAcepto los términos y condiciones de AulaPro.\nCrear cuenta\n\n¿Ya tienes una cuenta? Inicia sesión"
+  },
+  "tabs": [
+    {
+      "tag": "A",
+      "id": "",
+      "text": "AulaPro",
+      "focusVisible": true
+    },
+    {
+      "tag": "A",
+      "id": "",
+      "text": "Volver al inicio",
+      "focusVisible": true
+    },
+    {
+      "tag": "BUTTON",
+      "id": "",
+      "text": "G\nRegistrarse con Google",
+      "focusVisible": true
+    },
+    {
+      "tag": "INPUT",
+      "id": "nombres",
+      "text": null,
+      "focusVisible": true
+    },
+    {
+      "tag": "INPUT",
+      "id": "apellidos",
+      "text": null,
+      "focusVisible": true
+    },
+    {
+      "tag": "INPUT",
+      "id": "username",
+      "text": null,
+      "focusVisible": true
+    },
+    {
+      "tag": "INPUT",
+      "id": "email",
+      "text": null,
+      "focusVisible": true
+    }
+  ],
+  "googleFocus": {
+    "url": "https://frontend123-opal.vercel.app/register",
+    "title": "Registro | AulaPro",
+    "lang": "es",
+    "viewport": {
+      "width": 1440,
+      "height": 900,
+      "scrollWidth": 1440
+    },
+    "google": {
+      "text": "G\nRegistrarse con Google",
+      "ariaLabel": null,
+      "tag": "BUTTON",
+      "rect": {
+        "x": 757.390625,
+        "y": 191.25,
+        "width": 530,
+        "height": 43
+      },
+      "color": "rgb(52, 75, 71)",
+      "background": "rgb(255, 255, 255)",
+      "fontSize": "12px",
+      "fontWeight": "650",
+      "outline": "rgb(8, 125, 105) solid 3px",
+      "boxShadow": "none"
+    },
+    "username": {
+      "labels": [
+        "Nombre de usuario"
+      ],
+      "placeholder": "emilio.c",
+      "autocomplete": "username",
+      "required": false,
+      "ariaRequired": null,
+      "describedBy": null
+    },
+    "feedback": null,
+    "focus": {
+      "tag": "BUTTON",
+      "id": "",
+      "text": "G\nRegistrarse con Google"
+    },
+    "text": "AulaPro\nAPRENDER TAMBIÉN ES CONVERSAR\n“\nCuando explicas una\nidea a tu equipo,\ntambién la entiendes\nmejor.\n\nEmilio, estudiante de Diseño Visual\n\nAulaPro · Entorno de demostración\nVolver al inicio\nCrea tu cuenta\n\nOrganiza tu próximo encuentro de estudio.\n\nG\nRegistrarse con Google\no regístrate con correo\nNombres\nApellidos\nNombre de usuario\nAsí te encontrarán tus compañeros en AulaPro.\nCorreo electrónico\nContraseña\nConfirmar contraseña\nElige tu avatar de perfil\n👩🏻\n👨🏽\n👩🏽\n👨🏻\nAcepto los términos y condiciones de AulaPro.\nCrear cuenta\n\n¿Ya tienes una cuenta? Inicia sesión"
+  },
+  "afterEnter": {
+    "url": "https://frontend123-opal.vercel.app/register",
+    "title": "Registro | AulaPro",
+    "lang": "es",
+    "viewport": {
+      "width": 1440,
+      "height": 900,
+      "scrollWidth": 1440
+    },
+    "google": {
+      "text": "G\nRegistrarse con Google",
+      "ariaLabel": null,
+      "tag": "BUTTON",
+      "rect": {
+        "x": 757.390625,
+        "y": 210.5,
+        "width": 530,
+        "height": 43
+      },
+      "color": "rgb(52, 75, 71)",
+      "background": "rgb(255, 255, 255)",
+      "fontSize": "12px",
+      "fontWeight": "650",
+      "outline": "rgb(8, 125, 105) solid 3px",
+      "boxShadow": "none"
+    },
+    "username": {
+      "labels": [
+        "Nombre de usuario"
+      ],
+      "placeholder": "emilio.c",
+      "autocomplete": "username",
+      "required": false,
+      "ariaRequired": null,
+      "describedBy": null
+    },
+    "feedback": {
+      "role": "status",
+      "live": null,
+      "text": "La autenticación con Google estará disponible cuando conectemos Firebase Authentication."
+    },
+    "focus": {
+      "tag": "BUTTON",
+      "id": "",
+      "text": "G\nRegistrarse con Google"
+    },
+    "text": "AulaPro\nAPRENDER TAMBIÉN ES CONVERSAR\n“\nCuando explicas una\nidea a tu equipo,\ntambién la entiendes\nmejor.\n\nEmilio, estudiante de Diseño Visual\n\nAulaPro · Entorno de demostración\nVolver al inicio\nCrea tu cuenta\n\nOrganiza tu próximo encuentro de estudio.\n\nLa autenticación con Google estará disponible cuando conectemos Firebase Authentication.\nG\nRegistrarse con Google\no regístrate con correo\nNombres\nApellidos\nNombre de usuario\nAsí te encontrarán tus compañeros en AulaPro.\nCorreo electrónico\nContraseña\nConfirmar contraseña\nElige tu avatar de perfil\n👩🏻\n👨🏽\n👩🏽\n👨🏻\nAcepto los términos y condiciones de AulaPro.\nCrear cuenta\n\n¿Ya tienes una cuenta? Inicia sesión"
+  },
+  "afterClick": {
+    "url": "https://frontend123-opal.vercel.app/register",
+    "title": "Registro | AulaPro",
+    "lang": "es",
+    "viewport": {
+      "width": 1440,
+      "height": 900,
+      "scrollWidth": 1440
+    },
+    "google": {
+      "text": "G\nRegistrarse con Google",
+      "ariaLabel": null,
+      "tag": "BUTTON",
+      "rect": {
+        "x": 757.390625,
+        "y": 210.5,
+        "width": 530,
+        "height": 43
+      },
+      "color": "rgb(52, 75, 71)",
+      "background": "rgb(240, 248, 245)",
+      "fontSize": "12px",
+      "fontWeight": "650",
+      "outline": "rgb(8, 125, 105) solid 3px",
+      "boxShadow": "none"
+    },
+    "username": {
+      "labels": [
+        "Nombre de usuario"
+      ],
+      "placeholder": "emilio.c",
+      "autocomplete": "username",
+      "required": false,
+      "ariaRequired": null,
+      "describedBy": null
+    },
+    "feedback": {
+      "role": "status",
+      "live": null,
+      "text": "La autenticación con Google estará disponible cuando conectemos Firebase Authentication."
+    },
+    "focus": {
+      "tag": "BUTTON",
+      "id": "",
+      "text": "G\nRegistrarse con Google"
+    },
+    "text": "AulaPro\nAPRENDER TAMBIÉN ES CONVERSAR\n“\nCuando explicas una\nidea a tu equipo,\ntambién la entiendes\nmejor.\n\nEmilio, estudiante de Diseño Visual\n\nAulaPro · Entorno de demostración\nVolver al inicio\nCrea tu cuenta\n\nOrganiza tu próximo encuentro de estudio.\n\nLa autenticación con Google estará disponible cuando conectemos Firebase Authentication.\nG\nRegistrarse con Google\no regístrate con correo\nNombres\nApellidos\nNombre de usuario\nAsí te encontrarán tus compañeros en AulaPro.\nCorreo electrónico\nContraseña\nConfirmar contraseña\nElige tu avatar de perfil\n👩🏻\n👨🏽\n👩🏽\n👨🏻\nAcepto los términos y condiciones de AulaPro.\nCrear cuenta\n\n¿Ya tienes una cuenta? Inicia sesión"
+  },
+  "googleAX": [
+    {
+      "role": "button",
+      "name": "G Registrarse con Google",
+      "properties": [
+        {
+          "name": "invalid",
+          "value": {
+            "type": "token",
+            "value": "false"
+          }
+        },
+        {
+          "name": "focusable",
+          "value": {
+            "type": "booleanOrUndefined",
+            "value": true
+          }
+        },
+        {
+          "name": "focused",
+          "value": {
+            "type": "booleanOrUndefined",
+            "value": true
+          }
+        }
+      ]
+    }
+  ],
+  "mobile": {
+    "url": "https://frontend123-opal.vercel.app/register",
+    "title": "Registro | AulaPro",
+    "lang": "es",
+    "viewport": {
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 375
+    },
+    "google": {
+      "text": "G\nRegistrarse con Google",
+      "ariaLabel": null,
+      "tag": "BUTTON",
+      "rect": {
+        "x": 17,
+        "y": 544.25,
+        "width": 341,
+        "height": 43
+      },
+      "color": "rgb(52, 75, 71)",
+      "background": "rgb(240, 248, 245)",
+      "fontSize": "12px",
+      "fontWeight": "650",
+      "outline": "rgb(8, 125, 105) solid 3px",
+      "boxShadow": "none"
+    },
+    "username": {
+      "labels": [
+        "Nombre de usuario"
+      ],
+      "placeholder": "emilio.c",
+      "autocomplete": "username",
+      "required": false,
+      "ariaRequired": null,
+      "describedBy": null
+    },
+    "feedback": {
+      "role": "status",
+      "live": null,
+      "text": "La autenticación con Google estará disponible cuando conectemos Firebase Authentication."
+    },
+    "focus": {
+      "tag": "BUTTON",
+      "id": "",
+      "text": "G\nRegistrarse con Google"
+    },
+    "text": "AulaPro\nAPRENDER TAMBIÉN ES CONVERSAR\n“\nCuando explicas unaidea a tu equipo,también la entiendesmejor.\n\nEmilio, estudiante de Diseño Visual\n\nVolver al inicio\nCrea tu cuenta\n\nOrganiza tu próximo encuentro de estudio.\n\nLa autenticación con Google estará disponible cuando conectemos Firebase Authentication.\nG\nRegistrarse con Google\no regístrate con correo\nNombres\nApellidos\nNombre de usuario\nAsí te encontrarán tus compañeros en AulaPro.\nCorreo electrónico\nContraseña\nConfirmar contraseña\nElige tu avatar de perfil\n👩🏻\n👨🏽\n👩🏽\n👨🏻\nAcepto los términos y condiciones de AulaPro.\nCrear cuenta\n\n¿Ya tienes una cuenta? Inicia sesión"
+  },
+  "width320": {
+    "url": "https://frontend123-opal.vercel.app/register",
+    "title": "Registro | AulaPro",
+    "lang": "es",
+    "viewport": {
+      "width": 320,
+      "height": 900,
+      "scrollWidth": 320
+    },
+    "google": {
+      "text": "G\nRegistrarse con Google",
+      "ariaLabel": null,
+      "tag": "BUTTON",
+      "rect": {
+        "x": 17,
+        "y": 400.25,
+        "width": 286,
+        "height": 43
+      },
+      "color": "rgb(52, 75, 71)",
+      "background": "rgb(249, 252, 251)",
+      "fontSize": "12px",
+      "fontWeight": "650",
+      "outline": "rgb(8, 125, 105) solid 3px",
+      "boxShadow": "none"
+    },
+    "username": {
+      "labels": [
+        "Nombre de usuario"
+      ],
+      "placeholder": "emilio.c",
+      "autocomplete": "username",
+      "required": false,
+      "ariaRequired": null,
+      "describedBy": null
+    },
+    "feedback": {
+      "role": "status",
+      "live": null,
+      "text": "La autenticación con Google estará disponible cuando conectemos Firebase Authentication."
+    },
+    "focus": {
+      "tag": "BUTTON",
+      "id": "",
+      "text": "G\nRegistrarse con Google"
+    },
+    "text": "AulaPro\nAPRENDER TAMBIÉN ES CONVERSAR\n“\nCuando explicas unaidea a tu equipo,también la entiendesmejor.\n\nEmilio, estudiante de Diseño Visual\n\nVolver al inicio\nCrea tu cuenta\n\nOrganiza tu próximo encuentro de estudio.\n\nLa autenticación con Google estará disponible cuando conectemos Firebase Authentication.\nG\nRegistrarse con Google\no regístrate con correo\nNombres\nApellidos\nNombre de usuario\nAsí te encontrarán tus compañeros en AulaPro.\nCorreo electrónico\nContraseña\nConfirmar contraseña\nElige tu avatar de perfil\n👩🏻\n👨🏽\n👩🏽\n👨🏻\nAcepto los términos y condiciones de AulaPro.\nCrear cuenta\n\n¿Ya tienes una cuenta? Inicia sesión"
+  },
+  "designDesktop": {
+    "url": "https://jelly-speed-93201488.figma.site/register",
+    "title": "Diagrama BPMN proceso compra",
+    "lang": "en",
+    "viewport": {
+      "width": 1440,
+      "height": 900,
+      "scrollWidth": 1440
+    },
+    "google": {
+      "text": "G\nRegistrarse con Google",
+      "ariaLabel": null,
+      "tag": "BUTTON",
+      "rect": {
+        "x": 817,
+        "y": 680,
+        "width": 382,
+        "height": 44
+      },
+      "color": "rgb(7, 59, 67)",
+      "background": "rgb(255, 255, 255)",
+      "fontSize": "14px",
+      "fontWeight": "700",
+      "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+      "boxShadow": "none"
+    },
+    "username": null,
+    "feedback": null,
+    "focus": {
+      "tag": "BODY",
+      "id": "",
+      "text": "Creado con Figma Make\n\nRemix\nAulaPro\n\nAPRENDER TAMBIÉN ES CONVERSAR\n\n“"
+    },
+    "text": "Creado con Figma Make\n\nRemix\nAulaPro\n\nAPRENDER TAMBIÉN ES CONVERSAR\n\n“Cuando explicas una idea a tu equipo, también la entiendes mejor.”\n\nEquipos de distintas carreras, un solo lugar\n\nAulaPro · Entorno de demostración\n\nVolver al inicio\nCrea tu cuenta\n\nOrganiza tu próximo encuentro de estudio.\n\nNombre completo\nNombre de usuario\nCorreo electrónico\nContraseña\nConfirmar contraseña\nAcepto los términos y condiciones de AulaPro.\nCrear cuenta\no\nG\nRegistrarse con Google\n\n¿Ya tienes una cuenta? Iniciar sesión"
+  },
+  "designMobile": {
+    "url": "https://jelly-speed-93201488.figma.site/register",
+    "title": "Diagrama BPMN proceso compra",
+    "lang": "en",
+    "viewport": {
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 375
+    },
+    "google": {
+      "text": "G\nRegistrarse con Google",
+      "ariaLabel": null,
+      "tag": "BUTTON",
+      "rect": {
+        "x": 45,
+        "y": 901,
+        "width": 285,
+        "height": 44
+      },
+      "color": "rgb(7, 59, 67)",
+      "background": "rgb(255, 255, 255)",
+      "fontSize": "14px",
+      "fontWeight": "700",
+      "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+      "boxShadow": "none"
+    },
+    "username": null,
+    "feedback": null,
+    "focus": {
+      "tag": "BODY",
+      "id": "",
+      "text": "Creado con Figma Make\n\nRemix\nAulaPro\nVolver al inicio\nCrea tu cuenta\n\n"
+    },
+    "text": "Creado con Figma Make\n\nRemix\nAulaPro\nVolver al inicio\nCrea tu cuenta\n\nOrganiza tu próximo encuentro de estudio.\n\nNombre completo\nNombre de usuario\nCorreo electrónico\nContraseña\nConfirmar contraseña\nAcepto los términos y condiciones de AulaPro.\nCrear cuenta\no\nG\nRegistrarse con Google\n\n¿Ya tienes una cuenta? Iniciar sesión"
+  }
+}
