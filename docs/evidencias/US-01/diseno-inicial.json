@@ -1,0 +1,144 @@
+{
+  "url": "https://jelly-speed-93201488.figma.site/",
+  "title": "Diagrama BPMN proceso compra",
+  "lang": "en",
+  "text": "Creado con Figma Make\n\nRemix\nAulaPro\nInicio\nCaracterísticas\nAyuda\nIniciar sesión\nCrear cuenta\nTU EQUIPO, EN LA MISMA PÁGINA\nEstudia, comparte y aprende en equipo.\n\nAulaPro reúne videollamada, chat y material compartido en salas creadas para estudiar mejor, no para distraerte.\n\nComenzar ahora\nConocer más\nEC\nLM\nSA\n+240 estudiantes\nya estudian juntos\n\nFotografía documental\n\n4 participantes · 48 min\n\nEM\nEmilio · hablando\nEN VIVO\nLM\nLaura M.\nVR\nValeria R.\n\nPróxima sesión\n\nImpacto ambiental · 16:00\n\n01 / HERRAMIENTAS\n\nTodo lo que necesita una buena sesión.\n\nMenos pestañas abiertas. Más atención para explicar, discutir y llegar a conclusiones en conjunto.\n\n01\n\nSalas colaborativas\n\nCrea espacios por materia, proyecto o equipo con un código único.\n\n02\n\nChat enfocado\n\nIdeas, enlaces y acuerdos quedan organizados en un mismo historial.\n\n03\n\nVideollamada\n\nConversa cara a cara y mantén al equipo sincronizado.\n\n04\n\nPantalla compartida\n\nRevisa fotografías, documentos y presentaciones sin cambiar de app.\n\n02 / TU RITMO ACADÉMICO\n\nDe la primera idea a la entrega final.\n\n01\n\nOrganiza por materia\n\nMantén cada equipo y sus conversaciones en orden.\n\n02\n\nInvita en segundos\n\nComparte un enlace o un código de acceso.\n\n03\n\nColabora en contexto\n\nHabla mientras revisan el mismo contenido.\n\n04\n\nRetoma sin perderte\n\nConsulta el historial antes de la siguiente sesión.\n\nAulaPro\nInicio\nAyuda\nSitemap\nPrivacidad\n\n© 2025 AulaPro · Prototipo académico",
+  "headings": [
+    {
+      "tag": "H1",
+      "text": "Estudia, comparte y aprende en equipo."
+    },
+    {
+      "tag": "H2",
+      "text": "Todo lo que necesita una buena sesión."
+    },
+    {
+      "tag": "H3",
+      "text": "Salas colaborativas"
+    },
+    {
+      "tag": "H3",
+      "text": "Chat enfocado"
+    },
+    {
+      "tag": "H3",
+      "text": "Videollamada"
+    },
+    {
+      "tag": "H3",
+      "text": "Pantalla compartida"
+    },
+    {
+      "tag": "H2",
+      "text": "De la primera idea a la entrega final."
+    },
+    {
+      "tag": "H3",
+      "text": "Organiza por materia"
+    },
+    {
+      "tag": "H3",
+      "text": "Invita en segundos"
+    },
+    {
+      "tag": "H3",
+      "text": "Colabora en contexto"
+    },
+    {
+      "tag": "H3",
+      "text": "Retoma sin perderte"
+    }
+  ],
+  "inputs": [],
+  "buttons": [
+    {
+      "text": "",
+      "type": "submit",
+      "ariaLabel": "Más opciones"
+    },
+    {
+      "text": "",
+      "type": "submit",
+      "ariaLabel": "Cerrar"
+    },
+    {
+      "text": "Iniciar sesión",
+      "type": "button",
+      "ariaLabel": null
+    },
+    {
+      "text": "Crear cuenta",
+      "type": "button",
+      "ariaLabel": null
+    },
+    {
+      "text": "",
+      "type": "submit",
+      "ariaLabel": "Abrir menú"
+    },
+    {
+      "text": "Comenzar ahora",
+      "type": "button",
+      "ariaLabel": null
+    },
+    {
+      "text": "Conocer más",
+      "type": "button",
+      "ariaLabel": null
+    }
+  ],
+  "links": [
+    {
+      "text": "Remix",
+      "href": "https://www.figma.com/community/file/1699949368868677519?openSignupModal=true"
+    },
+    {
+      "text": "AulaPro",
+      "href": "/"
+    },
+    {
+      "text": "Inicio",
+      "href": "/"
+    },
+    {
+      "text": "Características",
+      "href": "/#caracteristicas"
+    },
+    {
+      "text": "Ayuda",
+      "href": "/help"
+    },
+    {
+      "text": "Iniciar sesión",
+      "href": "/login"
+    },
+    {
+      "text": "Crear cuenta",
+      "href": "/register"
+    },
+    {
+      "text": "Comenzar ahora",
+      "href": "/register"
+    },
+    {
+      "text": "Conocer más",
+      "href": "#caracteristicas"
+    },
+    {
+      "text": "AulaPro",
+      "href": "/"
+    },
+    {
+      "text": "Inicio",
+      "href": "/"
+    },
+    {
+      "text": "Ayuda",
+      "href": "/help"
+    },
+    {
+      "text": "Sitemap",
+      "href": "/sitemap"
+    }
+  ]
+}

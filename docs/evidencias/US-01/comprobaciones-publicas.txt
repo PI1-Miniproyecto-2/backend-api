@@ -1,0 +1,43 @@
+US-01 QA — 2026-11-11 America/Bogota
+Peticiones GET públicas, sin credenciales ni escrituras.
+
+GET https://frontend123-opal.vercel.app/
+HTTP 200
+Código curl: 0
+
+GET https://backend-api-yzvv.onrender.com/api-docs/
+HTTP 200
+Código curl: 0
+
+GET https://backend-api-yzvv.onrender.com/health
+HTTP 200
+Código curl: 0
+
+GET https://backend-api-yzvv.onrender.com/openapi.json
+HTTP 200
+Código curl: 0
+
+GET https://backend-api-yzvv.onrender.com/api/v1/users/me
+HTTP 401
+Código curl: 0
+
+GET https://backend-api-yzvv.onrender.com/api/v1/users/me con token deliberadamente ficticio (sin credencial real)
+HTTP 401
+Código curl: 0
+Cuerpo: {"error":"Token inválido, expirado o revocado"}
+
+Contenido público observado (extractos, sin credenciales):
+Frontend HTML inicial: <html lang="es">; <title>AulaPro | Estudio colaborativo</title>.
+El formulario es cliente: no se ejecutó JavaScript, no se inspeccionó DOM renderizado.
+GET /health: {"status":"ok"}
+GET /api/v1/users/me sin token: {"error":"Se requiere Authorization: Bearer <token>"}
+OpenAPI desplegado: 3.0.3, info.version 0.1.0.
+Rutas documentadas: /api/v1/users/me, /health, /api/v1/system/status.
+Descripción POST desplegada: Opera exclusivamente sobre el UID del token verificado con comprobación de revocación. Las fechas se devuelven como ISO; se almacenan como Timestamp.
+Descripción POST local en c5013d6: comienza con «Registro manual: el frontend crea la cuenta con correo y contraseña en Firebase Authentication».
+La diferencia acredita divergencia documental, no identifica el commit desplegado.
+
+Limitaciones de herramientas: web.open no pudo acceder a estas URL; curl inicial
+restringido falló DNS (exit 6, HTTP 000: sin respuesta HTTP). Los GET anteriores
+se obtuvieron al reintentar curl con acceso de red autorizado. HTTP 000 no es
+un estado del servidor ni un defecto demostrado de la aplicación.

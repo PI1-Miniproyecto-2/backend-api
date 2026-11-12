@@ -1,0 +1,15 @@
+Fecha: 2026-11-11T22:14:01.158810-05:00
+Sin credenciales ni creación de cuentas. POST vacío sin Authorization únicamente para comprobar su rechazo.
+
+GET https://frontend123-opal.vercel.app/register
+HTTP 404; títulos: []
+Código curl: 0
+
+GET https://jelly-speed-93201488.figma.site/
+HTTP 200; títulos: ['Diagrama BPMN proceso compra']
+Código curl: 0
+
+POST https://backend-api-yzvv.onrender.com/api/v1/users/me
+{"error":"Se requiere Authorization: Bearer <token>"}
+HTTP 401
+Código curl: 0

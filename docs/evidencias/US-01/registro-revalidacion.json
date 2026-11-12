@@ -1,0 +1,55 @@
+{
+  "date": "2026-11-12T03:34:07.170Z",
+  "browser": "Chrome 143.0.7499.40 headless; perfil temporal aislado",
+  "credentials": "Archivo externo autorizado, permisos 600; valores omitidos",
+  "username": "qa_us01_mwczugxu",
+  "checks": [
+    {
+      "stage": "contraseña corta (solo validación UI)",
+      "state": {
+        "url": "https://frontend123-opal.vercel.app/register",
+        "errors": [
+          "La contraseña debe tener mínimo 8 caracteres."
+        ],
+        "invalid": [
+          "password"
+        ]
+      }
+    },
+    {
+      "stage": "confirmación distinta (solo validación UI)",
+      "state": {
+        "url": "https://frontend123-opal.vercel.app/register",
+        "errors": [
+          "Las contraseñas no coinciden."
+        ],
+        "invalid": [
+          "confirmPassword"
+        ]
+      }
+    },
+    {
+      "stage": "registro autorizado",
+      "state": {
+        "url": "https://frontend123-opal.vercel.app/register",
+        "errors": [
+          "¡Formulario validado correctamente! El registro está listo para conectarse con el servidor."
+        ],
+        "invalid": []
+      }
+    },
+    {
+      "stage": "operaciones autenticadas",
+      "status": "BLOQUEADO",
+      "reason": "No se confirmó cuenta nueva creada por esta ejecución; no se inicia sesión ni modifica cuenta preexistente."
+    }
+  ],
+  "createdThisRun": false,
+  "network": [],
+  "notes": [
+    "Revalidación tras actualización autorizada de QA_TEST_EMAIL; valores no incluidos.",
+    "El campo errors contiene mensajes de validación y de .register-feedback, incluido el mensaje de estado de demostración; no todos representan errores.",
+    "Sin capturas o DOM completos con credenciales. Solo se registran mensajes, aria-invalid, rutas sin query y metadatos de red sanitizados.",
+    "No se confirmó creación de cuenta ni se inició sesión en cuentas preexistentes."
+  ]
+}

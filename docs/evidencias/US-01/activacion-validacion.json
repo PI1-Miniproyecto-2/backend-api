@@ -1,0 +1,8 @@
+{
+  "toggleEmpty": {
+    "type": "text",
+    "label": "Ocultar contraseña"
+  },
+  "blockedMutations": 0,
+  "note": "Activación DOM click; sin contraseñas ni correo introducidos. Árbol AX no equivale a lector de pantalla."
+}

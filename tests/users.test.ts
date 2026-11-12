@@ -12,7 +12,7 @@ import { errorHandler, notFound } from '../src/middlewares/error.middleware';
 import { MemoryStore } from './helpers/memory-store';
 
 const complete = { firstName: ' Ana ', lastName: 'Perez', username: 'Ana_01', avatarId: 'avatar_owl' };
-function fixture() {
+function fixture(provider: 'password' | 'google.com' = 'google.com') {
   const store = new MemoryStore();
   const service = createProfileService(store);
   const calls: boolean[] = [];
@@ -22,7 +22,7 @@ function fixture() {
       throw { code: ({ invalid: 'auth/invalid-id-token', expired: 'auth/id-token-expired', revoked: 'auth/id-token-revoked', disabled: 'auth/user-disabled', deleted: 'auth/user-not-found' } as Record<string, string>)[token], message: 'SECRET' };
     }
     if (token === 'outage') throw { code: 14, message: 'SECRET' };
-    return { uid: token, email: token === 'noemail' ? undefined : `${token}@example.com`, firebase: { sign_in_provider: token === 'unsupported' ? 'anonymous' : 'google.com' } } as DecodedIdToken;
+    return { uid: token, email: token === 'noemail' ? undefined : token === 'bademail' ? 'correo-invalido' : `${token}@example.com`, firebase: { sign_in_provider: token === 'unsupported' ? 'anonymous' : provider } } as DecodedIdToken;
   });
   const app = express();
   app.use(express.json());
@@ -216,4 +216,105 @@ test('Transacción abortada no deja reserva o cambio de nombre parcial', async (
   assert.equal(f.store.data.has('usernames/nuevo'), false);
   assert.equal(f.store.data.get('usernames/ana_01')?.uid, 'a');
   assert.equal(f.store.data.get('users/a')?.username, 'Ana_01');
+});
+
+
+test('US-01: registro manual HTTP con identidad password y perfil propio persistido', async () => {
+  const f = fixture('password');
+  await request(f.app).get(f.me).auth('manual', { type: 'bearer' }).expect(404);
+  assert.equal(f.store.data.size, 0);
+  const created = await request(f.app).post(f.me).auth('manual', { type: 'bearer' }).send(complete).expect(201);
+  assert.equal(created.body.email, 'manual@example.com');
+  assert.equal(created.body.authProvider, 'password');
+  assert.equal(created.body.profileCompleted, true);
+  assert.equal(created.body.usernameNormalized, 'ana_01');
+  assert.deepEqual(f.store.data.get('usernames/ana_01'), { uid: 'manual' });
+  assert.deepEqual(Object.keys(f.store.data.get('users/manual')!).sort(), Object.keys(created.body).sort());
+  await request(f.app).get(f.me).auth('manual', { type: 'bearer' }).expect(200, created.body);
+  const writes = f.store.writes;
+  await request(f.app).post(f.me).auth('manual', { type: 'bearer' }).send({ ...complete, username: 'Otro_01' }).expect(409);
+  assert.equal(f.store.writes, writes);
+  await request(f.app).get(f.me).auth('manual', { type: 'bearer' }).expect(200, created.body);
+  assert.ok(f.calls.every(revoked => revoked === true));
+});
+
+test('US-01: POST manual exige token antes de escribir o validar datos del perfil', async () => {
+  const f = fixture('password');
+  await request(f.app).post(f.me).send(complete).expect(401);
+  for (const token of ['invalid', 'expired', 'revoked', 'disabled', 'deleted']) {
+    await request(f.app).post(f.me).auth(token, { type: 'bearer' }).send(complete).expect(401);
+  }
+  assert.equal(f.store.writes, 0);
+  assert.equal(f.store.data.size, 0);
+});
+
+test('US-01: correo inválido o ausente de Firebase impide crear el perfil manual', async () => {
+  const f = fixture('password');
+  for (const token of ['noemail', 'bademail']) {
+    const response = await request(f.app).post(f.me).auth(token, { type: 'bearer' }).send(complete).expect(400);
+    assert.deepEqual(response.body, { error: 'El token debe contener un correo válido' });
+  }
+  assert.equal(f.store.writes, 0);
+});
+
+test('US-01: contraseña y campos de identidad del cliente se rechazan en POST y PATCH', async () => {
+  const f = fixture('password');
+  await request(f.app).post(f.me).auth('manual', { type: 'bearer' }).send(complete).expect(201);
+  const before = new Map(f.store.data);
+  const writes = f.store.writes;
+  for (const method of ['post', 'patch'] as const) {
+    for (const body of [{ password: 'clave-ficticia' }, { confirmPassword: 'clave-ficticia' }, { email: 'otro@example.com' }, { uid: 'victima' }]) {
+      const response = await request(f.app)[method](f.me).auth('manual', { type: 'bearer' }).send(body).expect(400);
+      assert.deepEqual(response.body, { error: 'Campo desconocido o administrado por el servidor' });
+    }
+  }
+  assert.equal(f.store.writes, writes);
+  assert.deepEqual(f.store.data, before);
+});
+
+test('US-01: perfil manual incompleto se completa sin repetir la creación', async () => {
+  const f = fixture('password');
+  const initial = await request(f.app).post(f.me).auth('manual', { type: 'bearer' }).send({}).expect(201);
+  assert.equal(initial.body.authProvider, 'password');
+  assert.equal(initial.body.profileCompleted, false);
+  assert.equal(initial.body.avatarId, 'avatar_book');
+  assert.equal(initial.body.usernameNormalized, null);
+  assert.equal(f.store.data.size, 1);
+  await request(f.app).get('/private').auth('manual', { type: 'bearer' }).expect(403);
+  const completed = await request(f.app).patch(f.me).auth('manual', { type: 'bearer' }).send(complete).expect(200);
+  assert.equal(completed.body.profileCompleted, true);
+  assert.equal(completed.body.createdAt, initial.body.createdAt);
+  await request(f.app).get('/private').auth('manual', { type: 'bearer' }).expect(200);
+});
+
+test('US-01: conflicto manual y selección de UID por URL o query no dan acceso ajeno', async () => {
+  const f = fixture('password');
+  const owner = await request(f.app).post(f.me).auth('owner', { type: 'bearer' }).send(complete).expect(201);
+  await request(f.app).post(f.me).auth('other', { type: 'bearer' }).send({ ...complete, username: 'ANA_01' }).expect(409);
+  assert.equal(f.store.data.has('users/other'), false);
+  for (const method of ['get', 'patch', 'delete'] as const) {
+    await request(f.app)[method]('/api/v1/users/owner').auth('other', { type: 'bearer' }).send({ firstName: 'Otro' }).expect(404);
+  }
+  await request(f.app).get(`${f.me}?uid=owner`).auth('other', { type: 'bearer' }).expect(404);
+  await request(f.app).patch(`${f.me}?uid=owner`).auth('other', { type: 'bearer' }).send({ firstName: 'Otro' }).expect(404);
+  await request(f.app).delete(`${f.me}?uid=owner`).auth('other', { type: 'bearer' }).expect(204);
+  await request(f.app).get(f.me).auth('owner', { type: 'bearer' }).expect(200, owner.body);
+  assert.deepEqual(f.store.data.get('usernames/ana_01'), { uid: 'owner' });
+});
+
+test('US-01: fallo de lectura posterior al commit permite recuperar el perfil con GET', async () => {
+  const f = fixture('password');
+  const transaction = f.store.transaction.bind(f.store);
+  let transactions = 0;
+  f.store.transaction = async fn => {
+    if (++transactions === 2) throw { code: 14, message: 'SECRET' };
+    return transaction(fn);
+  };
+  const response = await request(f.app).post(f.me).auth('manual', { type: 'bearer' }).send(complete).expect(503);
+  assert.deepEqual(response.body, { error: 'Servicio temporalmente no disponible' });
+  assert.ok(f.store.data.has('users/manual'));
+  const recovered = await request(f.app).get(f.me).auth('manual', { type: 'bearer' }).expect(200);
+  assert.equal(recovered.body.profileCompleted, true);
+  await request(f.app).post(f.me).auth('manual', { type: 'bearer' }).send(complete).expect(409);
+  assert.equal(f.store.data.size, 2);
 });

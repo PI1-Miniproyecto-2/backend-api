@@ -1,0 +1,177 @@
+{
+  "url": "https://frontend123-opal.vercel.app/register",
+  "title": "Registro | AulaPro",
+  "lang": "es",
+  "text": "AulaPro\nAPRENDER TAMBIÉN ES CONVERSAR\n“\nCuando explicas unaidea a tu equipo,también la entiendesmejor.\n\nEmilio, estudiante de Diseño Visual\n\nVolver al inicio\nCrea tu cuenta\n\nOrganiza tu próximo encuentro de estudio.\n\nG\nRegistrarse con Google\no regístrate con correo\nNombres\nEste campo es obligatorio.\nApellidos\nEste campo es obligatorio.\nNombre de usuario\nAsí te encontrarán tus compañeros en AulaPro.\nCorreo electrónico\nEste campo es obligatorio.\nContraseña\nEste campo es obligatorio.\nConfirmar contraseña\nEste campo es obligatorio.\nElige tu avatar de perfil\n👩🏻\n👨🏽\n👩🏽\n👨🏻\nAcepto los términos y condiciones de AulaPro.\nDebes aceptar los términos y condiciones.\nCrear cuenta\n\n¿Ya tienes una cuenta? Inicia sesión",
+  "headings": [
+    {
+      "tag": "H1",
+      "text": "Cuando explicas unaidea a tu equipo,también la entiendesmejor."
+    },
+    {
+      "tag": "H2",
+      "text": "Crea tu cuenta"
+    }
+  ],
+  "inputs": [
+    {
+      "type": "text",
+      "id": "nombres",
+      "name": "",
+      "placeholder": "Emilio",
+      "required": false,
+      "autocomplete": "given-name",
+      "ariaLabel": null,
+      "ariaInvalid": "true",
+      "describedBy": null,
+      "labels": [
+        "Nombres"
+      ]
+    },
+    {
+      "type": "text",
+      "id": "apellidos",
+      "name": "",
+      "placeholder": "Castro",
+      "required": false,
+      "autocomplete": "family-name",
+      "ariaLabel": null,
+      "ariaInvalid": "true",
+      "describedBy": null,
+      "labels": [
+        "Apellidos"
+      ]
+    },
+    {
+      "type": "text",
+      "id": "username",
+      "name": "",
+      "placeholder": "emilio.c",
+      "required": false,
+      "autocomplete": "username",
+      "ariaLabel": null,
+      "ariaInvalid": "false",
+      "describedBy": null,
+      "labels": [
+        "Nombre de usuario"
+      ]
+    },
+    {
+      "type": "email",
+      "id": "email",
+      "name": "",
+      "placeholder": "nombre@universidad.edu",
+      "required": false,
+      "autocomplete": "email",
+      "ariaLabel": null,
+      "ariaInvalid": "true",
+      "describedBy": null,
+      "labels": [
+        "Correo electrónico"
+      ]
+    },
+    {
+      "type": "password",
+      "id": "password",
+      "name": "",
+      "placeholder": "Mínimo 8 caracteres",
+      "required": false,
+      "autocomplete": "new-password",
+      "ariaLabel": null,
+      "ariaInvalid": "true",
+      "describedBy": null,
+      "labels": [
+        "Contraseña"
+      ]
+    },
+    {
+      "type": "password",
+      "id": "confirmPassword",
+      "name": "",
+      "placeholder": "Repite tu contraseña",
+      "required": false,
+      "autocomplete": "new-password",
+      "ariaLabel": null,
+      "ariaInvalid": "true",
+      "describedBy": null,
+      "labels": [
+        "Confirmar contraseña"
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "terms",
+      "name": "",
+      "placeholder": "",
+      "required": false,
+      "autocomplete": "",
+      "ariaLabel": null,
+      "ariaInvalid": "true",
+      "describedBy": null,
+      "labels": [
+        "Acepto los términos y condiciones de AulaPro."
+      ]
+    }
+  ],
+  "buttons": [
+    {
+      "text": "G\nRegistrarse con Google",
+      "type": "button",
+      "ariaLabel": null
+    },
+    {
+      "text": "",
+      "type": "button",
+      "ariaLabel": "Mostrar contraseña"
+    },
+    {
+      "text": "",
+      "type": "button",
+      "ariaLabel": "Mostrar contraseña"
+    },
+    {
+      "text": "👩🏻",
+      "type": "button",
+      "ariaLabel": "Elegir avatar avatar1"
+    },
+    {
+      "text": "👨🏽",
+      "type": "button",
+      "ariaLabel": "Elegir avatar avatar2"
+    },
+    {
+      "text": "👩🏽",
+      "type": "button",
+      "ariaLabel": "Elegir avatar avatar3"
+    },
+    {
+      "text": "👨🏻",
+      "type": "button",
+      "ariaLabel": "Elegir avatar avatar4"
+    },
+    {
+      "text": "Crear cuenta",
+      "type": "submit",
+      "ariaLabel": null
+    },
+    {
+      "text": "Inicia sesión",
+      "type": "button",
+      "ariaLabel": null
+    }
+  ],
+  "links": [
+    {
+      "text": "AulaPro",
+      "href": "/inicio"
+    },
+    {
+      "text": "Volver al inicio",
+      "href": "/inicio"
+    },
+    {
+      "text": "términos y condiciones",
+      "href": "/terminos"
+    }
+  ]
+}
