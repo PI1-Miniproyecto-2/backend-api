@@ -1,0 +1,3305 @@
+{
+  "date": "2026-11-12T04:51:52.866Z",
+  "timezone": "America/Bogota",
+  "scope": "Chrome aislado sin sesión ni credenciales US-01; solo datos sintéticos en validación, sin almacenar valores",
+  "network": [],
+  "browser": {
+    "protocolVersion": "1.3",
+    "product": "Chrome/143.0.7499.40",
+    "revision": "@c23ff452476d1b6322d73b9b629420ef119d0388",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/143.0.0.0 Safari/537.36",
+    "jsVersion": "14.3.127.16"
+  },
+  "initial": {
+    "url": "https://frontend123-opal.vercel.app/register",
+    "title": "Registro | AulaPro",
+    "lang": "es",
+    "viewport": {
+      "width": 1440,
+      "height": 900,
+      "scrollWidth": 1440
+    },
+    "inputs": [
+      {
+        "id": "email",
+        "type": "email",
+        "labels": [
+          "Correo electrónico"
+        ],
+        "autocomplete": "email",
+        "required": false,
+        "ariaInvalid": "false",
+        "describedBy": null,
+        "errorMessage": null,
+        "css": {
+          "color": "rgb(38, 63, 59)",
+          "background": "rgb(255, 255, 255)",
+          "opaqueBackground": "rgb(255, 255, 255)",
+          "fontSize": "11px",
+          "fontWeight": "400",
+          "outline": "rgb(38, 63, 59) none 0px",
+          "rect": {
+            "x": 757.390625,
+            "y": 451.5,
+            "width": 530,
+            "height": 39
+          }
+        }
+      },
+      {
+        "id": "password",
+        "type": "password",
+        "labels": [
+          "Contraseña"
+        ],
+        "autocomplete": "current-password",
+        "required": false,
+        "ariaInvalid": "false",
+        "describedBy": null,
+        "errorMessage": null,
+        "css": {
+          "color": "rgb(38, 63, 59)",
+          "background": "rgb(255, 255, 255)",
+          "opaqueBackground": "rgb(255, 255, 255)",
+          "fontSize": "11px",
+          "fontWeight": "400",
+          "outline": "rgb(38, 63, 59) none 0px",
+          "rect": {
+            "x": 757.390625,
+            "y": 522.5,
+            "width": 530,
+            "height": 39
+          }
+        }
+      },
+      {
+        "id": "",
+        "type": "checkbox",
+        "labels": [
+          "Recordar datos"
+        ],
+        "autocomplete": "",
+        "required": false,
+        "ariaInvalid": null,
+        "describedBy": null,
+        "errorMessage": null,
+        "css": {
+          "color": "rgb(114, 129, 124)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(247, 249, 248)",
+          "fontSize": "10px",
+          "fontWeight": "400",
+          "outline": "rgb(114, 129, 124) none 0px",
+          "rect": {
+            "x": 757.390625,
+            "y": 577.5,
+            "width": 13,
+            "height": 13
+          }
+        }
+      }
+    ],
+    "buttons": [
+      {
+        "text": "G\nContinuar con Google",
+        "aria": null,
+        "type": "button",
+        "css": {
+          "color": "rgb(52, 75, 71)",
+          "background": "rgb(255, 255, 255)",
+          "opaqueBackground": "rgb(255, 255, 255)",
+          "fontSize": "12px",
+          "fontWeight": "650",
+          "outline": "rgb(52, 75, 71) none 0px",
+          "rect": {
+            "x": 757.390625,
+            "y": 339.5,
+            "width": 530,
+            "height": 43
+          }
+        }
+      },
+      {
+        "text": "",
+        "aria": "Mostrar contraseña",
+        "type": "button",
+        "css": {
+          "color": "rgb(126, 145, 139)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(247, 249, 248)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "outline": "rgb(126, 145, 139) none 0px",
+          "rect": {
+            "x": 1254.390625,
+            "y": 530.5,
+            "width": 23,
+            "height": 23
+          }
+        }
+      },
+      {
+        "text": "¿Olvidaste tu contraseña?",
+        "aria": null,
+        "type": "button",
+        "css": {
+          "color": "rgb(8, 125, 105)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(247, 249, 248)",
+          "fontSize": "10px",
+          "fontWeight": "700",
+          "outline": "rgb(8, 125, 105) none 0px",
+          "rect": {
+            "x": 1161.796875,
+            "y": 576.5,
+            "width": 125.59375,
+            "height": 15
+          }
+        }
+      },
+      {
+        "text": "Iniciar sesión",
+        "aria": null,
+        "type": "submit",
+        "css": {
+          "color": "rgb(6, 74, 61)",
+          "background": "rgb(50, 201, 149)",
+          "opaqueBackground": "rgb(50, 201, 149)",
+          "fontSize": "12px",
+          "fontWeight": "750",
+          "outline": "rgb(6, 74, 61) none 0px",
+          "rect": {
+            "x": 757.390625,
+            "y": 609.5,
+            "width": 530,
+            "height": 43
+          }
+        }
+      },
+      {
+        "text": "Crear una cuenta",
+        "aria": null,
+        "type": "button",
+        "css": {
+          "color": "rgb(8, 125, 105)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(247, 249, 248)",
+          "fontSize": "10px",
+          "fontWeight": "700",
+          "outline": "rgb(8, 125, 105) none 0px",
+          "rect": {
+            "x": 1035.75,
+            "y": 667.5,
+            "width": 81.703125,
+            "height": 15
+          }
+        }
+      }
+    ],
+    "labels": [
+      {
+        "text": "Correo electrónico",
+        "css": {
+          "color": "rgb(41, 75, 70)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(247, 249, 248)",
+          "fontSize": "10px",
+          "fontWeight": "700",
+          "outline": "rgb(41, 75, 70) none 0px",
+          "rect": {
+            "x": 757.390625,
+            "y": 431.5,
+            "width": 530,
+            "height": 15
+          }
+        }
+      },
+      {
+        "text": "Contraseña",
+        "css": {
+          "color": "rgb(41, 75, 70)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(247, 249, 248)",
+          "fontSize": "10px",
+          "fontWeight": "700",
+          "outline": "rgb(41, 75, 70) none 0px",
+          "rect": {
+            "x": 757.390625,
+            "y": 502.5,
+            "width": 530,
+            "height": 15
+          }
+        }
+      },
+      {
+        "text": "Recordar datos",
+        "css": {
+          "color": "rgb(114, 129, 124)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(247, 249, 248)",
+          "fontSize": "10px",
+          "fontWeight": "400",
+          "outline": "rgb(114, 129, 124) none 0px",
+          "rect": {
+            "x": 757.390625,
+            "y": 576.5,
+            "width": 87.375,
+            "height": 15
+          }
+        }
+      }
+    ],
+    "texts": [
+      {
+        "text": "Cuando explicas una\nidea a tu equipo,\ntambién la entiendes\nmejor.",
+        "css": {
+          "color": "rgb(255, 255, 255)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(6, 78, 73)",
+          "fontSize": "37.44px",
+          "fontWeight": "750",
+          "outline": "rgb(255, 255, 255) none 0px",
+          "rect": {
+            "x": 48.375,
+            "y": 615.8125,
+            "width": 508.046875,
+            "height": 175.1875
+          }
+        }
+      },
+      {
+        "text": "Emilio, estudiante de Diseño Visual",
+        "css": {
+          "color": "rgb(193, 217, 211)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(6, 78, 73)",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "outline": "rgb(193, 217, 211) none 0px",
+          "rect": {
+            "x": 48.375,
+            "y": 834,
+            "width": 508.046875,
+            "height": 18
+          }
+        }
+      },
+      {
+        "text": "Bienvenido de nuevo",
+        "css": {
+          "color": "rgb(20, 61, 57)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(247, 249, 248)",
+          "fontSize": "27px",
+          "fontWeight": "750",
+          "outline": "rgb(20, 61, 57) none 0px",
+          "rect": {
+            "x": 757.390625,
+            "y": 254,
+            "width": 530,
+            "height": 40.5
+          }
+        }
+      },
+      {
+        "text": "Tu próxima sesión de estudio está a un clic.",
+        "css": {
+          "color": "rgb(120, 137, 133)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(247, 249, 248)",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "outline": "rgb(120, 137, 133) none 0px",
+          "rect": {
+            "x": 757.390625,
+            "y": 299.5,
+            "width": 530,
+            "height": 18
+          }
+        }
+      },
+      {
+        "text": "¿Aún no tienes cuenta? Crear una cuenta",
+        "css": {
+          "color": "rgb(135, 147, 143)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(247, 249, 248)",
+          "fontSize": "10px",
+          "fontWeight": "400",
+          "outline": "rgb(135, 147, 143) none 0px",
+          "rect": {
+            "x": 757.390625,
+            "y": 667.5,
+            "width": 530,
+            "height": 15
+          }
+        }
+      }
+    ],
+    "feedback": [],
+    "alerts": [],
+    "errors": [],
+    "links": [
+      {
+        "text": "AulaPro",
+        "href": "/inicio"
+      },
+      {
+        "text": "Volver al inicio",
+        "href": "/inicio"
+      }
+    ],
+    "focus": {
+      "tag": "BODY",
+      "id": "",
+      "text": "AulaPro\nAPRENDER TAMBIÉN ES CONVERSAR\n“\nCuando explicas una\nidea a tu equipo,\nta"
+    }
+  },
+  "tabs": [
+    {
+      "tag": "A",
+      "id": "",
+      "text": "AulaPro",
+      "outline": "rgb(16, 16, 16) auto 1px",
+      "focusVisible": true,
+      "visible": true
+    },
+    {
+      "tag": "A",
+      "id": "",
+      "text": "Volver al inicio",
+      "outline": "rgb(16, 16, 16) auto 1px",
+      "focusVisible": true,
+      "visible": true
+    },
+    {
+      "tag": "BUTTON",
+      "id": "",
+      "text": "G\nContinuar con Google",
+      "outline": "rgb(8, 125, 105) solid 3px",
+      "focusVisible": true,
+      "visible": true
+    },
+    {
+      "tag": "INPUT",
+      "id": "email",
+      "text": "",
+      "outline": "rgb(38, 63, 59) none 0px",
+      "focusVisible": true,
+      "visible": true
+    },
+    {
+      "tag": "INPUT",
+      "id": "password",
+      "text": "",
+      "outline": "rgb(38, 63, 59) none 0px",
+      "focusVisible": true,
+      "visible": true
+    },
+    {
+      "tag": "BUTTON",
+      "id": "",
+      "text": "Mostrar contraseña",
+      "outline": "rgb(8, 125, 105) solid 3px",
+      "focusVisible": true,
+      "visible": true
+    },
+    {
+      "tag": "INPUT",
+      "id": "",
+      "text": "",
+      "outline": "rgb(16, 16, 16) auto 1px",
+      "focusVisible": true,
+      "visible": true
+    },
+    {
+      "tag": "BUTTON",
+      "id": "",
+      "text": "¿Olvidaste tu contraseña?",
+      "outline": "rgb(16, 16, 16) auto 1px",
+      "focusVisible": true,
+      "visible": true
+    },
+    {
+      "tag": "BUTTON",
+      "id": "",
+      "text": "Iniciar sesión",
+      "outline": "rgb(8, 125, 105) solid 3px",
+      "focusVisible": true,
+      "visible": true
+    },
+    {
+      "tag": "BUTTON",
+      "id": "",
+      "text": "Crear una cuenta",
+      "outline": "rgb(16, 16, 16) auto 1px",
+      "focusVisible": true,
+      "visible": true
+    },
+    {
+      "tag": "BODY",
+      "id": "",
+      "text": "AulaPro\nAPRENDER TAMBIÉN ES CONVERSAR\n“\nCuando explicas una\nidea a tu ",
+      "outline": "rgb(24, 61, 58) none 0px",
+      "focusVisible": false,
+      "visible": true
+    },
+    {
+      "tag": "A",
+      "id": "",
+      "text": "AulaPro",
+      "outline": "rgb(16, 16, 16) auto 1px",
+      "focusVisible": true,
+      "visible": true
+    }
+  ],
+  "empty": {
+    "url": "https://frontend123-opal.vercel.app/register",
+    "title": "Registro | AulaPro",
+    "lang": "es",
+    "viewport": {
+      "width": 1440,
+      "height": 900,
+      "scrollWidth": 1440
+    },
+    "inputs": [
+      {
+        "id": "email",
+        "type": "email",
+        "labels": [
+          "Correo electrónico"
+        ],
+        "autocomplete": "email",
+        "required": false,
+        "ariaInvalid": "true",
+        "describedBy": null,
+        "errorMessage": null,
+        "css": {
+          "color": "rgb(38, 63, 59)",
+          "background": "rgb(255, 255, 255)",
+          "opaqueBackground": "rgb(255, 255, 255)",
+          "fontSize": "11px",
+          "fontWeight": "400",
+          "outline": "rgb(38, 63, 59) none 0px",
+          "rect": {
+            "x": 757.390625,
+            "y": 432.5,
+            "width": 530,
+            "height": 39
+          }
+        }
+      },
+      {
+        "id": "password",
+        "type": "password",
+        "labels": [
+          "Contraseña"
+        ],
+        "autocomplete": "current-password",
+        "required": false,
+        "ariaInvalid": "true",
+        "describedBy": null,
+        "errorMessage": null,
+        "css": {
+          "color": "rgb(38, 63, 59)",
+          "background": "rgb(255, 255, 255)",
+          "opaqueBackground": "rgb(255, 255, 255)",
+          "fontSize": "11px",
+          "fontWeight": "400",
+          "outline": "rgb(38, 63, 59) none 0px",
+          "rect": {
+            "x": 757.390625,
+            "y": 522.5,
+            "width": 530,
+            "height": 39
+          }
+        }
+      },
+      {
+        "id": "",
+        "type": "checkbox",
+        "labels": [
+          "Recordar datos"
+        ],
+        "autocomplete": "",
+        "required": false,
+        "ariaInvalid": null,
+        "describedBy": null,
+        "errorMessage": null,
+        "css": {
+          "color": "rgb(114, 129, 124)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(247, 249, 248)",
+          "fontSize": "10px",
+          "fontWeight": "400",
+          "outline": "rgb(114, 129, 124) none 0px",
+          "rect": {
+            "x": 757.390625,
+            "y": 596.5,
+            "width": 13,
+            "height": 13
+          }
+        }
+      }
+    ],
+    "buttons": [
+      {
+        "text": "G\nContinuar con Google",
+        "aria": null,
+        "type": "button",
+        "css": {
+          "color": "rgb(52, 75, 71)",
+          "background": "rgb(255, 255, 255)",
+          "opaqueBackground": "rgb(255, 255, 255)",
+          "fontSize": "12px",
+          "fontWeight": "650",
+          "outline": "rgb(52, 75, 71) none 0px",
+          "rect": {
+            "x": 757.390625,
+            "y": 320.5,
+            "width": 530,
+            "height": 43
+          }
+        }
+      },
+      {
+        "text": "",
+        "aria": "Mostrar contraseña",
+        "type": "button",
+        "css": {
+          "color": "rgb(126, 145, 139)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(247, 249, 248)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "outline": "rgb(126, 145, 139) none 0px",
+          "rect": {
+            "x": 1254.390625,
+            "y": 530.5,
+            "width": 23,
+            "height": 23
+          }
+        }
+      },
+      {
+        "text": "¿Olvidaste tu contraseña?",
+        "aria": null,
+        "type": "button",
+        "css": {
+          "color": "rgb(8, 125, 105)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(247, 249, 248)",
+          "fontSize": "10px",
+          "fontWeight": "700",
+          "outline": "rgb(8, 125, 105) none 0px",
+          "rect": {
+            "x": 1161.796875,
+            "y": 595.5,
+            "width": 125.59375,
+            "height": 15
+          }
+        }
+      },
+      {
+        "text": "Iniciar sesión",
+        "aria": null,
+        "type": "submit",
+        "css": {
+          "color": "rgb(6, 74, 61)",
+          "background": "rgb(50, 201, 149)",
+          "opaqueBackground": "rgb(50, 201, 149)",
+          "fontSize": "12px",
+          "fontWeight": "750",
+          "outline": "rgb(8, 125, 105) solid 3px",
+          "rect": {
+            "x": 757.390625,
+            "y": 628.5,
+            "width": 530,
+            "height": 43
+          }
+        }
+      },
+      {
+        "text": "Crear una cuenta",
+        "aria": null,
+        "type": "button",
+        "css": {
+          "color": "rgb(8, 125, 105)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(247, 249, 248)",
+          "fontSize": "10px",
+          "fontWeight": "700",
+          "outline": "rgb(8, 125, 105) none 0px",
+          "rect": {
+            "x": 1035.75,
+            "y": 686.5,
+            "width": 81.703125,
+            "height": 15
+          }
+        }
+      }
+    ],
+    "labels": [
+      {
+        "text": "Correo electrónico",
+        "css": {
+          "color": "rgb(41, 75, 70)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(247, 249, 248)",
+          "fontSize": "10px",
+          "fontWeight": "700",
+          "outline": "rgb(41, 75, 70) none 0px",
+          "rect": {
+            "x": 757.390625,
+            "y": 412.5,
+            "width": 530,
+            "height": 15
+          }
+        }
+      },
+      {
+        "text": "Contraseña",
+        "css": {
+          "color": "rgb(41, 75, 70)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(247, 249, 248)",
+          "fontSize": "10px",
+          "fontWeight": "700",
+          "outline": "rgb(41, 75, 70) none 0px",
+          "rect": {
+            "x": 757.390625,
+            "y": 502.5,
+            "width": 530,
+            "height": 15
+          }
+        }
+      },
+      {
+        "text": "Recordar datos",
+        "css": {
+          "color": "rgb(114, 129, 124)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(247, 249, 248)",
+          "fontSize": "10px",
+          "fontWeight": "400",
+          "outline": "rgb(114, 129, 124) none 0px",
+          "rect": {
+            "x": 757.390625,
+            "y": 595.5,
+            "width": 87.375,
+            "height": 15
+          }
+        }
+      }
+    ],
+    "texts": [
+      {
+        "text": "Cuando explicas una\nidea a tu equipo,\ntambién la entiendes\nmejor.",
+        "css": {
+          "color": "rgb(255, 255, 255)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(6, 78, 73)",
+          "fontSize": "37.44px",
+          "fontWeight": "750",
+          "outline": "rgb(255, 255, 255) none 0px",
+          "rect": {
+            "x": 48.375,
+            "y": 615.8125,
+            "width": 508.046875,
+            "height": 175.1875
+          }
+        }
+      },
+      {
+        "text": "Emilio, estudiante de Diseño Visual",
+        "css": {
+          "color": "rgb(193, 217, 211)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(6, 78, 73)",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "outline": "rgb(193, 217, 211) none 0px",
+          "rect": {
+            "x": 48.375,
+            "y": 834,
+            "width": 508.046875,
+            "height": 18
+          }
+        }
+      },
+      {
+        "text": "Bienvenido de nuevo",
+        "css": {
+          "color": "rgb(20, 61, 57)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(247, 249, 248)",
+          "fontSize": "27px",
+          "fontWeight": "750",
+          "outline": "rgb(20, 61, 57) none 0px",
+          "rect": {
+            "x": 757.390625,
+            "y": 235,
+            "width": 530,
+            "height": 40.5
+          }
+        }
+      },
+      {
+        "text": "Tu próxima sesión de estudio está a un clic.",
+        "css": {
+          "color": "rgb(120, 137, 133)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(247, 249, 248)",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "outline": "rgb(120, 137, 133) none 0px",
+          "rect": {
+            "x": 757.390625,
+            "y": 280.5,
+            "width": 530,
+            "height": 18
+          }
+        }
+      },
+      {
+        "text": "Este campo es obligatorio.",
+        "css": {
+          "color": "rgb(199, 53, 53)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(247, 249, 248)",
+          "fontSize": "10px",
+          "fontWeight": "400",
+          "outline": "rgb(199, 53, 53) none 0px",
+          "rect": {
+            "x": 757.390625,
+            "y": 476.5,
+            "width": 530,
+            "height": 14
+          }
+        }
+      },
+      {
+        "text": "Este campo es obligatorio.",
+        "css": {
+          "color": "rgb(199, 53, 53)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(247, 249, 248)",
+          "fontSize": "10px",
+          "fontWeight": "400",
+          "outline": "rgb(199, 53, 53) none 0px",
+          "rect": {
+            "x": 757.390625,
+            "y": 566.5,
+            "width": 530,
+            "height": 14
+          }
+        }
+      },
+      {
+        "text": "¿Aún no tienes cuenta? Crear una cuenta",
+        "css": {
+          "color": "rgb(135, 147, 143)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(247, 249, 248)",
+          "fontSize": "10px",
+          "fontWeight": "400",
+          "outline": "rgb(135, 147, 143) none 0px",
+          "rect": {
+            "x": 757.390625,
+            "y": 686.5,
+            "width": 530,
+            "height": 15
+          }
+        }
+      }
+    ],
+    "feedback": [],
+    "alerts": [],
+    "errors": [
+      "Este campo es obligatorio.",
+      "Este campo es obligatorio."
+    ],
+    "links": [
+      {
+        "text": "AulaPro",
+        "href": "/inicio"
+      },
+      {
+        "text": "Volver al inicio",
+        "href": "/inicio"
+      }
+    ],
+    "focus": {
+      "tag": "BUTTON",
+      "id": "",
+      "text": "Iniciar sesión"
+    }
+  },
+  "axEmpty": [
+    {
+      "role": "button",
+      "name": "G Continuar con Google",
+      "properties": [
+        {
+          "name": "invalid",
+          "value": {
+            "type": "token",
+            "value": "false"
+          }
+        },
+        {
+          "name": "focusable",
+          "value": {
+            "type": "booleanOrUndefined",
+            "value": true
+          }
+        }
+      ]
+    },
+    {
+      "role": "textbox",
+      "name": "Correo electrónico",
+      "properties": [
+        {
+          "name": "invalid",
+          "value": {
+            "type": "token",
+            "value": "true"
+          }
+        },
+        {
+          "name": "focusable",
+          "value": {
+            "type": "booleanOrUndefined",
+            "value": true
+          }
+        },
+        {
+          "name": "required",
+          "value": {
+            "type": "boolean",
+            "value": false
+          }
+        }
+      ]
+    },
+    {
+      "role": "button",
+      "name": "¿Olvidaste tu contraseña?",
+      "properties": [
+        {
+          "name": "invalid",
+          "value": {
+            "type": "token",
+            "value": "false"
+          }
+        },
+        {
+          "name": "focusable",
+          "value": {
+            "type": "booleanOrUndefined",
+            "value": true
+          }
+        }
+      ]
+    },
+    {
+      "role": "button",
+      "name": "Iniciar sesión",
+      "properties": [
+        {
+          "name": "invalid",
+          "value": {
+            "type": "token",
+            "value": "false"
+          }
+        },
+        {
+          "name": "focusable",
+          "value": {
+            "type": "booleanOrUndefined",
+            "value": true
+          }
+        }
+      ]
+    },
+    {
+      "role": "button",
+      "name": "Crear una cuenta",
+      "properties": [
+        {
+          "name": "invalid",
+          "value": {
+            "type": "token",
+            "value": "false"
+          }
+        },
+        {
+          "name": "focusable",
+          "value": {
+            "type": "booleanOrUndefined",
+            "value": true
+          }
+        }
+      ]
+    },
+    {
+      "role": "textbox",
+      "name": "Contraseña",
+      "properties": [
+        {
+          "name": "invalid",
+          "value": {
+            "type": "token",
+            "value": "true"
+          }
+        },
+        {
+          "name": "focusable",
+          "value": {
+            "type": "booleanOrUndefined",
+            "value": true
+          }
+        },
+        {
+          "name": "required",
+          "value": {
+            "type": "boolean",
+            "value": false
+          }
+        }
+      ]
+    },
+    {
+      "role": "button",
+      "name": "Mostrar contraseña",
+      "properties": [
+        {
+          "name": "invalid",
+          "value": {
+            "type": "token",
+            "value": "false"
+          }
+        },
+        {
+          "name": "focusable",
+          "value": {
+            "type": "booleanOrUndefined",
+            "value": true
+          }
+        }
+      ]
+    }
+  ],
+  "malformed": {
+    "url": "https://frontend123-opal.vercel.app/register",
+    "title": "Registro | AulaPro",
+    "lang": "es",
+    "viewport": {
+      "width": 1440,
+      "height": 900,
+      "scrollWidth": 1440
+    },
+    "inputs": [
+      {
+        "id": "email",
+        "type": "email",
+        "labels": [
+          "Correo electrónico"
+        ],
+        "autocomplete": "email",
+        "required": false,
+        "ariaInvalid": "true",
+        "describedBy": null,
+        "errorMessage": null,
+        "css": {
+          "color": "rgb(38, 63, 59)",
+          "background": "rgb(255, 255, 255)",
+          "opaqueBackground": "rgb(255, 255, 255)",
+          "fontSize": "11px",
+          "fontWeight": "400",
+          "outline": "rgb(38, 63, 59) none 0px",
+          "rect": {
+            "x": 757.390625,
+            "y": 432.5,
+            "width": 530,
+            "height": 39
+          }
+        }
+      },
+      {
+        "id": "password",
+        "type": "password",
+        "labels": [
+          "Contraseña"
+        ],
+        "autocomplete": "current-password",
+        "required": false,
+        "ariaInvalid": "true",
+        "describedBy": null,
+        "errorMessage": null,
+        "css": {
+          "color": "rgb(38, 63, 59)",
+          "background": "rgb(255, 255, 255)",
+          "opaqueBackground": "rgb(255, 255, 255)",
+          "fontSize": "11px",
+          "fontWeight": "400",
+          "outline": "rgb(38, 63, 59) none 0px",
+          "rect": {
+            "x": 757.390625,
+            "y": 522.5,
+            "width": 530,
+            "height": 39
+          }
+        }
+      },
+      {
+        "id": "",
+        "type": "checkbox",
+        "labels": [
+          "Recordar datos"
+        ],
+        "autocomplete": "",
+        "required": false,
+        "ariaInvalid": null,
+        "describedBy": null,
+        "errorMessage": null,
+        "css": {
+          "color": "rgb(114, 129, 124)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(247, 249, 248)",
+          "fontSize": "10px",
+          "fontWeight": "400",
+          "outline": "rgb(114, 129, 124) none 0px",
+          "rect": {
+            "x": 757.390625,
+            "y": 596.5,
+            "width": 13,
+            "height": 13
+          }
+        }
+      }
+    ],
+    "buttons": [
+      {
+        "text": "G\nContinuar con Google",
+        "aria": null,
+        "type": "button",
+        "css": {
+          "color": "rgb(52, 75, 71)",
+          "background": "rgb(255, 255, 255)",
+          "opaqueBackground": "rgb(255, 255, 255)",
+          "fontSize": "12px",
+          "fontWeight": "650",
+          "outline": "rgb(52, 75, 71) none 0px",
+          "rect": {
+            "x": 757.390625,
+            "y": 320.5,
+            "width": 530,
+            "height": 43
+          }
+        }
+      },
+      {
+        "text": "",
+        "aria": "Mostrar contraseña",
+        "type": "button",
+        "css": {
+          "color": "rgb(126, 145, 139)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(247, 249, 248)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "outline": "rgb(126, 145, 139) none 0px",
+          "rect": {
+            "x": 1254.390625,
+            "y": 530.5,
+            "width": 23,
+            "height": 23
+          }
+        }
+      },
+      {
+        "text": "¿Olvidaste tu contraseña?",
+        "aria": null,
+        "type": "button",
+        "css": {
+          "color": "rgb(8, 125, 105)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(247, 249, 248)",
+          "fontSize": "10px",
+          "fontWeight": "700",
+          "outline": "rgb(8, 125, 105) none 0px",
+          "rect": {
+            "x": 1161.796875,
+            "y": 595.5,
+            "width": 125.59375,
+            "height": 15
+          }
+        }
+      },
+      {
+        "text": "Iniciar sesión",
+        "aria": null,
+        "type": "submit",
+        "css": {
+          "color": "rgb(6, 74, 61)",
+          "background": "rgb(50, 201, 149)",
+          "opaqueBackground": "rgb(50, 201, 149)",
+          "fontSize": "12px",
+          "fontWeight": "750",
+          "outline": "rgb(8, 125, 105) solid 3px",
+          "rect": {
+            "x": 757.390625,
+            "y": 628.5,
+            "width": 530,
+            "height": 43
+          }
+        }
+      },
+      {
+        "text": "Crear una cuenta",
+        "aria": null,
+        "type": "button",
+        "css": {
+          "color": "rgb(8, 125, 105)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(247, 249, 248)",
+          "fontSize": "10px",
+          "fontWeight": "700",
+          "outline": "rgb(8, 125, 105) none 0px",
+          "rect": {
+            "x": 1035.75,
+            "y": 686.5,
+            "width": 81.703125,
+            "height": 15
+          }
+        }
+      }
+    ],
+    "labels": [
+      {
+        "text": "Correo electrónico",
+        "css": {
+          "color": "rgb(41, 75, 70)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(247, 249, 248)",
+          "fontSize": "10px",
+          "fontWeight": "700",
+          "outline": "rgb(41, 75, 70) none 0px",
+          "rect": {
+            "x": 757.390625,
+            "y": 412.5,
+            "width": 530,
+            "height": 15
+          }
+        }
+      },
+      {
+        "text": "Contraseña",
+        "css": {
+          "color": "rgb(41, 75, 70)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(247, 249, 248)",
+          "fontSize": "10px",
+          "fontWeight": "700",
+          "outline": "rgb(41, 75, 70) none 0px",
+          "rect": {
+            "x": 757.390625,
+            "y": 502.5,
+            "width": 530,
+            "height": 15
+          }
+        }
+      },
+      {
+        "text": "Recordar datos",
+        "css": {
+          "color": "rgb(114, 129, 124)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(247, 249, 248)",
+          "fontSize": "10px",
+          "fontWeight": "400",
+          "outline": "rgb(114, 129, 124) none 0px",
+          "rect": {
+            "x": 757.390625,
+            "y": 595.5,
+            "width": 87.375,
+            "height": 15
+          }
+        }
+      }
+    ],
+    "texts": [
+      {
+        "text": "Cuando explicas una\nidea a tu equipo,\ntambién la entiendes\nmejor.",
+        "css": {
+          "color": "rgb(255, 255, 255)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(6, 78, 73)",
+          "fontSize": "37.44px",
+          "fontWeight": "750",
+          "outline": "rgb(255, 255, 255) none 0px",
+          "rect": {
+            "x": 48.375,
+            "y": 615.8125,
+            "width": 508.046875,
+            "height": 175.1875
+          }
+        }
+      },
+      {
+        "text": "Emilio, estudiante de Diseño Visual",
+        "css": {
+          "color": "rgb(193, 217, 211)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(6, 78, 73)",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "outline": "rgb(193, 217, 211) none 0px",
+          "rect": {
+            "x": 48.375,
+            "y": 834,
+            "width": 508.046875,
+            "height": 18
+          }
+        }
+      },
+      {
+        "text": "Bienvenido de nuevo",
+        "css": {
+          "color": "rgb(20, 61, 57)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(247, 249, 248)",
+          "fontSize": "27px",
+          "fontWeight": "750",
+          "outline": "rgb(20, 61, 57) none 0px",
+          "rect": {
+            "x": 757.390625,
+            "y": 235,
+            "width": 530,
+            "height": 40.5
+          }
+        }
+      },
+      {
+        "text": "Tu próxima sesión de estudio está a un clic.",
+        "css": {
+          "color": "rgb(120, 137, 133)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(247, 249, 248)",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "outline": "rgb(120, 137, 133) none 0px",
+          "rect": {
+            "x": 757.390625,
+            "y": 280.5,
+            "width": 530,
+            "height": 18
+          }
+        }
+      },
+      {
+        "text": "Ingresa un correo electrónico válido.",
+        "css": {
+          "color": "rgb(199, 53, 53)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(247, 249, 248)",
+          "fontSize": "10px",
+          "fontWeight": "400",
+          "outline": "rgb(199, 53, 53) none 0px",
+          "rect": {
+            "x": 757.390625,
+            "y": 476.5,
+            "width": 530,
+            "height": 14
+          }
+        }
+      },
+      {
+        "text": "Este campo es obligatorio.",
+        "css": {
+          "color": "rgb(199, 53, 53)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(247, 249, 248)",
+          "fontSize": "10px",
+          "fontWeight": "400",
+          "outline": "rgb(199, 53, 53) none 0px",
+          "rect": {
+            "x": 757.390625,
+            "y": 566.5,
+            "width": 530,
+            "height": 14
+          }
+        }
+      },
+      {
+        "text": "¿Aún no tienes cuenta? Crear una cuenta",
+        "css": {
+          "color": "rgb(135, 147, 143)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(247, 249, 248)",
+          "fontSize": "10px",
+          "fontWeight": "400",
+          "outline": "rgb(135, 147, 143) none 0px",
+          "rect": {
+            "x": 757.390625,
+            "y": 686.5,
+            "width": 530,
+            "height": 15
+          }
+        }
+      }
+    ],
+    "feedback": [],
+    "alerts": [],
+    "errors": [
+      "Ingresa un correo electrónico válido.",
+      "Este campo es obligatorio."
+    ],
+    "links": [
+      {
+        "text": "AulaPro",
+        "href": "/inicio"
+      },
+      {
+        "text": "Volver al inicio",
+        "href": "/inicio"
+      }
+    ],
+    "focus": {
+      "tag": "BUTTON",
+      "id": "",
+      "text": "Iniciar sesión"
+    }
+  },
+  "toggle": {
+    "type": "text",
+    "label": "Ocultar contraseña"
+  },
+  "google": {
+    "url": "https://frontend123-opal.vercel.app/register",
+    "title": "Registro | AulaPro",
+    "lang": "es",
+    "viewport": {
+      "width": 1440,
+      "height": 900,
+      "scrollWidth": 1440
+    },
+    "inputs": [
+      {
+        "id": "email",
+        "type": "email",
+        "labels": [
+          "Correo electrónico"
+        ],
+        "autocomplete": "email",
+        "required": false,
+        "ariaInvalid": "false",
+        "describedBy": null,
+        "errorMessage": null,
+        "css": {
+          "color": "rgb(38, 63, 59)",
+          "background": "rgb(255, 255, 255)",
+          "opaqueBackground": "rgb(255, 255, 255)",
+          "fontSize": "11px",
+          "fontWeight": "400",
+          "outline": "rgb(38, 63, 59) none 0px",
+          "rect": {
+            "x": 757.390625,
+            "y": 461.25,
+            "width": 530,
+            "height": 39
+          }
+        }
+      },
+      {
+        "id": "password",
+        "type": "password",
+        "labels": [
+          "Contraseña"
+        ],
+        "autocomplete": "current-password",
+        "required": false,
+        "ariaInvalid": "true",
+        "describedBy": null,
+        "errorMessage": null,
+        "css": {
+          "color": "rgb(38, 63, 59)",
+          "background": "rgb(255, 255, 255)",
+          "opaqueBackground": "rgb(255, 255, 255)",
+          "fontSize": "11px",
+          "fontWeight": "400",
+          "outline": "rgb(38, 63, 59) none 0px",
+          "rect": {
+            "x": 757.390625,
+            "y": 532.25,
+            "width": 530,
+            "height": 39
+          }
+        }
+      },
+      {
+        "id": "",
+        "type": "checkbox",
+        "labels": [
+          "Recordar datos"
+        ],
+        "autocomplete": "",
+        "required": false,
+        "ariaInvalid": null,
+        "describedBy": null,
+        "errorMessage": null,
+        "css": {
+          "color": "rgb(114, 129, 124)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(247, 249, 248)",
+          "fontSize": "10px",
+          "fontWeight": "400",
+          "outline": "rgb(114, 129, 124) none 0px",
+          "rect": {
+            "x": 757.390625,
+            "y": 606.25,
+            "width": 13,
+            "height": 13
+          }
+        }
+      }
+    ],
+    "buttons": [
+      {
+        "text": "G\nContinuar con Google",
+        "aria": null,
+        "type": "button",
+        "css": {
+          "color": "rgb(52, 75, 71)",
+          "background": "rgb(255, 255, 255)",
+          "opaqueBackground": "rgb(255, 255, 255)",
+          "fontSize": "12px",
+          "fontWeight": "650",
+          "outline": "rgb(52, 75, 71) none 0px",
+          "rect": {
+            "x": 757.390625,
+            "y": 349.25,
+            "width": 530,
+            "height": 43
+          }
+        }
+      },
+      {
+        "text": "",
+        "aria": "Mostrar contraseña",
+        "type": "button",
+        "css": {
+          "color": "rgb(126, 145, 139)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(247, 249, 248)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "outline": "rgb(126, 145, 139) none 0px",
+          "rect": {
+            "x": 1254.390625,
+            "y": 540.25,
+            "width": 23,
+            "height": 23
+          }
+        }
+      },
+      {
+        "text": "¿Olvidaste tu contraseña?",
+        "aria": null,
+        "type": "button",
+        "css": {
+          "color": "rgb(8, 125, 105)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(247, 249, 248)",
+          "fontSize": "10px",
+          "fontWeight": "700",
+          "outline": "rgb(8, 125, 105) none 0px",
+          "rect": {
+            "x": 1161.796875,
+            "y": 605.25,
+            "width": 125.59375,
+            "height": 15
+          }
+        }
+      },
+      {
+        "text": "Iniciar sesión",
+        "aria": null,
+        "type": "submit",
+        "css": {
+          "color": "rgb(6, 74, 61)",
+          "background": "rgb(50, 201, 149)",
+          "opaqueBackground": "rgb(50, 201, 149)",
+          "fontSize": "12px",
+          "fontWeight": "750",
+          "outline": "rgb(8, 125, 105) solid 3px",
+          "rect": {
+            "x": 757.390625,
+            "y": 638.25,
+            "width": 530,
+            "height": 43
+          }
+        }
+      },
+      {
+        "text": "Crear una cuenta",
+        "aria": null,
+        "type": "button",
+        "css": {
+          "color": "rgb(8, 125, 105)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(247, 249, 248)",
+          "fontSize": "10px",
+          "fontWeight": "700",
+          "outline": "rgb(8, 125, 105) none 0px",
+          "rect": {
+            "x": 1035.75,
+            "y": 696.25,
+            "width": 81.703125,
+            "height": 15
+          }
+        }
+      }
+    ],
+    "labels": [
+      {
+        "text": "Correo electrónico",
+        "css": {
+          "color": "rgb(41, 75, 70)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(247, 249, 248)",
+          "fontSize": "10px",
+          "fontWeight": "700",
+          "outline": "rgb(41, 75, 70) none 0px",
+          "rect": {
+            "x": 757.390625,
+            "y": 441.25,
+            "width": 530,
+            "height": 15
+          }
+        }
+      },
+      {
+        "text": "Contraseña",
+        "css": {
+          "color": "rgb(41, 75, 70)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(247, 249, 248)",
+          "fontSize": "10px",
+          "fontWeight": "700",
+          "outline": "rgb(41, 75, 70) none 0px",
+          "rect": {
+            "x": 757.390625,
+            "y": 512.25,
+            "width": 530,
+            "height": 15
+          }
+        }
+      },
+      {
+        "text": "Recordar datos",
+        "css": {
+          "color": "rgb(114, 129, 124)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(247, 249, 248)",
+          "fontSize": "10px",
+          "fontWeight": "400",
+          "outline": "rgb(114, 129, 124) none 0px",
+          "rect": {
+            "x": 757.390625,
+            "y": 605.25,
+            "width": 87.375,
+            "height": 15
+          }
+        }
+      }
+    ],
+    "texts": [
+      {
+        "text": "Cuando explicas una\nidea a tu equipo,\ntambién la entiendes\nmejor.",
+        "css": {
+          "color": "rgb(255, 255, 255)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(6, 78, 73)",
+          "fontSize": "37.44px",
+          "fontWeight": "750",
+          "outline": "rgb(255, 255, 255) none 0px",
+          "rect": {
+            "x": 48.375,
+            "y": 615.8125,
+            "width": 508.046875,
+            "height": 175.1875
+          }
+        }
+      },
+      {
+        "text": "Emilio, estudiante de Diseño Visual",
+        "css": {
+          "color": "rgb(193, 217, 211)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(6, 78, 73)",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "outline": "rgb(193, 217, 211) none 0px",
+          "rect": {
+            "x": 48.375,
+            "y": 834,
+            "width": 508.046875,
+            "height": 18
+          }
+        }
+      },
+      {
+        "text": "Bienvenido de nuevo",
+        "css": {
+          "color": "rgb(20, 61, 57)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(247, 249, 248)",
+          "fontSize": "27px",
+          "fontWeight": "750",
+          "outline": "rgb(20, 61, 57) none 0px",
+          "rect": {
+            "x": 757.390625,
+            "y": 225.25,
+            "width": 530,
+            "height": 40.5
+          }
+        }
+      },
+      {
+        "text": "Tu próxima sesión de estudio está a un clic.",
+        "css": {
+          "color": "rgb(120, 137, 133)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(247, 249, 248)",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "outline": "rgb(120, 137, 133) none 0px",
+          "rect": {
+            "x": 757.390625,
+            "y": 270.75,
+            "width": 530,
+            "height": 18
+          }
+        }
+      },
+      {
+        "text": "La autenticación con Google estará disponible cuando conectemos Firebase Authentication.",
+        "css": {
+          "color": "rgb(23, 103, 71)",
+          "background": "rgb(237, 249, 243)",
+          "opaqueBackground": "rgb(237, 249, 243)",
+          "fontSize": "11px",
+          "fontWeight": "400",
+          "outline": "rgb(23, 103, 71) none 0px",
+          "rect": {
+            "x": 757.390625,
+            "y": 310.75,
+            "width": 530,
+            "height": 38.5
+          }
+        }
+      },
+      {
+        "text": "Este campo es obligatorio.",
+        "css": {
+          "color": "rgb(199, 53, 53)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(247, 249, 248)",
+          "fontSize": "10px",
+          "fontWeight": "400",
+          "outline": "rgb(199, 53, 53) none 0px",
+          "rect": {
+            "x": 757.390625,
+            "y": 576.25,
+            "width": 530,
+            "height": 14
+          }
+        }
+      },
+      {
+        "text": "¿Aún no tienes cuenta? Crear una cuenta",
+        "css": {
+          "color": "rgb(135, 147, 143)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(247, 249, 248)",
+          "fontSize": "10px",
+          "fontWeight": "400",
+          "outline": "rgb(135, 147, 143) none 0px",
+          "rect": {
+            "x": 757.390625,
+            "y": 696.25,
+            "width": 530,
+            "height": 15
+          }
+        }
+      }
+    ],
+    "feedback": [
+      {
+        "role": "alert",
+        "text": "La autenticación con Google estará disponible cuando conectemos Firebase Authentication."
+      }
+    ],
+    "alerts": [
+      {
+        "role": "alert",
+        "live": null,
+        "text": "La autenticación con Google estará disponible cuando conectemos Firebase Authentication."
+      }
+    ],
+    "errors": [
+      "Este campo es obligatorio."
+    ],
+    "links": [
+      {
+        "text": "AulaPro",
+        "href": "/inicio"
+      },
+      {
+        "text": "Volver al inicio",
+        "href": "/inicio"
+      }
+    ],
+    "focus": {
+      "tag": "BUTTON",
+      "id": "",
+      "text": "Iniciar sesión"
+    }
+  },
+  "synthetic": {
+    "feedback": [
+      {
+        "text": "Correo o contraseña incorrectos",
+        "role": "alert"
+      }
+    ],
+    "invalid": [],
+    "url": "https://frontend123-opal.vercel.app/register"
+  },
+  "mobile": {
+    "url": "https://frontend123-opal.vercel.app/register",
+    "title": "Registro | AulaPro",
+    "lang": "es",
+    "viewport": {
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 375
+    },
+    "inputs": [
+      {
+        "id": "email",
+        "type": "email",
+        "labels": [
+          "Correo electrónico"
+        ],
+        "autocomplete": "email",
+        "required": false,
+        "ariaInvalid": "false",
+        "describedBy": null,
+        "errorMessage": null,
+        "css": {
+          "color": "rgb(38, 63, 59)",
+          "background": "rgb(255, 255, 255)",
+          "opaqueBackground": "rgb(255, 255, 255)",
+          "fontSize": "11px",
+          "fontWeight": "400",
+          "outline": "rgb(38, 63, 59) none 0px",
+          "rect": {
+            "x": 17,
+            "y": 601.25,
+            "width": 341,
+            "height": 39
+          }
+        }
+      },
+      {
+        "id": "password",
+        "type": "password",
+        "labels": [
+          "Contraseña"
+        ],
+        "autocomplete": "current-password",
+        "required": false,
+        "ariaInvalid": "false",
+        "describedBy": null,
+        "errorMessage": null,
+        "css": {
+          "color": "rgb(38, 63, 59)",
+          "background": "rgb(255, 255, 255)",
+          "opaqueBackground": "rgb(255, 255, 255)",
+          "fontSize": "11px",
+          "fontWeight": "400",
+          "outline": "rgb(38, 63, 59) none 0px",
+          "rect": {
+            "x": 17,
+            "y": 672.25,
+            "width": 341,
+            "height": 39
+          }
+        }
+      },
+      {
+        "id": "",
+        "type": "checkbox",
+        "labels": [
+          "Recordar datos"
+        ],
+        "autocomplete": "",
+        "required": false,
+        "ariaInvalid": null,
+        "describedBy": null,
+        "errorMessage": null,
+        "css": {
+          "color": "rgb(114, 129, 124)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(247, 249, 248)",
+          "fontSize": "10px",
+          "fontWeight": "400",
+          "outline": "rgb(114, 129, 124) none 0px",
+          "rect": {
+            "x": 17,
+            "y": 727.25,
+            "width": 13,
+            "height": 13
+          }
+        }
+      }
+    ],
+    "buttons": [
+      {
+        "text": "G\nContinuar con Google",
+        "aria": null,
+        "type": "button",
+        "css": {
+          "color": "rgb(52, 75, 71)",
+          "background": "rgb(255, 255, 255)",
+          "opaqueBackground": "rgb(255, 255, 255)",
+          "fontSize": "12px",
+          "fontWeight": "650",
+          "outline": "rgb(52, 75, 71) none 0px",
+          "rect": {
+            "x": 17,
+            "y": 489.25,
+            "width": 341,
+            "height": 43
+          }
+        }
+      },
+      {
+        "text": "",
+        "aria": "Mostrar contraseña",
+        "type": "button",
+        "css": {
+          "color": "rgb(126, 145, 139)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(247, 249, 248)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "outline": "rgb(126, 145, 139) none 0px",
+          "rect": {
+            "x": 325,
+            "y": 680.25,
+            "width": 23,
+            "height": 23
+          }
+        }
+      },
+      {
+        "text": "¿Olvidaste tu contraseña?",
+        "aria": null,
+        "type": "button",
+        "css": {
+          "color": "rgb(8, 125, 105)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(247, 249, 248)",
+          "fontSize": "10px",
+          "fontWeight": "700",
+          "outline": "rgb(8, 125, 105) none 0px",
+          "rect": {
+            "x": 232.40625,
+            "y": 726.25,
+            "width": 125.59375,
+            "height": 15
+          }
+        }
+      },
+      {
+        "text": "Iniciar sesión",
+        "aria": null,
+        "type": "submit",
+        "css": {
+          "color": "rgb(6, 74, 61)",
+          "background": "rgb(50, 201, 149)",
+          "opaqueBackground": "rgb(50, 201, 149)",
+          "fontSize": "12px",
+          "fontWeight": "750",
+          "outline": "rgb(6, 74, 61) none 0px",
+          "rect": {
+            "x": 17,
+            "y": 759.25,
+            "width": 341,
+            "height": 43
+          }
+        }
+      },
+      {
+        "text": "Crear una cuenta",
+        "aria": null,
+        "type": "button",
+        "css": {
+          "color": "rgb(8, 125, 105)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(247, 249, 248)",
+          "fontSize": "10px",
+          "fontWeight": "700",
+          "outline": "rgb(8, 125, 105) none 0px",
+          "rect": {
+            "x": 200.859375,
+            "y": 817.25,
+            "width": 81.703125,
+            "height": 15
+          }
+        }
+      }
+    ],
+    "labels": [
+      {
+        "text": "Correo electrónico",
+        "css": {
+          "color": "rgb(41, 75, 70)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(247, 249, 248)",
+          "fontSize": "10px",
+          "fontWeight": "700",
+          "outline": "rgb(41, 75, 70) none 0px",
+          "rect": {
+            "x": 17,
+            "y": 581.25,
+            "width": 341,
+            "height": 15
+          }
+        }
+      },
+      {
+        "text": "Contraseña",
+        "css": {
+          "color": "rgb(41, 75, 70)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(247, 249, 248)",
+          "fontSize": "10px",
+          "fontWeight": "700",
+          "outline": "rgb(41, 75, 70) none 0px",
+          "rect": {
+            "x": 17,
+            "y": 652.25,
+            "width": 341,
+            "height": 15
+          }
+        }
+      },
+      {
+        "text": "Recordar datos",
+        "css": {
+          "color": "rgb(114, 129, 124)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(247, 249, 248)",
+          "fontSize": "10px",
+          "fontWeight": "400",
+          "outline": "rgb(114, 129, 124) none 0px",
+          "rect": {
+            "x": 17,
+            "y": 726.25,
+            "width": 87.375,
+            "height": 15
+          }
+        }
+      }
+    ],
+    "texts": [
+      {
+        "text": "Cuando explicas unaidea a tu equipo,también la entiendesmejor.",
+        "css": {
+          "color": "rgb(255, 255, 255)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(6, 78, 73)",
+          "fontSize": "25px",
+          "fontWeight": "750",
+          "outline": "rgb(255, 255, 255) none 0px",
+          "rect": {
+            "x": 25,
+            "y": 159.5,
+            "width": 325,
+            "height": 87.75
+          }
+        }
+      },
+      {
+        "text": "Emilio, estudiante de Diseño Visual",
+        "css": {
+          "color": "rgb(193, 217, 211)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(6, 78, 73)",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "outline": "rgb(193, 217, 211) none 0px",
+          "rect": {
+            "x": 25,
+            "y": 290.25,
+            "width": 325,
+            "height": 18
+          }
+        }
+      },
+      {
+        "text": "Bienvenido de nuevo",
+        "css": {
+          "color": "rgb(20, 61, 57)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(247, 249, 248)",
+          "fontSize": "25px",
+          "fontWeight": "750",
+          "outline": "rgb(20, 61, 57) none 0px",
+          "rect": {
+            "x": 17,
+            "y": 406.75,
+            "width": 341,
+            "height": 37.5
+          }
+        }
+      },
+      {
+        "text": "Tu próxima sesión de estudio está a un clic.",
+        "css": {
+          "color": "rgb(120, 137, 133)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(247, 249, 248)",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "outline": "rgb(120, 137, 133) none 0px",
+          "rect": {
+            "x": 17,
+            "y": 449.25,
+            "width": 341,
+            "height": 18
+          }
+        }
+      },
+      {
+        "text": "¿Aún no tienes cuenta? Crear una cuenta",
+        "css": {
+          "color": "rgb(135, 147, 143)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(247, 249, 248)",
+          "fontSize": "10px",
+          "fontWeight": "400",
+          "outline": "rgb(135, 147, 143) none 0px",
+          "rect": {
+            "x": 17,
+            "y": 817.25,
+            "width": 341,
+            "height": 15
+          }
+        }
+      }
+    ],
+    "feedback": [],
+    "alerts": [],
+    "errors": [],
+    "links": [
+      {
+        "text": "AulaPro",
+        "href": "/inicio"
+      },
+      {
+        "text": "Volver al inicio",
+        "href": "/inicio"
+      }
+    ],
+    "focus": {
+      "tag": "BODY",
+      "id": "",
+      "text": "AulaPro\nAPRENDER TAMBIÉN ES CONVERSAR\n“\nCuando explicas unaidea a tu equipo,tamb"
+    }
+  },
+  "width320": {
+    "url": "https://frontend123-opal.vercel.app/register",
+    "title": "Registro | AulaPro",
+    "lang": "es",
+    "viewport": {
+      "width": 320,
+      "height": 900,
+      "scrollWidth": 320
+    },
+    "inputs": [
+      {
+        "id": "email",
+        "type": "email",
+        "labels": [
+          "Correo electrónico"
+        ],
+        "autocomplete": "email",
+        "required": false,
+        "ariaInvalid": "false",
+        "describedBy": null,
+        "errorMessage": null,
+        "css": {
+          "color": "rgb(38, 63, 59)",
+          "background": "rgb(255, 255, 255)",
+          "opaqueBackground": "rgb(255, 255, 255)",
+          "fontSize": "11px",
+          "fontWeight": "400",
+          "outline": "rgb(38, 63, 59) none 0px",
+          "rect": {
+            "x": 17,
+            "y": 601.25,
+            "width": 286,
+            "height": 39
+          }
+        }
+      },
+      {
+        "id": "password",
+        "type": "password",
+        "labels": [
+          "Contraseña"
+        ],
+        "autocomplete": "current-password",
+        "required": false,
+        "ariaInvalid": "false",
+        "describedBy": null,
+        "errorMessage": null,
+        "css": {
+          "color": "rgb(38, 63, 59)",
+          "background": "rgb(255, 255, 255)",
+          "opaqueBackground": "rgb(255, 255, 255)",
+          "fontSize": "11px",
+          "fontWeight": "400",
+          "outline": "rgb(38, 63, 59) none 0px",
+          "rect": {
+            "x": 17,
+            "y": 672.25,
+            "width": 286,
+            "height": 39
+          }
+        }
+      },
+      {
+        "id": "",
+        "type": "checkbox",
+        "labels": [
+          "Recordar datos"
+        ],
+        "autocomplete": "",
+        "required": false,
+        "ariaInvalid": null,
+        "describedBy": null,
+        "errorMessage": null,
+        "css": {
+          "color": "rgb(114, 129, 124)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(247, 249, 248)",
+          "fontSize": "10px",
+          "fontWeight": "400",
+          "outline": "rgb(114, 129, 124) none 0px",
+          "rect": {
+            "x": 17,
+            "y": 727.25,
+            "width": 13,
+            "height": 13
+          }
+        }
+      }
+    ],
+    "buttons": [
+      {
+        "text": "G\nContinuar con Google",
+        "aria": null,
+        "type": "button",
+        "css": {
+          "color": "rgb(52, 75, 71)",
+          "background": "rgb(255, 255, 255)",
+          "opaqueBackground": "rgb(255, 255, 255)",
+          "fontSize": "12px",
+          "fontWeight": "650",
+          "outline": "rgb(52, 75, 71) none 0px",
+          "rect": {
+            "x": 17,
+            "y": 489.25,
+            "width": 286,
+            "height": 43
+          }
+        }
+      },
+      {
+        "text": "",
+        "aria": "Mostrar contraseña",
+        "type": "button",
+        "css": {
+          "color": "rgb(126, 145, 139)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(247, 249, 248)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "outline": "rgb(126, 145, 139) none 0px",
+          "rect": {
+            "x": 270,
+            "y": 680.25,
+            "width": 23,
+            "height": 23
+          }
+        }
+      },
+      {
+        "text": "¿Olvidaste tu contraseña?",
+        "aria": null,
+        "type": "button",
+        "css": {
+          "color": "rgb(8, 125, 105)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(247, 249, 248)",
+          "fontSize": "10px",
+          "fontWeight": "700",
+          "outline": "rgb(8, 125, 105) none 0px",
+          "rect": {
+            "x": 177.40625,
+            "y": 726.25,
+            "width": 125.59375,
+            "height": 15
+          }
+        }
+      },
+      {
+        "text": "Iniciar sesión",
+        "aria": null,
+        "type": "submit",
+        "css": {
+          "color": "rgb(6, 74, 61)",
+          "background": "rgb(50, 201, 149)",
+          "opaqueBackground": "rgb(50, 201, 149)",
+          "fontSize": "12px",
+          "fontWeight": "750",
+          "outline": "rgb(6, 74, 61) none 0px",
+          "rect": {
+            "x": 17,
+            "y": 759.25,
+            "width": 286,
+            "height": 43
+          }
+        }
+      },
+      {
+        "text": "Crear una cuenta",
+        "aria": null,
+        "type": "button",
+        "css": {
+          "color": "rgb(8, 125, 105)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(247, 249, 248)",
+          "fontSize": "10px",
+          "fontWeight": "700",
+          "outline": "rgb(8, 125, 105) none 0px",
+          "rect": {
+            "x": 173.359375,
+            "y": 817.25,
+            "width": 81.703125,
+            "height": 15
+          }
+        }
+      }
+    ],
+    "labels": [
+      {
+        "text": "Correo electrónico",
+        "css": {
+          "color": "rgb(41, 75, 70)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(247, 249, 248)",
+          "fontSize": "10px",
+          "fontWeight": "700",
+          "outline": "rgb(41, 75, 70) none 0px",
+          "rect": {
+            "x": 17,
+            "y": 581.25,
+            "width": 286,
+            "height": 15
+          }
+        }
+      },
+      {
+        "text": "Contraseña",
+        "css": {
+          "color": "rgb(41, 75, 70)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(247, 249, 248)",
+          "fontSize": "10px",
+          "fontWeight": "700",
+          "outline": "rgb(41, 75, 70) none 0px",
+          "rect": {
+            "x": 17,
+            "y": 652.25,
+            "width": 286,
+            "height": 15
+          }
+        }
+      },
+      {
+        "text": "Recordar datos",
+        "css": {
+          "color": "rgb(114, 129, 124)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(247, 249, 248)",
+          "fontSize": "10px",
+          "fontWeight": "400",
+          "outline": "rgb(114, 129, 124) none 0px",
+          "rect": {
+            "x": 17,
+            "y": 726.25,
+            "width": 87.375,
+            "height": 15
+          }
+        }
+      }
+    ],
+    "texts": [
+      {
+        "text": "Cuando explicas unaidea a tu equipo,también la entiendesmejor.",
+        "css": {
+          "color": "rgb(255, 255, 255)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(6, 78, 73)",
+          "fontSize": "25px",
+          "fontWeight": "750",
+          "outline": "rgb(255, 255, 255) none 0px",
+          "rect": {
+            "x": 25,
+            "y": 159.5,
+            "width": 270,
+            "height": 87.75
+          }
+        }
+      },
+      {
+        "text": "Emilio, estudiante de Diseño Visual",
+        "css": {
+          "color": "rgb(193, 217, 211)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(6, 78, 73)",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "outline": "rgb(193, 217, 211) none 0px",
+          "rect": {
+            "x": 25,
+            "y": 290.25,
+            "width": 270,
+            "height": 18
+          }
+        }
+      },
+      {
+        "text": "Bienvenido de nuevo",
+        "css": {
+          "color": "rgb(20, 61, 57)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(247, 249, 248)",
+          "fontSize": "25px",
+          "fontWeight": "750",
+          "outline": "rgb(20, 61, 57) none 0px",
+          "rect": {
+            "x": 17,
+            "y": 406.75,
+            "width": 286,
+            "height": 37.5
+          }
+        }
+      },
+      {
+        "text": "Tu próxima sesión de estudio está a un clic.",
+        "css": {
+          "color": "rgb(120, 137, 133)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(247, 249, 248)",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "outline": "rgb(120, 137, 133) none 0px",
+          "rect": {
+            "x": 17,
+            "y": 449.25,
+            "width": 286,
+            "height": 18
+          }
+        }
+      },
+      {
+        "text": "¿Aún no tienes cuenta? Crear una cuenta",
+        "css": {
+          "color": "rgb(135, 147, 143)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(247, 249, 248)",
+          "fontSize": "10px",
+          "fontWeight": "400",
+          "outline": "rgb(135, 147, 143) none 0px",
+          "rect": {
+            "x": 17,
+            "y": 817.25,
+            "width": 286,
+            "height": 15
+          }
+        }
+      }
+    ],
+    "feedback": [],
+    "alerts": [],
+    "errors": [],
+    "links": [
+      {
+        "text": "AulaPro",
+        "href": "/inicio"
+      },
+      {
+        "text": "Volver al inicio",
+        "href": "/inicio"
+      }
+    ],
+    "focus": {
+      "tag": "BODY",
+      "id": "",
+      "text": "AulaPro\nAPRENDER TAMBIÉN ES CONVERSAR\n“\nCuando explicas unaidea a tu equipo,tamb"
+    }
+  },
+  "design": {
+    "url": "https://jelly-speed-93201488.figma.site/login",
+    "title": "Diagrama BPMN proceso compra",
+    "lang": "en",
+    "viewport": {
+      "width": 1440,
+      "height": 900,
+      "scrollWidth": 1440
+    },
+    "inputs": [
+      {
+        "id": "",
+        "type": "email",
+        "labels": [
+          "Correo electrónico"
+        ],
+        "autocomplete": "",
+        "required": false,
+        "ariaInvalid": "false",
+        "describedBy": null,
+        "errorMessage": null,
+        "css": {
+          "color": "rgb(23, 43, 45)",
+          "background": "rgb(248, 251, 251)",
+          "opaqueBackground": "rgb(248, 251, 251)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "rect": {
+            "x": 821,
+            "y": 336,
+            "width": 374,
+            "height": 48
+          }
+        }
+      },
+      {
+        "id": "",
+        "type": "password",
+        "labels": [
+          "Contraseña"
+        ],
+        "autocomplete": "",
+        "required": false,
+        "ariaInvalid": "false",
+        "describedBy": null,
+        "errorMessage": null,
+        "css": {
+          "color": "rgb(23, 43, 45)",
+          "background": "rgb(248, 251, 251)",
+          "opaqueBackground": "rgb(248, 251, 251)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "rect": {
+            "x": 821,
+            "y": 432,
+            "width": 374,
+            "height": 48
+          }
+        }
+      },
+      {
+        "id": "",
+        "type": "checkbox",
+        "labels": [
+          "Recordarme"
+        ],
+        "autocomplete": "",
+        "required": false,
+        "ariaInvalid": null,
+        "describedBy": null,
+        "errorMessage": null,
+        "css": {
+          "color": "rgb(23, 43, 45)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(255, 255, 255)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "rect": {
+            "x": 821,
+            "y": 504,
+            "width": 16,
+            "height": 16
+          }
+        }
+      }
+    ],
+    "buttons": [
+      {
+        "text": "",
+        "aria": "Más opciones",
+        "type": "submit",
+        "css": {
+          "color": "rgba(0, 0, 0, 0.5)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(255, 255, 255)",
+          "fontSize": "16px",
+          "fontWeight": "600",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "rect": {
+            "x": 1319,
+            "y": 840,
+            "width": 40,
+            "height": 40
+          }
+        }
+      },
+      {
+        "text": "",
+        "aria": "Cerrar",
+        "type": "submit",
+        "css": {
+          "color": "rgba(0, 0, 0, 0.5)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(255, 255, 255)",
+          "fontSize": "16px",
+          "fontWeight": "600",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "rect": {
+            "x": 1360,
+            "y": 840,
+            "width": 40,
+            "height": 40
+          }
+        }
+      },
+      {
+        "text": "",
+        "aria": "Mostrar contraseña",
+        "type": "button",
+        "css": {
+          "color": "rgb(100, 119, 121)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(255, 255, 255)",
+          "fontSize": "16px",
+          "fontWeight": "600",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "rect": {
+            "x": 1163,
+            "y": 447,
+            "width": 18,
+            "height": 18
+          }
+        }
+      },
+      {
+        "text": "¿Olvidaste tu contraseña?",
+        "aria": null,
+        "type": "button",
+        "css": {
+          "color": "rgb(11, 117, 108)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(255, 255, 255)",
+          "fontSize": "16px",
+          "fontWeight": "700",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "rect": {
+            "x": 991.5625,
+            "y": 500,
+            "width": 203.4375,
+            "height": 24
+          }
+        }
+      },
+      {
+        "text": "Iniciar sesión",
+        "aria": null,
+        "type": "submit",
+        "css": {
+          "color": "rgb(4, 47, 52)",
+          "background": "rgb(24, 182, 164)",
+          "opaqueBackground": "rgb(24, 182, 164)",
+          "fontSize": "14px",
+          "fontWeight": "700",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "rect": {
+            "x": 821,
+            "y": 544,
+            "width": 374,
+            "height": 44
+          }
+        }
+      },
+      {
+        "text": "G\nContinuar con Google",
+        "aria": null,
+        "type": "button",
+        "css": {
+          "color": "rgb(7, 59, 67)",
+          "background": "rgb(255, 255, 255)",
+          "opaqueBackground": "rgb(255, 255, 255)",
+          "fontSize": "14px",
+          "fontWeight": "700",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "rect": {
+            "x": 821,
+            "y": 644,
+            "width": 374,
+            "height": 44
+          }
+        }
+      }
+    ],
+    "labels": [
+      {
+        "text": "Correo electrónico",
+        "css": {
+          "color": "rgb(41, 72, 75)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(255, 255, 255)",
+          "fontSize": "14px",
+          "fontWeight": "600",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "rect": {
+            "x": 821,
+            "y": 308,
+            "width": 374,
+            "height": 76
+          }
+        }
+      },
+      {
+        "text": "Contraseña",
+        "css": {
+          "color": "rgb(41, 72, 75)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(255, 255, 255)",
+          "fontSize": "14px",
+          "fontWeight": "600",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "rect": {
+            "x": 821,
+            "y": 404,
+            "width": 374,
+            "height": 76
+          }
+        }
+      },
+      {
+        "text": "Recordarme",
+        "css": {
+          "color": "rgb(23, 43, 45)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(255, 255, 255)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "rect": {
+            "x": 821,
+            "y": 500,
+            "width": 114.140625,
+            "height": 24
+          }
+        }
+      }
+    ],
+    "texts": [
+      {
+        "text": "Creado con Figma Make",
+        "css": {
+          "color": "rgba(0, 0, 0, 0.9)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(255, 255, 255)",
+          "fontSize": "11px",
+          "fontWeight": "550",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "rect": {
+            "x": 1120.859375,
+            "y": 852,
+            "width": 127.6875,
+            "height": 16
+          }
+        }
+      },
+      {
+        "text": "APRENDER TAMBIÉN ES CONVERSAR",
+        "css": {
+          "color": "rgb(112, 220, 203)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(7, 59, 67)",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "rect": {
+            "x": 48,
+            "y": 356.5,
+            "width": 448,
+            "height": 16
+          }
+        }
+      },
+      {
+        "text": "Emilio, estudiante de Diseño Visual",
+        "css": {
+          "color": "oklab(0.999994 0.0000455678 0.0000200868 / 0.55)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(7, 59, 67)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "rect": {
+            "x": 48,
+            "y": 547.5,
+            "width": 448,
+            "height": 20
+          }
+        }
+      },
+      {
+        "text": "AulaPro · Entorno de demostración",
+        "css": {
+          "color": "oklab(0.999994 0.0000455678 0.0000200868 / 0.4)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(7, 59, 67)",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "rect": {
+            "x": 48,
+            "y": 836,
+            "width": 480,
+            "height": 16
+          }
+        }
+      },
+      {
+        "text": "Bienvenido de nuevo",
+        "css": {
+          "color": "rgb(7, 59, 67)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(255, 255, 255)",
+          "fontSize": "30px",
+          "fontWeight": "800",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "rect": {
+            "x": 821,
+            "y": 216,
+            "width": 374,
+            "height": 36
+          }
+        }
+      },
+      {
+        "text": "Tu próxima sesión de estudio está a un clic.",
+        "css": {
+          "color": "rgb(100, 119, 121)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(255, 255, 255)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "rect": {
+            "x": 821,
+            "y": 260,
+            "width": 374,
+            "height": 20
+          }
+        }
+      },
+      {
+        "text": "¿Aún no tienes cuenta? Crear una cuenta",
+        "css": {
+          "color": "rgb(100, 119, 121)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(255, 255, 255)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "rect": {
+            "x": 821,
+            "y": 712,
+            "width": 374,
+            "height": 20
+          }
+        }
+      }
+    ],
+    "feedback": [],
+    "alerts": [
+      {
+        "role": null,
+        "live": "polite",
+        "text": ""
+      }
+    ],
+    "errors": [],
+    "links": [
+      {
+        "text": "Remix",
+        "href": "https://www.figma.com/community/file/1699949368868677519?openSignupModal=true"
+      },
+      {
+        "text": "AulaPro",
+        "href": "/"
+      },
+      {
+        "text": "AulaPro",
+        "href": "/"
+      },
+      {
+        "text": "Volver al inicio",
+        "href": "/"
+      },
+      {
+        "text": "Crear una cuenta",
+        "href": "/register"
+      }
+    ],
+    "focus": {
+      "tag": "BODY",
+      "id": "",
+      "text": "Creado con Figma Make\n\nRemix\nAulaPro\n\nAPRENDER TAMBIÉN ES CONVERSAR\n\n“Cuando exp"
+    }
+  },
+  "designMobile": {
+    "url": "https://jelly-speed-93201488.figma.site/login",
+    "title": "Diagrama BPMN proceso compra",
+    "lang": "en",
+    "viewport": {
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390
+    },
+    "inputs": [
+      {
+        "id": "",
+        "type": "email",
+        "labels": [
+          "Correo electrónico"
+        ],
+        "autocomplete": "",
+        "required": false,
+        "ariaInvalid": "false",
+        "describedBy": null,
+        "errorMessage": null,
+        "css": {
+          "color": "rgb(23, 43, 45)",
+          "background": "rgb(248, 251, 251)",
+          "opaqueBackground": "rgb(248, 251, 251)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "rect": {
+            "x": 45,
+            "y": 336,
+            "width": 300,
+            "height": 48
+          }
+        }
+      },
+      {
+        "id": "",
+        "type": "password",
+        "labels": [
+          "Contraseña"
+        ],
+        "autocomplete": "",
+        "required": false,
+        "ariaInvalid": "false",
+        "describedBy": null,
+        "errorMessage": null,
+        "css": {
+          "color": "rgb(23, 43, 45)",
+          "background": "rgb(248, 251, 251)",
+          "opaqueBackground": "rgb(248, 251, 251)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "rect": {
+            "x": 45,
+            "y": 432,
+            "width": 300,
+            "height": 48
+          }
+        }
+      },
+      {
+        "id": "",
+        "type": "checkbox",
+        "labels": [
+          "Recordarme"
+        ],
+        "autocomplete": "",
+        "required": false,
+        "ariaInvalid": null,
+        "describedBy": null,
+        "errorMessage": null,
+        "css": {
+          "color": "rgb(23, 43, 45)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(255, 255, 255)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "rect": {
+            "x": 45,
+            "y": 516,
+            "width": 16,
+            "height": 16
+          }
+        }
+      }
+    ],
+    "buttons": [
+      {
+        "text": "",
+        "aria": "Más opciones",
+        "type": "submit",
+        "css": {
+          "color": "rgba(0, 0, 0, 0.5)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(255, 255, 255)",
+          "fontSize": "16px",
+          "fontWeight": "600",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "rect": {
+            "x": 275.5625,
+            "y": 784,
+            "width": 40,
+            "height": 40
+          }
+        }
+      },
+      {
+        "text": "",
+        "aria": "Cerrar",
+        "type": "submit",
+        "css": {
+          "color": "rgba(0, 0, 0, 0.5)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(255, 255, 255)",
+          "fontSize": "16px",
+          "fontWeight": "600",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "rect": {
+            "x": 316.5625,
+            "y": 784,
+            "width": 40,
+            "height": 40
+          }
+        }
+      },
+      {
+        "text": "",
+        "aria": "Mostrar contraseña",
+        "type": "button",
+        "css": {
+          "color": "rgb(100, 119, 121)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(255, 255, 255)",
+          "fontSize": "16px",
+          "fontWeight": "600",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "rect": {
+            "x": 313,
+            "y": 447,
+            "width": 18,
+            "height": 18
+          }
+        }
+      },
+      {
+        "text": "¿Olvidaste tu contraseña?",
+        "aria": null,
+        "type": "button",
+        "css": {
+          "color": "rgb(11, 117, 108)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(255, 255, 255)",
+          "fontSize": "16px",
+          "fontWeight": "700",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "rect": {
+            "x": 159.140625,
+            "y": 500,
+            "width": 185.859375,
+            "height": 48
+          }
+        }
+      },
+      {
+        "text": "Iniciar sesión",
+        "aria": null,
+        "type": "submit",
+        "css": {
+          "color": "rgb(4, 47, 52)",
+          "background": "rgb(24, 182, 164)",
+          "opaqueBackground": "rgb(24, 182, 164)",
+          "fontSize": "14px",
+          "fontWeight": "700",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "rect": {
+            "x": 45,
+            "y": 568,
+            "width": 300,
+            "height": 44
+          }
+        }
+      },
+      {
+        "text": "G\nContinuar con Google",
+        "aria": null,
+        "type": "button",
+        "css": {
+          "color": "rgb(7, 59, 67)",
+          "background": "rgb(255, 255, 255)",
+          "opaqueBackground": "rgb(255, 255, 255)",
+          "fontSize": "14px",
+          "fontWeight": "700",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "rect": {
+            "x": 45,
+            "y": 668,
+            "width": 300,
+            "height": 44
+          }
+        }
+      }
+    ],
+    "labels": [
+      {
+        "text": "Correo electrónico",
+        "css": {
+          "color": "rgb(41, 72, 75)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(255, 255, 255)",
+          "fontSize": "14px",
+          "fontWeight": "600",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "rect": {
+            "x": 45,
+            "y": 308,
+            "width": 300,
+            "height": 76
+          }
+        }
+      },
+      {
+        "text": "Contraseña",
+        "css": {
+          "color": "rgb(41, 72, 75)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(255, 255, 255)",
+          "fontSize": "14px",
+          "fontWeight": "600",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "rect": {
+            "x": 45,
+            "y": 404,
+            "width": 300,
+            "height": 76
+          }
+        }
+      },
+      {
+        "text": "Recordarme",
+        "css": {
+          "color": "rgb(23, 43, 45)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(255, 255, 255)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "rect": {
+            "x": 45,
+            "y": 512,
+            "width": 114.140625,
+            "height": 24
+          }
+        }
+      }
+    ],
+    "texts": [
+      {
+        "text": "Creado con Figma Make",
+        "css": {
+          "color": "rgba(0, 0, 0, 0.9)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(255, 255, 255)",
+          "fontSize": "11px",
+          "fontWeight": "550",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "rect": {
+            "x": 77.421875,
+            "y": 796,
+            "width": 127.6875,
+            "height": 16
+          }
+        }
+      },
+      {
+        "text": "Aprender también es conversar",
+        "css": {
+          "color": "rgb(112, 220, 203)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(7, 59, 67)",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        }
+      },
+      {
+        "text": "Emilio, estudiante de Diseño Visual",
+        "css": {
+          "color": "oklab(0.999994 0.0000455678 0.0000200868 / 0.55)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(7, 59, 67)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        }
+      },
+      {
+        "text": "AulaPro · Entorno de demostración",
+        "css": {
+          "color": "oklab(0.999994 0.0000455678 0.0000200868 / 0.4)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(7, 59, 67)",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        }
+      },
+      {
+        "text": "Bienvenido de nuevo",
+        "css": {
+          "color": "rgb(7, 59, 67)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(255, 255, 255)",
+          "fontSize": "30px",
+          "fontWeight": "800",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "rect": {
+            "x": 45,
+            "y": 216,
+            "width": 300,
+            "height": 36
+          }
+        }
+      },
+      {
+        "text": "Tu próxima sesión de estudio está a un clic.",
+        "css": {
+          "color": "rgb(100, 119, 121)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(255, 255, 255)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "rect": {
+            "x": 45,
+            "y": 260,
+            "width": 300,
+            "height": 20
+          }
+        }
+      },
+      {
+        "text": "¿Aún no tienes cuenta? Crear una cuenta",
+        "css": {
+          "color": "rgb(100, 119, 121)",
+          "background": "rgba(0, 0, 0, 0)",
+          "opaqueBackground": "rgb(255, 255, 255)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "outline": "oklab(0.698408 -0.121193 -0.00490159 / 0.5) none 0px",
+          "rect": {
+            "x": 45,
+            "y": 736,
+            "width": 300,
+            "height": 20
+          }
+        }
+      }
+    ],
+    "feedback": [],
+    "alerts": [
+      {
+        "role": null,
+        "live": "polite",
+        "text": ""
+      }
+    ],
+    "errors": [],
+    "links": [
+      {
+        "text": "Remix",
+        "href": "https://www.figma.com/community/file/1699949368868677519?openSignupModal=true"
+      },
+      {
+        "text": "AulaPro",
+        "href": "/"
+      },
+      {
+        "text": "AulaPro",
+        "href": "/"
+      },
+      {
+        "text": "Volver al inicio",
+        "href": "/"
+      },
+      {
+        "text": "Crear una cuenta",
+        "href": "/register"
+      }
+    ],
+    "focus": {
+      "tag": "BODY",
+      "id": "",
+      "text": "Creado con Figma Make\n\nRemix\nAulaPro\nVolver al inicio\nBienvenido de nuevo\n\nTu pr"
+    }
+  },
+  "blockedMutationCount": 0
+}

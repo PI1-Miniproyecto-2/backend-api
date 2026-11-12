@@ -400,3 +400,64 @@ test('US-02: username vacío, solo espacios o con punto no crea ni completa perf
   assert.equal(f.store.data.get('users/google-user')?.profileCompleted, false);
   await request(f.app).get('/private').auth('google-user', { type: 'bearer' }).expect(403);
 });
+
+test('US-03: PATCH y DELETE rechazan token ausente, inválido, expirado y revocado sin cambios', async () => {
+  const f = fixture('password');
+  await request(f.app).post(f.me).auth('owner', { type: 'bearer' }).send(complete).expect(201);
+  const before = new Map(f.store.data);
+  const writes = f.store.writes;
+  for (const method of ['patch', 'delete'] as const) {
+    await request(f.app)[method](f.me).send({ firstName: 'Cambio' }).expect(401);
+    for (const token of ['invalid', 'expired', 'revoked']) {
+      await request(f.app)[method](f.me).auth(token, { type: 'bearer' }).send({ firstName: 'Cambio' }).expect(401);
+    }
+  }
+  assert.equal(f.store.writes, writes);
+  assert.deepEqual(f.store.data, before);
+});
+
+test('US-03: la identidad no se conserva entre solicitudes ni entre usuarios', async () => {
+  for (const provider of ['password', 'google.com'] as const) {
+    const f = fixture(provider);
+    await request(f.app).post(f.me).auth('owner', { type: 'bearer' }).send(complete).expect(201);
+    await request(f.app).get(f.me).auth('owner', { type: 'bearer' }).expect(200);
+    await request(f.app).get(f.me).expect(401);
+    await request(f.app).get(f.me).auth('revoked', { type: 'bearer' }).expect(401);
+    await request(f.app).get(f.me).auth('other', { type: 'bearer' }).expect(404);
+    const own = await request(f.app).get(f.me).auth('owner', { type: 'bearer' }).expect(200);
+    assert.equal(own.body.email, 'owner@example.com');
+    assert.equal(own.body.authProvider, provider);
+    assert.ok(f.calls.every(revoked => revoked === true));
+  }
+});
+
+test('US-03: errores Firebase Admin de entrada e infraestructura conservan su clasificación', async () => {
+  for (const [code, status, message] of [
+    ['auth/argument-error', 401, 'Token inválido, expirado o revocado'],
+    ['auth/invalid-argument', 401, 'Token inválido, expirado o revocado'],
+    ['auth/insufficient-permission', 500, 'Error interno del servidor'],
+    ['auth/internal-error', 500, 'Error interno del servidor'],
+    [8, 503, 'Servicio temporalmente no disponible'],
+    ['unavailable', 503, 'Servicio temporalmente no disponible'],
+    [undefined, 500, 'Error interno del servidor'],
+  ] as const) {
+    const verify = createAuthService(async (_token, checkRevoked) => {
+      assert.equal(checkRevoked, true);
+      throw { code, message: 'SECRET: detalle del SDK' };
+    });
+    await assert.rejects(verify('simulated'), { status, message });
+  }
+});
+
+test('US-03: perfil completo ajeno no habilita acceso privado al usuario incompleto', async () => {
+  const f = fixture('google.com');
+  await request(f.app).post(f.me).auth('owner', { type: 'bearer' }).send(complete).expect(201);
+  await request(f.app).post(f.me).auth('newcomer', { type: 'bearer' }).send({}).expect(201);
+  await request(f.app).get('/private').auth('owner', { type: 'bearer' }).expect(200);
+  await request(f.app).get('/private').auth('newcomer', { type: 'bearer' }).expect(403);
+  const own = await request(f.app).get(`${f.me}?uid=owner`).auth('newcomer', { type: 'bearer' }).expect(200);
+  assert.equal(own.body.profileCompleted, false);
+  assert.equal(own.body.email, 'newcomer@example.com');
+  await request(f.app).get('/private').auth('missing', { type: 'bearer' }).expect(403);
+  await request(f.app).get('/private').expect(401);
+});
