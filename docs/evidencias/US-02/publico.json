@@ -1,0 +1,44 @@
+{
+  "date": "2026-11-11T23:19:28.198318-05:00",
+  "checks": [
+    {
+      "path": "/health",
+      "auth": "ausente",
+      "status": 200,
+      "body": {
+        "status": "ok"
+      }
+    },
+    {
+      "path": "/openapi.json",
+      "auth": "ausente",
+      "status": 200,
+      "providerEnum": [
+        "password",
+        "google.com"
+      ],
+      "usernamePattern": "^[A-Za-z0-9_]{3,20}$"
+    },
+    {
+      "path": "/api/v1/users/me",
+      "auth": "ausente",
+      "status": 401,
+      "body": {
+        "error": "Se requiere Authorization: Bearer <token>"
+      }
+    },
+    {
+      "path": "/api/v1/users/me",
+      "auth": "ficticia",
+      "status": 401,
+      "body": {
+        "error": "Token inválido, expirado o revocado"
+      }
+    }
+  ],
+  "frontend": {
+    "asset": "/assets/index-P9Dk7As_.js",
+    "sha256": "b4694e9ba16fdbb1f58df8424b486b29a08e13447563c4a6e83c2d6facd7ca4c",
+    "googleHandlerExcerpt": "}),(0,j.jsxs)(`button`,{type:`button`,className:`google-button`,onClick:()=>{v(`La autenticación con Google estará disponible cuando conectemos Firebase Authentication.`)},children:[(0,j.jsx)(`span`,{className:`google-letter`,children:`G`}),e?`Continuar con Google`:`Registrarse con Google`"
+  }
+}
