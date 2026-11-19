@@ -68,6 +68,23 @@ test('OpenAPI documenta CRUD propio, seguridad, campos y errores de TS-01', asyn
 });
 
 
+test('US-04: Swagger describe edición parcial, cuerpo vacío y recuperación con GET', async () => {
+  const { body: spec } = await request(app).get('/openapi.json').expect(200);
+  const { get, patch } = spec.paths['/api/v1/users/me'];
+  assert.equal(spec.components.securitySchemes.bearerAuth.bearerFormat, 'Firebase ID token');
+  assert.match(get.description, /exclusivamente sobre el UID del token verificado/);
+  assert.match(patch.description, /campos editables omitidos conservan su valor/);
+  assert.match(patch.description, /servidor administra uid, email, authProvider, usernameNormalized, createdAt, updatedAt y profileCompleted/);
+  assert.match(patch.description, /cero bytes se rechaza con 400/);
+  assert.match(patch.description, /JSON explícito \`\{\}\`.*sincronizar email, authProvider y updatedAt/);
+  assert.match(patch.description, /lectura posterior a una escritura confirmada.*error.*guardados/);
+  assert.match(patch.description, /consultar GET \/api\/v1\/users\/me antes de repetir PATCH/);
+  assert.equal(patch.requestBody.content['application/json'].schema.$ref, '#/components/schemas/ProfileInput');
+  const { username } = spec.components.schemas.ProfileInput.properties;
+  assert.equal(username.pattern, '^[A-Za-z0-9_]{3,20}$');
+  assert.match(username.description, /Unicidad sin distinguir mayúsculas/);
+});
+
 test('US-01: Swagger distingue creación de cuenta Firebase y creación de perfil', async () => {
   const { body: spec } = await request(app).get('/openapi.json').expect(200);
   const post = spec.paths['/api/v1/users/me'].post;

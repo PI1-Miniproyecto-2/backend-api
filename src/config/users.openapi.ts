@@ -4,7 +4,7 @@ import { AVATAR_IDS } from './avatars';
 const editable: Record<string, OpenAPIV3.SchemaObject> = {
   firstName: { type: 'string', nullable: true, minLength: 1, maxLength: 100, description: 'Se recortan los espacios de los extremos; null solo mientras el perfil esté incompleto.' },
   lastName: { type: 'string', nullable: true, minLength: 1, maxLength: 100, description: 'Se recortan los espacios de los extremos; null solo mientras el perfil esté incompleto.' },
-  username: { type: 'string', nullable: true, pattern: '^[A-Za-z0-9_]{3,20}$', description: 'Unicidad sin distinguir mayúsculas. No se puede limpiar un nombre ya elegido.' },
+  username: { type: 'string', nullable: true, pattern: '^[A-Za-z0-9_]{3,20}$', description: 'De 3 a 20 caracteres: letras ASCII, números y guion bajo. Unicidad sin distinguir mayúsculas. No se puede limpiar un nombre ya elegido.' },
   avatarId: { type: 'string', enum: [...AVATAR_IDS], description: 'Predeterminado al crear: avatar_book.' },
 };
 export const usersSchemas: Record<string, OpenAPIV3.SchemaObject> = {
@@ -39,6 +39,16 @@ function operation(method: string, summary: string, status: string, input = fals
 export const usersPath: OpenAPIV3.PathItemObject = {
   post: operation('create', 'Crear perfil propio', '201', true),
   get: operation('read', 'Consultar perfil propio', '200'),
-  patch: operation('update', 'Actualizar perfil propio', '200', true),
+  patch: {
+    ...operation('update', 'Actualizar perfil propio', '200', true),
+    description: [
+      'Usa un token Firebase por Bearer y actualiza exclusivamente el perfil del UID verificado con comprobación de revocación.',
+      'Admite firstName, lastName, username y avatarId. Los campos editables omitidos conservan su valor.',
+      'El servidor administra uid, email, authProvider, usernameNormalized, createdAt, updatedAt y profileCompleted. Se rechazan estos campos y cualquier campo desconocido si se envían en el cuerpo.',
+      'Un cuerpo HTTP de cero bytes se rechaza con 400. Un objeto JSON explícito `{}` conserva los campos editables y puede sincronizar email, authProvider y updatedAt.',
+      'La respuesta 200 contiene el perfil actualizado con fechas ISO. Si falla la lectura posterior a una escritura confirmada, la respuesta puede ser de error aunque los cambios ya estén guardados.',
+      'Ante una respuesta ambigua, consultar GET /api/v1/users/me antes de repetir PATCH.',
+    ].join('\n\n'),
+  },
   delete: operation('delete', 'Eliminar perfil propio', '204'),
 };
