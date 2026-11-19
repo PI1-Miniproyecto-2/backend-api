@@ -56,7 +56,8 @@ test('OpenAPI documenta CRUD propio, seguridad, campos y errores de TS-01', asyn
   assert.equal(spec.components.securitySchemes.bearerAuth.scheme, 'bearer');
   for (const [method, status] of [['post', '201'], ['get', '200'], ['patch', '200'], ['delete', '204']]) {
     assert.deepEqual(path[method].security, [{ bearerAuth: [] }]);
-    for (const code of [status, '400', '401', '403', '404', '409', '500', '503']) assert.ok(path[method].responses[code]);
+    for (const code of [status, '400', '401', '403', '409', '500', '503']) assert.ok(path[method].responses[code]);
+    if (method !== 'delete') assert.ok(path[method].responses['404']);
   }
   for (const method of ['post', 'patch']) assert.ok(path[method].requestBody.required);
   assert.equal(path.delete.responses['204'].content, undefined);
@@ -83,6 +84,21 @@ test('US-04: Swagger describe edición parcial, cuerpo vacío y recuperación co
   const { username } = spec.components.schemas.ProfileInput.properties;
   assert.equal(username.pattern, '^[A-Za-z0-9_]{3,20}$');
   assert.match(username.description, /Unicidad sin distinguir mayúsculas/);
+});
+
+test('US-05: Swagger describe la eliminación confirmada y los reintentos', async () => {
+  const { body: spec } = await request(app).get('/openapi.json').expect(200);
+  const operation = spec.paths['/api/v1/users/me'].delete;
+  assert.equal(operation.summary, 'Eliminar la cuenta propia');
+  assert.equal(operation.requestBody, undefined);
+  assert.equal(operation.parameters, undefined);
+  assert.deepEqual(Object.keys(operation.responses), ['204', '400', '401', '403', '408', '409', '500', '503']);
+  assert.match(operation.responses['408'].description, /cinco segundos.*chunked.*parser JSON/);
+  assert.match(operation.description, /UID del token verificado.*máximo de cinco minutos.*auth_time/);
+  assert.match(operation.description, /No admite cuerpo ni parámetros de consulta/);
+  assert.match(operation.description, /elimina el perfil.*libera la reserva.*marca persistente.*identidad de Firebase Auth.*no es atómica/);
+  assert.match(operation.description, /reintentar mientras la identidad siga autenticada/);
+  assert.match(operation.description, /401.*desconexión no confirma por sí solo/);
 });
 
 test('US-01: Swagger distingue creación de cuenta Firebase y creación de perfil', async () => {

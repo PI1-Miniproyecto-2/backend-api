@@ -1,10 +1,12 @@
 import assert from 'node:assert/strict';
+import { request as httpRequest } from 'node:http';
 import { test } from 'node:test';
+import { gzipSync } from 'node:zlib';
 import express from 'express';
 import request from 'supertest';
 import type { DecodedIdToken } from 'firebase-admin/auth';
 import { parseJson } from '../src/app';
-import { createAuthService } from '../src/services/auth.service';
+import { createAuthService, createAuthUserDeletion } from '../src/services/auth.service';
 import { createProfileService } from '../src/services/profile.service';
 import { createUsersRoutes } from '../src/routes/users.routes';
 import { authenticate } from '../src/middlewares/auth.middleware';
@@ -15,15 +17,31 @@ import { MemoryStore } from './helpers/memory-store';
 const complete = { firstName: ' Ana ', lastName: 'Perez', username: 'Ana_01', avatarId: 'avatar_owl' };
 function fixture(provider: 'password' | 'google.com' = 'google.com') {
   const store = new MemoryStore();
-  const service = createProfileService(store);
+  const deleted = new Set<string>();
+  const authTimes = new Map<string, unknown>();
+  const deletion = {
+    failure: undefined as unknown, calls: [] as string[],
+    beforeDelete: undefined as (() => Promise<void>) | undefined,
+    afterDelete: undefined as (() => void) | undefined,
+  };
+  const service = createProfileService(store, createAuthUserDeletion(async uid => {
+    deletion.calls.push(uid);
+    await deletion.beforeDelete?.();
+    if (deletion.failure) throw deletion.failure;
+    if (deleted.has(uid)) throw { code: 'auth/user-not-found' };
+    deleted.add(uid);
+    deletion.afterDelete?.();
+  }));
   const calls: boolean[] = [];
   const verify = createAuthService(async (token, revoked) => {
     calls.push(revoked);
+    if (deleted.has(token)) throw { code: 'auth/user-not-found' };
     if (['invalid', 'expired', 'revoked', 'disabled', 'deleted'].includes(token)) {
       throw { code: ({ invalid: 'auth/invalid-id-token', expired: 'auth/id-token-expired', revoked: 'auth/id-token-revoked', disabled: 'auth/user-disabled', deleted: 'auth/user-not-found' } as Record<string, string>)[token], message: 'SECRET' };
     }
     if (token === 'outage') throw { code: 14, message: 'SECRET' };
-    return { uid: token, email: token === 'noemail' ? undefined : token === 'bademail' ? 'correo-invalido' : `${token}@example.com`, firebase: { sign_in_provider: token === 'unsupported' ? 'anonymous' : provider } } as DecodedIdToken;
+    const auth_time = authTimes.has(token) ? authTimes.get(token) : Math.floor(Date.now() / 1000);
+    return { uid: token, auth_time, email: token === 'noemail' ? undefined : token === 'bademail' ? 'correo-invalido' : `${token}@example.com`, firebase: { sign_in_provider: token === 'unsupported' ? 'anonymous' : provider, tenant: token === 'tenant' ? 'otro-tenant' : undefined } } as DecodedIdToken;
   });
   const app = express();
   app.use(parseJson);
@@ -31,7 +49,7 @@ function fixture(provider: 'password' | 'google.com' = 'google.com') {
   app.get('/private', authenticate(verify), requireCompleteProfile(service), (_req, res) => res.json({ ok: true }));
   app.use(notFound); app.use(errorHandler);
   const me = '/api/v1/users/me';
-  return { app, store, service, calls, me };
+  return { app, store, service, calls, deletion, authTimes, me };
 }
 for (const token of ['invalid', 'expired', 'revoked', 'disabled', 'deleted']) {
   test(`Auth: token ${token} devuelve 401 sin filtrar detalles`, async () => {
@@ -55,7 +73,7 @@ test('Auth: proveedor no permitido, correo ausente y fallo de infraestructura', 
   await request(f.app).post(f.me).auth('noemail', { type: 'bearer' }).send({}).expect(400);
   await request(f.app).get(f.me).auth('outage', { type: 'bearer' }).expect(503);
 });
-test('CRUD propio: token válido, creación, consulta, actualización y eliminación idempotente', async () => {
+test('CRUD propio: creación, consulta, actualización y eliminación de cuenta con token válido', async () => {
   const f = fixture();
   const created = await request(f.app).post(f.me).auth('ana', { type: 'bearer' }).send(complete).expect(201);
   assert.equal(created.body.firstName, 'Ana');
@@ -72,10 +90,176 @@ test('CRUD propio: token válido, creación, consulta, actualización y eliminac
   assert.equal(updated.body.avatarId, 'avatar_lamp');
   await request(f.app).get('/private').auth('ana', { type: 'bearer' }).expect(200);
   await request(f.app).delete(f.me).auth('ana', { type: 'bearer' }).expect(204, '');
-  assert.equal(f.store.data.size, 0);
-  await request(f.app).delete(f.me).auth('ana', { type: 'bearer' }).expect(204);
-  await request(f.app).get(f.me).auth('ana', { type: 'bearer' }).expect(404);
+  assert.equal(f.store.data.has('users/ana'), false);
+  assert.equal(f.store.data.has('usernames/ana_01'), false);
+  assert.deepEqual(f.deletion.calls, ['ana']);
+  await request(f.app).delete(f.me).auth('ana', { type: 'bearer' }).expect(401);
+  await request(f.app).get(f.me).auth('ana', { type: 'bearer' }).expect(401);
+  await request(f.app).get('/private').auth('ana', { type: 'bearer' }).expect(401);
 });
+test('US-05: DELETE conserva el estado al fallar Firestore y reanuda tras fallar Auth', async () => {
+  const f = fixture();
+  const client = request(f.app);
+  const created = await client.post(f.me).auth('ana', { type: 'bearer' }).send(complete).expect(201);
+  const before = new Map(f.store.data);
+  f.store.failOnWrite = f.store.writes + 3;
+  await client.delete(f.me).auth('ana', { type: 'bearer' })
+    .expect(503, { error: 'Servicio temporalmente no disponible' });
+  assert.deepEqual(f.store.data, before);
+  assert.deepEqual(f.deletion.calls, []);
+  await client.get(f.me).auth('ana', { type: 'bearer' }).expect(200, created.body);
+
+  f.store.failOnWrite = undefined;
+  f.deletion.failure = { code: 'auth/insufficient-permission', message: 'DETALLE_INTERNO_SIMULADO' };
+  await client.delete(f.me).auth('ana', { type: 'bearer' })
+    .expect(500, { error: 'Error interno del servidor' });
+  assert.equal(f.store.data.has('users/ana'), false);
+  assert.equal(f.store.data.has('usernames/ana_01'), false);
+  await client.post(f.me).auth('ana', { type: 'bearer' }).send(complete).expect(409);
+  await client.patch(f.me).auth('ana', { type: 'bearer' }).send(complete).expect(409);
+
+  f.deletion.failure = undefined;
+  await client.delete(f.me).auth('ana', { type: 'bearer' }).expect(204);
+  assert.deepEqual(f.deletion.calls, ['ana', 'ana']);
+  await client.delete(f.me).auth('ana', { type: 'bearer' }).expect(401);
+});
+
+test('US-05: DELETE exige autenticación reciente del proyecto antes de escribir', async () => {
+  const f = fixture();
+  const client = request(f.app);
+  await client.post(f.me).auth('ana', { type: 'bearer' }).send(complete).expect(201);
+  const before = new Map(f.store.data);
+  const writes = f.store.writes;
+  const now = Math.floor(Date.now() / 1000);
+  for (const authTime of [now - 301, undefined, 'fecha', now + 600, now - 0.5, NaN]) {
+    f.authTimes.set('ana', authTime);
+    await client.delete(f.me).auth('ana', { type: 'bearer' })
+      .expect(403, { error: 'Vuelve a autenticarte para eliminar tu cuenta' });
+  }
+  await client.delete(f.me).auth('tenant', { type: 'bearer' })
+    .expect(403, { error: 'No se admite la eliminación de cuentas de otro tenant' });
+  assert.equal(f.store.writes, writes);
+  assert.deepEqual(f.store.data, before);
+  assert.deepEqual(f.deletion.calls, []);
+});
+
+test('US-05: DELETE rechaza cuerpos JSON y de otros tipos antes de escribir', async () => {
+  const f = fixture();
+  const client = request(f.app);
+  await client.post(f.me).auth('ana', { type: 'bearer' }).send(complete).expect(201);
+  const before = new Map(f.store.data);
+  const writes = f.store.writes;
+  for (const [type, body] of [
+    ['application/json', '{}'],
+    ['application/json', '[]'],
+    ['application/json', '{'],
+    ['text/plain', 'contenido'],
+    ['application/x-www-form-urlencoded', 'uid=otro'],
+  ]) {
+    await client.delete(f.me).auth('ana', { type: 'bearer' }).set('Content-Type', type).send(body).expect(400);
+  }
+  const wrapped = express();
+  wrapped.use((req, _res, next) => { req.body = {}; next(); });
+  wrapped.use(f.app);
+  await request(wrapped).delete(f.me).auth('ana', { type: 'bearer' }).expect(400);
+  assert.deepEqual(f.store.data, before);
+  assert.equal(f.store.writes, writes);
+  assert.deepEqual(f.deletion.calls, []);
+  await client.delete(f.me).auth('ana', { type: 'bearer' })
+    .set('Content-Type', 'application/json').set('Content-Length', '0').expect(204);
+});
+
+test('US-05: DELETE distingue un stream chunked vacío de uno con cuerpo', async t => {
+  const f = fixture();
+  const server = f.app.listen(0, '127.0.0.1');
+  t.after(() => server.close());
+  await new Promise<void>((resolve, reject) => server.once('listening', resolve).once('error', reject));
+  const address = server.address();
+  assert.ok(address && typeof address === 'object');
+  const { port } = address;
+  function send(body: Buffer | undefined, type: string, encoding = 'identity', uid = 'ana') {
+    return new Promise<number | undefined>((resolve, reject) => {
+      const req = httpRequest({
+        host: '127.0.0.1', port, method: 'DELETE', path: f.me,
+        headers: {
+          Authorization: `Bearer ${uid}`, 'Transfer-Encoding': 'chunked',
+          'Content-Type': type, 'Content-Encoding': encoding,
+        },
+      }, res => { res.resume(); res.once('end', () => resolve(res.statusCode)); });
+      req.once('error', reject);
+      req.setTimeout(8_000, () => req.destroy(new Error('El servidor no respondió a tiempo')));
+      if (body === undefined) req.flushHeaders(); // Deja pendiente el fragmento final.
+      else req.end(body);
+    });
+  }
+  assert.equal(await send(Buffer.from('texto'), 'text/plain'), 400);
+  assert.equal(await send(Buffer.from('{}'), 'application/json'), 400);
+  assert.equal(await send(gzipSync(''), 'application/json', 'gzip'), 400);
+  assert.equal(await send(undefined, 'text/plain'), 408);
+  assert.equal(f.store.writes, 0);
+  assert.deepEqual(f.deletion.calls, []);
+  assert.equal(await send(Buffer.alloc(0), 'text/plain', 'identity', 'otro'), 204);
+  assert.equal(await send(Buffer.alloc(0), 'application/json'), 204);
+});
+
+test('US-05: dos DELETE autenticados confirman el mismo estado final', async () => {
+  const f = fixture();
+  const client = request(f.app);
+  await client.post(f.me).auth('ana', { type: 'bearer' }).send(complete).expect(201);
+  const other = await client.post(f.me).auth('otro', { type: 'bearer' }).send({ username: 'Otro_01' }).expect(201);
+  const writes = f.store.writes;
+  let reachedAuth!: () => void;
+  let releaseAuth!: () => void;
+  const bothAtAuth = new Promise<void>(resolve => { reachedAuth = resolve; });
+  const authGate = new Promise<void>(resolve => { releaseAuth = resolve; });
+  f.deletion.beforeDelete = async () => {
+    if (f.deletion.calls.length === 2) reachedAuth();
+    await authGate;
+  };
+  let responses = 0;
+  const requests = [1, 2].map(() => client.delete(f.me).auth('ana', { type: 'bearer' })
+    .timeout({ deadline: 3000 }).then(response => { responses++; return response; }));
+  let committed;
+  try {
+    await Promise.race([...requests, bothAtAuth]);
+    assert.equal(responses, 0);
+    assert.deepEqual(f.deletion.calls, ['ana', 'ana']);
+    assert.equal(f.store.writes, writes + 3);
+    assert.equal(f.store.data.has('users/ana'), false);
+    assert.equal(f.store.data.has('usernames/ana_01'), false);
+    assert.deepEqual(f.store.data.get('usernames/otro_01'), { uid: 'otro' });
+    assert.equal([...f.store.data.keys()].filter(path => path.startsWith('account_deletions/')).length, 1);
+    committed = new Map(f.store.data);
+  } finally {
+    releaseAuth();
+    await Promise.allSettled(requests);
+  }
+  assert.deepEqual((await Promise.all(requests)).map(response => response.status), [204, 204]);
+  assert.deepEqual(f.store.data, committed);
+  await client.get(f.me).auth('otro', { type: 'bearer' }).expect(200, other.body);
+  await client.delete(f.me).auth('ana', { type: 'bearer' }).expect(401);
+});
+
+test('US-05: la desconexión tras eliminar Auth deja un resultado ambiguo para el cliente', async () => {
+  const f = fixture();
+  await request(f.app).post(f.me).auth('ana', { type: 'bearer' }).send(complete).expect(201);
+  const wrapped = express();
+  wrapped.use((req, _res, next) => {
+    f.deletion.afterDelete = () => { req.socket.destroy(); };
+    next();
+  });
+  wrapped.use(f.app);
+  await assert.rejects(
+    request(wrapped).delete(f.me).auth('ana', { type: 'bearer' }).timeout({ deadline: 3_000 }),
+    { code: 'ECONNRESET' }
+  );
+  assert.equal(f.store.data.has('users/ana'), false);
+  assert.equal(f.store.data.has('usernames/ana_01'), false);
+  await request(f.app).delete(f.me).auth('ana', { type: 'bearer' })
+    .expect(401, { error: 'Token inválido, expirado o revocado' });
+  assert.deepEqual(f.deletion.calls, ['ana']);
+});
+
 test('PATCH distingue un cuerpo ausente de un objeto JSON vacío', async () => {
   const f = fixture();
   const client = request(f.app);
@@ -212,7 +396,9 @@ test('Firestore: indisponibilidad y errores internos no filtran secretos', async
   for (const [code, expected] of [[14, 503], [10, 503], [4, 503], [7, 500]] as const) {
     const f = fixture(); f.store.failure = { code, message: 'SECRET' };
     for (const method of ['get', 'post', 'patch', 'delete'] as const) {
-      const r = await request(f.app)[method](f.me).auth('a', { type: 'bearer' }).send({}).expect(expected);
+      const call = request(f.app)[method](f.me).auth('a', { type: 'bearer' });
+      if (method === 'post' || method === 'patch') call.send({});
+      const r = await call.expect(expected);
       assert.ok(!JSON.stringify(r.body).includes('SECRET'));
     }
     assert.equal(f.store.data.size, 0);
@@ -253,7 +439,7 @@ test('Password: identidad verificada y sincronización de correo, nunca campos d
   });
   const identity = await auth('verified');
   assert.ok(Object.isFrozen(identity));
-  assert.deepEqual(Object.keys(identity).sort(), ['email', 'provider', 'uid']);
+  assert.deepEqual(Object.keys(identity).sort(), ['authTime', 'email', 'provider', 'tenant', 'uid']);
   const created = await f.service.create(identity, {});
   assert.equal(created.authProvider, 'password');
   const updated = await f.service.update({ ...identity, email: 'nuevo@example.com' }, {});
@@ -368,7 +554,9 @@ test('US-01: conflicto manual y selección de UID por URL o query no dan acceso 
   }
   await request(f.app).get(`${f.me}?uid=owner`).auth('other', { type: 'bearer' }).expect(404);
   await request(f.app).patch(`${f.me}?uid=owner`).auth('other', { type: 'bearer' }).send({ firstName: 'Otro' }).expect(404);
-  await request(f.app).delete(`${f.me}?uid=owner`).auth('other', { type: 'bearer' }).expect(204);
+  await request(f.app).delete(`${f.me}?uid=owner`).auth('other', { type: 'bearer' }).expect(400);
+  await request(f.app).delete(f.me).auth('other', { type: 'bearer' }).send({ uid: 'owner' }).expect(400);
+  assert.deepEqual(f.deletion.calls, []);
   await request(f.app).get(f.me).auth('owner', { type: 'bearer' }).expect(200, owner.body);
   assert.deepEqual(f.store.data.get('usernames/ana_01'), { uid: 'owner' });
 });
@@ -474,7 +662,9 @@ test('US-02: identidad Google mínima y UID inválido rechazado tras verificar t
     firebase: { sign_in_provider: 'google.com', identities: {} },
   }) as DecodedIdToken);
   const identity = await verify('simulated');
-  assert.deepEqual(identity, { uid: 'google-user', email: 'ficticio@example.com', provider: 'google.com' });
+  assert.deepEqual(identity, {
+    uid: 'google-user', email: 'ficticio@example.com', provider: 'google.com', authTime: 0, tenant: undefined,
+  });
   assert.ok(Object.isFrozen(identity));
 });
 
@@ -499,14 +689,18 @@ test('US-03: PATCH y DELETE rechazan token ausente, inválido, expirado y revoca
   await request(f.app).post(f.me).auth('owner', { type: 'bearer' }).send(complete).expect(201);
   const before = new Map(f.store.data);
   const writes = f.store.writes;
-  for (const method of ['patch', 'delete'] as const) {
-    await request(f.app)[method](f.me).send({ firstName: 'Cambio' }).expect(401);
-    for (const token of ['invalid', 'expired', 'revoked']) {
-      await request(f.app)[method](f.me).auth(token, { type: 'bearer' }).send({ firstName: 'Cambio' }).expect(401);
-    }
+  await request(f.app).patch(f.me).send({ firstName: 'Cambio' }).expect(401);
+  for (const token of ['invalid', 'expired', 'revoked']) {
+    await request(f.app).patch(f.me).auth(token, { type: 'bearer' }).send({ firstName: 'Cambio' }).expect(401);
+  }
+  await request(f.app).delete(f.me).expect(401, { error: 'Se requiere Authorization: Bearer <token>' });
+  for (const token of ['invalid', 'expired', 'revoked', 'disabled']) {
+    await request(f.app).delete(f.me).auth(token, { type: 'bearer' })
+      .expect(401, { error: 'Token inválido, expirado o revocado' });
   }
   assert.equal(f.store.writes, writes);
   assert.deepEqual(f.store.data, before);
+  assert.deepEqual(f.deletion.calls, []);
 });
 
 test('US-03: la identidad no se conserva entre solicitudes ni entre usuarios', async () => {
