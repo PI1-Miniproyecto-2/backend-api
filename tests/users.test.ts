@@ -3,6 +3,7 @@ import { test } from 'node:test';
 import express from 'express';
 import request from 'supertest';
 import type { DecodedIdToken } from 'firebase-admin/auth';
+import { parseJson } from '../src/app';
 import { createAuthService } from '../src/services/auth.service';
 import { createProfileService } from '../src/services/profile.service';
 import { createUsersRoutes } from '../src/routes/users.routes';
@@ -25,7 +26,7 @@ function fixture(provider: 'password' | 'google.com' = 'google.com') {
     return { uid: token, email: token === 'noemail' ? undefined : token === 'bademail' ? 'correo-invalido' : `${token}@example.com`, firebase: { sign_in_provider: token === 'unsupported' ? 'anonymous' : provider } } as DecodedIdToken;
   });
   const app = express();
-  app.use(express.json());
+  app.use(parseJson);
   app.use('/api/v1/users', createUsersRoutes(service, verify));
   app.get('/private', authenticate(verify), requireCompleteProfile(service), (_req, res) => res.json({ ok: true }));
   app.use(notFound); app.use(errorHandler);
@@ -75,6 +76,40 @@ test('CRUD propio: token válido, creación, consulta, actualización y eliminac
   await request(f.app).delete(f.me).auth('ana', { type: 'bearer' }).expect(204);
   await request(f.app).get(f.me).auth('ana', { type: 'bearer' }).expect(404);
 });
+test('PATCH distingue un cuerpo ausente de un objeto JSON vacío', async () => {
+  const f = fixture();
+  const client = request(f.app);
+  const created = await client.post(f.me).auth('ana', { type: 'bearer' }).send(complete).expect(201);
+  const writes = f.store.writes;
+  await client.patch(f.me).auth('ana', { type: 'bearer' })
+    .set('Content-Type', 'application/json').set('Content-Length', '0')
+    .expect(400, { error: 'Se requiere un objeto JSON' });
+  assert.equal(f.store.writes, writes);
+  await client.get(f.me).auth('ana', { type: 'bearer' }).expect(200, created.body);
+  const patched = await client.patch(f.me).auth('ana', { type: 'bearer' }).send({}).expect(200);
+  assert.deepEqual(patched.body, { ...created.body, updatedAt: patched.body.updatedAt });
+  assert.equal(f.store.writes, writes + 1);
+});
+
+test('US-04: PATCH individual devuelve el perfil persistido y conserva los campos omitidos', async () => {
+  const f = fixture();
+  const client = request(f.app);
+  const created = await client.post(f.me).auth('a', { type: 'bearer' }).send(complete).expect(201);
+  let expected = created.body;
+  for (const [input, changes] of [
+    [{ firstName: ' Elena ' }, { firstName: 'Elena' }],
+    [{ lastName: ' Rojas ' }, { lastName: 'Rojas' }],
+    [{ username: 'Elena_02' }, { username: 'Elena_02', usernameNormalized: 'elena_02' }],
+    [{ avatarId: 'avatar_lamp' }, { avatarId: 'avatar_lamp' }],
+  ]) {
+    const updated = await client.patch(f.me).auth('a', { type: 'bearer' }).send(input).expect(200);
+    assert.ok(Number.isFinite(Date.parse(updated.body.updatedAt)));
+    expected = { ...expected, ...changes, updatedAt: updated.body.updatedAt };
+    assert.deepEqual(updated.body, expected);
+    await client.get(f.me).auth('a', { type: 'bearer' }).expect(200, expected);
+  }
+});
+
 test('Unicidad: nombre ocupado insensible a mayúsculas', async () => {
   const f = fixture();
   await request(f.app).post(f.me).auth('a', { type: 'bearer' }).send(complete).expect(201);
@@ -86,6 +121,32 @@ test('Unicidad: solicitudes concurrentes tienen un solo ganador', async () => {
   const responses = await Promise.all(['a', 'b'].map(uid => request(f.app).post(f.me).auth(uid, { type: 'bearer' }).send(complete)));
   assert.deepEqual(responses.map(r => r.status).sort(), [201, 409]);
   assert.equal(f.store.data.size, 2);
+});
+test('US-04: PATCH concurrentes reservan el nombre para un solo perfil', async () => {
+  const f = fixture();
+  const client = request(f.app);
+  for (const uid of ['a', 'b']) {
+    await client.post(f.me).auth(uid, { type: 'bearer' }).send({ username: `old_${uid}` }).expect(201);
+  }
+  const results = await Promise.all(['a', 'b'].map(async (uid, index) => ({
+    uid,
+    response: await client.patch(f.me).auth(uid, { type: 'bearer' })
+      .send({ username: index === 0 ? 'Nuevo' : 'NUEVO' }),
+  })));
+  assert.deepEqual(results.map(({ response }) => response.status).sort(), [200, 409]);
+  for (const { uid, response } of results) {
+    const profile = await client.get(f.me).auth(uid, { type: 'bearer' }).expect(200);
+    if (response.status === 200) {
+      assert.equal(profile.body.usernameNormalized, 'nuevo');
+      assert.deepEqual(f.store.data.get('usernames/nuevo'), { uid });
+      assert.equal(f.store.data.has(`usernames/old_${uid}`), false);
+    } else {
+      assert.deepEqual(response.body, { error: 'Nombre de usuario ocupado' });
+      assert.equal(profile.body.username, `old_${uid}`);
+      assert.deepEqual(f.store.data.get(`usernames/old_${uid}`), { uid });
+    }
+  }
+  assert.equal(f.store.data.size, 4);
 });
 test('Cambio de nombre: reserva y liberación, presentación y conflicto sin cambios parciales', async () => {
   const f = fixture();
@@ -114,6 +175,14 @@ for (const [label, body] of Object.entries({
     // JSON null pasa por el parser estricto de Express.
     await request(f.app).post(f.me).auth('a', { type: 'bearer' }).set('Content-Type', 'application/json').send(JSON.stringify(body)).expect(400);
     assert.equal(f.store.writes, 0);
+    if (label === 'uid' || label === 'email') return; // Cubiertos por la prueba de identidad de US-01.
+    await request(f.app).post(f.me).auth('a', { type: 'bearer' }).send(complete).expect(201);
+    const before = new Map(f.store.data);
+    const writes = f.store.writes;
+    await request(f.app).patch(f.me).auth('a', { type: 'bearer' })
+      .set('Content-Type', 'application/json').send(JSON.stringify(body)).expect(400);
+    assert.equal(f.store.writes, writes);
+    assert.deepEqual(f.store.data, before);
   });
 }
 test('Perfil incompleto de Google, acceso privado bloqueado y completado posterior', async () => {
@@ -211,11 +280,13 @@ test('Transacción abortada no deja reserva o cambio de nombre parcial', async (
   assert.equal(f.store.data.size, 0);
   f.store.failOnWrite = undefined;
   await request(f.app).post(f.me).auth('a', { type: 'bearer' }).send(complete).expect(201);
+  const before = new Map(f.store.data);
   f.store.failOnWrite = f.store.writes + 3;
   await request(f.app).patch(f.me).auth('a', { type: 'bearer' }).send({ username: 'nuevo' }).expect(503);
   assert.equal(f.store.data.has('usernames/nuevo'), false);
   assert.equal(f.store.data.get('usernames/ana_01')?.uid, 'a');
   assert.equal(f.store.data.get('users/a')?.username, 'Ana_01');
+  assert.deepEqual(f.store.data, before);
 });
 
 
@@ -317,6 +388,28 @@ test('US-01: fallo de lectura posterior al commit permite recuperar el perfil co
   assert.equal(recovered.body.profileCompleted, true);
   await request(f.app).post(f.me).auth('manual', { type: 'bearer' }).send(complete).expect(409);
   assert.equal(f.store.data.size, 2);
+});
+
+test('US-04: GET recupera el cambio de PATCH si falla la lectura posterior al commit', async () => {
+  const f = fixture();
+  const client = request(f.app);
+  const initial = await client.post(f.me).auth('a', { type: 'bearer' }).send(complete).expect(201);
+  const transaction = f.store.transaction.bind(f.store);
+  let transactions = 0;
+  f.store.transaction = async fn => {
+    if (++transactions === 2) throw { code: 14, message: 'DETALLE_INTERNO_SIMULADO' };
+    return transaction(fn);
+  };
+  await client.patch(f.me).auth('a', { type: 'bearer' }).send({ username: 'Otro_02' })
+    .expect(503, { error: 'Servicio temporalmente no disponible' });
+  assert.equal(transactions, 2);
+  assert.equal(f.store.data.get('users/a')?.username, 'Otro_02');
+  assert.deepEqual(f.store.data.get('usernames/otro_02'), { uid: 'a' });
+  assert.equal(f.store.data.has('usernames/ana_01'), false);
+  const recovered = await client.get(f.me).auth('a', { type: 'bearer' }).expect(200);
+  assert.deepEqual(recovered.body, {
+    ...initial.body, username: 'Otro_02', usernameNormalized: 'otro_02', updatedAt: recovered.body.updatedAt,
+  });
 });
 
 test('US-02: nombres de Google sin username nunca completan el perfil', async () => {
