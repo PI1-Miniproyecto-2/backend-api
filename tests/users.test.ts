@@ -18,9 +18,11 @@ const complete = { firstName: ' Ana ', lastName: 'Perez', username: 'Ana_01', av
 function fixture(provider: 'password' | 'google.com' = 'google.com') {
   const store = new MemoryStore();
   const deleted = new Set<string>();
+  const authTimes = new Map<string, unknown>();
   const deletion = {
     failure: undefined as unknown, calls: [] as string[],
     beforeDelete: undefined as (() => Promise<void>) | undefined,
+    afterDelete: undefined as (() => void) | undefined,
   };
   const service = createProfileService(store, createAuthUserDeletion(async uid => {
     deletion.calls.push(uid);
@@ -28,6 +30,7 @@ function fixture(provider: 'password' | 'google.com' = 'google.com') {
     if (deletion.failure) throw deletion.failure;
     if (deleted.has(uid)) throw { code: 'auth/user-not-found' };
     deleted.add(uid);
+    deletion.afterDelete?.();
   }));
   const calls: boolean[] = [];
   const verify = createAuthService(async (token, revoked) => {
@@ -37,7 +40,7 @@ function fixture(provider: 'password' | 'google.com' = 'google.com') {
       throw { code: ({ invalid: 'auth/invalid-id-token', expired: 'auth/id-token-expired', revoked: 'auth/id-token-revoked', disabled: 'auth/user-disabled', deleted: 'auth/user-not-found' } as Record<string, string>)[token], message: 'SECRET' };
     }
     if (token === 'outage') throw { code: 14, message: 'SECRET' };
-    const auth_time = Math.floor(Date.now() / 1000) - (token === 'stale' ? 600 : 0);
+    const auth_time = authTimes.has(token) ? authTimes.get(token) : Math.floor(Date.now() / 1000);
     return { uid: token, auth_time, email: token === 'noemail' ? undefined : token === 'bademail' ? 'correo-invalido' : `${token}@example.com`, firebase: { sign_in_provider: token === 'unsupported' ? 'anonymous' : provider, tenant: token === 'tenant' ? 'otro-tenant' : undefined } } as DecodedIdToken;
   });
   const app = express();
@@ -46,7 +49,7 @@ function fixture(provider: 'password' | 'google.com' = 'google.com') {
   app.get('/private', authenticate(verify), requireCompleteProfile(service), (_req, res) => res.json({ ok: true }));
   app.use(notFound); app.use(errorHandler);
   const me = '/api/v1/users/me';
-  return { app, store, service, calls, deletion, me };
+  return { app, store, service, calls, deletion, authTimes, me };
 }
 for (const token of ['invalid', 'expired', 'revoked', 'disabled', 'deleted']) {
   test(`Auth: token ${token} devuelve 401 sin filtrar detalles`, async () => {
@@ -92,6 +95,7 @@ test('CRUD propio: creación, consulta, actualización y eliminación de cuenta 
   assert.deepEqual(f.deletion.calls, ['ana']);
   await request(f.app).delete(f.me).auth('ana', { type: 'bearer' }).expect(401);
   await request(f.app).get(f.me).auth('ana', { type: 'bearer' }).expect(401);
+  await request(f.app).get('/private').auth('ana', { type: 'bearer' }).expect(401);
 });
 test('US-05: DELETE conserva el estado al fallar Firestore y reanuda tras fallar Auth', async () => {
   const f = fixture();
@@ -123,10 +127,19 @@ test('US-05: DELETE conserva el estado al fallar Firestore y reanuda tras fallar
 test('US-05: DELETE exige autenticación reciente del proyecto antes de escribir', async () => {
   const f = fixture();
   const client = request(f.app);
-  await client.delete(f.me).auth('stale', { type: 'bearer' })
-    .expect(403, { error: 'Vuelve a autenticarte para eliminar tu cuenta' });
-  await client.delete(f.me).auth('tenant', { type: 'bearer' }).expect(403);
-  assert.equal(f.store.writes, 0);
+  await client.post(f.me).auth('ana', { type: 'bearer' }).send(complete).expect(201);
+  const before = new Map(f.store.data);
+  const writes = f.store.writes;
+  const now = Math.floor(Date.now() / 1000);
+  for (const authTime of [now - 301, undefined, 'fecha', now + 600, now - 0.5, NaN]) {
+    f.authTimes.set('ana', authTime);
+    await client.delete(f.me).auth('ana', { type: 'bearer' })
+      .expect(403, { error: 'Vuelve a autenticarte para eliminar tu cuenta' });
+  }
+  await client.delete(f.me).auth('tenant', { type: 'bearer' })
+    .expect(403, { error: 'No se admite la eliminación de cuentas de otro tenant' });
+  assert.equal(f.store.writes, writes);
+  assert.deepEqual(f.store.data, before);
   assert.deepEqual(f.deletion.calls, []);
 });
 
@@ -164,7 +177,7 @@ test('US-05: DELETE distingue un stream chunked vacío de uno con cuerpo', async
   const address = server.address();
   assert.ok(address && typeof address === 'object');
   const { port } = address;
-  function send(body: Buffer, type: string, encoding = 'identity', uid = 'ana') {
+  function send(body: Buffer | undefined, type: string, encoding = 'identity', uid = 'ana') {
     return new Promise<number | undefined>((resolve, reject) => {
       const req = httpRequest({
         host: '127.0.0.1', port, method: 'DELETE', path: f.me,
@@ -174,12 +187,15 @@ test('US-05: DELETE distingue un stream chunked vacío de uno con cuerpo', async
         },
       }, res => { res.resume(); res.once('end', () => resolve(res.statusCode)); });
       req.once('error', reject);
-      req.end(body);
+      req.setTimeout(8_000, () => req.destroy(new Error('El servidor no respondió a tiempo')));
+      if (body === undefined) req.flushHeaders(); // Deja pendiente el fragmento final.
+      else req.end(body);
     });
   }
   assert.equal(await send(Buffer.from('texto'), 'text/plain'), 400);
   assert.equal(await send(Buffer.from('{}'), 'application/json'), 400);
   assert.equal(await send(gzipSync(''), 'application/json', 'gzip'), 400);
+  assert.equal(await send(undefined, 'text/plain'), 408);
   assert.equal(f.store.writes, 0);
   assert.deepEqual(f.deletion.calls, []);
   assert.equal(await send(Buffer.alloc(0), 'text/plain', 'identity', 'otro'), 204);
@@ -222,6 +238,26 @@ test('US-05: dos DELETE autenticados confirman el mismo estado final', async () 
   assert.deepEqual(f.store.data, committed);
   await client.get(f.me).auth('otro', { type: 'bearer' }).expect(200, other.body);
   await client.delete(f.me).auth('ana', { type: 'bearer' }).expect(401);
+});
+
+test('US-05: la desconexión tras eliminar Auth deja un resultado ambiguo para el cliente', async () => {
+  const f = fixture();
+  await request(f.app).post(f.me).auth('ana', { type: 'bearer' }).send(complete).expect(201);
+  const wrapped = express();
+  wrapped.use((req, _res, next) => {
+    f.deletion.afterDelete = () => { req.socket.destroy(); };
+    next();
+  });
+  wrapped.use(f.app);
+  await assert.rejects(
+    request(wrapped).delete(f.me).auth('ana', { type: 'bearer' }).timeout({ deadline: 3_000 }),
+    { code: 'ECONNRESET' }
+  );
+  assert.equal(f.store.data.has('users/ana'), false);
+  assert.equal(f.store.data.has('usernames/ana_01'), false);
+  await request(f.app).delete(f.me).auth('ana', { type: 'bearer' })
+    .expect(401, { error: 'Token inválido, expirado o revocado' });
+  assert.deepEqual(f.deletion.calls, ['ana']);
 });
 
 test('PATCH distingue un cuerpo ausente de un objeto JSON vacío', async () => {
@@ -653,14 +689,18 @@ test('US-03: PATCH y DELETE rechazan token ausente, inválido, expirado y revoca
   await request(f.app).post(f.me).auth('owner', { type: 'bearer' }).send(complete).expect(201);
   const before = new Map(f.store.data);
   const writes = f.store.writes;
-  for (const method of ['patch', 'delete'] as const) {
-    await request(f.app)[method](f.me).send({ firstName: 'Cambio' }).expect(401);
-    for (const token of ['invalid', 'expired', 'revoked']) {
-      await request(f.app)[method](f.me).auth(token, { type: 'bearer' }).send({ firstName: 'Cambio' }).expect(401);
-    }
+  await request(f.app).patch(f.me).send({ firstName: 'Cambio' }).expect(401);
+  for (const token of ['invalid', 'expired', 'revoked']) {
+    await request(f.app).patch(f.me).auth(token, { type: 'bearer' }).send({ firstName: 'Cambio' }).expect(401);
+  }
+  await request(f.app).delete(f.me).expect(401, { error: 'Se requiere Authorization: Bearer <token>' });
+  for (const token of ['invalid', 'expired', 'revoked', 'disabled']) {
+    await request(f.app).delete(f.me).auth(token, { type: 'bearer' })
+      .expect(401, { error: 'Token inválido, expirado o revocado' });
   }
   assert.equal(f.store.writes, writes);
   assert.deepEqual(f.store.data, before);
+  assert.deepEqual(f.deletion.calls, []);
 });
 
 test('US-03: la identidad no se conserva entre solicitudes ni entre usuarios', async () => {

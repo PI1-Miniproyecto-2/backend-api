@@ -20,18 +20,21 @@ export const usersSchemas: Record<string, OpenAPIV3.SchemaObject> = {
     },
   },
 };
+const errorResponse = (description: string): OpenAPIV3.ResponseObject => ({
+  description, content: { 'application/json': { schema: { $ref: '#/components/schemas/Error' } } },
+});
 const errors: Record<string, OpenAPIV3.ResponseObject> = Object.fromEntries(Object.entries({
   '400': 'Datos inválidos o correo ausente en el token', '401': 'Token ausente, inválido, expirado o revocado',
   '403': 'Proveedor no permitido', '404': 'Perfil no encontrado', '409': 'Nombre ocupado, perfil existente o datos inconsistentes',
   '500': 'Error interno del servidor', '503': 'Servicio temporalmente no disponible',
-}).map(([status, description]) => [status, { description, content: { 'application/json': { schema: { $ref: '#/components/schemas/Error' } } } }]));
+}).map(([status, description]) => [status, errorResponse(description)]));
 function operation(method: string, summary: string, status: string, input = false): OpenAPIV3.OperationObject {
   return {
     operationId: `${method}OwnProfile`, tags: ['Perfiles'], summary,
-    description: method === 'create' ? 'Registro manual: el frontend crea la cuenta con correo y contraseña en Firebase Authentication y obtiene un ID token. Esta operación crea únicamente el perfil del UID verificado; correo y proveedor proceden del token. No enviar contraseñas ni correo en el cuerpo. Admite perfil incompleto para alta por pasos. Si la respuesta falla después del commit, consultar GET antes de repetir POST.' : method === 'delete' ? 'Elimina solo el perfil y libera su nombre atómicamente. No elimina la cuenta Firebase Authentication. Idempotente si no quedan reservas.' : 'Opera exclusivamente sobre el UID del token verificado con comprobación de revocación. Las fechas se devuelven como ISO; se almacenan como Timestamp.',
+    description: method === 'create' ? 'Registro manual: el frontend crea la cuenta con correo y contraseña en Firebase Authentication y obtiene un ID token. Esta operación crea únicamente el perfil del UID verificado; correo y proveedor proceden del token. No enviar contraseñas ni correo en el cuerpo. Admite perfil incompleto para alta por pasos. Si la respuesta falla después del commit, consultar GET antes de repetir POST.' : 'Opera exclusivamente sobre el UID del token verificado con comprobación de revocación. Las fechas se devuelven como ISO; se almacenan como Timestamp.',
     security: [{ bearerAuth: [] }],
     ...(input ? { requestBody: { required: true, content: { 'application/json': { schema: { $ref: '#/components/schemas/ProfileInput' }, example: { firstName: 'Ana', lastName: 'Perez', username: 'Ana_01', avatarId: 'avatar_book' } } } } } : {}),
-    responses: { ...errors, [status]: status === '204' ? { description: 'Perfil eliminado; sin cuerpo' } : {
+    responses: { ...errors, [status]: {
       description: 'Perfil propio', content: { 'application/json': { schema: { $ref: '#/components/schemas/Profile' } } },
     } },
   };
@@ -50,5 +53,26 @@ export const usersPath: OpenAPIV3.PathItemObject = {
       'Ante una respuesta ambigua, consultar GET /api/v1/users/me antes de repetir PATCH.',
     ].join('\n\n'),
   },
-  delete: operation('delete', 'Eliminar perfil propio', '204'),
+  delete: {
+    operationId: 'deleteOwnProfile',
+    tags: ['Perfiles'],
+    summary: 'Eliminar la cuenta propia',
+    security: [{ bearerAuth: [] }],
+    description: [
+      'Requiere un ID token Bearer de Firebase Authentication con comprobación de revocación. Elimina exclusivamente la cuenta del UID del token verificado. La autenticación debe tener un máximo de cinco minutos según auth_time.',
+      'No admite cuerpo ni parámetros de consulta.',
+      'Firestore elimina el perfil y libera la reserva del nombre de usuario en una transacción que conserva una marca persistente de eliminación. Después se elimina la identidad de Firebase Auth. La operación entre ambos servicios no es atómica.',
+      'Se puede reintentar mientras la identidad siga autenticada y el token cumpla la política de autenticación reciente. El 204 confirma la limpieza y que la identidad fue eliminada o ya no existía. Un 401 después de una desconexión no confirma por sí solo la eliminación anterior.',
+    ].join('\n\n'),
+    responses: {
+      '204': { description: 'Eliminación de la cuenta confirmada, sin cuerpo.' },
+      '400': errorResponse('Solicitud no permitida, por ejemplo por incluir cuerpo o parámetros de consulta.'),
+      '401': errorResponse('Autenticación ausente o inválida, incluido token expirado o revocado y cuenta deshabilitada o inexistente.'),
+      '403': errorResponse('Se requiere autenticación reciente, o el proveedor o tenant no está permitido.'),
+      '408': errorResponse('Se agotó el plazo de cinco segundos del controlador al leer una transferencia chunked que el parser JSON dejó sin leer.'),
+      '409': errorResponse('Perfil o reserva de nombre de usuario inconsistente.'),
+      '500': errors['500'],
+      '503': errors['503'],
+    },
+  },
 };
