@@ -3,6 +3,7 @@ import { test } from 'node:test';
 import express from 'express';
 import request from 'supertest';
 import type { DecodedIdToken } from 'firebase-admin/auth';
+import { parseJson } from '../src/app';
 import { createAuthService } from '../src/services/auth.service';
 import { createProfileService } from '../src/services/profile.service';
 import { createUsersRoutes } from '../src/routes/users.routes';
@@ -25,7 +26,7 @@ function fixture(provider: 'password' | 'google.com' = 'google.com') {
     return { uid: token, email: token === 'noemail' ? undefined : token === 'bademail' ? 'correo-invalido' : `${token}@example.com`, firebase: { sign_in_provider: token === 'unsupported' ? 'anonymous' : provider } } as DecodedIdToken;
   });
   const app = express();
-  app.use(express.json());
+  app.use(parseJson);
   app.use('/api/v1/users', createUsersRoutes(service, verify));
   app.get('/private', authenticate(verify), requireCompleteProfile(service), (_req, res) => res.json({ ok: true }));
   app.use(notFound); app.use(errorHandler);
@@ -75,6 +76,21 @@ test('CRUD propio: token válido, creación, consulta, actualización y eliminac
   await request(f.app).delete(f.me).auth('ana', { type: 'bearer' }).expect(204);
   await request(f.app).get(f.me).auth('ana', { type: 'bearer' }).expect(404);
 });
+test('PATCH distingue un cuerpo ausente de un objeto JSON vacío', async () => {
+  const f = fixture();
+  const client = request(f.app);
+  const created = await client.post(f.me).auth('ana', { type: 'bearer' }).send(complete).expect(201);
+  const writes = f.store.writes;
+  await client.patch(f.me).auth('ana', { type: 'bearer' })
+    .set('Content-Type', 'application/json').set('Content-Length', '0')
+    .expect(400, { error: 'Se requiere un objeto JSON' });
+  assert.equal(f.store.writes, writes);
+  await client.get(f.me).auth('ana', { type: 'bearer' }).expect(200, created.body);
+  const patched = await client.patch(f.me).auth('ana', { type: 'bearer' }).send({}).expect(200);
+  assert.deepEqual(patched.body, { ...created.body, updatedAt: patched.body.updatedAt });
+  assert.equal(f.store.writes, writes + 1);
+});
+
 test('Unicidad: nombre ocupado insensible a mayúsculas', async () => {
   const f = fixture();
   await request(f.app).post(f.me).auth('a', { type: 'bearer' }).send(complete).expect(201);

@@ -6,7 +6,10 @@ export function usersController(service: ProfileService): Record<'create' | 'rea
   return {
     create: async (req, res) => { res.status(201).json(await service.create(identityOf(req), req.body)); },
     read: async (req, res) => { res.json(await service.read(identityOf(req))); },
-    update: async (req, res) => { res.json(await service.update(identityOf(req), req.body)); },
+    update: async (req, res) => {
+      const body = res.locals.emptyJsonBody ? undefined : req.body;
+      res.json(await service.update(identityOf(req), body));
+    },
     remove: async (req, res) => { await service.remove(identityOf(req)); res.status(204).end(); },
   };
 }
