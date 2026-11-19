@@ -1,12 +1,18 @@
+import { createHash } from 'node:crypto';
 import type { UserProfile, ProfileResponse } from '../models/user-profile';
 import { Timestamp } from 'firebase-admin/firestore';
 import { DEFAULT_AVATAR } from '../config/avatars';
-import type { VerifiedIdentity } from './auth.service';
+import { createAuthUserDeletion, type DeleteAuthUser, type VerifiedIdentity } from './auth.service';
 import { ApiError, infrastructureError } from './api-error';
 import { createProfileStore, type ProfileStore, type ProfileTransaction } from './profile.store';
 import { validateProfileInput } from './profile.validation';
 
 const inconsistent = () => new ApiError(409, 'Perfil o reserva inconsistente; requiere reconciliación');
+const RECENT_AUTH_SECONDS = 5 * 60;
+
+function deletionPath(uid: string): string {
+  return `account_deletions/${createHash('sha256').update(uid).digest('hex')}`;
+}
 
 function inspectProfile(data: Record<string, unknown>): asserts data is Record<string, unknown> & UserProfile {
   const fields = ['firstName', 'lastName', 'username', 'usernameNormalized', 'email', 'avatarId', 'authProvider', 'profileCompleted', 'createdAt', 'updatedAt'];
@@ -31,7 +37,10 @@ async function checkReservations(tx: ProfileTransaction, uid: string, profile: R
   if (expected && (await tx.read(expected))?.uid !== uid) throw inconsistent();
 }
 
-export function createProfileService(store: ProfileStore = createProfileStore()) {
+export function createProfileService(
+  store: ProfileStore = createProfileStore(),
+  deleteAuthUser: DeleteAuthUser = createAuthUserDeletion()
+) {
   async function run<T>(fn: (tx: ProfileTransaction) => Promise<T>): Promise<T> {
     try { return await store.transaction(fn); } catch (error) { infrastructureError(error); }
   }
@@ -48,6 +57,9 @@ export function createProfileService(store: ProfileStore = createProfileStore())
     const input = validateProfileInput(body);
     if (!identity.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(identity.email)) throw new ApiError(400, 'El token debe contener un correo válido');
     await run(async tx => {
+      if (await tx.read(deletionPath(identity.uid))) {
+        throw new ApiError(409, 'La cuenta está en proceso de eliminación');
+      }
       const path = `users/${identity.uid}`;
       const previous = await tx.read(path);
       if (create && previous) throw new ApiError(409, 'El perfil ya existe');
@@ -82,14 +94,28 @@ export function createProfileService(store: ProfileStore = createProfileStore())
     create: (identity: VerifiedIdentity, body: unknown) => write(identity, body, true),
     update: (identity: VerifiedIdentity, body: unknown) => write(identity, body, false),
     async remove(identity: VerifiedIdentity) {
+      if (identity.tenant !== undefined) {
+        throw new ApiError(403, 'No se admite la eliminación de cuentas de otro tenant');
+      }
+      const now = Math.floor(Date.now() / 1000);
+      const { uid, authTime } = identity;
+      if (typeof authTime !== 'number' || !Number.isInteger(authTime) ||
+          authTime > now || now - authTime > RECENT_AUTH_SECONDS) {
+        throw new ApiError(403, 'Vuelve a autenticarte para eliminar tu cuenta');
+      }
       await run(async tx => {
-        const path = `users/${identity.uid}`;
+        const marker = deletionPath(uid);
+        const existing = await tx.read(marker);
+        const path = `users/${uid}`;
         const profile = await tx.read(path);
         if (profile) inspectProfile(profile);
-        await checkReservations(tx, identity.uid, profile);
+        await checkReservations(tx, uid, profile);
         if (profile?.usernameNormalized) tx.delete(`usernames/${profile.usernameNormalized}`);
         if (profile) tx.delete(path);
+        // Impide recrear el perfil con solicitudes autenticadas antes de borrar Auth.
+        if (!existing) tx.set(marker, { requestedAt: store.timestamp() });
       });
+      await deleteAuthUser(uid);
     },
   };
 }
