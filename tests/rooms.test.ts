@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { test } from 'node:test';
 import express from 'express';
 import type { DecodedIdToken } from 'firebase-admin/auth';
-import { Timestamp } from 'firebase-admin/firestore';
+import { Timestamp, type Firestore } from 'firebase-admin/firestore';
 import request from 'supertest';
 import { app, parseJson } from '../src/app';
 import { errorHandler, notFound } from '../src/middlewares/error.middleware';
@@ -11,7 +11,7 @@ import { createRoomsRoutes } from '../src/routes/rooms.routes';
 import { createAuthService } from '../src/services/auth.service';
 import { createProfileService } from '../src/services/profile.service';
 import { createRoomService } from '../src/services/room.service';
-import { ROOM_LIST_LIMIT, type RoomStore } from '../src/services/room.store';
+import { createRoomStore, ROOM_LIST_LIMIT, type RoomStore } from '../src/services/room.store';
 import { MemoryStore } from './helpers/memory-store';
 
 const path = '/api/v1/rooms';
@@ -23,13 +23,27 @@ async function fixture() {
   const profiles = createProfileService(new MemoryStore());
   const auth = createAuthService(async (token, checkRevoked) => {
     assert.equal(checkRevoked, true);
-    return { uid: token, firebase: { sign_in_provider: 'password' } } as DecodedIdToken;
+    const codes = new Map([
+      ['invalid', 'auth/invalid-id-token'],
+      ['expired', 'auth/id-token-expired'],
+      ['revoked', 'auth/id-token-revoked'],
+      ['deleted', 'auth/user-not-found'],
+    ]);
+    const code = codes.get(token);
+    if (code) throw { code, message: 'DETALLE_INTERNO_SIMULADO' };
+    // El UID coincide con el de un perfil completo del proyecto.
+    const firebase = token === 'tenant' ? { tenant: 'otro-tenant' } : {};
+    return {
+      uid: token === 'tenant' ? 'ana' : token,
+      firebase: { sign_in_provider: 'password', ...firebase },
+    } as DecodedIdToken;
   });
   for (const uid of ['ana', 'bea', 'carlos']) {
     await profiles.create({ uid, email: `${uid}@example.com`, provider: 'password' }, {
       firstName: uid, lastName: 'Pérez', username: `${uid}_01`,
     });
   }
+  await profiles.create({ uid: 'incompleto', email: 'incompleto@example.com', provider: 'password' }, {});
 
   const store: RoomStore = {
     async create(doc) {
@@ -85,6 +99,8 @@ test('POST rechaza nombres inválidos y JSON malformado', async () => {
   for (const body of [{}, [], { name: 42 }, { name: '  ' }, { name: 'a'.repeat(101) }]) {
     await client.post(path).auth('ana', { type: 'bearer' }).send(body).expect(400);
   }
+  await client.post(path).auth('ana', { type: 'bearer' })
+    .send({ name: '📚'.repeat(51) }).expect(400);
   await client.post(path).auth('ana', { type: 'bearer' }).type('json')
     .send('{"name":').expect(400, { error: 'JSON inválido' });
   assert.equal(data.size, 0);
@@ -138,4 +154,92 @@ test('GET devuelve un error genérico cuando falla Firestore', async () => {
   store.read = async () => { throw { code: 14, message: 'DETALLE_INTERNO_SIMULADO' }; };
   await client.get(`${path}/${roomId}`).auth('ana', { type: 'bearer' })
     .expect(503, { error: 'Servicio temporalmente no disponible' });
+});
+
+test('US-06: las tres operaciones rechazan tokens inválidos, expirados, revocados o de cuentas eliminadas', async () => {
+  const { client, data } = await fixture();
+  const expected = { error: 'Token inválido, expirado o revocado' };
+  for (const token of ['invalid', 'expired', 'revoked', 'deleted']) {
+    await client.post(path).auth(token, { type: 'bearer' }).send({ name: 'Matemáticas' }).expect(401, expected);
+    await client.get(path).auth(token, { type: 'bearer' }).expect(401, expected);
+    await client.get(`${path}/${roomId}`).auth(token, { type: 'bearer' }).expect(401, expected);
+  }
+  assert.equal(data.size, 0);
+});
+
+test('US-06: las tres operaciones rechazan otro tenant y un perfil persistido incompleto', async () => {
+  const { client, data } = await fixture();
+  data.set(roomId, { ...sample(), roomId });
+  for (const [token, error] of [
+    ['tenant', 'No se admite el acceso a salas desde otro tenant'],
+    ['incompleto', 'Debe completar su perfil'],
+  ]) {
+    await client.post(path).auth(token, { type: 'bearer' }).send({ name: 'Otra sala' }).expect(403, { error });
+    await client.get(path).auth(token, { type: 'bearer' }).expect(403, { error });
+    await client.get(`${path}/${roomId}`).auth(token, { type: 'bearer' }).expect(403, { error });
+  }
+  assert.equal(data.get(roomId)?.name, 'Matemáticas');
+  assert.equal(data.size, 1);
+});
+
+test('US-06: las salas inactivas se ocultan incluso al propietario y al participante', async () => {
+  const { client, store } = await fixture();
+  const inactiveDocument: unknown = { ...sample('ana', ['ana', 'bea']), roomId, status: 'inactive' };
+  // Simula un documento externo al contrato de escritura REST, como lo leería el adaptador.
+  store.read = async id => id === roomId ? inactiveDocument as Room : undefined;
+  for (const uid of ['ana', 'bea', 'carlos']) {
+    for (const id of [roomId, otherRoomId]) {
+      await client.get(`${path}/${id}`).auth(uid, { type: 'bearer' })
+        .expect(404, { error: 'Sala no encontrada' });
+    }
+  }
+});
+
+test('US-06: GET aplica el filtro de Firestore y limita el listado a 50 IDs ordenados', async () => {
+  const { client, store } = await fixture();
+  const ids = Array.from({ length: 53 }, (_, i) => `A${String(i).padStart(19, '0')}`);
+  const ownRooms = ids.map(id => ({ ...sample(), roomId: id })).reverse();
+  const documents = [...ownRooms, { ...sample('bea', ['bea', 'ana']), roomId: otherRoomId }];
+  const db = {
+    collection(name: string) {
+      assert.equal(name, 'rooms');
+      return {
+        where(field: string, operator: string, uid: string) {
+          assert.deepEqual([field, operator, uid], ['ownerUid', '==', 'ana']);
+          return {
+            limit(count: number) {
+              assert.equal(count, 50);
+              return {
+                async get() {
+                  // El doble reproduce el orden por ID del índice con ownerUid fijo.
+                  const selected = documents.filter(room => room.ownerUid === uid)
+                    .sort((a, b) => a.roomId < b.roomId ? -1 : 1).slice(0, count);
+                  return { docs: selected.map(({ roomId: id, ...doc }) => ({ id, data: () => doc })) };
+                },
+              };
+            },
+          };
+        },
+      };
+    },
+  } as unknown as Firestore;
+  store.listOwned = createRoomStore(() => db).listOwned;
+  const { body } = await client.get(path).auth('ana', { type: 'bearer' }).expect(200);
+  assert.deepEqual(body.rooms.map((room: Room) => room.roomId), ids.slice(0, 50));
+  assert.ok(body.rooms.every((room: Room) => room.ownerUid === 'ana'));
+});
+
+test('US-06: crear, listar y consultar sanitizan errores de Firestore', async () => {
+  const { client, store, data } = await fixture();
+  for (const [code, status, error] of [
+    [7, 500, 'Error interno del servidor'],
+    [14, 503, 'Servicio temporalmente no disponible'],
+  ] as const) {
+    const fail = async () => { throw { code, message: 'DETALLE_INTERNO_SIMULADO' }; };
+    store.create = store.listOwned = store.read = fail;
+    await client.post(path).auth('ana', { type: 'bearer' }).send({ name: 'Matemáticas' }).expect(status, { error });
+    await client.get(path).auth('ana', { type: 'bearer' }).expect(status, { error });
+    await client.get(`${path}/${roomId}`).auth('ana', { type: 'bearer' }).expect(status, { error });
+  }
+  assert.equal(data.size, 0);
 });
