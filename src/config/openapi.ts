@@ -1,4 +1,5 @@
 import { usersPath, usersSchemas } from './users.openapi';
+import { roomPath, roomsPath, roomsSchemas } from './rooms.openapi';
 import type { OpenAPIV3 } from 'openapi-types';
 
 const errorResponse = (description: string, error: string): OpenAPIV3.ResponseObject => ({
@@ -21,11 +22,14 @@ export const openapi: OpenAPIV3.Document = {
   servers: [{ url: '/', description: 'Servidor que publica esta especificación (local o Render)' }],
   tags: [
     { name: 'Perfiles', description: 'Perfiles propios autenticados con Firebase.' },
+    { name: 'Salas', description: 'Creación y consulta de salas de estudio privadas.' },
     { name: 'Salud', description: 'Comprobación básica del servidor HTTP.' },
     { name: 'Sistema', description: 'Diagnóstico versionado del servicio.' },
   ],
   paths: {
     '/api/v1/users/me': usersPath,
+    '/api/v1/rooms': roomsPath,
+    '/api/v1/rooms/{roomId}': roomPath,
     '/health': {
       get: {
         operationId: 'getHealth',
@@ -72,6 +76,7 @@ export const openapi: OpenAPIV3.Document = {
     securitySchemes: { bearerAuth: { type: 'http', scheme: 'bearer', bearerFormat: 'Firebase ID token' } },
     schemas: {
       ...usersSchemas,
+      ...roomsSchemas,
       Health: {
         type: 'object',
         required: ['status'],

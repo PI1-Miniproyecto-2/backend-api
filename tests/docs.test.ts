@@ -110,3 +110,60 @@ test('US-01: Swagger distingue creación de cuenta Firebase y creación de perfi
   assert.deepEqual(post.security, [{ bearerAuth: [] }]);
   assert.equal(spec.components.schemas.ProfileInput.properties.password, undefined);
 });
+
+test('US-06: OpenAPI documenta las tres operaciones de salas y sus respuestas reales', async () => {
+  const { body: spec } = await request(app).get('/openapi.json').expect(200);
+  const collection = spec.paths['/api/v1/rooms'];
+  const item = spec.paths['/api/v1/rooms/{roomId}'];
+  assert.deepEqual(Object.keys(collection).sort(), ['get', 'post']);
+  assert.deepEqual(Object.keys(item), ['get']);
+  assert.ok(spec.tags.some((tag: { name: string }) => tag.name === 'Salas'));
+  assert.deepEqual(spec.components.securitySchemes.bearerAuth,
+    { type: 'http', scheme: 'bearer', bearerFormat: 'Firebase ID token' });
+  for (const [operation, codes] of [
+    [collection.post, ['201', '400', '401', '403', '409', '500', '503']],
+    [collection.get, ['200', '400', '401', '403', '409', '500', '503']],
+    [item.get, ['200', '400', '401', '403', '404', '409', '500', '503']],
+  ] as const) {
+    assert.ok(operation.summary);
+    assert.deepEqual(operation.tags, ['Salas']);
+    assert.deepEqual(operation.security, [{ bearerAuth: [] }]);
+    assert.deepEqual(Object.keys(operation.responses), codes);
+    assert.match(operation.description, /revocación.*perfil completo.*otros tenants/);
+  }
+
+  const json = 'application/json';
+  assert.equal(collection.post.requestBody.required, true);
+  assert.equal(collection.post.requestBody.content[json].schema.$ref, '#/components/schemas/CreateRoomInput');
+  assert.deepEqual(collection.post.requestBody.content[json].example, { name: 'Estudio de Matemáticas' });
+  assert.equal(collection.get.requestBody, undefined);
+  assert.equal(item.get.requestBody, undefined);
+  const [parameter] = item.get.parameters;
+  assert.equal(item.get.parameters.length, 1);
+  assert.equal(parameter.name, 'roomId');
+  assert.equal(parameter.in, 'path');
+  assert.equal(parameter.required, true);
+  assert.equal(parameter.schema.type, 'string');
+  assert.equal(parameter.schema.pattern, '^[A-Za-z0-9]{20}$');
+  assert.match(parameter.schema.example, new RegExp(parameter.schema.pattern));
+
+  const { CreateRoomInput, Room, RoomListResponse } = spec.components.schemas;
+  assert.deepEqual(CreateRoomInput.required, ['name']);
+  assert.deepEqual(Object.keys(CreateRoomInput.properties), ['name']);
+  assert.equal(CreateRoomInput.additionalProperties, false);
+  assert.match(CreateRoomInput.properties.name.description, /100 unidades UTF-16/);
+  assert.deepEqual(Room.required, ['roomId', 'name', 'ownerUid', 'participantUids', 'createdAt', 'status']);
+  assert.equal(Room.properties.createdAt.format, 'date-time');
+  assert.deepEqual(Room.properties.status.enum, ['active']);
+  assert.deepEqual(RoomListResponse.required, ['rooms']);
+  assert.equal(RoomListResponse.properties.rooms.maxItems, 50);
+  assert.equal(RoomListResponse.properties.rooms.items.$ref, '#/components/schemas/Room');
+  assert.equal(collection.post.responses['201'].content[json].schema.$ref, '#/components/schemas/Room');
+  assert.equal(collection.get.responses['200'].content[json].schema.$ref, '#/components/schemas/RoomListResponse');
+  assert.equal(item.get.responses['200'].content[json].schema.$ref, '#/components/schemas/Room');
+  assert.match(collection.get.description, /50 salas propias.*orden ascendente por roomId.*Sin paginación/);
+  assert.match(item.get.description, /activa.*propietario o figurar en participantUids/);
+  const notFound = item.get.responses['404'];
+  assert.match(notFound.description, /inexistente, inactiva o sin autorización/);
+  assert.deepEqual(notFound.content[json].example, { error: 'Sala no encontrada' });
+});
