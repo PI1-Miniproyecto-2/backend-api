@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import { createUsersRoutes } from './users.routes';
+import { createRoomsRoutes } from './rooms.routes';
 import { health } from '../controllers/health.controller';
 import { systemRoutes } from './system.routes';
 
@@ -8,3 +9,4 @@ routes.get('/health', health);
 routes.use('/api/v1/system', systemRoutes);
 
 routes.use('/api/v1/users', createUsersRoutes());
+routes.use('/api/v1/rooms', createRoomsRoutes());
