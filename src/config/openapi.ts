@@ -1,5 +1,5 @@
 import { usersPath, usersSchemas } from './users.openapi';
-import { roomPath, roomsPath, roomsSchemas } from './rooms.openapi';
+import { roomPath, roomsPath, roomsSchemas, roomJoinPath } from './rooms.openapi';
 import type { OpenAPIV3 } from 'openapi-types';
 
 const errorResponse = (description: string, error: string): OpenAPIV3.ResponseObject => ({
@@ -29,6 +29,7 @@ export const openapi: OpenAPIV3.Document = {
   paths: {
     '/api/v1/users/me': usersPath,
     '/api/v1/rooms': roomsPath,
+    '/api/v1/rooms/{roomId}/join': roomJoinPath,
     '/api/v1/rooms/{roomId}': roomPath,
     '/health': {
       get: {

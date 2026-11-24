@@ -54,7 +54,28 @@ async function fixture() {
       return [...data.keys()].sort().map(id => data.get(id)!)
         .filter(room => room.ownerUid === uid).slice(0, ROOM_LIST_LIMIT);
     },
-    async read(id) { return data.get(id); },
+    async read(id) {
+  return data.get(id);
+},
+
+async join(id, uid) {
+  const room = data.get(id);
+
+  if (!room || room.status !== 'active') {
+    return undefined;
+  }
+
+  const updated = {
+    ...room,
+    participantUids: [
+      ...new Set([...room.participantUids, uid]),
+    ],
+  };
+
+  data.set(id, updated);
+
+  return updated;
+},
   };
   const app = express();
   app.use(parseJson);
@@ -242,4 +263,159 @@ test('US-06: crear, listar y consultar sanitizan errores de Firestore', async ()
     await client.get(`${path}/${roomId}`).auth('ana', { type: 'bearer' }).expect(status, { error });
   }
   assert.equal(data.size, 0);
+});
+
+// US-07: Pruebas de ingreso a salas.
+
+test('US-07: permite ingresar a una sala existente', async () => {
+  const { client, data } = await fixture();
+
+  data.set(roomId, { ...sample(), roomId });
+
+  const response = await client
+    .post(`${path}/${roomId}/join`)
+    .auth('bea', { type: 'bearer' })
+    .expect(200);
+
+  assert.equal(response.body.roomId, roomId);
+  assert.equal(response.body.ownerUid, 'ana');
+  assert.deepEqual(response.body.participantUids, ['ana', 'bea']);
+  assert.deepEqual(data.get(roomId)?.participantUids, ['ana', 'bea']);
+
+  await client
+    .get(`${path}/${roomId}`)
+    .auth('bea', { type: 'bearer' })
+    .expect(200);
+});
+
+test('US-07: ingresar varias veces no duplica participantes', async () => {
+  const { client, data } = await fixture();
+
+  data.set(roomId, { ...sample(), roomId });
+
+  for (let i = 0; i < 3; i++) {
+    await client
+      .post(`${path}/${roomId}/join`)
+      .auth('bea', { type: 'bearer' })
+      .expect(200);
+  }
+
+  assert.deepEqual(data.get(roomId)?.participantUids, ['ana', 'bea']);
+});
+
+test('US-07: permite registrar varios participantes', async () => {
+  const { client, data } = await fixture();
+
+  data.set(roomId, { ...sample(), roomId });
+
+  for (const uid of ['bea', 'carlos']) {
+    await client
+      .post(`${path}/${roomId}/join`)
+      .auth(uid, { type: 'bearer' })
+      .expect(200);
+  }
+
+  assert.deepEqual(
+    data.get(roomId)?.participantUids,
+    ['ana', 'bea', 'carlos']
+  );
+});
+
+test('US-07: rechaza una sala inexistente', async () => {
+  const { client, data } = await fixture();
+
+  await client
+    .post(`${path}/${otherRoomId}/join`)
+    .auth('bea', { type: 'bearer' })
+    .expect(404, { error: 'Sala no encontrada' });
+
+  assert.equal(data.size, 0);
+});
+
+test('US-07: rechaza identificadores inválidos', async () => {
+  const { client } = await fixture();
+
+  for (const id of ['invalido', '%FF']) {
+    await client
+      .post(`${path}/${id}/join`)
+      .auth('bea', { type: 'bearer' })
+      .expect(400);
+  }
+});
+
+test('US-07: requiere autenticación válida', async () => {
+  const { client, data } = await fixture();
+
+  data.set(roomId, { ...sample(), roomId });
+
+  await client
+    .post(`${path}/${roomId}/join`)
+    .expect(401);
+
+  for (const token of ['invalid', 'expired', 'revoked', 'deleted']) {
+    await client
+      .post(`${path}/${roomId}/join`)
+      .auth(token, { type: 'bearer' })
+      .expect(401);
+  }
+
+  assert.deepEqual(data.get(roomId)?.participantUids, ['ana']);
+});
+
+test('US-07: rechaza perfiles incompletos y otros tenants', async () => {
+  const { client, data } = await fixture();
+
+  data.set(roomId, { ...sample(), roomId });
+
+  for (const token of ['incompleto', 'sinperfil', 'tenant']) {
+    await client
+      .post(`${path}/${roomId}/join`)
+      .auth(token, { type: 'bearer' })
+      .expect(403);
+  }
+
+  assert.deepEqual(data.get(roomId)?.participantUids, ['ana']);
+});
+
+test('US-07: rechaza el ingreso a salas inactivas', async () => {
+  const { client, data } = await fixture();
+
+  const inactiveDocument: unknown = {
+    ...sample(),
+    roomId,
+    status: 'inactive',
+  };
+
+  data.set(roomId, inactiveDocument as Room);
+
+  await client
+    .post(`${path}/${roomId}/join`)
+    .auth('bea', { type: 'bearer' })
+    .expect(404, { error: 'Sala no encontrada' });
+
+  assert.deepEqual(data.get(roomId)?.participantUids, ['ana']);
+});
+
+test('US-07: sanitiza errores de Firestore al ingresar', async () => {
+  const { client, store } = await fixture();
+
+  store.join = async () => {
+    throw {
+      code: 14,
+      message: 'DETALLE_INTERNO_SIMULADO',
+    };
+  };
+
+  await client
+    .post(`${path}/${roomId}/join`)
+    .auth('bea', { type: 'bearer' })
+    .expect(503, {
+      error: 'Servicio temporalmente no disponible',
+    });
+});
+
+test('US-07: la ruta de ingreso está montada en la aplicación principal', async () => {
+  await request(app)
+    .post(`${path}/${roomId}/join`)
+    .expect(401);
 });

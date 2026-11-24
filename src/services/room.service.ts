@@ -1,3 +1,4 @@
+
 import { Timestamp } from 'firebase-admin/firestore';
 import type { Room, RoomDocument, RoomResponse } from '../models/room';
 import { ApiError, infrastructureError } from './api-error';
@@ -22,10 +23,12 @@ export function createRoomService(store: RoomStore = createRoomStore()) {
       const roomId = await store.create(data).catch(infrastructureError);
       return serialize({ ...data, roomId });
     },
+
     async list(uid: string): Promise<{ rooms: RoomResponse[] }> {
       const rooms = await store.listOwned(uid).catch(infrastructureError);
       return { rooms: rooms.map(serialize) };
     },
+
     async read(uid: string, roomId: string): Promise<RoomResponse> {
       validateRoomId(roomId);
       const room = await store.read(roomId).catch(infrastructureError);
@@ -33,6 +36,19 @@ export function createRoomService(store: RoomStore = createRoomStore()) {
           (room.ownerUid !== uid && !(Array.isArray(room.participantUids) && room.participantUids.includes(uid)))) {
         throw new ApiError(404, 'Sala no encontrada');
       }
+      return serialize(room);
+    },
+
+    // US-07: Permitir el ingreso de un usuario a una sala por ID.
+    async join(uid: string, roomId: string): Promise<RoomResponse> {
+      validateRoomId(roomId);
+
+      const room = await store.join(roomId, uid).catch(infrastructureError);
+
+      if (!room) {
+        throw new ApiError(404, 'Sala no encontrada');
+      }
+
       return serialize(room);
     },
   };

@@ -1,3 +1,4 @@
+
 import { Router, type ErrorRequestHandler } from 'express';
 import { roomsController } from '../controllers/rooms.controller';
 import { authenticate, identityOf } from '../middlewares/auth.middleware';
@@ -24,14 +25,22 @@ export function createRoomsRoutes(
   const router = Router();
   const controller = roomsController(service);
   const completeProfile = requireCompleteProfile(profiles);
+
   router.use(authenticate(verify), (req, _res, next) => {
     if (identityOf(req).tenant !== undefined) {
       throw new ApiError(403, 'No se admite el acceso a salas desde otro tenant');
     }
     next();
   }, completeProfile);
+
   router.route('/').post(controller.create).get(controller.list);
+
   router.get('/:roomId', controller.read);
+
+  // US-07: Ingresar a una sala mediante su identificador.
+  router.post('/:roomId/join', controller.join);
+
   router.use(handleInvalidRoomId);
+
   return router;
 }
