@@ -167,3 +167,70 @@ test('US-06: OpenAPI documenta las tres operaciones de salas y sus respuestas re
   assert.match(notFound.description, /inexistente, inactiva o sin autorización/);
   assert.deepEqual(notFound.content[json].example, { error: 'Sala no encontrada' });
 });
+
+// US-07: Verificar la documentación del ingreso a salas.
+test('US-07: Swagger documenta el ingreso a salas por ID', async () => {
+  const { body: spec } = await request(app)
+    .get('/openapi.json')
+    .expect(200);
+
+  const path = spec.paths['/api/v1/rooms/{roomId}/join'];
+
+  assert.ok(path);
+  assert.ok(path.post);
+
+  const operation = path.post;
+
+  // Verificar la operación y su seguridad.
+  assert.equal(operation.operationId, 'joinRoom');
+  assert.deepEqual(operation.tags, ['Salas']);
+  assert.deepEqual(operation.security, [{ bearerAuth: [] }]);
+
+  // Verificar que no necesita un cuerpo JSON.
+  assert.equal(operation.requestBody, undefined);
+
+  // Verificar el identificador de la sala.
+  assert.equal(operation.parameters.length, 1);
+
+  const [parameter] = operation.parameters;
+
+  assert.equal(parameter.name, 'roomId');
+  assert.equal(parameter.in, 'path');
+  assert.equal(parameter.required, true);
+  assert.equal(parameter.schema.type, 'string');
+  assert.equal(parameter.schema.pattern, '^[A-Za-z0-9]{20}$');
+
+  // Verificar los códigos de respuesta.
+  assert.deepEqual(
+    Object.keys(operation.responses).sort(),
+    ['200', '400', '401', '403', '404', '409', '500', '503']
+  );
+
+  // Verificar el esquema de respuesta exitosa.
+  const success = operation.responses['200']
+    .content['application/json'];
+
+  assert.equal(
+    success.schema.$ref,
+    '#/components/schemas/Room'
+  );
+
+  assert.deepEqual(
+    success.example.participantUids,
+    ['uid-ana', 'uid-bea']
+  );
+
+  // Verificar la respuesta de sala inexistente.
+  assert.deepEqual(
+    operation.responses['404'].content['application/json'].example,
+    { error: 'Sala no encontrada' }
+  );
+
+  // Verificar que se documenta la prevención de duplicados.
+  assert.match(operation.description, /no se duplica/);
+
+  // Comprobar que el endpoint exige autenticación.
+  await request(app)
+    .post('/api/v1/rooms/A1234567890123456789/join')
+    .expect(401);
+});

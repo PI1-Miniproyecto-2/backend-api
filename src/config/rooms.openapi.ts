@@ -109,3 +109,38 @@ export const roomPath: OpenAPIV3.PathItemObject = {
     },
   },
 };
+
+// US-07: Ingreso a una sala de estudio mediante su ID.
+export const roomJoinPath: OpenAPIV3.PathItemObject = {
+  post: {
+    ...common,
+    operationId: 'joinRoom',
+    summary: 'Ingresar a una sala de estudio',
+    description: `${access} Permite ingresar a una sala activa mediante su ID. El servidor obtiene el UID del token autenticado y lo registra en participantUids. Si el usuario ya pertenece a la sala, no se duplica su participación.`,
+    parameters: [{
+      name: 'roomId',
+      in: 'path',
+      required: true,
+      schema: roomId,
+      description: 'ID automático alfanumérico de Firestore de 20 caracteres.',
+    }],
+    responses: {
+      '200': {
+        description: 'Ingreso exitoso a la sala.',
+        content: json('Room', {
+          ...roomExample,
+          participantUids: ['uid-ana', 'uid-bea'],
+        }),
+      },
+      '400': error(
+        'Identificador de sala inválido o JSON malformado.',
+        'Identificador de sala inválido'
+      ),
+      ...errors,
+      '404': error(
+        'La sala no existe o no se encuentra activa.',
+        'Sala no encontrada'
+      ),
+    },
+  },
+};
