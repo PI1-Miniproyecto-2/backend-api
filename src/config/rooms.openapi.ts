@@ -21,6 +21,13 @@ export const roomsSchemas: Record<string, OpenAPIV3.SchemaObject> = {
   CreateRoomInput: {
     type: 'object', additionalProperties: false, required: ['name'], properties: { name },
   },
+    // US-10: Datos permitidos para editar una sala.
+  UpdateRoomInput: {
+    type: 'object',
+    additionalProperties: false,
+    required: ['name'],
+    properties: { name },
+  },
   Room: {
     type: 'object',
     additionalProperties: false,
@@ -91,6 +98,7 @@ export const roomsPath: OpenAPIV3.PathItemObject = {
   },
 };
 
+
 export const roomPath: OpenAPIV3.PathItemObject = {
   get: {
     ...common,
@@ -98,17 +106,108 @@ export const roomPath: OpenAPIV3.PathItemObject = {
     summary: 'Consultar una sala por ID',
     description: `${access} La sala debe estar activa y el UID debe ser el del propietario o figurar en participantUids. Conocer el ID no otorga acceso.`,
     parameters: [{
-      name: 'roomId', in: 'path', required: true, schema: roomId,
+      name: 'roomId',
+      in: 'path',
+      required: true,
+      schema: roomId,
       description: 'ID automático alfanumérico de Firestore de 20 caracteres.',
     }],
     responses: {
-      '200': { description: 'Sala activa accesible a la identidad autenticada.', content: json('Room', roomExample) },
-      '400': error('Identificador de sala inválido o JSON malformado si se envía un cuerpo.', 'Identificador de sala inválido'),
+      '200': {
+        description: 'Sala activa accesible a la identidad autenticada.',
+        content: json('Room', roomExample),
+      },
+      '400': error(
+        'Identificador de sala inválido o JSON malformado si se envía un cuerpo.',
+        'Identificador de sala inválido'
+      ),
       ...errors,
-      '404': error('Sala inexistente, inactiva o sin autorización. Los tres casos devuelven la misma respuesta.', 'Sala no encontrada'),
+      '404': error(
+        'Sala inexistente, inactiva o sin autorización. Los tres casos devuelven la misma respuesta.',
+        'Sala no encontrada'
+      ),
+    },
+  },
+
+  // US-10: Edición de salas por el anfitrión.
+  patch: {
+    ...common,
+    operationId: 'updateRoom',
+    summary: 'Editar una sala de estudio',
+    description: `${access} Solo el anfitrión puede editar una sala activa. El servidor verifica que el UID autenticado coincida con ownerUid mediante una transacción de Firestore. Acepta únicamente el campo name y conserva el identificador, propietario, participantes, fecha de creación y estado de la sala.`,
+    parameters: [{
+      name: 'roomId',
+      in: 'path',
+      required: true,
+      schema: roomId,
+      description: 'ID automático alfanumérico de Firestore de 20 caracteres.',
+    }],
+    requestBody: {
+      required: true,
+      content: json('UpdateRoomInput', {
+        name: 'Estudio de Programación',
+      }),
+    },
+    responses: {
+      '200': {
+        description: 'Sala actualizada correctamente.',
+        content: json('Room', {
+          ...roomExample,
+          name: 'Estudio de Programación',
+        }),
+      },
+      '400': error(
+        'Identificador inválido, JSON malformado, cuerpo ausente, nombre inválido o propiedades adicionales.',
+        'El cuerpo debe contener únicamente el campo name como texto'
+      ),
+      ...errors,
+      '403': error(
+        'El usuario no es el anfitrión, tiene un perfil incompleto, no cumple los requisitos de acceso o pertenece a otro tenant.',
+        'Solo el anfitrión puede editar la sala'
+      ),
+      '404': error(
+        'La sala no existe o no se encuentra activa.',
+        'Sala no encontrada'
+      ),
+
+    },
+  },
+
+  // US-11: Eliminación de salas.
+  delete: {
+    ...common,
+    operationId: 'deleteRoom',
+    summary: 'Eliminar una sala de estudio',
+    description: `${access} Solo el anfitrión puede eliminar una sala activa. El servidor verifica ownerUid mediante una transacción de Firestore. Elimina el documento de la sala e impide nuevos ingresos. Los mensajes almacenados por separado se conservan.`,
+    parameters: [{
+      name: 'roomId',
+      in: 'path',
+      required: true,
+      schema: roomId,
+      description: 'ID automático alfanumérico de Firestore de 20 caracteres.',
+    }],
+    responses: {
+      '204': {
+        description: 'Sala eliminada correctamente. Sin contenido.',
+      },
+      '400': error(
+        'Identificador inválido o JSON malformado.',
+        'Identificador de sala inválido'
+      ),
+      ...errors,
+      '403': error(
+        'El usuario no es el anfitrión o no cumple los requisitos de acceso.',
+        'Solo el anfitrión puede eliminar la sala'
+      ),
+      '404': error(
+        'La sala no existe o no se encuentra activa.',
+        'Sala no encontrada'
+      ),
     },
   },
 };
+
+
 
 // US-07: Ingreso a una sala de estudio mediante su ID.
 export const roomJoinPath: OpenAPIV3.PathItemObject = {

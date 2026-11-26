@@ -116,7 +116,7 @@ test('US-06: OpenAPI documenta las tres operaciones de salas y sus respuestas re
   const collection = spec.paths['/api/v1/rooms'];
   const item = spec.paths['/api/v1/rooms/{roomId}'];
   assert.deepEqual(Object.keys(collection).sort(), ['get', 'post']);
-  assert.deepEqual(Object.keys(item), ['get']);
+  assert.deepEqual(Object.keys(item).sort(), ['delete', 'get', 'patch']);
   assert.ok(spec.tags.some((tag: { name: string }) => tag.name === 'Salas'));
   assert.deepEqual(spec.components.securitySchemes.bearerAuth,
     { type: 'http', scheme: 'bearer', bearerFormat: 'Firebase ID token' });
@@ -232,5 +232,156 @@ test('US-07: Swagger documenta el ingreso a salas por ID', async () => {
   // Comprobar que el endpoint exige autenticación.
   await request(app)
     .post('/api/v1/rooms/A1234567890123456789/join')
+    .expect(401);
+});
+
+// US-10: Verificar la documentación de edición de salas.
+test('US-10: Swagger documenta la edición de salas y los permisos del anfitrión', async () => {
+  const { body: spec } = await request(app)
+    .get('/openapi.json')
+    .expect(200);
+
+  const path = spec.paths['/api/v1/rooms/{roomId}'];
+
+  assert.ok(path);
+  assert.ok(path.patch);
+
+  const operation = path.patch;
+
+  // Verificar la operación y su seguridad.
+  assert.equal(operation.operationId, 'updateRoom');
+  assert.deepEqual(operation.tags, ['Salas']);
+  assert.deepEqual(operation.security, [
+    { bearerAuth: [] },
+  ]);
+
+  // Verificar que solo el anfitrión puede editar.
+  assert.match(
+    operation.description,
+    /Solo el anfitrión puede editar/
+  );
+
+  assert.match(
+    operation.description,
+    /ownerUid/
+  );
+
+  assert.match(
+    operation.description,
+    /transacción de Firestore/
+  );
+
+  // Verificar el parámetro de la sala.
+  assert.equal(operation.parameters.length, 1);
+
+  const [parameter] = operation.parameters;
+
+  assert.equal(parameter.name, 'roomId');
+  assert.equal(parameter.in, 'path');
+  assert.equal(parameter.required, true);
+  assert.equal(parameter.schema.type, 'string');
+
+  assert.equal(
+    parameter.schema.pattern,
+    '^[A-Za-z0-9]{20}$'
+  );
+
+  // Verificar el cuerpo obligatorio.
+  assert.equal(operation.requestBody.required, true);
+
+  const json = 'application/json';
+
+  assert.equal(
+    operation.requestBody.content[json].schema.$ref,
+    '#/components/schemas/UpdateRoomInput'
+  );
+
+  const input = spec.components.schemas.UpdateRoomInput;
+
+  assert.deepEqual(input.required, ['name']);
+  assert.deepEqual(Object.keys(input.properties), ['name']);
+  assert.equal(input.additionalProperties, false);
+  assert.equal(input.properties.name.type, 'string');
+
+  // Verificar los códigos de respuesta.
+  assert.deepEqual(
+    Object.keys(operation.responses).sort(),
+    ['200', '400', '401', '403', '404', '409', '500', '503']
+  );
+
+  // Verificar la respuesta exitosa.
+  const success = operation.responses['200'].content[json];
+
+  assert.equal(
+    success.schema.$ref,
+    '#/components/schemas/Room'
+  );
+
+  assert.equal(
+    success.example.name,
+    'Estudio de Programación'
+  );
+
+  // Verificar la respuesta de permisos insuficientes.
+  assert.deepEqual(
+    operation.responses['403'].content[json].example,
+    { error: 'Solo el anfitrión puede editar la sala' }
+  );
+
+  // Verificar la respuesta de sala inexistente.
+  assert.deepEqual(
+    operation.responses['404'].content[json].example,
+    { error: 'Sala no encontrada' }
+  );
+
+  // Comprobar que el endpoint exige autenticación.
+  await request(app)
+    .patch('/api/v1/rooms/A1234567890123456789')
+    .send({ name: 'Nuevo nombre' })
+    .expect(401);
+});
+
+// US-11: Documentación de eliminación de salas.
+test('US-11: Swagger documenta la eliminación y los permisos del anfitrión', async () => {
+  const { body: spec } = await request(app)
+    .get('/openapi.json')
+    .expect(200);
+
+  const operation =
+    spec.paths['/api/v1/rooms/{roomId}'].delete;
+
+  assert.ok(operation);
+
+  assert.equal(operation.operationId, 'deleteRoom');
+
+  assert.deepEqual(operation.security, [
+    { bearerAuth: [] },
+  ]);
+
+  assert.match(
+    operation.description,
+    /Solo el anfitrión puede eliminar/
+  );
+
+  assert.equal(operation.requestBody, undefined);
+
+  assert.equal(
+    operation.responses['204'].content,
+    undefined
+  );
+
+  assert.deepEqual(
+    Object.keys(operation.responses).sort(),
+    ['204', '400', '401', '403', '404', '409', '500', '503']
+  );
+
+  assert.deepEqual(
+    operation.responses['403']
+      .content['application/json'].example,
+    { error: 'Solo el anfitrión puede eliminar la sala' }
+  );
+
+  await request(app)
+    .delete('/api/v1/rooms/A1234567890123456789')
     .expect(401);
 });

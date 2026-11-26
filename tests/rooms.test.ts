@@ -45,38 +45,89 @@ async function fixture() {
   }
   await profiles.create({ uid: 'incompleto', email: 'incompleto@example.com', provider: 'password' }, {});
 
+ 
+ 
   const store: RoomStore = {
     async create(doc) {
       data.set(roomId, { ...doc, roomId });
       return roomId;
     },
+
     async listOwned(uid) {
-      return [...data.keys()].sort().map(id => data.get(id)!)
-        .filter(room => room.ownerUid === uid).slice(0, ROOM_LIST_LIMIT);
+      return [...data.keys()]
+        .sort()
+        .map(id => data.get(id)!)
+        .filter(room => room.ownerUid === uid)
+        .slice(0, ROOM_LIST_LIMIT);
     },
+
     async read(id) {
-  return data.get(id);
-},
+      return data.get(id);
+    },
 
-async join(id, uid) {
-  const room = data.get(id);
+    // US-07: Ingresar a una sala.
+    async join(id, uid) {
+      const room = data.get(id);
 
-  if (!room || room.status !== 'active') {
-    return undefined;
-  }
+      if (!room || room.status !== 'active') {
+        return undefined;
+      }
 
-  const updated = {
-    ...room,
-    participantUids: [
-      ...new Set([...room.participantUids, uid]),
-    ],
+      const updated = {
+        ...room,
+        participantUids: [
+          ...new Set([...room.participantUids, uid]),
+        ],
+      };
+
+      data.set(id, updated);
+
+      return updated;
+    },
+
+    // US-10: Editar una sala.
+    async update(id, uid, name) {
+      const room = data.get(id);
+
+      if (!room || room.status !== 'active') {
+        return { status: 'not_found' };
+      }
+
+      if (room.ownerUid !== uid) {
+        return { status: 'forbidden' };
+      }
+
+      const updated = {
+        ...room,
+        name,
+      };
+
+      data.set(id, updated);
+
+      return {
+        status: 'updated',
+        room: updated,
+      };
+    },
+
+    // US-11: Eliminar una sala.
+    async delete(id, uid) {
+      const room = data.get(id);
+
+      if (!room || room.status !== 'active') {
+        return { status: 'not_found' };
+      }
+
+      if (room.ownerUid !== uid) {
+        return { status: 'forbidden' };
+      }
+
+      data.delete(id);
+
+      return { status: 'deleted' };
+    },
   };
 
-  data.set(id, updated);
-
-  return updated;
-},
-  };
   const app = express();
   app.use(parseJson);
   app.use(path, createRoomsRoutes(createRoomService(store), auth, profiles));
@@ -417,5 +468,445 @@ test('US-07: sanitiza errores de Firestore al ingresar', async () => {
 test('US-07: la ruta de ingreso está montada en la aplicación principal', async () => {
   await request(app)
     .post(`${path}/${roomId}/join`)
+    .expect(401);
+});
+
+// US-10: Pruebas de edición de salas.
+
+test('US-10: permite al anfitrión editar el nombre de su sala', async () => {
+  const { client, data } = await fixture();
+
+  const original = {
+    ...sample('ana', ['ana', 'bea']),
+    roomId,
+  };
+
+  data.set(roomId, original);
+
+  const response = await client
+    .patch(`${path}/${roomId}`)
+    .auth('ana', { type: 'bearer' })
+    .send({ name: '  Programación avanzada  ' })
+    .expect(200);
+
+  assert.deepEqual(response.body, {
+    ...original,
+    name: 'Programación avanzada',
+    createdAt: original.createdAt.toDate().toISOString(),
+  });
+
+  assert.deepEqual(data.get(roomId), {
+    ...original,
+    name: 'Programación avanzada',
+  });
+});
+
+test('US-10: el participante puede consultar el nombre actualizado', async () => {
+  const { client, data } = await fixture();
+
+  data.set(roomId, {
+    ...sample('ana', ['ana', 'bea']),
+    roomId,
+  });
+
+  await client
+    .patch(`${path}/${roomId}`)
+    .auth('ana', { type: 'bearer' })
+    .send({ name: 'Ingeniería de software' })
+    .expect(200);
+
+  const response = await client
+    .get(`${path}/${roomId}`)
+    .auth('bea', { type: 'bearer' })
+    .expect(200);
+
+  assert.equal(
+    response.body.name,
+    'Ingeniería de software'
+  );
+});
+
+test('US-10: rechaza la edición por usuarios que no son anfitriones', async () => {
+  const { client, data } = await fixture();
+
+  const original = {
+    ...sample('ana', ['ana', 'bea']),
+    roomId,
+  };
+
+  data.set(roomId, original);
+
+  for (const uid of ['bea', 'carlos']) {
+    await client
+      .patch(`${path}/${roomId}`)
+      .auth(uid, { type: 'bearer' })
+      .send({ name: 'Nombre no autorizado' })
+      .expect(403, {
+        error: 'Solo el anfitrión puede editar la sala',
+      });
+  }
+
+  assert.deepEqual(data.get(roomId), original);
+});
+
+test('US-10: rechaza la edición de salas inexistentes', async () => {
+  const { client, data } = await fixture();
+
+  await client
+    .patch(`${path}/${otherRoomId}`)
+    .auth('ana', { type: 'bearer' })
+    .send({ name: 'Nueva sala' })
+    .expect(404, {
+      error: 'Sala no encontrada',
+    });
+
+  assert.equal(data.size, 0);
+});
+
+test('US-10: rechaza la edición de salas inactivas', async () => {
+  const { client, data } = await fixture();
+
+  const inactiveDocument: unknown = {
+    ...sample(),
+    roomId,
+    status: 'inactive',
+  };
+
+  data.set(roomId, inactiveDocument as Room);
+
+  await client
+    .patch(`${path}/${roomId}`)
+    .auth('ana', { type: 'bearer' })
+    .send({ name: 'Nuevo nombre' })
+    .expect(404, {
+      error: 'Sala no encontrada',
+    });
+
+  assert.equal(data.get(roomId)?.name, 'Matemáticas');
+});
+
+test('US-10: rechaza identificadores de sala inválidos', async () => {
+  const { client } = await fixture();
+
+  for (const id of ['invalido', '%FF']) {
+    await client
+      .patch(`${path}/${id}`)
+      .auth('ana', { type: 'bearer' })
+      .send({ name: 'Nuevo nombre' })
+      .expect(400);
+  }
+});
+
+test('US-10: rechaza nombres inválidos', async () => {
+  const { client, data } = await fixture();
+
+  data.set(roomId, {
+    ...sample(),
+    roomId,
+  });
+
+  for (const body of [
+    {},
+    [],
+    { name: 123 },
+    { name: null },
+    { name: '' },
+    { name: '   ' },
+    { name: 'a'.repeat(101) },
+  ]) {
+    await client
+      .patch(`${path}/${roomId}`)
+      .auth('ana', { type: 'bearer' })
+      .send(body)
+      .expect(400);
+  }
+
+  assert.equal(data.get(roomId)?.name, 'Matemáticas');
+});
+
+test('US-10: impide modificar campos protegidos de la sala', async () => {
+  const { client, data } = await fixture();
+
+  const original = {
+    ...sample('ana', ['ana', 'bea']),
+    roomId,
+  };
+
+  data.set(roomId, original);
+
+  for (const extra of [
+    { ownerUid: 'bea' },
+    { participantUids: ['carlos'] },
+    { status: 'inactive' },
+    { createdAt: '2000-01-01' },
+    { roomId: otherRoomId },
+  ]) {
+    await client
+      .patch(`${path}/${roomId}`)
+      .auth('ana', { type: 'bearer' })
+      .send({
+        name: 'Nuevo nombre',
+        ...extra,
+      })
+      .expect(400);
+  }
+
+  assert.deepEqual(data.get(roomId), original);
+});
+
+test('US-10: requiere autenticación válida', async () => {
+  const { client, data } = await fixture();
+
+  data.set(roomId, {
+    ...sample(),
+    roomId,
+  });
+
+  await client
+    .patch(`${path}/${roomId}`)
+    .send({ name: 'Nuevo nombre' })
+    .expect(401);
+
+  for (const token of [
+    'invalid',
+    'expired',
+    'revoked',
+    'deleted',
+  ]) {
+    await client
+      .patch(`${path}/${roomId}`)
+      .auth(token, { type: 'bearer' })
+      .send({ name: 'Nuevo nombre' })
+      .expect(401);
+  }
+
+  assert.equal(data.get(roomId)?.name, 'Matemáticas');
+});
+
+test('US-10: rechaza perfiles incompletos y otros tenants', async () => {
+  const { client, data } = await fixture();
+
+  data.set(roomId, {
+    ...sample(),
+    roomId,
+  });
+
+  for (const token of [
+    'incompleto',
+    'sinperfil',
+    'tenant',
+  ]) {
+    await client
+      .patch(`${path}/${roomId}`)
+      .auth(token, { type: 'bearer' })
+      .send({ name: 'Nuevo nombre' })
+      .expect(403);
+  }
+
+  assert.equal(data.get(roomId)?.name, 'Matemáticas');
+});
+
+test('US-10: sanitiza errores de Firestore al editar', async () => {
+  const { client, store } = await fixture();
+
+  for (const [code, status, error] of [
+    [7, 500, 'Error interno del servidor'],
+    [14, 503, 'Servicio temporalmente no disponible'],
+  ] as const) {
+    store.update = async () => {
+      throw {
+        code,
+        message: 'DETALLE_INTERNO_SIMULADO',
+      };
+    };
+
+    await client
+      .patch(`${path}/${roomId}`)
+      .auth('ana', { type: 'bearer' })
+      .send({ name: 'Nuevo nombre' })
+      .expect(status, { error });
+  }
+});
+
+test('US-10: la ruta de edición está montada en la aplicación principal', async () => {
+  await request(app)
+    .patch(`${path}/${roomId}`)
+    .send({ name: 'Nuevo nombre' })
+    .expect(401);
+});
+
+test('US-10: el adaptador Firestore verifica al anfitrión dentro de la transacción', async () => {
+  let document: RoomDocument | undefined =
+    sample('ana', ['ana', 'bea']);
+
+  let writes = 0;
+  let transactions = 0;
+
+  const ref = { id: roomId };
+
+  const db = {
+    collection(name: string) {
+      assert.equal(name, 'rooms');
+
+      return {
+        doc(id: string) {
+          assert.equal(id, roomId);
+          return ref;
+        },
+      };
+    },
+
+    async runTransaction<T>(
+      operation: (transaction: {
+        get: (target: unknown) => Promise<{
+          id: string;
+          data: () => RoomDocument | undefined;
+        }>;
+        update: (
+          target: unknown,
+          changes: Partial<RoomDocument>
+        ) => void;
+      }) => Promise<T>
+    ): Promise<T> {
+      transactions++;
+
+      return operation({
+        async get(target) {
+          assert.equal(target, ref);
+
+          return {
+            id: roomId,
+            data: () => document,
+          };
+        },
+
+        update(target, changes) {
+          assert.equal(target, ref);
+          assert.deepEqual(
+            Object.keys(changes),
+            ['name']
+          );
+
+          assert.ok(document);
+
+          document = {
+            ...document,
+            ...changes,
+          };
+
+          writes++;
+        },
+      });
+    },
+  } as unknown as Firestore;
+
+  const store = createRoomStore(() => db);
+
+  // Un participante no puede editar.
+  const forbidden = await store.update(
+    roomId,
+    'bea',
+    'Cambio no autorizado'
+  );
+
+  assert.deepEqual(forbidden, {
+    status: 'forbidden',
+  });
+
+  assert.equal(writes, 0);
+
+  // El anfitrión puede editar.
+  const updated = await store.update(
+    roomId,
+    'ana',
+    'Programación avanzada'
+  );
+
+  assert.equal(updated.status, 'updated');
+  assert.equal(document?.name, 'Programación avanzada');
+  assert.equal(document?.ownerUid, 'ana');
+
+  assert.deepEqual(
+    document?.participantUids,
+    ['ana', 'bea']
+  );
+
+  assert.equal(writes, 1);
+
+  // Una sala inexistente no puede editarse.
+  document = undefined;
+
+  const missing = await store.update(
+    roomId,
+    'ana',
+    'Otra sala'
+  );
+
+  assert.deepEqual(missing, {
+    status: 'not_found',
+  });
+
+  assert.equal(writes, 1);
+  assert.equal(transactions, 3);
+});
+
+// US-11: Pruebas de eliminación.
+
+test('US-11: el anfitrión puede eliminar su sala', async () => {
+  const { client, data } = await fixture();
+
+  data.set(roomId, {
+    ...sample('ana', ['ana', 'bea']),
+    roomId,
+  });
+
+  await client
+    .delete(`${path}/${roomId}`)
+    .auth('ana', { type: 'bearer' })
+    .expect(204);
+
+  assert.equal(data.has(roomId), false);
+
+  await client
+    .get(`${path}/${roomId}`)
+    .auth('bea', { type: 'bearer' })
+    .expect(404);
+
+  await client
+    .post(`${path}/${roomId}/join`)
+    .auth('carlos', { type: 'bearer' })
+    .expect(404);
+});
+
+test('US-11: un participante no puede eliminar la sala', async () => {
+  const { client, data } = await fixture();
+
+  data.set(roomId, {
+    ...sample('ana', ['ana', 'bea']),
+    roomId,
+  });
+
+  await client
+    .delete(`${path}/${roomId}`)
+    .auth('bea', { type: 'bearer' })
+    .expect(403);
+
+  assert.equal(data.has(roomId), true);
+});
+
+test('US-11: rechaza una sala inexistente', async () => {
+  const { client } = await fixture();
+
+  await client
+    .delete(`${path}/${roomId}`)
+    .auth('ana', { type: 'bearer' })
+    .expect(404);
+});
+
+test('US-11: requiere autenticación', async () => {
+  const { client } = await fixture();
+
+  await client
+    .delete(`${path}/${roomId}`)
     .expect(401);
 });

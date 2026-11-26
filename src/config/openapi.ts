@@ -17,12 +17,12 @@ export const openapi: OpenAPIV3.Document = {
   info: {
     title: 'Salón de Estudio Colaborativo — Backend API',
     version: '0.1.0',
-    description: 'API REST del Miniproyecto 2. Sprint 0. El endpoint del sistema está implmentado en TS-00-T06.',
+    description: 'API REST del Miniproyecto 2 — AulaPro. Incluye autenticación, gestión de perfiles, creación, consulta, ingreso y edición de salas de estudio.',
   },
   servers: [{ url: '/', description: 'Servidor que publica esta especificación (local o Render)' }],
   tags: [
     { name: 'Perfiles', description: 'Perfiles propios autenticados con Firebase.' },
-    { name: 'Salas', description: 'Creación y consulta de salas de estudio privadas.' },
+    { name: 'Salas', description: 'Creación, consulta, ingreso y edición de salas de estudio privadas.' },
     { name: 'Salud', description: 'Comprobación básica del servidor HTTP.' },
     { name: 'Sistema', description: 'Diagnóstico versionado del servicio.' },
   ],
