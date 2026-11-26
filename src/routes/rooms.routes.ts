@@ -64,7 +64,7 @@ export function createRoomsRoutes(
 
   // US-10: Editar una sala.
   router.patch('/:roomId', controller.update);
-
+  router.delete('/:roomId', controller.remove);
   router.use(handleInvalidRoomId);
 
   return router;

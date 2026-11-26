@@ -151,6 +151,32 @@ export function createRoomService(
 
       return serialize(result.room);
     },
+
+    // US-11: Eliminar una sala existente.
+    async delete(
+      uid: string,
+      roomId: string
+    ): Promise<void> {
+      validateRoomId(roomId);
+
+      const result = await store
+        .delete(roomId, uid)
+        .catch(infrastructureError);
+
+      if (result.status === 'not_found') {
+        throw new ApiError(
+          404,
+          'Sala no encontrada'
+        );
+      }
+
+      if (result.status === 'forbidden') {
+        throw new ApiError(
+          403,
+          'Solo el anfitrión puede eliminar la sala'
+        );
+      }
+    },
   };
 }
 

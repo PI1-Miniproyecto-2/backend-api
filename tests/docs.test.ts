@@ -116,7 +116,7 @@ test('US-06: OpenAPI documenta las tres operaciones de salas y sus respuestas re
   const collection = spec.paths['/api/v1/rooms'];
   const item = spec.paths['/api/v1/rooms/{roomId}'];
   assert.deepEqual(Object.keys(collection).sort(), ['get', 'post']);
-  assert.deepEqual(Object.keys(item).sort(), ['get', 'patch']);
+  assert.deepEqual(Object.keys(item).sort(), ['delete', 'get', 'patch']);
   assert.ok(spec.tags.some((tag: { name: string }) => tag.name === 'Salas'));
   assert.deepEqual(spec.components.securitySchemes.bearerAuth,
     { type: 'http', scheme: 'bearer', bearerFormat: 'Firebase ID token' });
@@ -338,5 +338,50 @@ test('US-10: Swagger documenta la edición de salas y los permisos del anfitrió
   await request(app)
     .patch('/api/v1/rooms/A1234567890123456789')
     .send({ name: 'Nuevo nombre' })
+    .expect(401);
+});
+
+// US-11: Documentación de eliminación de salas.
+test('US-11: Swagger documenta la eliminación y los permisos del anfitrión', async () => {
+  const { body: spec } = await request(app)
+    .get('/openapi.json')
+    .expect(200);
+
+  const operation =
+    spec.paths['/api/v1/rooms/{roomId}'].delete;
+
+  assert.ok(operation);
+
+  assert.equal(operation.operationId, 'deleteRoom');
+
+  assert.deepEqual(operation.security, [
+    { bearerAuth: [] },
+  ]);
+
+  assert.match(
+    operation.description,
+    /Solo el anfitrión puede eliminar/
+  );
+
+  assert.equal(operation.requestBody, undefined);
+
+  assert.equal(
+    operation.responses['204'].content,
+    undefined
+  );
+
+  assert.deepEqual(
+    Object.keys(operation.responses).sort(),
+    ['204', '400', '401', '403', '404', '409', '500', '503']
+  );
+
+  assert.deepEqual(
+    operation.responses['403']
+      .content['application/json'].example,
+    { error: 'Solo el anfitrión puede eliminar la sala' }
+  );
+
+  await request(app)
+    .delete('/api/v1/rooms/A1234567890123456789')
     .expect(401);
 });

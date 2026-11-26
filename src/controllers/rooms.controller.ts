@@ -52,11 +52,23 @@ export function roomsController(service: RoomService) {
       );
     };
 
+  // US-11: Eliminar una sala.
+  const remove: RequestHandler<{ roomId: string }> =
+    async (req, res) => {
+      await service.delete(
+        identityOf(req).uid,
+        req.params.roomId
+      );
+
+      res.status(204).end();
+    };
+
   return {
     create,
     list,
     read,
     join,
     update,
+    remove,
   };
 }

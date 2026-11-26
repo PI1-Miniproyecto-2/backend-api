@@ -46,6 +46,7 @@ async function fixture() {
   await profiles.create({ uid: 'incompleto', email: 'incompleto@example.com', provider: 'password' }, {});
 
  
+ 
   const store: RoomStore = {
     async create(doc) {
       data.set(roomId, { ...doc, roomId });
@@ -64,7 +65,7 @@ async function fixture() {
       return data.get(id);
     },
 
-    // US-07: Ingreso a salas.
+    // US-07: Ingresar a una sala.
     async join(id, uid) {
       const room = data.get(id);
 
@@ -84,7 +85,7 @@ async function fixture() {
       return updated;
     },
 
-    // US-10: Simulación de edición de salas.
+    // US-10: Editar una sala.
     async update(id, uid, name) {
       const room = data.get(id);
 
@@ -107,6 +108,23 @@ async function fixture() {
         status: 'updated',
         room: updated,
       };
+    },
+
+    // US-11: Eliminar una sala.
+    async delete(id, uid) {
+      const room = data.get(id);
+
+      if (!room || room.status !== 'active') {
+        return { status: 'not_found' };
+      }
+
+      if (room.ownerUid !== uid) {
+        return { status: 'forbidden' };
+      }
+
+      data.delete(id);
+
+      return { status: 'deleted' };
     },
   };
 
@@ -830,4 +848,65 @@ test('US-10: el adaptador Firestore verifica al anfitrión dentro de la transacc
 
   assert.equal(writes, 1);
   assert.equal(transactions, 3);
+});
+
+// US-11: Pruebas de eliminación.
+
+test('US-11: el anfitrión puede eliminar su sala', async () => {
+  const { client, data } = await fixture();
+
+  data.set(roomId, {
+    ...sample('ana', ['ana', 'bea']),
+    roomId,
+  });
+
+  await client
+    .delete(`${path}/${roomId}`)
+    .auth('ana', { type: 'bearer' })
+    .expect(204);
+
+  assert.equal(data.has(roomId), false);
+
+  await client
+    .get(`${path}/${roomId}`)
+    .auth('bea', { type: 'bearer' })
+    .expect(404);
+
+  await client
+    .post(`${path}/${roomId}/join`)
+    .auth('carlos', { type: 'bearer' })
+    .expect(404);
+});
+
+test('US-11: un participante no puede eliminar la sala', async () => {
+  const { client, data } = await fixture();
+
+  data.set(roomId, {
+    ...sample('ana', ['ana', 'bea']),
+    roomId,
+  });
+
+  await client
+    .delete(`${path}/${roomId}`)
+    .auth('bea', { type: 'bearer' })
+    .expect(403);
+
+  assert.equal(data.has(roomId), true);
+});
+
+test('US-11: rechaza una sala inexistente', async () => {
+  const { client } = await fixture();
+
+  await client
+    .delete(`${path}/${roomId}`)
+    .auth('ana', { type: 'bearer' })
+    .expect(404);
+});
+
+test('US-11: requiere autenticación', async () => {
+  const { client } = await fixture();
+
+  await client
+    .delete(`${path}/${roomId}`)
+    .expect(401);
 });

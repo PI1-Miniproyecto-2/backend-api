@@ -5,9 +5,15 @@ import { getFirestoreClient } from './firestore.service';
 
 export const ROOM_LIST_LIMIT = 50;
 
-// US-10: Resultado de la edición de una sala.
+// US-10: Resultado de la edición.
 export type RoomUpdateResult =
   | { status: 'updated'; room: Room }
+  | { status: 'not_found' }
+  | { status: 'forbidden' };
+
+// US-11: Resultado de la eliminación.
+export type RoomDeleteResult =
+  | { status: 'deleted' }
   | { status: 'not_found' }
   | { status: 'forbidden' };
 
@@ -17,12 +23,18 @@ export interface RoomStore {
   read(roomId: string): Promise<Room | undefined>;
   join(roomId: string, uid: string): Promise<Room | undefined>;
 
-  // US-10: Editar una sala existente.
+  // US-10: Editar una sala.
   update(
     roomId: string,
     uid: string,
     name: string
   ): Promise<RoomUpdateResult>;
+
+  // US-11: Eliminar una sala.
+  delete(
+    roomId: string,
+    uid: string
+  ): Promise<RoomDeleteResult>;
 }
 
 export function createRoomStore(
@@ -38,8 +50,6 @@ export function createRoomStore(
     },
 
     async listOwned(uid) {
-      // El índice de ownerUid ya ordena por ID
-      // de documento como desempate.
       const result = await rooms()
         .where('ownerUid', '==', uid)
         .limit(ROOM_LIST_LIMIT)
@@ -104,17 +114,14 @@ export function createRoomStore(
           const data = snapshot.data() as
             RoomDocument | undefined;
 
-          // Comprobar que la sala existe y está activa.
           if (!data || data.status !== 'active') {
             return { status: 'not_found' };
           }
 
-          // Solamente el anfitrión puede editar.
           if (data.ownerUid !== uid) {
             return { status: 'forbidden' };
           }
 
-          // Actualizar únicamente el nombre.
           transaction.update(ref, {
             name,
           });
@@ -127,6 +134,33 @@ export function createRoomStore(
               roomId: snapshot.id,
             },
           };
+        }
+      );
+    },
+
+    // US-11: Eliminar una sala de forma segura.
+    async delete(roomId, uid) {
+      const db = client();
+      const ref = db.collection('rooms').doc(roomId);
+
+      return db.runTransaction<RoomDeleteResult>(
+        async transaction => {
+          const snapshot = await transaction.get(ref);
+
+          const data = snapshot.data() as
+            RoomDocument | undefined;
+
+          if (!data || data.status !== 'active') {
+            return { status: 'not_found' };
+          }
+
+          if (data.ownerUid !== uid) {
+            return { status: 'forbidden' };
+          }
+
+          transaction.delete(ref);
+
+          return { status: 'deleted' };
         }
       );
     },
