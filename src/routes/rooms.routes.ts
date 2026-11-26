@@ -8,14 +8,26 @@ import { createAuthService } from '../services/auth.service';
 import { createProfileService } from '../services/profile.service';
 import { createRoomService } from '../services/room.service';
 
-const handleInvalidRoomId: ErrorRequestHandler = (error: unknown, _req, _res, next) => {
-  // Express decodifica el parámetro antes de invocar al controlador.
-  if (error instanceof URIError && 'status' in error && error.status === 400) {
-    next(new ApiError(400, 'Identificador de sala inválido'));
-    return;
-  }
-  next(error);
-};
+const handleInvalidRoomId: ErrorRequestHandler =
+  (error: unknown, _req, _res, next) => {
+    // Express decodifica el parámetro antes
+    // de invocar al controlador.
+    if (
+      error instanceof URIError &&
+      'status' in error &&
+      error.status === 400
+    ) {
+      next(
+        new ApiError(
+          400,
+          'Identificador de sala inválido'
+        )
+      );
+      return;
+    }
+
+    next(error);
+  };
 
 export function createRoomsRoutes(
   service = createRoomService(),
@@ -26,19 +38,32 @@ export function createRoomsRoutes(
   const controller = roomsController(service);
   const completeProfile = requireCompleteProfile(profiles);
 
-  router.use(authenticate(verify), (req, _res, next) => {
-    if (identityOf(req).tenant !== undefined) {
-      throw new ApiError(403, 'No se admite el acceso a salas desde otro tenant');
-    }
-    next();
-  }, completeProfile);
+  router.use(
+    authenticate(verify),
+    (req, _res, next) => {
+      if (identityOf(req).tenant !== undefined) {
+        throw new ApiError(
+          403,
+          'No se admite el acceso a salas desde otro tenant'
+        );
+      }
 
-  router.route('/').post(controller.create).get(controller.list);
+      next();
+    },
+    completeProfile
+  );
+
+  router.route('/')
+    .post(controller.create)
+    .get(controller.list);
 
   router.get('/:roomId', controller.read);
 
-  // US-07: Ingresar a una sala mediante su identificador.
+  // US-07: Ingresar a una sala.
   router.post('/:roomId/join', controller.join);
+
+  // US-10: Editar una sala.
+  router.patch('/:roomId', controller.update);
 
   router.use(handleInvalidRoomId);
 
