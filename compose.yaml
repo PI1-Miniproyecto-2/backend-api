@@ -6,7 +6,40 @@ services:
     ports:
       - "127.0.0.1:${HOST_PORT:-3000}:${PORT:-3000}"
     environment:
+      NODE_ENV: production
       PORT: "${PORT:-3000}"
-      FIREBASE_PROJECT_ID: "${FIREBASE_PROJECT_ID:-}"
-      CORS_ORIGIN: "${CORS_ORIGIN:-}"
+      FIREBASE_PROJECT_ID: "${FIREBASE_PROJECT_ID:-miniproyecto-2-c0d28}"
+      CORS_ORIGIN: "${CORS_ORIGIN:-http://localhost:8080,http://localhost:5173}"
     init: true
+
+  backend-realtime:
+    build:
+      context: "${REALTIME_PATH:-../../bakend-realtime}"
+      target: production
+    ports:
+      - "127.0.0.1:${REALTIME_HOST_PORT:-3001}:3001"
+    environment:
+      NODE_ENV: production
+      PORT: "3001"
+      FIREBASE_PROJECT_ID: "${FIREBASE_PROJECT_ID:-miniproyecto-2-c0d28}"
+      CORS_ORIGINS: "${CORS_ORIGINS:-http://localhost:8080,http://localhost:5173}"
+    init: true
+
+  frontend:
+    build:
+      context: "${FRONTEND_PATH:-../aulapro-docker-frontend}"
+      dockerfile: "${FRONTEND_DOCKERFILE:-../Backend1/Dockerfile.frontend}"
+      args:
+        VITE_FIREBASE_API_KEY: "${VITE_FIREBASE_API_KEY:-}"
+        VITE_FIREBASE_AUTH_DOMAIN: "${VITE_FIREBASE_AUTH_DOMAIN:-}"
+        VITE_FIREBASE_PROJECT_ID: "${VITE_FIREBASE_PROJECT_ID:-miniproyecto-2-c0d28}"
+        VITE_FIREBASE_STORAGE_BUCKET: "${VITE_FIREBASE_STORAGE_BUCKET:-}"
+        VITE_FIREBASE_MESSAGING_SENDER_ID: "${VITE_FIREBASE_MESSAGING_SENDER_ID:-}"
+        VITE_FIREBASE_APP_ID: "${VITE_FIREBASE_APP_ID:-}"
+        VITE_API_URL: "http://localhost:${HOST_PORT:-3000}"
+        VITE_REALTIME_URL: "http://localhost:${REALTIME_HOST_PORT:-3001}"
+    ports:
+      - "127.0.0.1:${FRONTEND_HOST_PORT:-8080}:80"
+    depends_on:
+      - backend-api
+      - backend-realtime
