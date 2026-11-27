@@ -243,3 +243,89 @@ export const roomJoinPath: OpenAPIV3.PathItemObject = {
     },
   },
 };
+// US-08: Consulta de miembros y autores del historial.
+
+roomsSchemas.RoomMember = {
+  type: 'object',
+  additionalProperties: false,
+  required: [
+    'uid',
+    'displayName',
+    'username',
+    'avatarId',
+  ],
+  properties: {
+    uid: { type: 'string' },
+    displayName: { type: 'string' },
+    username: {
+      type: 'string',
+      nullable: true,
+    },
+    avatarId: { type: 'string' },
+  },
+};
+
+roomsSchemas.RoomMembersResponse = {
+  type: 'object',
+  additionalProperties: false,
+  required: ['members'],
+  properties: {
+    members: {
+      type: 'array',
+      items: {
+        $ref: '#/components/schemas/RoomMember',
+      },
+    },
+  },
+};
+
+export const roomMembersPath: OpenAPIV3.PathItemObject = {
+  get: {
+    ...common,
+    operationId: 'getRoomMembers',
+    summary: 'Consultar los miembros de una sala',
+    description: `${access} Devuelve los perfiles visibles de los participantes y autores del historial de una sala activa. Solo el anfitrión y los participantes autorizados pueden realizar esta consulta. No expone correos electrónicos.`,
+
+    parameters: [{
+      name: 'roomId',
+      in: 'path',
+      required: true,
+      schema: roomId,
+      description: 'Identificador de la sala.',
+    }],
+
+    responses: {
+      '200': {
+        description: 'Miembros consultados correctamente.',
+        content: json('RoomMembersResponse', {
+          members: [
+            {
+              uid: 'uidA',
+              displayName: 'Yoselin',
+              username: 'yoselin',
+              avatarId: 'avatar_book',
+            },
+            {
+              uid: 'uidB',
+              displayName: 'Angie',
+              username: 'angie',
+              avatarId: 'avatar_owl',
+            },
+          ],
+        }),
+      },
+
+      '400': error(
+        'Identificador de sala inválido.',
+        'Identificador de sala inválido'
+      ),
+
+      ...errors,
+
+      '404': error(
+        'Sala inexistente, inactiva o sin autorización.',
+        'Sala no encontrada'
+      ),
+    },
+  },
+};
