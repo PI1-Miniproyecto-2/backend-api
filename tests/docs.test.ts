@@ -385,3 +385,44 @@ test('US-11: Swagger documenta la eliminación y los permisos del anfitrión', a
     .delete('/api/v1/rooms/A1234567890123456789')
     .expect(401);
 });
+test('US-08: Swagger documenta los miembros de una sala', async () => {
+  const { body: spec } = await request(app)
+    .get('/openapi.json')
+    .expect(200);
+
+  const operation =
+    spec.paths['/api/v1/rooms/{roomId}/members'].get;
+
+  assert.ok(operation);
+  assert.equal(operation.operationId, 'getRoomMembers');
+
+  assert.deepEqual(operation.security, [
+    { bearerAuth: [] },
+  ]);
+
+  assert.equal(operation.requestBody, undefined);
+
+  assert.deepEqual(
+    Object.keys(operation.responses).sort(),
+    ['200', '400', '401', '403', '404', '409', '500', '503']
+  );
+
+  const member = spec.components.schemas.RoomMember;
+
+  assert.deepEqual(
+    Object.keys(member.properties).sort(),
+    ['avatarId', 'displayName', 'uid', 'username']
+  );
+
+  assert.equal(member.additionalProperties, false);
+
+  assert.equal(
+    operation.responses['200']
+      .content['application/json'].schema.$ref,
+    '#/components/schemas/RoomMembersResponse'
+  );
+
+  await request(app)
+    .get('/api/v1/rooms/A1234567890123456789/members')
+    .expect(401);
+});
